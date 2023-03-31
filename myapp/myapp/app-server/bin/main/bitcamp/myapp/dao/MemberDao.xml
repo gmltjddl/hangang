@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.myapp.dao.MemberDao">
+
+  <resultMap type="member" id="memberMap">
+     <id column="member_id" property="no"/>
+    <result column="email" property="email"/>
+    <result column="name" property="name"/>
+    <result column="nick" property="nickName"/>
+    <result column="tel" property="tel"/>
+    <result column="intro" property="introduce"/>
+    <result column="hob" property="hobby"/>
+    <result column="created_date" property="createdDate"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="member" 
+  useGeneratedKeys="true" keyProperty="no" keyColumn="member_id">
+    insert into hms_mem(
+      email,
+      pwd,
+      name,
+      nick,
+      tel,
+      intro,
+      hob)
+    values(#{email},sha2(#{password},256),#{name},#{nickName},#{tel},#{introduce},#{hobby})
+  </insert>
+
+  <select id="findAll" resultMap="memberMap">
+    select 
+      member_id, 
+      email,
+      nick,
+      name,
+      created_date 
+    from 
+      hms_mem
+    order by 
+      member_id desc
+  </select>
+  <select id="findByEmailAndPassword" parameterType="map" resultMap="memberMap">
+    select
+      member_id,
+      email,
+      name,
+      nick,
+      tel,
+      intro,
+      hob,
+      created_date
+    from 
+      hms_mem
+
+    where 
+      email = #{email} and pwd = sha2(#{password},256)
+  </select>
+
+  <select id="findByEmail" parameterType="string" resultMap="memberMap">
+    select
+      member_id,
+      email,
+      name,
+      nick,
+      tel,
+      intro,
+      hob,
+      created_date
+    from 
+      hms_mem 
+    where 
+      email = #{email}
+  </select>
+
+  <select id="findByNo" parameterType="int" resultMap="memberMap">
+    select 
+      member_id,
+      email,
+      name,
+      nick,
+      tel,
+      intro,
+      hob 
+      created_date 
+    from 
+      hms_mem
+    where 
+      member_id=#{no}
+  </select>
+  
+  <update id="update" parameterType="member">
+    update hms_mem set
+      email=#{email}, 
+      pwd=sha2(#{password},256), 
+      name=#{name}, 
+      nick=#{nickName},
+      tel=#{tel},
+      intro=#{introduce},
+      hob=#{hobby}
+      
+    where member_id=#{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from hms_mem
+    where member_id=#{no}
+  </delete>
+</mapper>
+
+
+
+
+
