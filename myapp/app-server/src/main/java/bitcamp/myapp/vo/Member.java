@@ -10,6 +10,7 @@ public class Member {
   private int no;
   private String email;
   private String password;
+  private String repassword;
   private String name;
   private String tel;
   private String nickName;

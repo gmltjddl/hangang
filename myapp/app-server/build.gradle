@@ -18,7 +18,7 @@ tasks.withType(JavaCompile) {
 
 eclipse {
     project {
-        name = "myapp-server"
+        name = "myapp2-server"
     }
     jdt {  
       sourceCompatibility = 17
