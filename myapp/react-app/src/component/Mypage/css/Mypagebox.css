@@ -1,0 +1,125 @@
+.box-wrap{
+  position: relative;
+  display:block;
+  border :0px solid blue;
+  width:1050px;
+  height:1050px;
+  left:600px;
+  bottom:1050px;
+
+}
+.info-box-wrap{
+  position: relative;
+  display:inline-block;
+  border :1px solid gray;
+  width:1000px;
+  height:300px;
+}
+.info-box-wrap h1{
+  position: relative;
+  display:inline-block;
+  top:95px;
+  left:40px;
+}
+.info-box-wrap span{
+  position: relative;
+  display:inline-block;
+  font-size: 18px;
+  top:135px;
+  right:98px;
+}
+.info-box-wrap button{
+  position: relative;
+  display:inline-block;
+  width:70px;
+  height:40px;
+  background-color: #33A3F5;
+  border:0px solid ;
+  border-radius: 25%;
+  font-size:20px;
+  color:white;
+  cursor: pointer;
+  top:110px;
+  left:300px;
+}
+.info-box-wrap button:hover{
+  color:black;
+}
+
+.mywrite-box-wrap{
+  position: relative;
+  display:inline-block;
+  border :1px solid gray;
+  top:70px;
+  width:1000px;
+  height:300px;
+}
+.mywrite-box-wrap h1{
+  position: relative;
+  display:inline-block;
+  top:95px;
+  left:40px;
+}
+.mywrite-box-wrap span{
+  position: relative;
+  display:inline-block;
+  font-size: 18px;
+  top:135px;
+  right:183px;
+}
+.mywrite-box-wrap button{
+  position: relative;
+  display:inline-block;
+  width:70px;
+  height:40px;
+  background-color: #33A3F5;
+  border:0px solid ;
+  border-radius: 25%;
+  font-size:20px;
+  color:white;
+  cursor: pointer;
+  top:110px;
+  left:283px;
+}
+.mywrite-box-wrap button:hover{
+  color:black;
+}
+
+.reservation-box-wrap{
+  position: relative;
+  display:inline-block;
+  border :1px solid gray;
+  top:130px;
+  width:1000px;
+  height:300px;
+}
+.reservation-box-wrap h1{
+  position: relative;
+  display:inline-block;
+  top:95px;
+  left:40px;
+}
+.reservation-box-wrap span{
+  position: relative;
+  display:inline-block;
+  font-size: 18px;
+  top:135px;
+  right:140px;
+}
+.reservation-box-wrap button{
+  position: relative;
+  display:inline-block;
+  width:70px;
+  height:40px;
+  background-color: #33A3F5;
+  border:0px solid ;
+  border-radius: 25%;
+  font-size:20px;
+  color:white;
+  cursor: pointer;
+  top:110px;
+  left:405px;
+}
+.reservation-box-wrap button:hover{
+  color:black;
+}

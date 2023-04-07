@@ -53,14 +53,20 @@ nav {
   justify-content: space-between;
 }
 
+
+
 nav ul {
   display: flex;
 }
+
 
 nav li {
   list-style: none;
   margin-right: 32px;
   margin-bottom: 5px;
+  position: relative;
+  top:5px;
+
 }
 
 .fes {
@@ -77,22 +83,38 @@ nav li {
 
 .qa {
   margin-left: 50px;
+ 
 }
 
-.login {
+.login{
   margin-left: 50px;
-  /* display: none; */
-
+  height: 20px;
+   position: relative;
+   bottom:7px;
 }
 
-.logout {
-  display: none;
+.logout{
+  position: relative;
+  background-color: #000;
+  height: 20px;
   margin-left: 50px;
+  color:white;
+  font-weight: bold;
+  width:150px;
+  top:8px;
+  cursor: pointer;
 
 }
-
-
-
+.logout span:hover{
+  color: aqua;
+}
+.mypage{
+  margin-left: 25px;
+  height: 20px;
+   position: relative;
+   bottom:7px;
+ 
+}
 
 nav li:last-child {
   margin-right: 0;
@@ -104,6 +126,7 @@ nav a {
   font-size: 16px;
   font-weight: bold;
   padding: 8px 16px;
+
 }
 
 nav a:hover {

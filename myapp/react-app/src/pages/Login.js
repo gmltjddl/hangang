@@ -1,31 +1,25 @@
 import React, {useState} from 'react';
-import './Login.css';
+import './css/Login.css';
 import axios from "axios";
-import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
 
   const handleEmailChange = e => setEmail(e.target.value);
   const handlePasswordChange = e => setPassword(e.target.value);
-  const handleRememberMeChange = e => setRememberMe(e.target.checked);
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (rememberMe) {
-      Cookies.set('email', email, { expires: 30 }); // 쿠키에 이메일을 7일간 저장
-    } else {
-      Cookies.remove('email'); // 쿠키에서 이메일 삭제
-    }
+    
     const formData = new FormData(e.target);
     axios.post('http://localhost:8080/web/auth/login', formData)
       .then(response => response.data)
       .then(result => {
         if (result.status === 'success') {
-          window.location.href = '../';
+        
+           window.location.href = '../';
         } else {
           alert('로그인 실패!');
           setEmail('');
@@ -35,7 +29,9 @@ const Login = () => {
       .catch(error => {
         alert('로그인 오류!');
         console.error(error);
+        
       });
+  
   };
 
   return (
@@ -48,10 +44,6 @@ const Login = () => {
       <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} />
       <label htmlFor="password">비밀번호</label>
       <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
-      <label>
-        <input type="checkbox" name="remember-me" checked={rememberMe} onChange={handleRememberMeChange} />
-        이메일 저장하기
-      </label>
       <button type="submit" id="btn-login">로그인</button>
     </form>
     <div class="signup-box">

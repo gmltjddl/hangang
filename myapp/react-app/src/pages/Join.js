@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import './Join.css';
+import './css/Join.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,8 +9,8 @@ function Join() {
   const [password, setPassword] = useState("");
   const [repassword, setRepassword] = useState("");
   const [name, setName] = useState("");
-  const [nickname, setNickname] = useState("");
   const [tel, setTel] = useState("");
+  const [nickName, setNickName] = useState("");
   const [introduce, setIntroduce] = useState("");
   const [hobby, setHobby] = useState("");
 
@@ -29,11 +29,11 @@ function Join() {
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
-  const handleNicknameChange = (event) => {
-    setNickname(event.target.value);
-  };
   const handleTelChange = (event) => {
     setTel(event.target.value);
+  };
+  const handleNickNameChange = (event) => {
+    setNickName(event.target.value);
   };
   const handleIntroduceChange = (event) => {
     setIntroduce(event.target.value);
@@ -49,6 +49,11 @@ function Join() {
         email: email,
         password: password,
         name: name,
+        tel : tel,
+        nickName : nickName,
+        introduce : introduce,
+        hobby : hobby,
+
       };
       axios
         .post("http://localhost:8080/web/members", formData)
@@ -59,12 +64,12 @@ function Join() {
             window.location.href = "Login";
           } else {
             alert("입력 실패!");
-            console.log(result.data);
+            // console.log(result.data);
           }
         })
         .catch((exception) => {
           alert("입력 중 오류가 발생했습니다.");
-          console.log(exception);
+          // console.log(exception);
         });
     }
   };
@@ -131,7 +136,8 @@ function Join() {
           value={password}
           onChange={handlePasswordChange}/>
 
-          <input 
+          
+        <input 
           name="repassword" 
           type="password" 
           placeholder="repassword" 
@@ -139,7 +145,7 @@ function Join() {
           id="repwd" required 
           value={repassword}
           onChange={handleRepasswordChange} />
-
+            
           <input 
           name="name" 
           type="text" 
@@ -149,15 +155,6 @@ function Join() {
           value={name} 
           onChange={handleNameChange}/>
 
-          <input 
-          name="nickName" 
-          type="text" 
-          placeholder="Nickname" 
-          className="join-input-box" 
-          id="nickName" required 
-          value={nickname} 
-          onChange={handleNicknameChange}/>
-
           <input name="tel" 
           type="tel" 
           placeholder="Tell" 
@@ -165,6 +162,17 @@ function Join() {
           id="tel" required 
           value={tel} 
           onChange={handleTelChange} />
+
+          <input 
+          name="nickName" 
+          type="text" 
+          placeholder="Nickname" 
+          className="join-input-box" 
+          id="nickName" required 
+          value={nickName} 
+          onChange={handleNickNameChange}/>
+
+       
 
           <input name="introduce" 
           type="text" 
@@ -196,13 +204,13 @@ function Join() {
 //     const formData = new FormData(event.target);
 //     const email = formData.get('email');
 //     const password = formData.get('password');
-//     const repassword = formData.get('repassword');
+//     // const repassword = formData.get('repassword');
 //     const name = formData.get('name');
 //     const nickName = formData.get('nickName');
 //     const tel = formData.get('tel');
 //     const introduce = formData.get('introduce');
 //     const hobby = formData.get('hobby');
-//     console.log(email, password, repassword, name, nickName, tel, introduce, hobby);
+//     console.log(email, password,  name, nickName, tel, introduce, hobby);
 
 //     axios.post('http://localhost:8080/web/members', formData)
 //       .then(response => response.data)
@@ -227,7 +235,7 @@ function Join() {
 //         <form id="join-form" onSubmit={handleSubmit}>
 //           <input name="email" type="email" placeholder="Email" className="join-input-box" id="email" required />
 //           <input name="password" type="password" placeholder="password" className="join-input-box" id="pwd" required />
-//           <input name="repassword" type="password" placeholder="repassword" className="join-input-box" id="repwd" required />
+//           {/* <input name="repassword" type="password" placeholder="repassword" className="join-input-box" id="repwd" required /> */}
 //           <input name="name" type="text" placeholder="Name" className="join-input-box" required />
 //           <input name="nickName" type="text" placeholder="Nickname" className="join-input-box" required />
 //           <input name="tel" type="tel" placeholder="Tell" className="join-input-box" required />
