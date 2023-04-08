@@ -1,12 +1,12 @@
 .profilemodify {
   position: relative;
   background-color: #ffffff;
-  margin-left: 520px;
-  margin-top: 20px;
+  /* margin-left: 520px; */
+  /* margin-top: 20px; */
   width: 480px;
   height: 700px;
   display: grid;
-  grid-template-columns:480px;
+  grid-template-columns: 480px;
   grid-template-rows: 250px 25px 75px 75px 75px 75px 85px 40px;
 }
 
@@ -22,7 +22,7 @@
   background-size: cover;
 }
 
-.profilepick{
+.profilepick {
   text-align: center;
   font-weight: bold;
 }
@@ -30,83 +30,116 @@
 
 
 
-.profilename{
+.profilename {
+  margin: 25px auto;
   display: grid;
   height: auto;
   font-family: Arial;
   font-size: 10px;
-  grid-template-columns:80px 400px;
-  grid-template-rows: 75px;
-}
-.modifyname{
-  margin-top: 20px;
-  text-align: center;
+  grid-template-columns: 80px 400px;
+  grid-template-rows: 50px;
 }
 
-.nameinputbox{
+.modifyname {
+  margin: auto;
+  text-align: center;
+  font-family: Arial;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.nameinputbox {
+  margin-left: 20px;
   display: inline-block;
   border: 0px;
-  border-bottom:1px solid #000000;
+  border-bottom: 1px solid #000000;
+  height: auto;
+  font-size: 20px;
 }
 
 
-.profilenickename{
+.profilenickename {
+  margin: 25px auto;
   display: grid;
   height: auto;
   font-family: Arial;
   font-size: 10px;
-  grid-template-columns:80px 400px;
-  grid-template-rows: 75px;
-}
-.modifynickname{
-  margin-top: 20px;
-  text-align: center;
+  grid-template-columns: 80px 400px;
+  grid-template-rows: 50px;
 }
 
-.nicknameinputbox{
+.modifynickname {
+  margin: auto;
+  text-align: center;
+  font-family: Arial;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.nicknameinputbox {
+  margin-left: 20px;
   display: inline-block;
   border: 0px;
-  border-bottom:1px solid #000000;
+  border-bottom: 1px solid #000000;
+  height: auto;
+  font-size: 20px;
 }
 
 
-.profileemail{
+.profileemail {
+  margin: 25px auto;
   display: grid;
   height: auto;
   font-family: Arial;
   font-size: 10px;
-  grid-template-columns:80px 400px;
-  grid-template-rows: 75px;
-}
-.modifyemail{
-  margin-top: 20px;
-  text-align: center;
+  grid-template-columns: 80px 400px;
+  grid-template-rows: 50px;
 }
 
-.emailinputbox{
+.modifyemail {
+  margin: auto;
+  text-align: center;
+  font-family: Arial;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.emailinputbox {
+  margin-left: 20px;
   display: inline-block;
   border: 0px;
-  border-bottom:1px solid #000000;
+  border-bottom: 1px solid #000000;
+  height: auto;
+  font-size: 20px;
 }
 
-.profiletel{
+.profiletel {
+  margin: 25px auto;
   display: grid;
   height: auto;
   font-family: Arial;
   font-size: 10px;
-  grid-template-columns:80px 400px;
-  grid-template-rows: 75px;
-}
-.modifytel{
-  margin-top: 20px;
-  text-align: center;
+  grid-template-columns: 80px 400px;
+  grid-template-rows: 50px;
 }
 
-.telinputbox{
+.modifytel {
+  margin: auto;
+  text-align: center;
+  font-family: Arial;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.telinputbox {
+  margin-left: 20px;
   display: inline-block;
   border: 0px;
-  border-bottom:1px solid #000000;
+  border-bottom: 1px solid #000000;
+  height: auto;
+  font-size: 20px;
 }
+
 /*/
 
 
@@ -115,8 +148,9 @@
 
 /수정 취소버튼*/
 .okno {
+  margin-top: 80px;
   display: grid;
-  grid-template-columns:240px 240px;
+  grid-template-columns: 240px 240px;
   grid-template-rows: 75px;
 }
 
@@ -134,7 +168,7 @@
   color: #ffffff;
 }
 
-.cancel{
+.cancel {
   display: inline-block;
   margin-left: 30px;
   margin-top: 20px;
@@ -147,3 +181,11 @@
   background-color: #33A3F5;
   color: #ffffff;
 }
+
+div.modal-body {
+  margin: 35px auto;
+}
+
+/* div.okno {
+ 
+} */

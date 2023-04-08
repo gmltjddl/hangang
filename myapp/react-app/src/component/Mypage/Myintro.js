@@ -1,21 +1,25 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import Intromodal from '../Modal/Intromodal';
+import { Button, Container } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 import './css/Myintro.css';
 import axios from "axios";
-import Intromodal from '../Modal/Intromodal';
-import { Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
 
-function Myintro() {
-    const [introduce, setIntroduce] = useState([]);
-    // const [interst, setInterest] = useState([]);
-    const [hobby, setHobby] = useState([]);
-    const [createdDate, setCreatedDate] = useState([]);
-   
-  
-    axios.get("http://localhost:8080/web/auth/user")
+
+const Myintro = () => {
+  const [IntromodalOn, setIntromodalOn] = useState(false);
+  const [introduce, setIntroduce] = useState([]);
+  // const [interst, setInterest] = useState([]);
+  const [hobby, setHobby] = useState([]);
+  const [createdDate, setCreatedDate] = useState([]);
+
+
+  axios.get("http://localhost:8080/web/auth/user")
     .then((response) => {
       return response.data;
-      })
-      .then((result) => {
+    })
+    .then((result) => {
       if (result.status === "success") {
         setIntroduce(result.data.introduce);
         // setInterest(result.data.interest);
@@ -32,47 +36,49 @@ function Myintro() {
 
 
 
-  return(
- 
+  return (
+    <>
+      <Intromodal show={IntromodalOn} onHide={() => setIntromodalOn(false)} />
+
       <div className="intro-wrap">
-        
+
         <div className="intro-title">
-        <span>내 소개</span> 
+          <span>내 소개</span>
         </div>
         <div className="intro-edit-btn">
-        <button><Link to="/Intromodal" className="intro-modal">수정</Link></button>    
+          <button className="intro-modal" onClick={() => setIntromodalOn(true)}>수정</button>
         </div>
         <div className="line"></div>
         <div className="intro-img">
-        
+
         </div>
         <div className="intro-write-wrap">
-        <span>소개글</span>
-            <div className="intro-write">
-                {introduce}
-            </div>
+          <span>소개글</span>
+          <div className="intro-write">
+            {introduce}
+          </div>
         </div>
         <div className="intro-intro-wrap">
-        <span>관심분야</span>
-            <div className="intro-intro">
-             런닝,불꽃축제
-            </div>
+          <span>관심분야</span>
+          <div className="intro-intro">
+            런닝,불꽃축제
+          </div>
         </div>
         <div className="intro-hobby-wrap">
-        <span>취미</span>
-            <div className="intro-hobby">
-             {hobby}
-            </div>
+          <span>취미</span>
+          <div className="intro-hobby">
+            {hobby}
+          </div>
         </div>
         <div className="intro-date-wrap">
-        <span>가입일</span>
-            <div className="intro-date">
-             {createdDate}
-            </div>
+          <span>가입일</span>
+          <div className="intro-date">
+            {createdDate}
+          </div>
         </div>
-      
-      </div>
 
+      </div>
+    </>
   )
 }
 

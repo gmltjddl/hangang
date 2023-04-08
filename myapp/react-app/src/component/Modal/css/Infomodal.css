@@ -1,12 +1,12 @@
 .profilemodify {
   position: relative;
   background-color: #ffffff;
-  margin-left: 520px;
-  margin-top: 20px;
+  /* margin-left: 520px; */
+  /* margin-top: 20px; */
   width: 480px;
   height: 700px;
   display: grid;
-  grid-template-columns:480px;
+  grid-template-columns: 480px;
   grid-template-rows: 250px 25px 75px 75px 75px 75px 85px 40px;
 }
 
@@ -22,7 +22,7 @@
   background-size: cover;
 }
 
-.profilepick{
+.profilepick {
   text-align: center;
   font-weight: bold;
 }
@@ -30,83 +30,88 @@
 
 
 
-.profilename{
+.profilename {
   display: grid;
   height: auto;
   font-family: Arial;
   font-size: 10px;
-  grid-template-columns:80px 400px;
+  grid-template-columns: 80px 400px;
   grid-template-rows: 75px;
 }
-.modifyname{
+
+.modifyname {
   margin-top: 20px;
   text-align: center;
 }
 
-.nameinputbox{
+.nameinputbox {
   display: inline-block;
   border: 0px;
-  border-bottom:1px solid #000000;
+  border-bottom: 1px solid #000000;
 }
 
 
-.profilenickename{
+.profilenickename {
   display: grid;
   height: auto;
   font-family: Arial;
   font-size: 10px;
-  grid-template-columns:80px 400px;
+  grid-template-columns: 80px 400px;
   grid-template-rows: 75px;
 }
-.modifynickname{
+
+.modifynickname {
   margin-top: 20px;
   text-align: center;
 }
 
-.nicknameinputbox{
+.nicknameinputbox {
   display: inline-block;
   border: 0px;
-  border-bottom:1px solid #000000;
+  border-bottom: 1px solid #000000;
 }
 
 
-.profileemail{
+.profileemail {
   display: grid;
   height: auto;
   font-family: Arial;
   font-size: 10px;
-  grid-template-columns:80px 400px;
+  grid-template-columns: 80px 400px;
   grid-template-rows: 75px;
 }
-.modifyemail{
+
+.modifyemail {
   margin-top: 20px;
   text-align: center;
 }
 
-.emailinputbox{
+.emailinputbox {
   display: inline-block;
   border: 0px;
-  border-bottom:1px solid #000000;
+  border-bottom: 1px solid #000000;
 }
 
-.profiletel{
+.profiletel {
   display: grid;
   height: auto;
   font-family: Arial;
   font-size: 10px;
-  grid-template-columns:80px 400px;
+  grid-template-columns: 80px 400px;
   grid-template-rows: 75px;
 }
-.modifytel{
+
+.modifytel {
   margin-top: 20px;
   text-align: center;
 }
 
-.telinputbox{
+.telinputbox {
   display: inline-block;
   border: 0px;
-  border-bottom:1px solid #000000;
+  border-bottom: 1px solid #000000;
 }
+
 /*/
 
 
@@ -116,7 +121,7 @@
 /수정 취소버튼*/
 .okno {
   display: grid;
-  grid-template-columns:240px 240px;
+  grid-template-columns: 240px 240px;
   grid-template-rows: 75px;
 }
 
@@ -134,7 +139,7 @@
   color: #ffffff;
 }
 
-.cancel{
+.cancel {
   display: inline-block;
   margin-left: 30px;
   margin-top: 20px;

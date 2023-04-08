@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import './css/Join.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -49,10 +49,10 @@ function Join() {
         email: email,
         password: password,
         name: name,
-        tel : tel,
-        nickName : nickName,
-        introduce : introduce,
-        hobby : hobby,
+        tel: tel,
+        nickName: nickName,
+        introduce: introduce,
+        hobby: hobby,
 
       };
       axios
@@ -114,87 +114,87 @@ function Join() {
 
   return (
     <div className="join-container">
-         <div className="join-box">
-           <h1>HANGANG</h1>
-    <form id="join-form" onSubmit={handleSubmit}>
-         
-         <input 
-          name="email"
-          type="email"
-          placeholder="Email"
-          className="join-input-box" 
-          id="email" required
-          value={email}
-          onChange={handleEmailChange} /> 
+      <div className="join-box">
+        <h1>HANGANG</h1>
+        <form id="join-form" onSubmit={handleSubmit}>
 
-          <input 
-          name="password" 
-          type="password" 
-          placeholder="password" 
-          className="join-input-box" 
-          id="pwd" required  
-          value={password}
-          onChange={handlePasswordChange}/>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="join-input-box"
+            id="email" required
+            value={email}
+            onChange={handleEmailChange} />
 
-          
-        <input 
-          name="repassword" 
-          type="password" 
-          placeholder="repassword" 
-          className="join-input-box" 
-          id="repwd" required 
-          value={repassword}
-          onChange={handleRepasswordChange} />
-            
-          <input 
-          name="name" 
-          type="text" 
-          placeholder="Name" 
-          className="join-input-box" 
-          id="name" required 
-          value={name} 
-          onChange={handleNameChange}/>
+          <input
+            name="password"
+            type="password"
+            placeholder="password"
+            className="join-input-box"
+            id="pwd" required
+            value={password}
+            onChange={handlePasswordChange} />
 
-          <input name="tel" 
-          type="tel" 
-          placeholder="Tell" 
-          className="join-input-box" 
-          id="tel" required 
-          value={tel} 
-          onChange={handleTelChange} />
 
-          <input 
-          name="nickName" 
-          type="text" 
-          placeholder="Nickname" 
-          className="join-input-box" 
-          id="nickName" required 
-          value={nickName} 
-          onChange={handleNickNameChange}/>
+          <input
+            name="repassword"
+            type="password"
+            placeholder="repassword"
+            className="join-input-box"
+            id="repwd" required
+            value={repassword}
+            onChange={handleRepasswordChange} />
 
-       
+          <input
+            name="name"
+            type="text"
+            placeholder="Name"
+            className="join-input-box"
+            id="name" required
+            value={name}
+            onChange={handleNameChange} />
 
-          <input name="introduce" 
-          type="text" 
-          placeholder="Introduce" 
-          className="join-input-box" 
-          id="introduce" required 
-          value={introduce} 
-          onChange={handleIntroduceChange}/>
+          <input name="tel"
+            type="tel"
+            placeholder="Tell"
+            className="join-input-box"
+            id="tel" required
+            value={tel}
+            onChange={handleTelChange} />
 
-        <input name="hobby" 
-        type="text" 
-        placeholder="Hobby" 
-        className="join-input-box" 
-        id="hobby" required 
-        value={hobby} 
-        onChange={handleHobbyChange} />   
-                <button id="btn-regist" type="submit">가입하기</button>       
-             <button id="btn-cancel" type="reset">가입취소</button>
-        
-        <div className="join-signup-box"></div>      
-    </form>
-    </div>
+          <input
+            name="nickName"
+            type="text"
+            placeholder="Nickname"
+            className="join-input-box"
+            id="nickName" required
+            value={nickName}
+            onChange={handleNickNameChange} />
+
+
+
+          <input name="introduce"
+            type="text"
+            placeholder="Introduce"
+            className="join-input-box"
+            id="introduce" required
+            value={introduce}
+            onChange={handleIntroduceChange} />
+
+          <input name="hobby"
+            type="text"
+            placeholder="Hobby"
+            className="join-input-box"
+            id="hobby" required
+            value={hobby}
+            onChange={handleHobbyChange} />
+          <button id="btn-regist" type="submit">가입하기</button>
+          <button id="btn-cancel" type="reset">가입취소</button>
+
+          <div className="join-signup-box"></div>
+        </form>
+      </div>
     </div>
   );
 }
