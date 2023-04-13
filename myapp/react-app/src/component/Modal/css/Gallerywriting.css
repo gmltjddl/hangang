@@ -110,7 +110,7 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2)
 }
 
-#content {
+#Gall-write-content {
   display: inline-block;
   height: 400px;
   width: 350px;
@@ -132,7 +132,7 @@
   bottom:50px;
 }
 
-#title {
+#Gall-write-title {
   display: inline-block;
   position: relative;
   left: -15px;

@@ -2,7 +2,7 @@ import React, {useState, useEffect}  from "react";
 import './css/Gallerydetail.css';
 import './css/Heart.css';
 import axios from "axios";
-
+import { Modal, Button } from "react-bootstrap";
 
 
 const Gallerydetail = () => {
@@ -12,6 +12,7 @@ const Gallerydetail = () => {
     const [content, setContent] = useState([]);
     const [likes, setLikes] = useState(0);
     const [liked, setLiked] = useState(false); // 토글 버튼 상태를 관리하는 state
+
 
     useEffect(() => {
         axios.get("http://localhost:8080/web/boards/26")
@@ -48,6 +49,7 @@ const Gallerydetail = () => {
       }
 
     return(
+ 
         <div className="clickPage">
             <div className="gclickbox">
                 <div className="gheader">
@@ -76,6 +78,7 @@ const Gallerydetail = () => {
                 <div className="gcomment">댓글 </div>
             </div>
         </div>
+  
     );
 };
 

@@ -77,22 +77,22 @@ const Gallerywriting = ({ show, onHide }) => {
 
               <div className="Gallerywriting-title-div">
                 <input
-                  name="title"
+                  name="Gall-write-title"
                   type="text"
                   placeholder="title"
                   className="Gallerywriting-input-box"
-                  id="title" required
+                  id="Gall-write-title" required
                   value={title}
                   onChange={handleTitleChange} />
               </div>
 
               <div className="Gallerywriting-content-div">
                 <textarea
-                  name="content"
+                  name="Gall-write-content"
                   type="text"
                   placeholder="content"
                   className="Gallerywriting-input-box"
-                  id="content" required
+                  id="Gall-write-content" required
                   value={content}
                   onChange={handleContentChange} />
               </div>
