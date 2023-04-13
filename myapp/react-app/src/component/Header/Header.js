@@ -87,8 +87,8 @@ import './css/Header.css';
               <li><a href="#">Parking</a></li>
             </ul>
           </li>
-          <li><Link to="" className="gallerymain">RESERVATION</Link></li>
-          <li><Link to="/Gallery" className="gallerymain">Q&amp;A</Link></li>
+          <li><Link to="/Reservation" className="reservation">RESERVATION</Link></li>
+          <li><Link to="/Gallery" className="qna">Q&amp;A</Link></li>
           <li><Link to="/Login" className="login" id="login">LOGIN</Link></li>
           <li><Link to="/Mypage" className="mypage" id="mypage">MYPAGE</Link></li>
           <li className="logout" id="logout" onClick={() => { logout(); return false; }}><span className="logout-span">로그아웃({data})</span></li>

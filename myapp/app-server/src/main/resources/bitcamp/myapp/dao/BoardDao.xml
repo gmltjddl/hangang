@@ -15,6 +15,7 @@
     <association property="writer" javaType="member">
       <id column="writer" property="no"/>
       <result column="name" property="name"/>
+      <result column="nickName" property="nickName"/>
     </association>
     
     <collection property="attachedFiles" ofType="boardfile">
@@ -41,6 +42,7 @@
       b.view_cnt,
       m.name,
       gf.filepath
+      
  
     from 
       hms_mem m
@@ -54,7 +56,7 @@
       b.title, 
       b.content,
       b.writer, 
-      (select name from hms_mem where member_id = b.writer) name, 
+      (select nick from hms_mem where member_id = b.writer) nickName, 
       b.created_date, 
       b.view_cnt,
       bf.boardfile_id,

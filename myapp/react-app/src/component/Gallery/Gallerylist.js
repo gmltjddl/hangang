@@ -3,8 +3,9 @@ import './css/Gallerylist.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState, useEffect } from 'react';
 import Gallerywriting from "../Modal/Gallerywriting";
+import Gallerydetail from "../Gallery/Gallerydetail";
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 
 const Gallerylist = () => {
   const [data, setData] = useState([]);
@@ -70,7 +71,10 @@ const Gallerylist = () => {
           <table class="gall-list-table" id={`board-table-${item.no}`} border="1">
             <tbody>
               <tr>
-                <td><img className="gall-img" src={item.attachedFiles[0].filepath} ></img></td>
+                <td> 
+            <Link to='/Gallerydetail'>
+              <img className="gall-img" src={item.attachedFiles[0].filepath} />
+            </Link></td>
               </tr>
             </tbody>
           </table>

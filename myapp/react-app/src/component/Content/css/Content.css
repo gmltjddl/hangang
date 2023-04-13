@@ -1,38 +1,15 @@
-.benefits {
+.content {
   padding: 80px 32px;
-  background-color: #f7f7f7;
-  max-width: 1065px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-.benefits h2 {
+.content h2 {
   font-size: 36px;
   margin-bottom: 32px;
 }
 
-.benefits p {
+.content p {
   font-size: 18px;
   line-height: 1.8;
-  margin-bottom: 40px;
-}
-
-.benefits ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-}
-
-.benefits li {
-  width: calc(50% - 16px);
-  margin-right: 32px;
-  margin-bottom: 16px;
-  padding: 16px;
-  background-color: #fff;
-  border-radius: 4px;
-  font-size: 18px;
-  line-height: 1.8;
-}
-
-.benefits li:last-child {
-  margin-right: 0;
 }

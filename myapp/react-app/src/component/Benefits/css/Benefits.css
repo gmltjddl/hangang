@@ -1,18 +1,42 @@
-.content {
+.benefits {
   padding: 80px 32px;
-  max-width: 1000px;
+  background-color: #f7f7f7;
+  max-width: 1065px;
   margin: 0 auto;
 }
 
-.content h2 {
+.benefits h2 {
   font-size: 36px;
   margin-bottom: 32px;
 }
 
-.content p {
+.benefits p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.benefits ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.benefits li {
+  width: calc(50% - 16px);
+  margin-right: 32px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 4px;
   font-size: 18px;
   line-height: 1.8;
 }
+
+.benefits li:last-child {
+  margin-right: 0;
+}
+
 /* 미디어 쿼리 */
 @media (max-width: 768px) {
   nav ul {
@@ -32,8 +56,11 @@
   color: #f7f7f7;
   object-fit: cover;
   display: grid;
+  position: relative;
+  right:30px;
   grid-template-columns: 500px 500px;
   grid-template-rows: 500px 500px 500px;
+
   /* grid-template-areas:
     "f1 f2"
     "ff1 ff2"
