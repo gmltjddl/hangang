@@ -1,0 +1,37 @@
+.body-back{
+  display : inline-block;
+  position:absolute;
+  background-color: black;
+  width:100%;
+  min-height: 50vh;
+  height:auto;
+
+
+  }
+.Gallerylist-Button{
+  display : inline-block;
+  position: relative;
+  left:1235px;
+  top:120px;
+}
+
+.gall-list-table-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr)); /* 컬럼 크기 조절 */
+    gap: 50px; /* 테이블 간격 조절 */
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 150px;
+    }
+.gall-list-table{
+  width: 100%;
+  height:400px;
+  display: inline-block;
+  position: relative;
+  border:0px;
+}
+.gall-img{
+  width:506px;
+  height:400px;
+
+}

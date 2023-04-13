@@ -6,42 +6,49 @@ import axios from "axios";
 import Cookies from 'js-cookie';
  axios.defaults.withCredentials = true;
 
-function Header() {
-  
+ function Header() {
   const [data, setData] = useState([]);
-  
-  axios.get("http://localhost:8080/web/auth/user")
-  .then((response) => {
-    return response.data;
-    })
-    .then((result) => {
-    if (result.status === "success") {
-      setData(result.data.nickName);
-      // console.log(result.data);
 
-      let login = document.getElementById('login');
-      login.style.display = 'none';
-      let logout = document.getElementById('logout');
-      logout.style.display = 'block';
-      let mypage = document.getElementById('mypage');
-      mypage.style.display = 'block';
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/web/auth/user");
+      const result = response.data;
+      if (result.status === "success") {
+        setData(result.data.nickName);
+        console.log(result.data);
 
-    } else {
-      let login = document.getElementById('login');
-      login.style.display = 'block';
-      let logout = document.getElementById('logout');
-      logout.style.display = 'none';
-      let mypage = document.getElementById('mypage');
-      mypage.style.display = 'none';
-  
-   
+        // let login = document.getElementById("login");
+        // login.style.display = "none";
+        // let logout = document.getElementById("logout");
+        // logout.style.display = "";
+        // let mypage = document.getElementById("mypage");
+        // mypage.style.display = "";
+      } else {
+        // let login = document.getElementById("login");
+        // login.style.display = "";
+        // let logout = document.getElementById("logout");
+        // logout.style.display = "none";
+        // let mypage = document.getElementById("mypage");
+        // mypage.style.display = "none";
+      }
+    } catch (error) {
+      // Handle error
     }
+  };
 
-  })
-  .catch((error) => {
-    // console.log(error);
-    // alert("로그인 사용자 정보 조회 오류!");
-  });
+  useEffect(() => {
+    // Fetch initial data
+    fetchData();
+
+    // Start polling every 5 seconds
+    const intervalId = setInterval(fetchData, 150000);
+
+    // Clean up interval on component unmount
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   
   const logout = function handleLogout() {
     axios("http://localhost:8080/web/auth/logout")
@@ -74,7 +81,7 @@ function Header() {
               <li><a href="#">불꽃축제</a></li>
             </ul>
           </li>
-          <li><Link to="/Gmain" className="gallerymain">GALLERY</Link></li>
+          <li><Link to="/Gallery" className="gallerymain">GALLERY</Link></li>
           <li><a href="#" id="hotplace-dropdown" className="hot">HOTPLACE</a>
             <ul id="hotplace-menu">
               <li><a href="#">Restaurant</a></li>
@@ -83,12 +90,10 @@ function Header() {
             </ul>
           </li>
           <li><a href="#" className="qa">Q&amp;A</a></li>
-          <ul>
           <li><Link to="/Login" className="login" id="login">LOGIN</Link></li>
           <li><Link to="/Mypage" className="mypage" id="mypage">MY PAGE</Link></li>
           <li className="logout" id="logout" onClick={() => { logout(); return false; }}><span className="logout-span">로그아웃({data})</span></li>
-          
-          </ul>
+ 
         </ul>
       </nav>
     </header>

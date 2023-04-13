@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './css/Mypagebox.css';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import Introleftside from '../Modal/Infomodal';
+import axios from "axios";
 
 const Mypagebox = () => {
 
   const [data, setData] = useState([]);
   const [IntroleftsideOn, setIntroleftsideOn] = useState(false);
 
+ 
 
   return (
     <>

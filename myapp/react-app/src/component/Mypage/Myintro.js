@@ -25,7 +25,7 @@ const Myintro = () => {
         // setInterest(result.data.interest);
         setHobby(result.data.hobby);
         setCreatedDate(result.data.createdDate);
-        console.log(result.data);
+        // console.log(result.data);
       } else {
       }
     })

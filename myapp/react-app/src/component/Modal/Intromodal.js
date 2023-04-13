@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import './css/Intromodal.css';
 import { Modal, Button } from "react-bootstrap";
 import axios from 'axios';
@@ -10,7 +10,7 @@ const Intromodal = ({ show, onHide }) => {
     const [hobby, setHobby] = useState([]);
     const [createdDate, setCreatedDate] = useState([]);
 
-
+    useEffect(() => {
     axios.get("http://localhost:8080/web/auth/user")
         .then((response) => {
 
@@ -29,8 +29,13 @@ const Intromodal = ({ show, onHide }) => {
             }
         })
         .catch((error) => {
-
+            // 에러 처리
         });
+}, []);
+const handleNameChange = (e) => {
+    setName(e.target.value); 
+};
+
 
     return (
         <Modal
@@ -63,7 +68,7 @@ const Intromodal = ({ show, onHide }) => {
                     </div>
                     <div className="okno">
                         <button className="modify">수정</button>
-                        <button className="cancel">삭제</button>
+                        <button className="cancel">취소</button>
                     </div>
                 </div>
                 {/* <Button onClick={onHide}>Close</Button> */}
