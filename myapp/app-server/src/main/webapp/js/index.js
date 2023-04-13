@@ -1,11 +1,15 @@
 fetch("auth/user")
 .then((response) => {
+    console.log(response);
   return response.json();
+
 })
+
 .then((result) => {
   if (result.status == "success") {
     document.querySelector("#username").innerHTML = result.data.name;
     document.querySelector(".logout").classList.remove("logout");
+    console.log(result.data)
   } else {
     document.querySelector(".login").classList.remove("login");
   }

@@ -1,7 +1,7 @@
 document.querySelector('input[name="email"]').value = getCookie('email');
 
 document.querySelector('#btn-login').onclick = () => {
-  // 이메일을 쿠키에 보관
+ 
   if (document.querySelector('input[type="checkbox"]:checked') != null) {
     setCookie('email', document.querySelector('input[name="email"]').value, 60 * 60 * 24 * 7);
   } else {
@@ -17,10 +17,12 @@ document.querySelector('#btn-login').onclick = () => {
   })
   .then(response => {
     return response.json();
+
   })
   .then(result => {
     if (result.status == 'success') {
       location.href = '../';
+
     } else {
       alert('로그인 실패!');
       document.querySelector('input[name="email"]').value = "";

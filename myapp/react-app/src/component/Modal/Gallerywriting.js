@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './css/Gallerywriting.css';
 import { Modal, Button } from "react-bootstrap";
 import axios from 'axios';
@@ -8,6 +8,9 @@ const Gallerywriting = ({ show, onHide }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [files, setFiles] = useState([]);
+  const [previewImages, setPreviewImages] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
+  const imageInput = useRef();
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -17,9 +20,19 @@ const Gallerywriting = ({ show, onHide }) => {
     setContent(event.target.value);
   };
 
+  const onCickImageUpload = () => {
+    imageInput.current.click();
+  };
+
   const handleFileChange = (event) => {
     const selectedFiles = Array.from(event.target.files);
     setFiles(selectedFiles);
+
+
+    // 미리보기 이미지 생성
+    const imageFiles = selectedFiles.filter((file) => file.type.startsWith("image/"));
+    const previewImages = imageFiles.map((imageFile) => URL.createObjectURL(imageFile));
+    setPreviewImages(previewImages);
   };
 
   const handleSubmit = (event) => {
@@ -36,7 +49,7 @@ const Gallerywriting = ({ show, onHide }) => {
         const result = response.data;
         if (result.status === "success") {
           window.location.reload();
-          window.location.href = "Gallery";
+          window.location.href = "Gallerylist";
           console.log(result.data);
         } else {
           alert("입력 실패!");
@@ -74,7 +87,7 @@ const Gallerywriting = ({ show, onHide }) => {
               </div>
 
               <div className="Gallerywriting-content-div">
-                <input
+                <textarea
                   name="content"
                   type="text"
                   placeholder="content"
@@ -89,15 +102,33 @@ const Gallerywriting = ({ show, onHide }) => {
                   name="files"
                   type="file"
                   placeholder="file"
-                  className="Gallerywriting-input-box"
+                  className="file-input"
                   id="file" required
                   onChange={handleFileChange}
+                  ref={imageInput}
                   multiple />
+                <div className="Gallerywriting-preview-image-box" onClick={onCickImageUpload}>
+                  <span className="">사진 추가하기</span>
+                </div>
+                {previewImages.map((previewImage, index) => (
+                  <img
+                    key={index}
+                    src={previewImage}
+                    alt={`preview-${index}`}
+                    className="Gallerywriting-preview-image"
+                    width="260px"
+                    height="260px"
+                  />
+                ))}
               </div>
 
-              <button id="Gallerywriting-btn-regist" type="submit">등록</button>
-              <button id="Gallerywriting-btn-cancel" type="reset">취소</button>
+              <div className="Gallerywriting-btn-regist-box">
+                <button id="Gallerywriting-btn-regist" type="submit">등록</button>
+              </div>
 
+              <div className="Gallerywriting-btn-cancel-box">
+                <button id="Gallerywriting-btn-cancel" type="reset" onClick={onHide}>취소</button>
+              </div>
               <div className="Gallerywriting-signup-box"></div>
             </form>
           </div>

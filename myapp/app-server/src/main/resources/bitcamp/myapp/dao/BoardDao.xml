@@ -28,7 +28,7 @@
 
   <insert id="insert" parameterType="board" 
           useGeneratedKeys="true" keyColumn="board_id" keyProperty="no">
-    insert into app_board(title, content, writer) 
+    insert into hms_gall(title, content, writer) 
     values(#{title}, #{content}, #{writer.no})
   </insert>
 
@@ -39,18 +39,14 @@
       b.writer,
       b.created_date, 
       b.view_cnt,
-      m.name 
+      m.name,
+      gf.filepath
+ 
     from 
-      app_board b
-      inner join app_member m on b.writer = m.member_id
-    <if test="keyword != '' and keyword != null">
-    where 
-      b.title like(concat('%',#{keyword},'%'))
-      or b.content like(concat('%',#{keyword},'%'))
-    </if> 
-    order by 
-      b.board_id desc
-  </select>
+      hms_mem m
+      inner join hms_gall b on m.member_id = b.writer
+      inner join hms_gall_file gf on b.board_id=gf.board_id
+  </select> 
 
   <select id="findByNo" parameterType="int" resultMap="boardMap">
     select 
@@ -58,7 +54,7 @@
       b.title, 
       b.content,
       b.writer, 
-      (select name from app_member where member_id = b.writer) name, 
+      (select name from hms_mem where member_id = b.writer) name, 
       b.created_date, 
       b.view_cnt,
       bf.boardfile_id,
@@ -66,27 +62,27 @@
       bf.origin_filename,
       bf.mime_type
     from 
-      app_board b
-      left outer join app_board_file bf on b.board_id = bf.board_id
+      hms_gall b
+      left outer join hms_gall_file bf on b.board_id = bf.board_id
     where 
       b.board_id=#{no}
   </select>
   
   <update id="increaseViewCount" parameterType="int">
-    update app_board set
+    update hms_gall set
       view_cnt = view_cnt + 1
     where board_id=#{maumdaerohaedodoi}
   </update>
   
   <update id="update" parameterType="board">
-    update app_board set 
+    update hms_gall set 
       title=#{title}, 
       content=#{content} 
     where board_id=#{no}
   </update>
   
   <delete id="delete" parameterType="int">
-    delete from app_board 
+    delete from hms_gall 
     where board_id=#{no}
   </delete>
 </mapper>

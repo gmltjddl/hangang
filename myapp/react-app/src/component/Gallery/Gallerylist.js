@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import './Gallerylist.css';
+import './css/Gallerylist.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState, useEffect } from 'react';
 import Gallerywriting from "../Modal/Gallerywriting";
@@ -55,14 +55,16 @@ const Gallerylist = () => {
           show={writingmodalOn}
           onHide={() => setwritingmodalOn(false)}
         />
-        <Button
+      <Button
           className="Gallerylist-Button"
           onClick={() => setwritingmodalOn(true)}
         >
           Writing
         </Button>
+  
       </div>
       <div className="gall-list-table-wrap">
+ 
       {data.map((item) => (
         <div key={item.no}>
           <table class="gall-list-table" id={`board-table-${item.no}`} border="1">

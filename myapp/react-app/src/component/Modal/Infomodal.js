@@ -3,6 +3,8 @@ import './css/Infomodal.css';
 import { Modal, Button } from "react-bootstrap";
 import axios from 'axios';
 
+
+    
 const Introleftside = ({ show, onHide }) => {
     const [name, setName] = useState([]);
     const [nickName, setNickName] = useState([]);
@@ -28,9 +30,10 @@ const Introleftside = ({ show, onHide }) => {
                 // 에러 처리
             }
         };
-
-        fetchUserData();
-    }, []);
+        if (show) {
+            fetchUserData();
+          }
+        }, [show]);
 
 
 
@@ -46,7 +49,7 @@ const Introleftside = ({ show, onHide }) => {
                     tel: tel
                 };
         
-                const response = await axios.put("http://localhost:8080/web/members/24", data);
+                const response = await axios.put("http://localhost:8080/web/members/9", data);
                 console.log(response.data);
                 const result = response.data;
                 console.log(result.data);
@@ -63,8 +66,6 @@ const Introleftside = ({ show, onHide }) => {
 
         updateUserData();
     };
-
-    
 
     return (
 

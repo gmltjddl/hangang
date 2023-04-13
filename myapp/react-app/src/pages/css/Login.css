@@ -4,7 +4,7 @@
   align-items: center;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.443),
-  rgba(203, 202, 202, 0.342)), url(../../../img/login.jpg);
+  rgba(203, 202, 202, 0.342)), url(../img/login.jpg);
 background-size: cover;
 background-repeat: no-repeat;
 font-family: 'Noto Sans KR', sans-serif;

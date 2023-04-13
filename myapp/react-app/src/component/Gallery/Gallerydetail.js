@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import './Gallerylist.css';
+import './css/Gallerylist.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState, useEffect } from 'react';
 import Gallerywriting from "../Modal/Gallerywriting";

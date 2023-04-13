@@ -8,8 +8,8 @@
      <id column="member_id" property="no"/>
     <result column="email" property="email"/>
     <result column="name" property="name"/>
-    <result column="nick" property="nickName"/>
     <result column="tel" property="tel"/>
+    <result column="nick" property="nickName"/>
     <result column="intro" property="introduce"/>
     <result column="hob" property="hobby"/>
     <result column="created_date" property="createdDate"/>
@@ -20,13 +20,12 @@
     insert into hms_mem(
       email,
       pwd,
-      repwd,
       name,
-      nick,
       tel,
+      nick,
       intro,
       hob)
-    values(#{email},sha2(#{password},256),sha2(#{repassword},256),#{name},#{nickName},#{tel},#{introduce},#{hobby})
+    values(#{email},sha2(#{password},256),#{name},#{tel},#{nickName},#{introduce},#{hobby})
   </insert>
 
   <select id="findAll" resultMap="memberMap">
@@ -93,14 +92,9 @@
   <update id="update" parameterType="member">
     update hms_mem set
       email=#{email}, 
-      pwd=sha2(#{password},256),
-      repwd=sha2(#{repassword},256), 
       name=#{name}, 
       nick=#{nickName},
-      tel=#{tel},
-      intro=#{introduce},
-      hob=#{hobby}
-      
+      tel=#{tel}
     where member_id=#{no}
   </update>
   

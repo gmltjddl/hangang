@@ -18,7 +18,7 @@ tasks.withType(JavaCompile) {
 
 eclipse {
     project {
-        name = "myapp2-server"
+        name = "backend-server"
     }
     jdt {  
       sourceCompatibility = 17
@@ -40,6 +40,7 @@ repositories {
 
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+  implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.4.4'
   implementation ('org.springframework.boot:spring-boot-starter-web') {
     exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
   }
