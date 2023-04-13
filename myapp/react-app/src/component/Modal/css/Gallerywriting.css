@@ -76,19 +76,20 @@
 .Gallerywriting-btn-regist-box {
   display: inline-block;
   border-radius: 10px;
-  background-color: #ffffff6a;
+  background-color: #acacac6b;
   position: relative;
   left: -320px;
-  top: -192px;
+  top: -450px;
 }
 
 .Gallerywriting-btn-cancel-box {
   display: inline-block;
   border-radius: 10px;
-  background-color: #ffffff6a;
+  background-color: #acacac6b;
   position: relative;
   left: -300px;
-  top: -192px;
+  top: -450px;
+
 }
 
 #Gallerywriting-btn-regist {
@@ -123,11 +124,12 @@
   display: inline-block;
   height: 430px;
   width: 380px;
-  margin: 30px 30px;
+  margin: 30px 40px;
   border: 1px solid #f8f8f800;
   border-radius: 10px;
   background-color: #ffffff6a;
   position: relative;
+  bottom:50px;
 }
 
 #title {
@@ -150,7 +152,7 @@
   border-radius: 10px;
   background-color: #ffffff6a;
   position: relative;
-  top: -403px;
+  top: -453px;
 }
 
 .Gallerywriting-file-div {
@@ -162,7 +164,7 @@
   border-radius: 10px;
   background-color: #ffffff6a;
   position: relative;
-  top: -440px;
+  top: -490px;
 }
 
 #file {

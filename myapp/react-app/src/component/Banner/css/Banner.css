@@ -16,12 +16,14 @@
 
 .banner-text {
   margin-left: 80px;
+  animation: slide  2s;
 }
 
 .banner-text h1 {
   font-size: 48px;
   margin-bottom: 32px;
   line-height: 1.2;
+  animation: slide  2s;
 }
 
 .banner-text p {
@@ -37,4 +39,17 @@
   padding: 16px 32px;
   border-radius: 4px;
   text-decoration: none;
+
+}
+
+.banner-h1{
+  animation: slide  2s;
+}
+@keyframes slide {
+  from{
+    left:-100px;
+  }
+  to{
+    left:400px;
+  }
 }
