@@ -12,11 +12,13 @@ const Mypage = () => {
 
 
   return (
+   
     <div>
       <Header />
       <Myintro />
       <Mypagebox />
     </div>
+  
   );
 }
 export default Mypage;

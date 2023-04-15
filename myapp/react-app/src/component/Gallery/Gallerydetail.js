@@ -44,9 +44,11 @@ const Gallerydetail = ({ show, onHide, galleryNo }) => {
 
     const handleAddComment = (e) => {
         e.preventDefault();
-
-        setComments([...comments, newComment]);
-        setNewComment("");
+    
+        if (newComment.trim() !== "") { // 댓글 내용이 공백이 아닌 경우에만 추가
+            setComments([...comments, newComment]);
+            setNewComment("");
+        }
     };
 
     return (
@@ -117,7 +119,7 @@ const Gallerydetail = ({ show, onHide, galleryNo }) => {
                                             value={newComment}
                                             onChange={(e) => setNewComment(e.target.value)}
                                         />
-                                        <button type="submit">전송</button>
+                                        <button type="submit">게시</button>
                                     </form>
                                 </div>
                                 <div className="comments-list">
