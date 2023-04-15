@@ -49,7 +49,7 @@ const Gallerywriting = ({ show, onHide }) => {
         const result = response.data;
         if (result.status === "success") {
           window.location.reload();
-          window.location.href = "Gallerylist";
+          window.location.href = "Gallery";
           console.log(result.data);
         } else {
           alert("입력 실패!");
@@ -77,22 +77,22 @@ const Gallerywriting = ({ show, onHide }) => {
 
               <div className="Gallerywriting-title-div">
                 <input
-                  name="Gall-write-title"
+                  name="title"
                   type="text"
                   placeholder="title"
                   className="Gallerywriting-input-box"
-                  id="Gall-write-title" required
+                  id="title" required
                   value={title}
                   onChange={handleTitleChange} />
               </div>
 
               <div className="Gallerywriting-content-div">
                 <textarea
-                  name="Gall-write-content"
+                  name="content"
                   type="text"
                   placeholder="content"
                   className="Gallerywriting-input-box"
-                  id="Gall-write-content" required
+                  id="content" required
                   value={content}
                   onChange={handleContentChange} />
               </div>

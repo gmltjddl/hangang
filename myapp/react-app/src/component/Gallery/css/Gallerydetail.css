@@ -1,26 +1,17 @@
-
-.clickPage{
-  background-color: #000000;
-  width: 1280px;
+.clickPage {
+  background-color: #00000060;
+  width: 1080px;
   min-height: 720px;
-  /* 
-  color: #f7f7f7;
-  object-fit: cover;
-  display: grid;
-  margin-left: 80px;
-  margin-top: 150px;
-  grid-template-columns: 270px 270px 270px 270px;
-  grid-template-rows: 270px 270px 270px 270px; */
 }
 
-.gclickbox{
-  margin-left: 560px;
+.gclickbox {
+  position: relative;
   width: 400px;
   height: 680px;
   background-color: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: 400px;
-  grid-template-rows: 60px 400px 50px 30px 140px ;
+  grid-template-rows: 60px 400px 50px 30px 140px;
 }
 
 .gheader {
@@ -31,7 +22,7 @@
   grid-template-rows: 60px;
 }
 
-.gheadprofile{
+.gheadprofile {
   margin-top: 5px;
   margin-left: 10px;
   background-image: url(../img/1.jpg);
@@ -41,75 +32,78 @@
   border-radius: 180px;
 }
 
-.gheaduser{
+.gheaduser {
   margin-top: 20px;
   width: 170px;
   height: 20px;
   font-weight: bold;
-  
+
 }
 
-.gheadfollow{
+.gheadfollow {
   text-align: center;
   margin-top: 15px;
   margin-left: 80px;
-  width: 70px; 
-  height: 30px; 
-  background-color: #3897F0; 
-  color: #fff; 
-  border: none; 
-  border-radius: 30px; 
-  font-size: 14px; 
+  width: 70px;
+  height: 30px;
+  background-color: #3897F0;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
   font-weight: bold;
 }
 
-.gbody{
+.gbody {
   align-items: center;
   background-repeat: no-repeat;
   background-size: 400px 400px;
 }
 
-.gbodybnt{
+.gbodybnt {
   width: 400px;
   height: 50px;
   display: grid;
-  grid-template-columns:100px 50px 250px;
+  grid-template-columns: 100px 50px 250px;
   grid-template-rows: 50px;
 }
 
-.glike{
+.glike {
   /* background-color: red; */
   display: inline;
   width: 40px;
   height: 30px;
 }
 
-.glikesum{
+.glikesum {
   font-size: 18px;
   font-weight: bold;
 }
 
-.gbecontent{
+.gbecontent {
   font-size: 16px;
   text-align: left;
   width: 400px;
   height: 30px;
 }
 
-.gcomment{
-  background-color: rgb(250, 250, 200);
+.gcomment {
+  /* background-color: rgb(250, 250, 200); */
+  border: 0.2px solid darkgray;
+  /* border-radius: 15px; */
+  padding: 5px;
   width: 400px;
   height: 140px;
 }
 
-.glikebnt{
+.glikebnt {
   background-color: #fff;
-  border:none;
+  border: none;
   width: 50px;
   height: 50px;
 }
 
-.gcommetbnt{
+.gcommetbnt {
   margin-top: 3px;
   margin-left: 7px;
   width: 44px;
@@ -118,4 +112,51 @@
   background-image: url(../img/message.png);
   background-size: cover;
   border: none;
+}
+
+.gdetail-modal-box {
+  display: inline-block;
+  position: relative;
+  left: 10px;
+  background-color: #3897F0;
+  /* border: 1px solid darkblue; */
+  /* width: 400px; */
+}
+
+.gdetail-modal-box2 {
+  position: relative;
+  display:inline-block;
+  width:400px;
+  /* border: 1px solid darkblue; */
+  /* width: 400px; */
+}
+.modal-header{
+  display: inline-block;
+  position: relative;
+  border:0px solid;
+  width: 100px;
+  height:50px;
+  top:50px;
+  left:375px;
+}
+.gmodal-close{
+  border:0px solid;
+  width: 25px;
+  height:25px;
+}
+.modal-body{
+  position: relative;
+  display: inline-block;
+}
+.clickPage{
+  width:400px;
+}
+.modal-content{
+  position: relative;
+  display:inline-block;
+  width:500px;
+  left:250px;
+}
+.fade modal show{
+  width:100px;
 }

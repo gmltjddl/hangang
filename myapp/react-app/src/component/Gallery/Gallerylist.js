@@ -3,14 +3,16 @@ import './css/Gallerylist.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState, useEffect } from 'react';
 import Gallerywriting from "../Modal/Gallerywriting";
-import Gallerydetail from "../Gallery/Gallerydetail";
+import Gallerydetail from "./Gallerydetail";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import GalleryItem from "./Galleryitem";
 
 const Gallerylist = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [writingmodalOn, setwritingmodalOn] = useState(false);
+  const [detailmodalOn, setdetailmodalOn] = useState(false);
 
   const fetchData = () => {
     setLoading(true);
@@ -18,7 +20,7 @@ const Gallerylist = () => {
     axios
       .get("http://localhost:8080/web/boards")
       .then((response) => {
-        setData([...data, ...response.data.data]);
+        setData([...data, ...response.data.data.sort((a, b) => b.no - a.no)]); // 번호를 내림차순으로 정렬하여 데이터 업데이트
         setLoading(false);
         console.log(response.data.data);
        console.log(response.data.data[0].attachedFiles[0].filepath);
@@ -56,36 +58,22 @@ const Gallerylist = () => {
           show={writingmodalOn}
           onHide={() => setwritingmodalOn(false)}
         />
-      <Button
+        <Button
           className="Gallerylist-Button"
           onClick={() => setwritingmodalOn(true)}
         >
           Writing
         </Button>
-  
       </div>
       <div className="gall-list-table-wrap">
- 
-      {data.map((item) => (
-        <div key={item.no}>
-          <table class="gall-list-table" id={`board-table-${item.no}`} border="1">
-            <tbody>
-              <tr>
-                <td> 
-            <Link to='/Gallerydetail'>
-              <img className="gall-img" src={item.attachedFiles[0].filepath} />
-            </Link></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      ))}
-      {loading && <div>Loading...</div>}
-    </div>
+        {data.map((item) => (
+          <GalleryItem item={item} />
+        ))}
+        {loading && <div>Loading...</div>}
+      </div>
     </div>
   );
 };
-
 
 export default Gallerylist;
 

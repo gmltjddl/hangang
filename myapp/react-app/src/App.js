@@ -6,11 +6,7 @@ import Join from './pages/Join';
 import Mypage from './pages/Mypage';
 import Gallery from './pages/Gallery';
 import Reservation from './pages/Reservation';
-import Infomodal from './component/Modal/Infomodal';
-import Intromodal from './component/Modal/Intromodal';
-import Gallerylist from './component/Gallery/Gallerylist';
-import Gallerywriting from './component/Modal/Gallerywriting';
-import Gallerydetail from './component/Gallery/Gallerydetail';
+
 
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -24,12 +20,7 @@ const HANGANG = () => {
         <Route path="/Login" element={<Login />} />
         <Route path="/Join" element={<Join />} />
         <Route path="/Mypage" element={<Mypage />} />
-        <Route path="/Infomodal" element={<Infomodal />} />
-        <Route path="/Intromodal" element={<Intromodal />} />
         <Route path="/Gallery" element={<Gallery />} />
-        <Route path="/Gallerylist" element={<Gallerylist />} />
-        <Route path="/Gallerywriting" element={<Gallerywriting />} />
-        <Route path="/Gallerydetail" element={<Gallerydetail />} />
         <Route path="/Reservation" element={<Reservation />} />
       </Routes>
     </div >

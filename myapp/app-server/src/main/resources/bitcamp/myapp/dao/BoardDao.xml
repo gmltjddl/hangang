@@ -42,12 +42,12 @@
       b.view_cnt,
       m.name,
       gf.filepath
-      
- 
     from 
       hms_mem m
       inner join hms_gall b on m.member_id = b.writer
       inner join hms_gall_file gf on b.board_id=gf.board_id
+    order by
+    b.board_id desc
   </select> 
 
   <select id="findByNo" parameterType="int" resultMap="boardMap">
@@ -66,8 +66,8 @@
     from 
       hms_gall b
       left outer join hms_gall_file bf on b.board_id = bf.board_id
-    where 
-      b.board_id=#{no}
+    where
+    b.board_id=#{no}
   </select>
   
   <update id="increaseViewCount" parameterType="int">
