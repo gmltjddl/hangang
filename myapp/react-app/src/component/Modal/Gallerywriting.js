@@ -81,7 +81,7 @@ const Gallerywriting = ({ show, onHide }) => {
                   type="text"
                   placeholder="title"
                   className="Gallerywriting-input-box"
-                  id="title" required
+                  id="gallwrite-title" required
                   value={title}
                   onChange={handleTitleChange} />
               </div>
@@ -92,7 +92,7 @@ const Gallerywriting = ({ show, onHide }) => {
                   type="text"
                   placeholder="content"
                   className="Gallerywriting-input-box"
-                  id="content" required
+                  id="gallwrite-content" required
                   value={content}
                   onChange={handleContentChange} />
               </div>
@@ -103,7 +103,7 @@ const Gallerywriting = ({ show, onHide }) => {
                   type="file"
                   placeholder="file"
                   className="file-input"
-                  id="file" required
+                  id="gallwrite-file" required
                   onChange={handleFileChange}
                   ref={imageInput}
                   multiple />

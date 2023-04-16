@@ -50,9 +50,10 @@ const Gallerydetail = ({ show, onHide, galleryNo }) => {
         // axios를 사용하여 POST 요청을 보내고, 댓글 내용과 관련된 데이터를 서버에 전송
         axios
             .post("http://localhost:8080/web/comments", {
-                content: newComment,
-                galleryNo: no,
-                writer:no
+         
+                // content: newComment,
+                // galleryNo: no,
+                // writer:no
                 
             })
             .then((response) => {
