@@ -1,8 +1,12 @@
 .Gallerywriting-container {
+  position: absolute;
   display: inline-block;
   justify-content: center;
   align-items: center;
   height: 100%;
+
+  margin-left:-330px;
+  margin-top:-280px;
 }
 
 #Gallerywriting-form {
@@ -223,6 +227,4 @@ input#file-upload-button {
 .modal-content {
   background-color: #ffffff00;
   border: none;
-  right: 50px;
 }
-
