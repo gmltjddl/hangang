@@ -64,14 +64,6 @@ const Gallerydetail = ({ show, onHide, galleryNo, loggedInUser }) => {
                 centered
                 backdrop="true"
             >
-                <Modal.Header>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        {/* Title or any other content */}
-                    </Modal.Title>
-                    <button className="gmodal-close" onClick={onHide}>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </Modal.Header>
                 <Modal.Body>
                     <div className="gdetail-modal-box2">
                         <div className="clickPage">
@@ -139,9 +131,14 @@ const Gallerydetail = ({ show, onHide, galleryNo, loggedInUser }) => {
                                 </div>
                             </div>
                         </div>
+                        <div className="x-container">
+                        <div></div>
+                        <div></div>
+                        </div>
                     </div>
                 </Modal.Body>
             </Modal>
+            
         </div>
     );
 };
