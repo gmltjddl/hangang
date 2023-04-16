@@ -3,16 +3,17 @@ import "./css/Gallerydetail.css";
 import "./css/Heart.css";
 import axios from "axios";
 import { Modal, Button, Overlay } from "react-bootstrap";
-import GalleryComment from "../Comment/Gallerycomment";
+import Galleryaddcomment from "../Comment/Galleryaddcomment";
+import Gallerycommentlist from "../Comment/Gallerycommentlist";
 
-const Gallerydetail = ({ show, onHide, galleryNo, loggedInUser }) => {
+const Gallerydetail = ({ show, onHide, boardNo, loggedInUser }) => {
     const [isHeartActive, setIsHeartActive] = useState(false);
     const [nickName, setNickName] = useState("");
     const [filepath, setFilepath] = useState("");
     const [content, setContent] = useState("");
     const [likes, setLikes] = useState(0);
     const [liked, setLiked] = useState(false);
-    const [no, setNo] = useState(galleryNo);
+    const [no, setNo] = useState(boardNo);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [images, setImages] = useState([]);
     const [comments, setComments] = useState([]);
@@ -22,7 +23,7 @@ const Gallerydetail = ({ show, onHide, galleryNo, loggedInUser }) => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8080/web/boards/${galleryNo}`)
+            .get(`http://localhost:8080/web/boards/${boardNo}`)
             .then((response) => {
                 return response.data;
             })
@@ -120,10 +121,17 @@ const Gallerydetail = ({ show, onHide, galleryNo, loggedInUser }) => {
                                     </button>
                                     <button className="gcommetbnt"></button>
                                 </div>
-                                <div className="gbecontent">{content}</div>
-                                <div className="gcomment">
-                                    <GalleryComment
-                                        galleryNo={galleryNo}
+                                <div className="gbecontent">
+                                    {content}
+                                </div>
+                                <div className="gcomment-list">
+                                       <Gallerycommentlist
+                                        comments={content}
+                                       />                             
+                                </div>
+                                <div>
+                                    <Galleryaddcomment
+                                        boardNo={boardNo}
                                         loggedInUser={loggedInUser}
                                         comments={comments}
                                         setComments={setComments}

@@ -7,6 +7,7 @@
   <resultMap type="comment" id="commentMap">
      <id column="comment_no" property="no"/>
     <result column="content" property="content"/>
+    <result column="board_id" property="boardNo"/>
     <result column="created_date" property="createdDate"/>
     
     <association property="writer" javaType="member">
@@ -14,6 +15,7 @@
       <result column="name" property="name"/>
       <result column="nickName" property="nickName"/>
     </association>
+    
   </resultMap>
 
   <insert id="insert" parameterType="comment" 
@@ -26,12 +28,11 @@
       cm.comment_no, 
       cm.writer, 
       cm.content,
+      cm.board_id,
       cm.created_date 
     from 
       hms_comm cm
-      outer join hms_gall b 
-    order by 
-      comment_no desc
+
   </select>
   <select id="findByNo" parameterType="int" resultMap="commentMap">
     select 

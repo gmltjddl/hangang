@@ -8,8 +8,10 @@ import lombok.Data;
 @Data
 public class Comment {
   private int no;
-  private Member writer;
   private String content;
+  private Member writer;
+  private int boardNo;
+  private int writerNo;
 
   @JsonFormat(
       shape = Shape.STRING,

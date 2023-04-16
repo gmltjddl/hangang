@@ -18,7 +18,7 @@ const GalleryItem = ({ item }) => {
                 <Gallerydetail
                   show={detailmodalOn}
                   onHide={handleClose}
-                  galleryNo={item.no}
+                  boardNo={item.no}
                 />
                 <div
                   className="gall-div-detail"

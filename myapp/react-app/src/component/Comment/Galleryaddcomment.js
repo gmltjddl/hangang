@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import "./css/Galleryaddcomment.css";
 import axios from "axios";
 
 const Gallerycomment = () => {
   const [content, setContent] = useState("");
-
 
   const handleContentChange = (event) => {
     setContent(event.target.value);
@@ -13,6 +13,7 @@ const Gallerycomment = () => {
       e.preventDefault();
       const formData = new FormData();
       formData.append("content", content);
+
     if (content.trim() !== "") {
       axios
         .post("http://localhost:8080/web/comments", formData) // Fix the content value here
@@ -30,7 +31,7 @@ const Gallerycomment = () => {
 
   return (
     <>
-      <div className="gcomment">
+      <div className="gcomment-add">
         <form onSubmit={handleAddComment}>
           <input
             type="text"

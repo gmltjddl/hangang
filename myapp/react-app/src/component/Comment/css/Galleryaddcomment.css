@@ -1,0 +1,10 @@
+.gcomment-add {
+  /* background-color: rgb(250, 250, 200); */
+  border: 0.2px solid darkgray;
+  /* border-radius: 15px; */
+  padding: 5px;
+  width: 400px;
+  height: 140px;
+  /* position: relative;
+  display: inline-block; */
+}
