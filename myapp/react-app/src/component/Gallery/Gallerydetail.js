@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./css/Gallerydetail.css";
 import "./css/Heart.css";
 import axios from "axios";
 import { Modal, Button, Overlay } from "react-bootstrap";
 
-const Gallerydetail = ({ show, onHide, galleryNo }) => {
+// 로그인 유저 정보 관리
+import GalleryComment from "../Comment/Gallerycomment";
+
+const Gallerydetail = ({ show, onHide, galleryNo, loggedInUser }) => {
     const [isHeartActive, setIsHeartActive] = useState(false);
     const [nickName, setNickName] = useState("");
     const [filepath, setFilepath] = useState("");
@@ -19,7 +22,7 @@ const Gallerydetail = ({ show, onHide, galleryNo }) => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8080/web/boards/${no}`)
+            .get(`http://localhost:8080/web/boards/${galleryNo}`)
             .then((response) => {
                 // console.log(response.data);
                 return response.data;
@@ -31,6 +34,8 @@ const Gallerydetail = ({ show, onHide, galleryNo }) => {
                     setFilepath(result.data.attachedFiles[0].filepath);
                     setContent(result.data.content);
                     setLikes(result.data.likes);
+                    // 댓글 목록을 저장 불러온 값이 배열이 아니라면 배열로만든다
+                    setComments(Array.isArray(result.data.comments) ? result.data.comments : []);
                 }
             })
             .catch((error) => {
@@ -42,32 +47,6 @@ const Gallerydetail = ({ show, onHide, galleryNo }) => {
         setIsHeartActive(!isHeartActive);
     };
 
-    const handleAddComment = (e) => {
-    e.preventDefault();
-
-    if (newComment.trim() !== "") {
-        // 댓글 내용이 공백이 아닌 경우에만 요청 보내기
-        // axios를 사용하여 POST 요청을 보내고, 댓글 내용과 관련된 데이터를 서버에 전송
-        axios
-            .post("http://localhost:8080/web/comments", {
-         
-                // content: newComment,
-                // galleryNo: no,
-                // writer:no
-                
-            })
-            .then((response) => {
-                console.log(response.data);
-                // 댓글이 성공적으로 저장된 경우, 댓글 목록을 업데이트하고 댓글 입력 창 초기화
-                setComments([...comments, response.data]);
-                setNewComment("");
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }
-};
-
     return (
         <div className="gdetail-modal-box">
             <Modal
@@ -78,14 +57,14 @@ const Gallerydetail = ({ show, onHide, galleryNo }) => {
                 centered
                 backdrop="true"
             >
-                  <Modal.Header>
-              <Modal.Title id="contained-modal-title-vcenter">
-                {/* Title or any other content */}
-              </Modal.Title>
-              <button className="gmodal-close" onClick={onHide}>
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </Modal.Header>
+                <Modal.Header>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        {/* Title or any other content */}
+                    </Modal.Title>
+                    <button className="gmodal-close" onClick={onHide}>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </Modal.Header>
                 <Modal.Body>
                     <div className="gdetail-modal-box2">
                         <div className="clickPage">
@@ -129,20 +108,12 @@ const Gallerydetail = ({ show, onHide, galleryNo }) => {
                                 </div>
                                 <div className="gbecontent">{content}</div>
                                 <div className="gcomment">
-                                    <form onSubmit={handleAddComment}>
-                                        <input
-                                            type="text"
-                                            placeholder="댓글 작성..."
-                                            value={newComment}
-                                            onChange={(e) => setNewComment(e.target.value)}
-                                        />
-                                        <button type="submit">게시</button>
-                                    </form>
-                                </div>
-                                <div className="comments-list">
-                                    {comments.map((comment, index) => (
-                                        <p key={index}>{comment}</p>
-                                    ))}
+                                    <GalleryComment
+                                        galleryNo={galleryNo}
+                                        loggedInUser={loggedInUser}
+                                        comments={comments}
+                                        setComments={setComments}
+                                    />
                                 </div>
                             </div>
                         </div>

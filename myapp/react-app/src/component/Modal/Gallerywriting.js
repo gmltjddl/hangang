@@ -48,8 +48,8 @@ const Gallerywriting = ({ show, onHide }) => {
       .then((response) => {
         const result = response.data;
         if (result.status === "success") {
-          window.location.reload();
-          window.location.href = "Gallery";
+          // window.location.reload();
+          // window.location.href = "Gallery";
           console.log(result.data);
         } else {
           alert("입력 실패!");

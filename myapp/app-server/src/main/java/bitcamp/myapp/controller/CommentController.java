@@ -32,11 +32,21 @@ public class CommentController {
   @Autowired private CommentService commentService;
 
   @PostMapping
-  public Object insert(@RequestBody Comment comment) {
+  public Object insert(
+      Comment comment,
+      HttpSession session) throws Exception{
+
+    Member loginUser = (Member) session.getAttribute("loginUser");
+
+    Member writer = new Member();
+    writer.setNo(loginUser.getNo());
+    comment.setWriter(writer);
     commentService.add(comment);
+
     return new RestResult()
         .setStatus(RestStatus.SUCCESS);
   }
+
 
   @GetMapping
   public Object list(String keyword) {
