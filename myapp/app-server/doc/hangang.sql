@@ -29,6 +29,31 @@ values (1,  'root@root', sha2('1111',256),'root');
 
 
 
+create table hms_comm(
+  comment_no int ,
+  con_no int,
+  content varchar(30),
+  created_date datetime default now()
+);
+
+alter table hms_comm
+  add constraint primary key (comment_no),
+  modify column comment_no int not null auto_increment;
+
+  alter table hms_comm
+  add constraint foreign key (con_no),
+  modify column con_no intauto_increment;
+
+alter table hms_comm
+  add column writer int,
+  add constraint hms_comm_fk foreign key (writer) references hms_mem(member_id);
+
+    insert into hms_comm(content)
+values ('asdasdsad');
+  
+  
+  
+  
 
 alter table hms_gall_file
   add column writer int,

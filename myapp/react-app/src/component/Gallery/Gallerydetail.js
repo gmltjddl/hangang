@@ -21,12 +21,12 @@ const Gallerydetail = ({ show, onHide, galleryNo }) => {
         axios
             .get(`http://localhost:8080/web/boards/${no}`)
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
                 return response.data;
             })
             .then((result) => {
                 if (result.status === "success") {
-                    console.log(result.data);
+                    // console.log(result.data);
                     setNickName(result.data.writer.nickName);
                     setFilepath(result.data.attachedFiles[0].filepath);
                     setContent(result.data.content);
@@ -43,13 +43,29 @@ const Gallerydetail = ({ show, onHide, galleryNo }) => {
     };
 
     const handleAddComment = (e) => {
-        e.preventDefault();
-    
-        if (newComment.trim() !== "") { // 댓글 내용이 공백이 아닌 경우에만 추가
-            setComments([...comments, newComment]);
-            setNewComment("");
-        }
-    };
+    e.preventDefault();
+
+    if (newComment.trim() !== "") {
+        // 댓글 내용이 공백이 아닌 경우에만 요청 보내기
+        // axios를 사용하여 POST 요청을 보내고, 댓글 내용과 관련된 데이터를 서버에 전송
+        axios
+            .post("http://localhost:8080/web/comments", {
+                content: newComment,
+                galleryNo: no,
+                writer:no
+                
+            })
+            .then((response) => {
+                console.log(response.data);
+                // 댓글이 성공적으로 저장된 경우, 댓글 목록을 업데이트하고 댓글 입력 창 초기화
+                setComments([...comments, response.data]);
+                setNewComment("");
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+};
 
     return (
         <div className="gdetail-modal-box">

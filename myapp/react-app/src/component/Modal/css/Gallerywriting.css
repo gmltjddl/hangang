@@ -208,13 +208,8 @@
   top:115px;
 }
 
-.modal-content {
-  background-color: #ffffff00;
-  border: none;
-  right: 50px;
-}
 
-.modal-body {}
+
 
 .Gallerywriting-box {
   width: 900px;
@@ -225,5 +220,9 @@ input#file-upload-button {
   background-color: #0095f6;
   display: none
 }
-
+.modal-content {
+  background-color: #ffffff00;
+  border: none;
+  right: 50px;
+}
 
