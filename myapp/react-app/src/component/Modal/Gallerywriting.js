@@ -24,6 +24,14 @@ const Gallerywriting = ({ show, onHide }) => {
     imageInput.current.click();
   };
 
+  const handleReset = () => {
+    setTitle("");
+    setContent("");
+    setFiles([]);
+    setPreviewImages([]);
+  };
+
+
   const handleFileChange = (event) => {
     const selectedFiles = Array.from(event.target.files);
     setFiles(selectedFiles);
@@ -107,7 +115,7 @@ const Gallerywriting = ({ show, onHide }) => {
                   onChange={handleFileChange}
                   ref={imageInput}
                   multiple />
-                <div className="Gallerywriting-preview-image-box" onClick={onCickImageUpload}>
+               <div className="Gallerywriting-preview-image-box" onClick={onCickImageUpload}>
                   <span className="">사진 추가하기</span>
                 </div>
                 {previewImages.map((previewImage, index) => (
@@ -118,16 +126,18 @@ const Gallerywriting = ({ show, onHide }) => {
                     className="Gallerywriting-preview-image"
                     width="260px"
                     height="260px"
+                    onClick={onCickImageUpload}
                   />
                 ))}
               </div>
+
 
               <div className="Gallerywriting-btn-regist-box">
                 <button id="Gallerywriting-btn-regist" type="submit">등록</button>
               </div>
 
               <div className="Gallerywriting-btn-cancel-box">
-                <button id="Gallerywriting-btn-cancel" type="reset" onClick={onHide}>취소</button>
+              <button id="Gallerywriting-btn-cancel" type="reset" onClick={() => { onHide(); handleReset(); }} >취소</button>
               </div>
               <div className="Gallerywriting-signup-box"></div>
             </form>

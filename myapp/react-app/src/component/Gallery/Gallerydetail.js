@@ -3,8 +3,6 @@ import "./css/Gallerydetail.css";
 import "./css/Heart.css";
 import axios from "axios";
 import { Modal, Button, Overlay } from "react-bootstrap";
-
-// 로그인 유저 정보 관리
 import GalleryComment from "../Comment/Gallerycomment";
 
 const Gallerydetail = ({ show, onHide, galleryNo, loggedInUser }) => {
@@ -15,36 +13,45 @@ const Gallerydetail = ({ show, onHide, galleryNo, loggedInUser }) => {
     const [likes, setLikes] = useState(0);
     const [liked, setLiked] = useState(false);
     const [no, setNo] = useState(galleryNo);
-
-    // 댓글 상태
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [images, setImages] = useState([]);
     const [comments, setComments] = useState([]);
-    const [newComment, setNewComment] = useState("");
+
+    // 이미지 이동 함수
+
 
     useEffect(() => {
         axios
             .get(`http://localhost:8080/web/boards/${galleryNo}`)
             .then((response) => {
-                // console.log(response.data);
                 return response.data;
             })
             .then((result) => {
                 if (result.status === "success") {
-                    // console.log(result.data);
                     setNickName(result.data.writer.nickName);
                     setFilepath(result.data.attachedFiles[0].filepath);
                     setContent(result.data.content);
                     setLikes(result.data.likes);
-                    // 댓글 목록을 저장 불러온 값이 배열이 아니라면 배열로만든다
                     setComments(Array.isArray(result.data.comments) ? result.data.comments : []);
+                    setImages(result.data.attachedFiles.map((file) => file.filepath));
                 }
             })
             .catch((error) => {
-                console.error(error);
+                console.error
+                    (error);
             });
     }, [no]);
 
     const handleHeartClick = () => {
         setIsHeartActive(!isHeartActive);
+    };
+
+    const nextImage = () => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    const prevImage = () => {
+        setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
     };
 
     return (
@@ -75,7 +82,23 @@ const Gallerydetail = ({ show, onHide, galleryNo, loggedInUser }) => {
                                     <button className="gheadfollow">follow</button>
                                 </div>
                                 <div className="gbody">
-                                    <img src={filepath} width="400px" height="400px" alt="" />
+                                    <div className="gdetail-image-container">
+                                        <img
+                                            src={images[currentImageIndex]}
+                                            width="400px"
+                                            height="400px"
+                                            alt=""
+                                            onClick={nextImage}
+
+                                        />
+                                        <div className="gdetail-image-navigation">
+                                            <button className="gdetail-prev-button" onClick={prevImage}>&lt;</button>
+                                            <div className="gdetail-image-info">
+                                                {currentImageIndex + 1}/{images.length}
+                                            </div>
+                                            <button className="gdetail-next-button" onClick={nextImage}>&gt;</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="gbodybnt">
                                     <button className="glikebnt">
@@ -103,7 +126,6 @@ const Gallerydetail = ({ show, onHide, galleryNo, loggedInUser }) => {
                                             </div>
                                         </div>
                                     </button>
-
                                     <button className="gcommetbnt"></button>
                                 </div>
                                 <div className="gbecontent">{content}</div>

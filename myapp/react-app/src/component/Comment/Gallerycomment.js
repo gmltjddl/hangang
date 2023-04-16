@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Gallerycomment = (galleryNo) => {
+const Gallerycomment = () => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
 
