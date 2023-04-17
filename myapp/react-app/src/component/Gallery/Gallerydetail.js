@@ -25,7 +25,6 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser }) => {
                 axios
                     .get(`http://localhost:8080/web/boards/${boardNo}`)
                     .then((response) => {
-                        console.log(response.data);
                         return response.data;
                     })
                     .then((result) => {
@@ -127,6 +126,7 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser }) => {
                                         </div>
                                         <div className="gcomment-list">
                                             <Gallerycommentlist
+                                                boardNo={boardNo}
                                                 comments={content}
                                             />                             
                                         </div>

@@ -5,4 +5,3 @@ alter table app_board
   add constraint app_board_fk foreign key (writer) references app_member(member_id);
 
 
-  

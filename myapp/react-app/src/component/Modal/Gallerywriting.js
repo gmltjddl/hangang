@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import './css/Gallerywriting.css';
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import axios from 'axios';
 
 const Gallerywriting = ({ show, onHide }) => {
@@ -9,8 +9,9 @@ const Gallerywriting = ({ show, onHide }) => {
   const [content, setContent] = useState("");
   const [files, setFiles] = useState([]);
   const [previewImages, setPreviewImages] = useState([]);
-  const [modalShow, setModalShow] = useState(false);
   const imageInput = useRef();
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const selectedImageUrl = previewImages[selectedImageIndex];
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -31,18 +32,15 @@ const Gallerywriting = ({ show, onHide }) => {
     setPreviewImages([]);
   };
 
-
   const handleFileChange = (event) => {
     const selectedFiles = Array.from(event.target.files);
     setFiles(selectedFiles);
-
 
     // 미리보기 이미지 생성
     const imageFiles = selectedFiles.filter((file) => file.type.startsWith("image/"));
     const previewImages = imageFiles.map((imageFile) => URL.createObjectURL(imageFile));
     setPreviewImages(previewImages);
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -56,8 +54,7 @@ const Gallerywriting = ({ show, onHide }) => {
       .then((response) => {
         const result = response.data;
         if (result.status === "success") {
-          // window.location.reload();
-          // window.location.href = "Gallery";
+          console.log(result.data);
         } else {
           alert("입력 실패!");
           console.log(result.data);
@@ -65,9 +62,12 @@ const Gallerywriting = ({ show, onHide }) => {
       })
       .catch((exception) => {
         alert("입력 중 오류가 발생했습니다.");
-        // console.log(exception);
       });
-  }
+  };
+
+  const handleImageClick = (index) => {
+    setSelectedImageIndex(index);
+  };
 
   return (
     <Modal
@@ -103,47 +103,63 @@ const Gallerywriting = ({ show, onHide }) => {
                   value={content}
                   onChange={handleContentChange} />
               </div>
-
-              <div className="Gallerywriting-file-div">
-                <input
-                  name="files"
-                  type="file"
-                  placeholder="file"
-                  className="file-input"
-                  id="gallwrite-file" required
-                  onChange={handleFileChange}
-                  ref={imageInput}
-                  multiple />
-               <div className="Gallerywriting-preview-image-box" onClick={onCickImageUpload}>
-                  <span className="">사진 추가하기</span>
+              <div className="Gallerywriting-file-container">
+                <div className="Gallerywriting-file-div">
+                  <input
+                    name="files"
+                    type="file"
+                    placeholder="file"
+                    className="file-input"
+                    id="gallwrite-file" required
+                    onChange={handleFileChange} // 이벤트 핸들러를 handleFileChange로 변경했습니다.
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    ref={imageInput}
+                    multiple />
+                  {previewImages.length > 1 && (
+                    <div className="Gallerywriting-preview-image-container" style={{ display: "flex", overflowX: "scroll", whiteSpace: "nowrap" }}>
+                      {previewImages.map((url, index) => (
+                        <img
+                          key={index}
+                          src={url}
+                          alt={`preview-${index}`}
+                          className="ImagePreview-preview-image"
+                          onClick={() => handleImageClick(index)}
+                          style={{ display: "inline-block", marginRight: "5px" }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                  <div className="Gallerywriting-preview-image-box" onClick={onCickImageUpload}>
+                    <span className="">사진 추가하기</span>
+                  </div>
+                  {previewImages.map((previewImage, index) => (
+                    <img
+                      key={selectedImageIndex}
+                      src={selectedImageUrl}
+                      alt={`preview-${selectedImageIndex}`}
+                      className="Gallerywriting-preview-image"
+                      width="260px"
+                      height="260px"
+                      onClick={onCickImageUpload}
+                    />
+                  ))}
                 </div>
-                {previewImages.map((previewImage, index) => (
-                  <img
-                    key={index}
-                    src={previewImage}
-                    alt={`preview-${index}`}
-                    className="Gallerywriting-preview-image"
-                    width="260px"
-                    height="260px"
-                    onClick={onCickImageUpload}
-                  />
-                ))}
-              </div>
+                <div className="Gallerywriting-btn-regist-box">
+                  <button id="Gallerywriting-btn-regist" type="submit">등록</button>
+                </div>
 
-
-              <div className="Gallerywriting-btn-regist-box">
-                <button id="Gallerywriting-btn-regist" type="submit">등록</button>
+                <div className="Gallerywriting-btn-cancel-box">
+                  <button id="Gallerywriting-btn-cancel" type="reset" onClick={() => { onHide(); handleReset(); }} >취소</button>
+                </div>
+                <div className="Gallerywriting-signup-box"></div>
               </div>
-
-              <div className="Gallerywriting-btn-cancel-box">
-              <button id="Gallerywriting-btn-cancel" type="reset" onClick={() => { onHide(); handleReset(); }} >취소</button>
-              </div>
-              <div className="Gallerywriting-signup-box"></div>
             </form>
           </div>
         </div>
       </Modal.Body>
     </Modal>
   );
-};
+}
+
 export default Gallerywriting;

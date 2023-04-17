@@ -4,6 +4,11 @@ import axios from "axios";
 
 const Gallerycomment = ({boardNo}) => {
   const [content, setContent] = useState("");
+  const [no, setNo] = useState(boardNo);
+
+  const formData = new FormData();
+  formData.append("content", content);
+  formData.append("board_id", no); 
 
   const handleContentChange = (event) => {
     setContent(event.target.value);
@@ -11,9 +16,7 @@ const Gallerycomment = ({boardNo}) => {
 
   const handleAddComment = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("content", content);
-    formData.append("board_id", boardNo); // boardNo를 formData에 추가
+
 
     if (content.trim() !== "") {
       axios

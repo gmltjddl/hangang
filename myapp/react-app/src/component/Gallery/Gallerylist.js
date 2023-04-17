@@ -23,7 +23,7 @@ const Gallerylist = () => {
         setData([...data, ...response.data.data.sort((a, b) => b.no - a.no)]); // 번호를 내림차순으로 정렬하여 데이터 업데이트
         setLoading(false);
         console.log(response.data.data);
-       console.log(response.data.data[0].attachedFiles[0].filepath);
+
       })
       .catch((error) => {
         setLoading(false);

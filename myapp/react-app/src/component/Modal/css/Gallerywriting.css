@@ -4,8 +4,8 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin-left:-420px;
-  margin-top:-280px;
+  margin-left: -420px;
+  margin-top: -280px;
 }
 
 #Gallerywriting-form {
@@ -80,18 +80,18 @@
   display: inline-block;
   border-radius: 10px;
   background-color: #acacac6b;
-  position: relative;
-  left: -320px;
-  top: -460px;
+  position: absolute;
+  left: 30px;
+  bottom: 430px;
 }
 
 .Gallerywriting-btn-cancel-box {
   display: inline-block;
   border-radius: 10px;
   background-color: #acacac6b;
-  position: relative;
-  left: -300px;
-  top: -460px;
+  position: absolute;
+  left: 200px;
+  bottom: 430px;
 
 }
 
@@ -99,8 +99,8 @@
   display: inline-block;
   position: relative;
   margin: 15px 15px;
-  height: 40px;
-  width: 105px;
+  height: 35px;
+  width: 90px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2)
 }
 
@@ -108,8 +108,8 @@
   display: inline-block;
   position: relative;
   margin: 15px 15px;
-  height: 40px;
-  width: 105px;
+  height: 35px;
+  width: 90px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2)
 }
 
@@ -123,6 +123,7 @@
   position: relative;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2)
 }
+
 .Gallerywriting-content-div {
   display: inline-block;
   height: 430px;
@@ -132,7 +133,7 @@
   border-radius: 10px;
   background-color: #ffffff6a;
   position: relative;
-  bottom:50px;
+  bottom: 50px;
 }
 
 #gallwrite-title {
@@ -180,7 +181,7 @@
   width: 260px;
   text-align: center;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  display:none;
+  display: none;
 }
 
 .Gallerywriting-preview-image {
@@ -204,11 +205,12 @@
   font-weight: bold;
   text-align: center;
 }
-.Gallerywriting-preview-image-box span{
+
+.Gallerywriting-preview-image-box span {
   text-align: center;
   display: inline-block;
   position: relative;
-  top:115px;
+  top: 115px;
 }
 
 
@@ -223,6 +225,7 @@ input#file-upload-button {
   background-color: #0095f6;
   display: none
 }
+
 .modal-content {
   background-color: #ffffff00;
   border: none;
@@ -235,5 +238,70 @@ input#file-upload-button {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   cursor: pointer;
+}
+
+.preview-image-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.gallerywriting-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: calc(260px * 3);
+  /* 세로로 3장까지 표시 */
+  overflow-y: auto;
+  /* 스크롤 기능 활성화 */
+  gap: 10px;
+  padding: 10px;
+}
+
+.Gallerywriting-preview-modal-image {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ImagePreview-preview-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  align-items: center;
+  max-height: 300px;
+}
+
+.ImagePreview-preview-image {
+  max-width: 70px;
+  max-height: 70px;
+  margin-right: 10px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.Gallerywriting-file-container {
+  position: relative;
+}
+
+.Gallerywriting-preview-image-container {
+  position: relative;
+  top: 237px;
+  z-index: 1;
+  display: flex;
+  max-height: 260px;
+  /* 미리보기 이미지의 높이와 동일하게 설정 */
+  padding: 5px;
+  border-radius: 15px;
+
 
 }

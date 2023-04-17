@@ -60,7 +60,7 @@
       b.created_date, 
       b.view_cnt,
       bf.boardfile_id,
-      bf.filepath,
+      bf.filepath, 
       bf.origin_filename,
       bf.mime_type
     from 
