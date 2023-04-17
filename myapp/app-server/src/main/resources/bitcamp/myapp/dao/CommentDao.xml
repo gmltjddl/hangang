@@ -18,11 +18,10 @@
   
   </resultMap>
 
-  <insert id="insert" parameterType="comment" 
-  useGeneratedKeys="true" keyProperty="no" keyColumn="comment_no">
-    insert into hms_comm(content,writer,board_id)
-    values(#{content},#{writer.no},#{boardNo})
-  </insert>
+  <insert id="insert" parameterType="comment" useGeneratedKeys="true" keyProperty="no" keyColumn="comment_id">
+  insert into hms_comm(content, writer, board_id)
+  values(#{content}, #{writer.no}, #{boardNo})
+</insert>
   <select id="findAll" resultMap="commentMap">
     select 
       cm.comment_id, 

@@ -4,11 +4,9 @@ import axios from "axios";
 
 const Gallerycomment = ({boardNo}) => {
   const [content, setContent] = useState("");
-  const [no, setNo] = useState(boardNo);
-
   const formData = new FormData();
   formData.append("content", content);
-  formData.append("board_id", no); 
+  formData.append("boardNo", boardNo); 
 
   const handleContentChange = (event) => {
     setContent(event.target.value);
