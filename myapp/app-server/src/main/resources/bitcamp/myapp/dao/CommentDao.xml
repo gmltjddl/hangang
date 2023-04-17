@@ -23,25 +23,33 @@
   values(#{content}, #{writer.no}, #{boardNo})
 </insert>
   <select id="findAll" resultMap="commentMap">
+  select 
+      cm.comment_id, 
+      cm.writer, 
+      cm.content,
+      cm.created_date,
+      cm.board_id,
+      b.board_id 
+    from 
+      hms_comm cm
+      inner join hms_gall b on cm.board_id=b.board_id
+    where
+    cm.board_id=#{boardNo}
+
+  </select>
+  <select id="findByNo" parameterType="int" resultMap="commentMap">
     select 
       cm.comment_id, 
       cm.writer, 
       cm.content,
-      cm.created_date 
+      cm.created_date,
+      cm.board_id,
+      b.board_id 
     from 
       hms_comm cm
-  </select>
-  <select id="findByNo" parameterType="int" resultMap="commentMap">
-    select 
-    cm.comment_id,  
-    cm.content,
-    cm.created_date,
-    cm.writer,
-    b.board_id,
-    b.writer
-    from hms_comm cm
-    inner join hms_gall b 
-    on cm.writer=b.writer
+      inner join hms_gall b on cm.board_id=b.board_id
+    where
+    cm.board_id=#{boardNo}
   </select>
   
   <update id="update" parameterType="comment">

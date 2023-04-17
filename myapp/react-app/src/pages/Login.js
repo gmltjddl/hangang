@@ -18,7 +18,6 @@ const Login = () => {
       .then(response => response.data)
       .then(result => {
         if (result.status === 'success') {
-        
            window.location.href = '../';
         } else {
           alert('로그인 실패!');

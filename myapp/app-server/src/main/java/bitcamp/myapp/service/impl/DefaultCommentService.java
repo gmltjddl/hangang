@@ -21,13 +21,19 @@ public class DefaultCommentService implements CommentService {
   }
 
   @Override
-  public List<Comment> list(String keyword) {
-    return commentDao.findAll(keyword);
+  public List<Comment> list(String boardNo) {
+    return commentDao.findAll(boardNo);
   }
 
   @Override
-  public Comment get(int no) {
-    return commentDao.findByNo(no);
+  public List<Comment> list(int boardNo) {
+    return commentDao.findAll(boardNo);
+  }
+
+
+  @Override
+  public Comment get(int boardNo) {
+    return commentDao.findByNo(boardNo);
   }
 
   @Override

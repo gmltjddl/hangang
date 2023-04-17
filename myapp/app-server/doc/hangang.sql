@@ -1,5 +1,3 @@
-
-
 create table hms_mem(
   member_id int not null,
   email varchar(50) not null,
@@ -21,10 +19,6 @@ alter table hms_mem
   
 alter table hms_mem
   modify column pwd varchar(100) not null;
-
-  
-  insert into hms_mem(member_id, email, pwd,name)
-values (1,  'root@root', sha2('1111',256),'root');
   
 
 create table hms_gall (
@@ -45,7 +39,7 @@ alter table hms_gall
   add constraint hms_gall_fk foreign key (writer) references hms_mem(member_id);
 
   
-  create table hms_gall_file (
+create table hms_gall_file (
   boardfile_id int not null,
   filepath varchar(255) not null,
   origin_filename varchar(255) not null,
@@ -58,7 +52,7 @@ alter table hms_gall_file
   modify column boardfile_id int not null auto_increment;
   
 alter table hms_gall_file
-  add constraint hms_gall_file_fk foreign key (board_id) references hms_gall (board_id);
+add constraint hms_gall_file_fk foreign key (board_id) references hms_gall (board_id);
   
   
   alter table hms_gall_file

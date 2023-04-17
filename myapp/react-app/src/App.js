@@ -16,7 +16,7 @@ const HANGANG = () => {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home />}/>
         <Route path="/Login" element={<Login />} />
         <Route path="/Join" element={<Join />} />
         <Route path="/Mypage" element={<Mypage />} />

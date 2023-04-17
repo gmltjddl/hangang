@@ -7,7 +7,7 @@ const GalleryItem = ({ item }) => {
   const handleClose = () => {
     setdetailmodalOn(false);
   };
-
+// console.log(item.writer.nickName);
   return (
     <div key={item.no}>
       <table className="gall-list-table" id={`board-table-${item.no}`} border="1">
@@ -19,6 +19,7 @@ const GalleryItem = ({ item }) => {
                   show={detailmodalOn}
                   onHide={handleClose}
                   boardNo={item.no}
+  
                 />
                 <div
                   className="gall-div-detail"

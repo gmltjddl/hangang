@@ -51,6 +51,14 @@ public class CommentController {
   }
 
 
+  @GetMapping("/boardNo/{boardNo}")
+  public Object list(@PathVariable int boardNo) {
+    log.debug("CommentController.list() 호출됨!");
+
+    return new RestResult()
+        .setStatus(RestStatus.SUCCESS)
+        .setData(commentService.list(boardNo));
+  }
   @GetMapping
   public Object list(String keyword) {
     log.debug("CommentController.list() 호출됨!");
@@ -60,9 +68,9 @@ public class CommentController {
         .setData(commentService.list(keyword));
   }
 
-  @GetMapping("{no}")
-  public Object view(@PathVariable int no) {
-    Comment comment = commentService.get(no);
+  @GetMapping("{boardNo}")
+  public Object view(@PathVariable int boardNo) {
+    Comment comment = commentService.get(boardNo);
     if (comment != null) {
       return new RestResult()
           .setStatus(RestStatus.SUCCESS)
