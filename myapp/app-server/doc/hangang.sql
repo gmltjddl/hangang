@@ -27,18 +27,35 @@ alter table hms_mem
 values (1,  'root@root', sha2('1111',256),'root');
   
 
+create table app_board (
+  board_id int not null,
+  title varchar(255) not null,
+  content text not null,
+  pwd varchar(10),
+  created_date datetime default now(),
+  view_cnt int default 0
+);
+
+alter table app_board
+  add constraint primary key (board_id),
+  modify column board_id int not null auto_increment;
+
+alter table app_board
+  add column writer int,
+  add constraint app_board_fk foreign key (writer) references app_member(member_id);
+
+
 
 
 create table hms_comm(
-  comment_no int ,
+  comment_id int ,
   content varchar(30),
-  board_id int,
   created_date datetime default now()
 );
 
 alter table hms_comm
-  add constraint primary key (comment_no),
-  modify column comment_no int not null auto_increment;
+  add constraint primary key (comment_id),
+  modify column comment_id int not null auto_increment;
 
 
 alter table hms_comm
@@ -46,8 +63,8 @@ alter table hms_comm
   add constraint hms_comm_fk_writer foreign key (writer) references hms_mem(member_id);
   
 alter table hms_comm
-  add column gboard int,
-  add constraint hms_comm_fk_boardno foreign key (board_id) references hms_gall(board_id);
+  add column board_id int,
+  add constraint hms_comm_fk_board_id foreign key (board_id) references hms_gall(board_id);
 
   
 

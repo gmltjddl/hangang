@@ -8,6 +8,7 @@ import Mypagebox from '../component/Mypage/Mypagebox';
 import { Link } from 'react-router-dom';
 import Gallerywriting from '../component/Modal/Gallerywriting';
 import Gallerylist from '../component/Gallery/Gallerylist';
+
 const Gallery = () => {
 
 

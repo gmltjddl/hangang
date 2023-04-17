@@ -31,10 +31,13 @@ public class CommentController {
 
   @Autowired private CommentService commentService;
 
+
   @PostMapping
   public Object insert(
       Comment comment,
-      HttpSession session) throws Exception{
+      HttpSession session
+      ) throws Exception{
+
 
     Member loginUser = (Member) session.getAttribute("loginUser");
 

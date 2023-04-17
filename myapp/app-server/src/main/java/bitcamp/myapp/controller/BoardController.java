@@ -37,6 +37,8 @@ public class BoardController {
 
   @Autowired private BoardService boardService;
   @Autowired private ObjectStorageService objectStorageService;
+
+
   private String bucketName = "hangang-bucket";
 
   @PostMapping

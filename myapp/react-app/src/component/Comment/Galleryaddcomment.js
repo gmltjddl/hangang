@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./css/Galleryaddcomment.css";
 import axios from "axios";
 
-const Gallerycomment = () => {
+const Gallerycomment = ({boardNo}) => {
   const [content, setContent] = useState("");
 
   const handleContentChange = (event) => {
@@ -10,13 +10,14 @@ const Gallerycomment = () => {
   };
 
   const handleAddComment = (e) => {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append("content", content);
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("content", content);
+    formData.append("board_id", boardNo); // boardNo를 formData에 추가
 
     if (content.trim() !== "") {
       axios
-        .post("http://localhost:8080/web/comments", formData) // Fix the content value here
+        .post('http://localhost:8080/web/comments', formData)
         .then((response) => {
           console.log(response.data.data);
           setContent("");
