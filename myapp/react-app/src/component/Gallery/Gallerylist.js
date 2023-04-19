@@ -1,20 +1,23 @@
 import { Button } from "react-bootstrap";
 import './css/Gallerylist.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import Gallerywriting from "../Modal/Gallerywriting";
 import Gallerydetail from "./Gallerydetail";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import GalleryItem from "./Galleryitem";
+import Usercontext from '../../Usercontext';
 
 const Gallerylist = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [writingmodalOn, setwritingmodalOn] = useState(false);
   const [detailmodalOn, setdetailmodalOn] = useState(false);
+  const user = useContext(Usercontext);
 
   const fetchData = () => {
+    console.log(user);
     setLoading(true);
     // 데이터를 가져오는 비동기 API 호출 (예: 서버 API)
     axios
@@ -68,7 +71,7 @@ const Gallerylist = () => {
       </div>
       <div className="gall-list-table-wrap">
         {data.map((item) => (
-          <GalleryItem item={item} />
+          <GalleryItem item={item}/>
         ))}
         {loading && <div>Loading...</div>}
       </div>

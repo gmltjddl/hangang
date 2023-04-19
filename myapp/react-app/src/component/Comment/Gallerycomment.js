@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import "./css/Gallerycomment.css";
 import axios from 'axios';
+import Usercontext from '../../Usercontext';
 
 
 const Gallerycomment = ({ boardNo }) => {
@@ -8,7 +9,7 @@ const Gallerycomment = ({ boardNo }) => {
   const [content, setContent] = useState("");
   const [editingCommentId, setEditingCommentId] = useState(null);
   const [editedContent, setEditedContent] = useState('');
-
+  const user = useContext(Usercontext);
 
   const fetchComments = () => {
     axios
@@ -86,7 +87,7 @@ const Gallerycomment = ({ boardNo }) => {
         console.error(error);
       });
   };
-
+console.log(comments);
   return (
     <>
       <div className="gcomment-list">
@@ -102,15 +103,16 @@ const Gallerycomment = ({ boardNo }) => {
                 <button type="submit">저장</button>
                 <button onClick={() => setEditingCommentId(null)}>취소</button>
               </form>
-            ) : (
+             ) : (
               <>
                 {comment.content}
-
+                {user && user.no === comment.writer.no && (
                   <>
                     <button onClick={() => handleEditComment(comment.no, comment.content)}>수정</button>
                     <button onClick={() => handleDeleteComment(comment.no)}>삭제</button>
                   </>
 
+              )}
               </>
             )}
           </div>

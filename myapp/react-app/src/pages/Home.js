@@ -14,6 +14,8 @@ const Home = () => {
       <Content />
       <Benefits />
     </div>
+
+
   );
 };
 

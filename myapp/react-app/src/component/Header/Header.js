@@ -4,17 +4,17 @@ import axios from "axios";
 import './css/Header.css';
  axios.defaults.withCredentials = true;
 
- function Header() {
-  const [data, setData] = useState([]);
+  function Header() {
+   const [nickName, setNickName] = useState([]);
+
 
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:8080/web/auth/user");
       const result = response.data;
       if (result.status === "success") {
-        setData(result.data.nickName);
-        console.log(result.data);
-
+        setNickName(result.data.nickName);
+    
         let login = document.getElementById("login");
         login.style.display = "none";
         let logout = document.getElementById("logout");
@@ -37,14 +37,6 @@ import './css/Header.css';
   useEffect(() => {
     // Fetch initial data
     fetchData();
-
-    // Start polling every 5 seconds
-    const intervalId = setInterval(fetchData, 150000);
-
-    // Clean up interval on component unmount
-    return () => {
-      clearInterval(intervalId);
-    };
   }, []);
 
   
@@ -91,7 +83,7 @@ import './css/Header.css';
           <li><Link to="" className="qna">Q&amp;A</Link></li>
           <li><Link to="/Login" className="login" id="login">LOGIN</Link></li>
           <li><Link to="/Mypage" className="mypage" id="mypage">MYPAGE</Link></li>
-          <li className="logout" id="logout" onClick={() => { logout(); return false; }}><span className="logout-span">로그아웃({data})</span></li>
+          <li className="logout" id="logout" onClick={() => { logout(); return false; }}><span className="logout-span">로그아웃({nickName})</span></li>
  
         </ul>
       </nav>

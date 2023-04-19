@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import bitcamp.myapp.service.CommentService;
@@ -85,29 +84,36 @@ public class CommentController {
   @PutMapping("{no}")
   public Object update(
       @PathVariable int no,
-      @RequestBody Comment comment) {
+      Comment comment,
+      HttpSession session) throws Exception {
 
     log.debug(comment);
 
-    // 보안을 위해 URL 번호를 게시글 번호로 설정한다.
+    Member loginUser = (Member) session.getAttribute("loginUser");
     comment.setNo(no);
-
+    Comment old = commentService.get(comment.getNo());
+    if (old.getWriter().getNo() != loginUser.getNo()) {
+      return new RestResult()
+          .setStatus(RestStatus.FAILURE)
+          .setErrorCode(ErrorCode.rest.UNAUTHORIZED)
+          .setData("권한이 없습니다.");
+    }
     commentService.update(comment);
     return new RestResult()
         .setStatus(RestStatus.SUCCESS);
   }
 
   @DeleteMapping("{no}")
-  public Object delete(@PathVariable int no) {
-    //    Member loginUser = (Member) session.getAttribute("loginUser");
+  public Object delete(@PathVariable int no ,HttpSession session) {
+    Member loginUser = (Member) session.getAttribute("loginUser");
 
     Comment old = commentService.get(no);
-    //    if (old.getWriter().getNo() != loginUser.getNo()) {
-    //      return new RestResult()
-    //          .setStatus(RestStatus.FAILURE)
-    //          .setErrorCode(ErrorCode.rest.UNAUTHORIZED)
-    //          .setData("권한이 없습니다.");
-    //    }
+    if (old.getWriter().getNo() != loginUser.getNo()) {
+      return new RestResult()
+          .setStatus(RestStatus.FAILURE)
+          .setErrorCode(ErrorCode.rest.UNAUTHORIZED)
+          .setData("권한이 없습니다.");
+    }
     commentService.delete(no);
 
     return new RestResult()
