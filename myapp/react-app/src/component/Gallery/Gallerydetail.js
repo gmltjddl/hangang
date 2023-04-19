@@ -3,8 +3,8 @@ import "./css/Gallerydetail.css";
 import "./css/Heart.css";
 import axios from "axios";
 import { Modal, Button, Overlay } from "react-bootstrap";
-import Galleryaddcomment from "../Comment/Galleryaddcomment";
-import Gallerycommentlist from "../Comment/Gallerycommentlist";
+import Gallerycomment from "../Comment/Gallerycomment";
+
 
 const Gallerydetail = ({ show, onHide, boardNo, loggedInUser }) => {
     const [isHeartActive, setIsHeartActive] = useState(false);
@@ -20,9 +20,23 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser }) => {
 
 // 이미지 이동 함수
 
+const fetchComments = () => {
+    axios.get("http://localhost:8080/web/comments/board/" + boardNo)
+        .then((response) => {
+            const receivedComments = response.data.data;
+            if (Array.isArray(receivedComments)) {
+                setComments(receivedComments);
+            } else {
+                setComments([]);
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+};
 
 useEffect(() => {
-    axios
+    axios 
     .get(`http://localhost:8080/web/boards/${boardNo}`)
         .then((response) => {
             return response.data;
@@ -125,20 +139,15 @@ return (
                                 {content}
                             </div>
                             <div className="gcomment-list">
-                                <Gallerycommentlist
-                                    boardNo={boardNo}
-                                    comments={content}
-
-                                />                             
-                            </div>
-                            <div>
-                                <Galleryaddcomment
-                                    boardNo={boardNo}
-                                    loggedInUser={loggedInUser}
-                                    comments={comments}
-                                    setComments={setComments}
-                                />
-                            </div>
+                                    <Gallerycomment
+                                        boardNo={boardNo}
+                                        comments={comments}
+                                        loggedInUser={loggedInUser}
+                                        setComments={setComments}
+                                        fetchComments={fetchComments}
+                                    />
+                                </div>
+                           
                         </div>
                     </div>
                     <div className="x-container">

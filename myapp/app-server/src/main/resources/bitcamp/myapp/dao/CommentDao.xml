@@ -53,16 +53,13 @@
   </select>
   
   <update id="update" parameterType="comment">
-    update hms_mem set
-      email=#{email}, 
-      name=#{name}, 
-      nick=#{nickName},
-      tel=#{tel}
+    update hms_comm set
+      content=#{content}
     where comment_id=#{no}
   </update>
   
   <delete id="delete" parameterType="int">
-    delete from hms_mem
+    delete from hms_comm
     where comment_id=#{no}
   </delete>
   

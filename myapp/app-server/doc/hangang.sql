@@ -37,6 +37,10 @@ alter table hms_gall
 alter table hms_gall
   add column writer int,
   add constraint hms_gall_fk foreign key (writer) references hms_mem(member_id);
+  
+  alter table hms_gall
+  add column comment int,
+  add constraint hms_gall_fk_comment foreign key (comment) references hms_comm(comment_id);
 
   
 create table hms_gall_file (

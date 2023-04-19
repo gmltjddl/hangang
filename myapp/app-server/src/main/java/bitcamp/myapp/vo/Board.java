@@ -20,6 +20,7 @@ public class Board {
 
   private int viewCount;
   private int writerNo;
+  private int commentNo;
   private String writerName;
   private Member writer;
   private List<BoardFile> attachedFiles;

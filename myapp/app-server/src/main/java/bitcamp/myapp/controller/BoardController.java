@@ -53,6 +53,8 @@ public class BoardController {
     writer.setNo(loginUser.getNo());
     board.setWriter(writer);
 
+
+
     List<BoardFile> boardFiles = new ArrayList<>();
     for (MultipartFile file : files) {
       String filename = objectStorageService.uploadFile("hangang-bucket", "gallery/", file);

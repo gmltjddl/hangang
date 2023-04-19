@@ -20,6 +20,7 @@ const Gallerylist = () => {
     axios
       .get("http://localhost:8080/web/boards")
       .then((response) => {
+        console.log(response.data.data);
         setData([...data, ...response.data.data.sort((a, b) => b.no - a.no)]); // 번호를 내림차순으로 정렬하여 데이터 업데이트
         setLoading(false);
         console.log(response.data.data);
@@ -77,18 +78,3 @@ const Gallerylist = () => {
 
 export default Gallerylist;
 
-// const Gallerylist = () => {
-//   const [writingmodalOn, setwritingmodalOn] = useState(false);
-//   return (
-//     <>
-//     <div className="body-back">
-    
-//     </div>
-//     <div className="hi"></div>
-//       <Gallerywriting show={writingmodalOn} onHide={() => setwritingmodalOn(false)} />
-//       <Button className="Gallerylist-Button" onClick={() => setwritingmodalOn(true)}>Writing</Button>
-//     </>
-//   )
-// }
-
-// export default Gallerylist

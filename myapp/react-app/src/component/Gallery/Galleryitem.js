@@ -3,11 +3,12 @@ import Gallerydetail from "./Gallerydetail";
 
 const GalleryItem = ({ item }) => {
   const [detailmodalOn, setdetailmodalOn] = useState(false);
-
+ 
   const handleClose = () => {
     setdetailmodalOn(false);
   };
-// console.log(item.writer.nickName);
+// console.log(item.writer.name);
+// console.log(item.comment.commetNo);
   return (
     <div key={item.no}>
       <table className="gall-list-table" id={`board-table-${item.no}`} border="1">

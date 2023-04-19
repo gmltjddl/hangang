@@ -98,16 +98,16 @@ public class CommentController {
   }
 
   @DeleteMapping("{no}")
-  public Object delete(@PathVariable int no, HttpSession session) {
-    Member loginUser = (Member) session.getAttribute("loginUser");
+  public Object delete(@PathVariable int no) {
+    //    Member loginUser = (Member) session.getAttribute("loginUser");
 
     Comment old = commentService.get(no);
-    if (old.getWriter().getNo() != loginUser.getNo()) {
-      return new RestResult()
-          .setStatus(RestStatus.FAILURE)
-          .setErrorCode(ErrorCode.rest.UNAUTHORIZED)
-          .setData("권한이 없습니다.");
-    }
+    //    if (old.getWriter().getNo() != loginUser.getNo()) {
+    //      return new RestResult()
+    //          .setStatus(RestStatus.FAILURE)
+    //          .setErrorCode(ErrorCode.rest.UNAUTHORIZED)
+    //          .setData("권한이 없습니다.");
+    //    }
     commentService.delete(no);
 
     return new RestResult()

@@ -18,6 +18,7 @@
       <result column="nickName" property="nickName"/>
     </association>
     
+    
     <collection property="attachedFiles" ofType="boardfile">
       <id column="boardfile_id" property="no"/>
       <result column="filepath" property="filepath"/>
@@ -29,8 +30,8 @@
 
   <insert id="insert" parameterType="board" 
           useGeneratedKeys="true" keyColumn="board_id" keyProperty="no">
-    insert into hms_gall(title, content, writer) 
-    values(#{title}, #{content}, #{writer.no})
+    insert into hms_gall(title, content, writer,comment) 
+    values(#{title}, #{content}, #{writer.no},#{comment.no})
   </insert>
 
   <select id="findAll" resultMap="boardMap" parameterType="string">
@@ -38,6 +39,7 @@
       b.board_id, 
       b.title, 
       b.writer,
+      b.comment,
       b.created_date, 
       b.view_cnt,
       m.name,
@@ -55,7 +57,8 @@
       b.board_id, 
       b.title, 
       b.content,
-      b.writer, 
+      b.writer,
+      b.comment, 
       (select nick from hms_mem where member_id = b.writer) nickName, 
       b.created_date, 
       b.view_cnt,
