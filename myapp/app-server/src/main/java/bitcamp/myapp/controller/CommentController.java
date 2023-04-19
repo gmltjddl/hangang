@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import bitcamp.myapp.service.CommentService;
@@ -84,7 +85,7 @@ public class CommentController {
   @PutMapping("{no}")
   public Object update(
       @PathVariable int no,
-      Comment comment,
+      @RequestBody Comment comment,
       HttpSession session) throws Exception {
 
     log.debug(comment);

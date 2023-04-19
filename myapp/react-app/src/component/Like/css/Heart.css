@@ -25,20 +25,23 @@
   background: url("../img/heart.png") no-repeat;
   background-position: left;
   background-size: 2900%;
-  height: 37px;
-  width: 90px;
+  height: 35px;
+  width: 80px;
   top: 50%;
   left: 20px;
   transform: translate(-50%,-50%);
 }
 .heart-text{
+  position: relative;
+  display: inline-block;
   font-size: 15px;
   margin-left: 23px;
   color: grey;
+  left :1px;
+  top:1px;
   font-family: 'Montserrat',sans-serif;
 }
 .numb:before{
-  content: '0';
   font-size: 15.3px;
   margin-left: 2px;
   font-weight: 650;
@@ -49,7 +52,6 @@
   top:-1px;
 }
 .numb.heart-active:before{
-  content: '1';
   margin-left: 3px;
   color: #000;
 }
@@ -74,3 +76,11 @@
   margin-top: 50px;
   margin-left: 50px;
 } */
+.numb{
+position: relative;
+display: inline-block;
+bottom:1px;
+left: 5px;
+font-weight: bold;
+width:30px;
+}

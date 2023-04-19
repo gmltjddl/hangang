@@ -20,8 +20,8 @@ public class DefaultLikeService implements LikeService {
   }
 
   @Override
-  public List<Like> getLikes(int postId) {
-    return likeDao.findLikesByPostId(postId);
+  public List<Like> getLikes(int boardId) {
+    return likeDao.findLikesByPostId(boardId);
   }
 
   @Transactional

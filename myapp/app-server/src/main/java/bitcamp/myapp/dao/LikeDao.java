@@ -7,7 +7,7 @@ import bitcamp.myapp.vo.Like;
 @Mapper
 public interface LikeDao {
   void insertLike(Like like);
-  List<Like> findLikesByPostId(int postId);
+  List<Like> findLikesByPostId(int boardId);
   //  Like findLikeByPostIdAndUserId(Like like);
   int deleteLike(Like like);
 }

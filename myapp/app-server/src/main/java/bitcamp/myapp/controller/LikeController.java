@@ -29,16 +29,16 @@ public class LikeController {
   @Autowired private LikeService likeService;
 
 
-  @PostMapping("/{postId}")
+  @PostMapping("/{boardId}")
   public Object addLike(
-      @PathVariable int postId,
+      @PathVariable int boardId,
       HttpSession session
       ) throws Exception {
     Member loginUser = (Member) session.getAttribute("loginUser");
 
     Like like = new Like();
-    like.setUser(loginUser);
-    like.setPostId(postId);
+    like.setMember(loginUser);
+    like.setBoardId(boardId);
 
     likeService.addLike(like);
 
@@ -46,22 +46,22 @@ public class LikeController {
         .setStatus(RestStatus.SUCCESS);
   }
 
-  @GetMapping("/{postId}")
-  public Object getLikes(@PathVariable int postId) {
+  @GetMapping("/{boardId}")
+  public Object getLikes(@PathVariable int boardId) {
     log.debug("LikeController.getLikes() 호출됨!");
 
     return new RestResult()
         .setStatus(RestStatus.SUCCESS)
-        .setData(likeService.getLikes(postId));
+        .setData(likeService.getLikes(boardId));
   }
 
-  @DeleteMapping("/{postId}")
-  public Object removeLike(@PathVariable int postId, HttpSession session) {
+  @DeleteMapping("/{boardId}")
+  public Object removeLike(@PathVariable int boardId, HttpSession session) {
     Member loginUser = (Member) session.getAttribute("loginUser");
 
     Like like = new Like();
-    like.setUser(loginUser);
-    like.setPostId(postId);
+    like.setMember(loginUser);
+    like.setBoardId(boardId);
 
     likeService.removeLike(like);
 

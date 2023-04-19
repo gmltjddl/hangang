@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class Like {
   private int id;
-  private int postId;
-  private Member user;
+  private int boardId;
+  private Member member;
 }

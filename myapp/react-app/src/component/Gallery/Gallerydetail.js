@@ -1,18 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./css/Gallerydetail.css";
-import "./css/Heart.css";
+// import "./css/Heart.css";
 import axios from "axios";
 import { Modal, Button, Overlay } from "react-bootstrap";
 import Gallerycomment from "../Comment/Gallerycomment";
+import Like from "../Like/Like";
 
 
 const Gallerydetail = ({ show, onHide, boardNo, loggedInUser }) => {
-    const [isHeartActive, setIsHeartActive] = useState(false);
     const [nickName, setNickName] = useState("");
     const [filepath, setFilepath] = useState("");
     const [content, setContent] = useState("");
-    const [likes, setLikes] = useState(0);
-    const [liked, setLiked] = useState(false);
     const [no, setNo] = useState(boardNo);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [images, setImages] = useState([]);
@@ -46,7 +44,6 @@ useEffect(() => {
                 setNickName(result.data.writer.nickName);
                 setFilepath(result.data.attachedFiles[0].filepath);
                 setContent(result.data.content);
-                setLikes(result.data.likes);
                 setComments(Array.isArray(result.data.comments) ? result.data.comments : []);
                 setImages(result.data.attachedFiles.map((file) => file.filepath));
             }
@@ -57,9 +54,6 @@ useEffect(() => {
         });
 }, [no]);
 
-const handleHeartClick = () => {
-    setIsHeartActive(!isHeartActive);
-};
 
 const nextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -109,29 +103,9 @@ return (
                             </div>
                             <div className="gbodybnt">
                                 <button className="glikebnt">
-                                    <div className="heartbtn">
-                                        <div
-                                            className={`heart-btn ${isHeartActive ? "heart-active" : ""
-                                                }`}
-                                        >
-                                            <div className="heart-content" onClick={handleHeartClick}>
-                                                <span
-                                                    className={`heart ${isHeartActive ? "heart-active" : ""
-                                                        }`}
-                                                ></span>
-                                                <span
-                                                    className={`heart-text ${isHeartActive ? "heart-active" : ""
-                                                        }`}
-                                                >
-                                                    Like
-                                                </span>
-                                                <span
-                                                    className={`numb ${isHeartActive ? "heart-active" : ""
-                                                        }`}
-                                                ></span>
-                                            </div>
-                                        </div>
-                                    </div>
+                             
+                                  <Like boardNo={boardNo}/>
+                     
                                 </button>
                                 <button className="gcommetbnt"></button>
                             </div>
