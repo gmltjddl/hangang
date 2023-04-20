@@ -54,6 +54,7 @@ const Gallerywriting = ({ show, onHide }) => {
       .then((response) => {
         const result = response.data;
         if (result.status === "success") {
+          window.location.href="./gallery"
           console.log(result.data);
         } else {
           alert("입력 실패!");

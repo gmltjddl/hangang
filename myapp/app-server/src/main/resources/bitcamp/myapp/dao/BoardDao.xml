@@ -30,8 +30,8 @@
 
   <insert id="insert" parameterType="board" 
           useGeneratedKeys="true" keyColumn="board_id" keyProperty="no">
-    insert into hms_gall(title, content, writer,comment) 
-    values(#{title}, #{content}, #{writer.no},#{comment.no})
+    insert into hms_gall(title, content, writer) 
+    values(#{title}, #{content}, #{writer.no})
   </insert>
 
   <select id="findAll" resultMap="boardMap" parameterType="string">

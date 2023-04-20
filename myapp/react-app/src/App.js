@@ -18,12 +18,19 @@ const HANGANG = () => {
     try {
       const response = await axios.get("http://localhost:8080/web/auth/user");
       const result = response.data;
-      console.log(response.data.data);
+      // console.log(response.data.data);
       if (result.status === "success") {
         
         setUser({
           no:result.data.no,
+          name:result.data.name,
+          email:result.data.email,
           nickName: result.data.nickName,
+          tel:result.data.tel,
+          hobby:result.data.hobby,
+          introduce:result.data.introduce,
+          interest:result.data.interest,
+          createdDate:result.data.createdDate,
           loggedIn: true
         });
       } else {

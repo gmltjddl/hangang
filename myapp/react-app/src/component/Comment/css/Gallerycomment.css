@@ -8,3 +8,35 @@
   /* position: relative;
   display: inline-block; */
 }
+.gcomment-list{ 
+  overflow-Y: auto;
+  max-Height: auto;
+}
+.gprofile-img{
+  position: relative;
+  display: inline-block;
+  /* background-image: url(https://images-ext-2.discordapp.net/external/k496ijrcjYv-XqebZOS9HnfW1-QjyF5m21FrsUKIL2s/%3Ftype%3Df%26w%3D260%26h%3D260%26faceopt%3Dtrue%26ttype%3Djpg/http/tbxctpxzerdz16840769.cdn.ntruss.com/defaultprofile.jpg?width=30&height=30); */
+  width:30px;
+  height:30px;
+  left:5px;
+}
+.gprofile-img img{
+  width:30px;
+  height:30px;
+
+}
+.gcooment-content{
+  position: relative;
+  display: inline-block;
+  left:8px;
+}
+.comment-update-btn{
+  position: relative;
+  display: inline-block;
+  left:8px;
+}
+.comment-delete-btn{
+  position: relative;
+  display: inline-block;
+  left:9px;
+}

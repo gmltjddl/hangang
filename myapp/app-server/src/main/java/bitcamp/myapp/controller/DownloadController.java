@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import bitcamp.myapp.service.BoardService;
+import bitcamp.myapp.service.MemberService;
 import bitcamp.myapp.vo.BoardFile;
+import bitcamp.myapp.vo.MemberFile;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -25,6 +27,7 @@ public class DownloadController {
   }
 
   @Autowired private BoardService boardService;
+  @Autowired private MemberService memberService;
 
   @RequestMapping("/download/boardfile")
   public String execute(
@@ -33,6 +36,8 @@ public class DownloadController {
       HttpServletResponse response) throws Exception {
 
     BoardFile boardFile = boardService.getFile(fileNo);
+    MemberFile memberFile = memberService.getFile(fileNo);
+
     if (boardFile == null) {
       throw new RuntimeException("파일 정보 없음!");
     }

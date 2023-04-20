@@ -1,6 +1,7 @@
 package bitcamp.myapp.vo;
 
 import java.sql.Date;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import lombok.Data;
@@ -14,9 +15,11 @@ public class Member {
   private String tel;
   private String nickName;
   private String introduce;
+  private String interest;
   private String hobby;
   @JsonFormat(
       shape = Shape.STRING,
       pattern = "yyyy-MM-dd")
   private Date createdDate;
+  private List<MemberFile> attachedFiles;
 }

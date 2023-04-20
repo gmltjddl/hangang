@@ -11,8 +11,18 @@
     <result column="tel" property="tel"/>
     <result column="nick" property="nickName"/>
     <result column="intro" property="introduce"/>
+    <result column="inter" property="interest"/>
     <result column="hob" property="hobby"/>
     <result column="created_date" property="createdDate"/>
+      
+    <collection property="attachedFiles" ofType="memberfile">
+      <id column="memberfile_id" property="no"/>
+      <result column="filepath" property="filepath"/>
+      <result column="origin_filename" property="originalFilename"/>
+      <result column="mime_type" property="mimeType"/>
+      <result column="member_id" property="memberNo"/>
+    </collection>
+    
   </resultMap>
 
   <insert id="insert" parameterType="member" 
@@ -24,16 +34,37 @@
       tel,
       nick,
       intro,
+      inter,
       hob)
-    values(#{email},sha2(#{password},256),#{name},#{tel},#{nickName},#{introduce},#{hobby})
+    values(#{email},sha2(#{password},256),#{name},#{tel},#{nickName},#{interest},#{introduce},#{hobby})
   </insert>
+  
+   <insert id="upload" parameterType="member" 
+  useGeneratedKeys="true" keyProperty="no" keyColumn="member_id">
+     select 
+      m.member_id, 
+      mf.memberfile_id,
+      mf.filepath, 
+      mf.origin_filename,
+      mf.mime_type
+    from 
+      hms_mem m
+      left outer join hms_mem_file mf on m.member_id = mf.member_id
+    where
+    m.member_id=#{no}
+  </insert>
+  
 
   <select id="findAll" resultMap="memberMap">
     select 
       member_id, 
       email,
       nick,
+      tel,
       name,
+      intro,
+      inter,
+      hob
       created_date 
     from 
       hms_mem
@@ -48,6 +79,7 @@
       nick,
       tel,
       intro,
+      inter,
       hob,
       created_date
     from 
@@ -65,6 +97,7 @@
       nick,
       tel,
       intro,
+      inter,
       hob,
       created_date
     from 
@@ -81,6 +114,7 @@
       nick,
       tel,
       intro,
+      inter,
       hob 
       created_date 
     from 
@@ -91,10 +125,11 @@
   
   <update id="update" parameterType="member">
     update hms_mem set
-      email=#{email}, 
       name=#{name}, 
       nick=#{nickName},
-      tel=#{tel}
+      intro=#{introduce},
+      inter=#{interest},
+      hob=#{hobby}
     where member_id=#{no}
   </update>
   

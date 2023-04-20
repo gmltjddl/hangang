@@ -1,21 +1,26 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./css/Gallerydetail.css";
-// import "./css/Heart.css";
 import axios from "axios";
 import { Modal, Button, Overlay } from "react-bootstrap";
 import Gallerycomment from "../Comment/Gallerycomment";
-import Like from "../Like/Like";
+import LikeButton from "../Like/Like";
+import FollowButton from "../Follow/Follow";
+import Usercontext from '../../Usercontext';
 
-
-const Gallerydetail = ({ show, onHide, boardNo, loggedInUser }) => {
+const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId }) => {
+    const [isHeartActive, setIsHeartActive] = useState(false);
     const [nickName, setNickName] = useState("");
     const [filepath, setFilepath] = useState("");
     const [content, setContent] = useState("");
+    const [likes, setLikes] = useState(0);
+    const [liked, setLiked] = useState(false);
     const [no, setNo] = useState(boardNo);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [images, setImages] = useState([]);
     const [comments, setComments] = useState([]);
-
+    const [isCommentAddVisible, setIsCommentAddVisible] = useState(false);
+    const user = useContext(Usercontext);
+    
 // 이미지 이동 함수
 
 const fetchComments = () => {
@@ -44,6 +49,7 @@ useEffect(() => {
                 setNickName(result.data.writer.nickName);
                 setFilepath(result.data.attachedFiles[0].filepath);
                 setContent(result.data.content);
+                setLikes(result.data.likes);
                 setComments(Array.isArray(result.data.comments) ? result.data.comments : []);
                 setImages(result.data.attachedFiles.map((file) => file.filepath));
             }
@@ -54,6 +60,9 @@ useEffect(() => {
         });
 }, [no]);
 
+const handleHeartClick = () => {
+    setIsHeartActive(!isHeartActive);
+};
 
 const nextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -62,6 +71,30 @@ const nextImage = () => {
 const prevImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
 };
+
+
+const handledelete = async () => {
+    if (user.loggedIn === false) {
+      alert("로그인을 해주세요");
+
+     return;
+     } else if(userId != user.no) {
+     alert("내 게시글이 아니에요")
+      return;
+     }
+
+    try {
+      const response = await axios.delete(`http://localhost:8080/web/boards/${boardNo}`);
+      if (response.status === 200) {
+          console.log(response.data, 'delete요청');
+        window.location.href="./Gallery";
+        
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
 return (
     <div className="gdetail-modal-box">
@@ -79,8 +112,12 @@ return (
                         <div className="gclickbox">
                             <div className="gheader">
                                 <div className="gheadprofile"></div>
+                                
                                 <div className="gheaduser">{nickName}</div>
-                                <button className="gheadfollow">follow</button>
+                                <div className="gdelete">
+                                    <button id ="gdeletebtn" className="gdeletebnt" onClick={handledelete}>삭제</button>
+                                </div>
+                                    <FollowButton boardNo={boardNo} userId={userId}/>
                             </div>
                             <div className="gbody">
                                 <div className="gdetail-image-container">
@@ -103,11 +140,9 @@ return (
                             </div>
                             <div className="gbodybnt">
                                 <button className="glikebnt">
-                             
-                                  <Like boardNo={boardNo}/>
-                     
+                                    <LikeButton boardNo={boardNo}/>
+                                
                                 </button>
-                                <button className="gcommetbnt"></button>
                             </div>
                             <div className="gbecontent">
                                 {content}

@@ -2,16 +2,13 @@
   position: relative;
   background-color: #ffffff;
   /* margin-left: 520px; */
-  /* margin-top: 20px; */
+  margin-top: 20px;
   width: 480px;
-  height: 700px;
+  height: 750px;
   display: grid;
-  grid-template-columns: 480px;
+  grid-template-columns: 520px;
   grid-template-rows: 250px 25px 75px 75px 75px 75px 85px 40px;
 }
-
-
-
 .profile {
   background-color: rgb(121, 121, 121);
   height: 250px;
@@ -27,9 +24,6 @@
   font-weight: bold;
 }
 
-
-
-
 .profilename {
   margin: 25px auto;
   display: grid;
@@ -44,8 +38,10 @@
   margin: auto;
   text-align: center;
   font-family: Arial;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
+  position: relative;
+  left: 19px;
 }
 
 .nameinputbox {
@@ -55,9 +51,8 @@
   border-bottom: 1px solid #000000;
   height: auto;
   font-size: 20px;
+  width:300px;
 }
-
-
 .profilenickename {
   margin: 25px auto;
   display: grid;
@@ -68,25 +63,27 @@
   grid-template-rows: 50px;
 }
 
-.modifynickname {
+.modifynick {
   margin: auto;
   text-align: center;
   font-family: Arial;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
+  position: relative;
+  left: 10px;
 }
 
-.nicknameinputbox {
+.nickinputbox {
   margin-left: 20px;
   display: inline-block;
   border: 0px;
   border-bottom: 1px solid #000000;
   height: auto;
   font-size: 20px;
+  width:300px;
 }
 
-
-.profileemail {
+.profileintro {
   margin: 25px auto;
   display: grid;
   height: auto;
@@ -96,24 +93,28 @@
   grid-template-rows: 50px;
 }
 
-.modifyemail {
+.modifyintro {
   margin: auto;
   text-align: center;
   font-family: Arial;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
+  position: relative;
+  left: 10px;
 }
 
-.emailinputbox {
+.introinputbox {
   margin-left: 20px;
   display: inline-block;
   border: 0px;
   border-bottom: 1px solid #000000;
   height: auto;
   font-size: 20px;
+  width:300px;
 }
 
-.profiletel {
+
+.profileinter {
   margin: 25px auto;
   display: grid;
   height: auto;
@@ -122,22 +123,54 @@
   grid-template-columns: 80px 400px;
   grid-template-rows: 50px;
 }
-
-.modifytel {
+.modifyinter {
   margin: auto;
   text-align: center;
   font-family: Arial;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
+  width:100px;
+  position: relative;
+  right: 10px;
 }
 
-.telinputbox {
+.interinputbox {
   margin-left: 20px;
   display: inline-block;
   border: 0px;
   border-bottom: 1px solid #000000;
   height: auto;
   font-size: 20px;
+  width:300px;
+}
+
+.profilehob {
+  margin: 25px auto;
+  display: grid;
+  height: auto;
+  font-family: Arial;
+  font-size: 10px;
+  grid-template-columns: 80px 400px;
+  grid-template-rows: 50px;
+}
+.modifyhob {
+  margin: auto;
+  text-align: center;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  left: 19px;
+}
+
+.hobinputbox {
+  margin-left: 20px;
+  display: inline-block;
+  border: 0px;
+  border-bottom: 1px solid #000000;
+  height: auto;
+  font-size: 20px;
+  width:300px;
 }
 
 /*/
@@ -148,10 +181,9 @@
 
 /수정 취소버튼*/
 .okno {
-  margin-top: 80px;
   display: grid;
   grid-template-columns: 240px 240px;
-  grid-template-rows: 75px;
+  grid-template-rows: 5px;
 }
 
 .modify {
@@ -185,7 +217,34 @@
 div.modal-body {
   margin: 35px auto;
 }
+.introprofile-preview-image-box{
+  background-color: #f1f1f1;
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: 105px;
+  bottom: 470px;
+  display: inline-block;
 
-/* div.okno {
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
+  border-radius: 120px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  background-image: url(http://tbxctpxzerdz16840769.cdn.ntruss.com/defaultprofile.jpg?type=f&w=260&h=260&faceopt=true&ttype=jpg);
+}
+.introprofile-preview-image-box span{
+  position: relative;
+  display: inline-block;
+  top:120px;
+}
+.introprofile-preview-image{
+  position: absolute;
+  right: 105px;
+  bottom: 420px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 120px;
  
-} */
+
+}
+

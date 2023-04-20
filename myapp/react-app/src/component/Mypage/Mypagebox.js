@@ -2,25 +2,24 @@ import React, { useState,useEffect } from 'react';
 import './css/Mypagebox.css';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import Introleftside from '../Modal/Infomodal';
 import axios from "axios";
 
 const Mypagebox = () => {
 
   const [data, setData] = useState([]);
-  const [IntroleftsideOn, setIntroleftsideOn] = useState(false);
+
 
  
 
   return (
     <>
-      <Introleftside show={IntroleftsideOn} onHide={() => setIntroleftsideOn(false)} />
+
 
       <div className='box-wrap'>
         <div className="info-box-wrap">
           <h1>기본 정보</h1>
           <span>프로필 사진,이름,이메일,연락처 정보를 수정합니다.</span>
-          <button className="intro-modal" onClick={() => setIntroleftsideOn(true)}>수정</button>
+          <button className="intro-modal">수정</button>
         </div>
         <div className="mywrite-box-wrap">
           <h1>내가 쓴 글 목록</h1>

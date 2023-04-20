@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import './css/Gallerylist.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState, useEffect,useContext } from 'react';
-import Gallerywriting from "../Modal/Gallerywriting";
+import Gallerywriting from "./Gallerywriting";
 import Gallerydetail from "./Gallerydetail";
 import axios from 'axios';
 import { Link } from 'react-router-dom';

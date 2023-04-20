@@ -12,6 +12,7 @@ function Join() {
   const [tel, setTel] = useState("");
   const [nickName, setNickName] = useState("");
   const [introduce, setIntroduce] = useState("");
+  const [interest, setInterest] = useState("");
   const [hobby, setHobby] = useState("");
 
   const handleEmailChange = (event) => {
@@ -38,9 +39,14 @@ function Join() {
   const handleIntroduceChange = (event) => {
     setIntroduce(event.target.value);
   };
+  const handleInterestChange = (event) => {
+    setInterest(event.target.value);
+  };
+
   const handleHobbyChange = (event) => {
     setHobby(event.target.value);
   };
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -52,6 +58,7 @@ function Join() {
         tel: tel,
         nickName: nickName,
         introduce: introduce,
+        interest:interest,
         hobby: hobby,
 
       };
@@ -182,6 +189,14 @@ function Join() {
             value={introduce}
             onChange={handleIntroduceChange} />
 
+            <input name="interest"
+            type="text"
+            placeholder="Interest"
+            className="join-input-box"
+            id="interest" required
+            value={interest}
+            onChange={handleInterestChange} />
+
           <input name="hobby"
             type="text"
             placeholder="Hobby"
@@ -189,6 +204,7 @@ function Join() {
             id="hobby" required
             value={hobby}
             onChange={handleHobbyChange} />
+
           <button id="btn-regist" type="submit">가입하기</button>
           <button id="btn-cancel" type="reset">가입취소</button>
 

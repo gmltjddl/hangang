@@ -105,11 +105,16 @@ console.log(comments);
               </form>
              ) : (
               <>
+                <div className="gprofile-img">
+                <img src="https://images-ext-2.discordapp.net/external/k496ijrcjYv-XqebZOS9HnfW1-QjyF5m21FrsUKIL2s/%3Ftype%3Df%26w%3D260%26h%3D260%26faceopt%3Dtrue%26ttype%3Djpg/http/tbxctpxzerdz16840769.cdn.ntruss.com/defaultprofile.jpg?width=30&height=30"></img>
+                </div>
+                <div className='gcooment-content'>
                 {comment.content}
+                </div>
                 {user && user.no === comment.writer.no && (
                   <>
-                    <button onClick={() => handleEditComment(comment.no, comment.content)}>수정</button>
-                    <button onClick={() => handleDeleteComment(comment.no)}>삭제</button>
+                    <button className="comment-update-btn" onClick={() => handleEditComment(comment.no, comment.content)}>수정</button>
+                    <button className="comment-delete-btn" onClick={() => handleDeleteComment(comment.no)}>삭제</button>
                   </>
 
               )}
@@ -123,7 +128,6 @@ console.log(comments);
           <input
             type="text"
             placeholder="댓글 작성..."
-            value={content}
             onChange={handleContentChange}
           />
           <button type="submit">게시</button>

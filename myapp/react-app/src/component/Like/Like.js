@@ -16,8 +16,8 @@ const Like = ({ boardNo, loggedInUser }) => {
   const fetchLikes = async () => {
     try {
       const response = await axios.get(`http://localhost:8080/web/likes/${boardNo}`);
-      console.log(response.data)
-      console.log(user)
+      console.log(response.data);
+      console.log(user);
     //   console.log(response.data.data.some((item) => {
     //     console.log(item.member.no);
     //   }));

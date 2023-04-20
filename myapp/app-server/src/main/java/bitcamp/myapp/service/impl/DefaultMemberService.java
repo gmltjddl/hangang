@@ -7,18 +7,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import bitcamp.myapp.dao.MemberDao;
+import bitcamp.myapp.dao.MemberFileDao;
 import bitcamp.myapp.service.MemberService;
 import bitcamp.myapp.vo.Member;
+import bitcamp.myapp.vo.MemberFile;
 
 @Service
 public class DefaultMemberService implements MemberService {
 
   @Autowired private MemberDao memberDao;
+  @Autowired private MemberFileDao memberFileDao;
   @Transactional
   @Override
   public void add(Member member) {
     memberDao.insert(member);
   }
+  @Override
+  public void upload(Member member) {
+    memberDao.upload(member);
+    if (member.getAttachedFiles().size() > 0) {
+      for (MemberFile memberFile : member.getAttachedFiles()) {
+        memberFile.setMemberNo(member.getNo());
+      }
+      memberFileDao.insertList(member.getAttachedFiles());
+    }
+  }
+
+
 
   @Override
   public List<Member> list(String keyword) {
@@ -56,16 +71,15 @@ public class DefaultMemberService implements MemberService {
       throw new RuntimeException("회원이 존재하지 않습니다.");
     }
   }
-  //  @Override
-  //  public MemberFile getFile(int fileNo) {
-  //    return memberFileDao.findByNo(fileNo);
-  //  }
-  //
-  //  @Override
-  //  public void deleteFile(int fileNo) {
-  //    memberFileDao.delete(fileNo);
-  //  }
+  @Override
+  public MemberFile getFile(int fileNo) {
+    return memberFileDao.findByNo(fileNo);
+  }
 
+  @Override
+  public void deleteFile(int fileNo) {
+    memberFileDao.delete(fileNo);
+  }
 }
 
 
