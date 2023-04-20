@@ -107,8 +107,10 @@ alter table hms_mem_file
   modify column memberfile_id int not null auto_increment;
 
   alter table hms_mem_file
-  add constraint hms_mem_file foreign key (member_id) references hms_mem(member_id);
+  add constraint hms_mem_fk_file foreign key (member_id) references hms_mem(member_id);
 
+
+  
 CREATE TABLE hms_follow (
   follow_id INT(11) NOT NULL AUTO_INCREMENT,
   follower_id INT(11) NOT NULL,

@@ -40,6 +40,7 @@ const Gallerycomment = ({ boardNo }) => {
     e.preventDefault();
 
     if (content.trim() !== "") {
+      if (content.length <= 30) {
       const formData = new FormData();
       formData.append("content", content);
       formData.append("boardNo", boardNo);
@@ -48,15 +49,18 @@ const Gallerycomment = ({ boardNo }) => {
         .post("http://localhost:8080/web/comments", formData)
         .then((response) => {
           console.log(response.data.data);
-          setContent("");
+          e.target.reset();
           fetchComments(); // 새 댓글이 추가된 후 댓글 목록을 업데이트
         })
         .catch((error) => {
           console.error(error);
         });
     } else {
-      console.log("댓글 내용을 입력해주세요.");
+      alert("댓글은 30자 이하여야 합니다.");
     }
+  } else {
+    alert("댓글 내용을 입력해주세요.");
+  }
   };
 
   const handleDeleteComment = (commentNo) => {
@@ -87,7 +91,6 @@ const Gallerycomment = ({ boardNo }) => {
         console.error(error);
       });
   };
-console.log(comments);
   return (
     <>
       <div className="gcomment-list">

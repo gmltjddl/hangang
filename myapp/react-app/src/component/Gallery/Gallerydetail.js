@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./css/Gallerydetail.css";
 import axios from "axios";
-import { Modal, Button, Overlay } from "react-bootstrap";
+import { Modal, Overlay } from "react-bootstrap";
 import Gallerycomment from "../Comment/Gallerycomment";
 import LikeButton from "../Like/Like";
 import FollowButton from "../Follow/Follow";
@@ -97,9 +97,12 @@ const handledelete = async () => {
       console.error(error);
     }
   };
-
+const handleClose = () => {
+    onHide();
+}
 
 return (
+    
     <div className="gdetail-modal-box">
         <Modal
             show={show}
@@ -117,10 +120,22 @@ return (
                                 <div className="gheadprofile"></div>
                                 
                                 <div className="gheaduser">{nickName}</div>
-                                <div className="gdelete">
-                                    <button id ="gdeletebtn" className="gdeletebnt" onClick={handledelete}>삭제</button>
-                                </div>
+                                {userId === user.no && (
+                                        <div className="gdelete">
+                                        <button
+                                            id="gdeletebtn"
+                                            className="gdeletebnt"
+                                            onClick={handledelete}
+                                        >
+                                            삭제
+                                        </button>
+                                        
+                                        </div>
+                                    )}
+                                    {(userId !== user.no) && (
                                     <FollowButton boardNo={boardNo} userId={userId}/>
+                                     )}
+                                
                             </div>
                             <div className="gbody">
                                 <div className="gdetail-image-container">
@@ -141,6 +156,7 @@ return (
                                     </div>
                                 </div>
                             </div>
+                   
                             <div className="gbodybnt">
                                 <button className="glikebnt">
                                     <LikeButton boardNo={boardNo}/>
@@ -161,10 +177,9 @@ return (
                                     />
                                     )}
                                 </div>
-                           
                         </div>
                     </div>
-                    <div className="x-container">
+                    <div className="x-container" onClick={handleClose}>
                     <div></div>
                     <div></div>
                     </div>

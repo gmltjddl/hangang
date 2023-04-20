@@ -38,7 +38,7 @@ const FollowButton = ({ boardNo, userId }) => {
       alert("로그인을 해주세요");
      return;
      } else if(userId == user.no) {
-      alert("내꺼다");
+      alert("내 게시글 입니다");
       return;
      }
 

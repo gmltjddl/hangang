@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useContext} from "react";
 import './css/Gallerywriting.css';
 import { Modal } from "react-bootstrap";
 import axios from 'axios';
+import Usercontext from '../../Usercontext';
 
 const Gallerywriting = ({ show, onHide }) => {
+ 
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -12,6 +14,8 @@ const Gallerywriting = ({ show, onHide }) => {
   const imageInput = useRef();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const selectedImageUrl = previewImages[selectedImageIndex];
+  const user = useContext(Usercontext);
+
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -42,6 +46,7 @@ const Gallerywriting = ({ show, onHide }) => {
     setPreviewImages(previewImages);
   };
   const handleSubmit = (event) => {
+
     event.preventDefault();
     const formData = new FormData();
     formData.append("title", title);

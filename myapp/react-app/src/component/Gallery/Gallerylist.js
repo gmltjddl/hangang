@@ -14,10 +14,10 @@ const Gallerylist = () => {
   const [loading, setLoading] = useState(false);
   const [writingmodalOn, setwritingmodalOn] = useState(false);
   const [detailmodalOn, setdetailmodalOn] = useState(false);
+  const [isCommentAddVisible, setIsCommentAddVisible] = useState(false);
   const user = useContext(Usercontext);
 
   const fetchData = () => {
-    console.log(user);
     setLoading(true);
     // 데이터를 가져오는 비동기 API 호출 (예: 서버 API)
     axios
@@ -55,6 +55,10 @@ const Gallerylist = () => {
     };
   }, []); // 컴포넌트가 마운트/언마운트될 때만 스크롤 이벤트 리스너 추가/제거
 
+  const toggleCommentAddVisibility = () => {
+    setIsCommentAddVisible(!isCommentAddVisible);
+  };
+
   return (
     <div className="body-back">
       <div className="gall-list-wrap">
@@ -62,12 +66,22 @@ const Gallerylist = () => {
           show={writingmodalOn}
           onHide={() => setwritingmodalOn(false)}
         />
-        <Button
-          className="Gallerylist-Button"
-          onClick={() => setwritingmodalOn(true)}
-        >
-          Writing
-        </Button>
+        {user.loggedIn ? (
+          <Button
+            className="Gallerylist-Button"
+            onClick={() => setwritingmodalOn(true)}
+          >
+            Writing
+          </Button>
+        ) : (
+          <Button
+            className="Gallerylist-Button"
+            onClick={() => alert("로그인을 해주세요.")}
+          >
+            Writing
+          </Button>
+        )}
+
       </div>
       <div className="gall-list-table-wrap">
         {data.map((item) => (
