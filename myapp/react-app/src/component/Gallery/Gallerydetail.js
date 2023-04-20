@@ -37,6 +37,9 @@ const fetchComments = () => {
             console.error(error);
         });
 };
+const toggleCommentAddVisibility = () => {
+    setIsCommentAddVisible(!isCommentAddVisible);
+  };
 
 useEffect(() => {
     axios 
@@ -141,13 +144,14 @@ return (
                             <div className="gbodybnt">
                                 <button className="glikebnt">
                                     <LikeButton boardNo={boardNo}/>
-                                
                                 </button>
+                            <button className="gcommentbnt" onClick={toggleCommentAddVisibility}></button>
                             </div>
                             <div className="gbecontent">
                                 {content}
                             </div>
                             <div className="gcomment-list">
+                            {isCommentAddVisible && (
                                     <Gallerycomment
                                         boardNo={boardNo}
                                         comments={comments}
@@ -155,6 +159,7 @@ return (
                                         setComments={setComments}
                                         fetchComments={fetchComments}
                                     />
+                                    )}
                                 </div>
                            
                         </div>

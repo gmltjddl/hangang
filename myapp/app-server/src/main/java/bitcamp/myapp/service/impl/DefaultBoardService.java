@@ -41,6 +41,10 @@ public class DefaultBoardService implements BoardService {
     }
     return b;
   }
+  @Override
+  public List<Board> listByUser(String keyword, int userId) {
+    return boardDao.findByUserId(keyword, userId);
+  }
 
   @Transactional
   @Override

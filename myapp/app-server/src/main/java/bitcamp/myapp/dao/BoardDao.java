@@ -2,6 +2,7 @@ package bitcamp.myapp.dao;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import bitcamp.myapp.vo.Board;
 
 @Mapper
@@ -12,6 +13,7 @@ public interface BoardDao {
   void increaseViewCount(int no);
   int update(Board b);
   int delete(int no);
+  List<Board> findByUserId(@Param("keyword") String keyword, @Param("userId") int userId);
 }
 
 

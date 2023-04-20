@@ -99,6 +99,14 @@ public class BoardController {
           .setErrorCode(ErrorCode.rest.NO_DATA);
     }
   }
+  @GetMapping("/user/{userId}")
+  public Object listByUser(@PathVariable int userId, String keyword) {
+    log.debug("BoardController.listByUser() 호출됨!");
+
+    return new RestResult()
+        .setStatus(RestStatus.SUCCESS)
+        .setData(boardService.listByUser(keyword, userId));
+  }
 
   @PutMapping("{no}")
   public Object update(

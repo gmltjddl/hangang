@@ -10,7 +10,7 @@ public interface BoardService {
   Board get(int no);
   void update(Board board);
   void delete(int no);
-
+  public List<Board> listByUser(String keyword, int userId);
   BoardFile getFile(int fileNo);
   void deleteFile(int fileNo);
 }

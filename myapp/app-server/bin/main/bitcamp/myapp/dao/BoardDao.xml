@@ -73,6 +73,34 @@
     b.board_id=#{no}
   </select>
   
+  <select id="findByUserId" resultMap="boardMap" parameterType="map">
+    select 
+      b.board_id, 
+      b.title, 
+      b.writer,
+      b.content,
+      b.created_date, 
+      b.view_cnt,
+      m.member_id,
+      m.name,
+      (select nick from hms_mem where member_id = b.writer) nickName,
+      bf.boardfile_id,
+      bf.filepath, 
+      bf.origin_filename,
+      bf.mime_type
+    from 
+      hms_mem m
+      inner join hms_gall b on m.member_id = b.writer
+      left outer join hms_gall_file bf on b.board_id = bf.board_id
+    where
+      m.member_id = #{userId}
+    <if test="keyword != null and keyword != ''">
+      AND (b.title LIKE CONCAT('%', #{keyword}, '%') OR b.content LIKE CONCAT('%', #{keyword}, '%'))
+    </if>
+    order by
+    b.board_id desc
+  </select>
+  
   <update id="increaseViewCount" parameterType="int">
     update hms_gall set
       view_cnt = view_cnt + 1
