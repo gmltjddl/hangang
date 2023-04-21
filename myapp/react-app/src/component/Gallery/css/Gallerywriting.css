@@ -302,6 +302,21 @@ input#file-upload-button {
   /* 미리보기 이미지의 높이와 동일하게 설정 */
   padding: 5px;
   border-radius: 15px;
-
+}
+.Gallerymodify-Button{
+  width: 75px;
+  height: 30px;
+  background-color: #0095f6;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  top:14px;
+  left:240px;
+  vertical-align: middle;
 
 }

@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./css/Gallerydetail.css";
 import axios from "axios";
-import { Modal, Overlay } from "react-bootstrap";
+import { Modal, Button,Overlay } from "react-bootstrap";
 import Gallerycomment from "../Comment/Gallerycomment";
 import LikeButton from "../Like/Like";
 import FollowButton from "../Follow/Follow";
 import Usercontext from '../../Usercontext';
+import Gallerymodify from './Gallerymodify';
+
 
 const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId }) => {
     const [isHeartActive, setIsHeartActive] = useState(false);
@@ -20,7 +22,8 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId }) => {
     const [comments, setComments] = useState([]);
     const [isCommentAddVisible, setIsCommentAddVisible] = useState(false);
     const user = useContext(Usercontext);
-    
+    const [modifymodalOn, setmodifymodalOn] = useState(false);
+
 // 이미지 이동 함수
 
 const fetchComments = () => {
@@ -86,11 +89,11 @@ const handledelete = async () => {
       return;
      }
 
-    try {
-      const response = await axios.delete(`http://localhost:8080/web/boards/${boardNo}`);
-      if (response.status === 200) {
-          console.log(response.data, 'delete요청');
-        window.location.href="./Gallery";
+     try {
+        const response = await axios.delete(`http://localhost:8080/web/boards/${boardNo}`);
+        if (response.status === 200) {
+            console.log(response.data, 'delete요청');
+        //   window.location.href="./Gallery";
         
       }
     } catch (error) {
@@ -120,6 +123,19 @@ return (
                                 <div className="gheadprofile"></div>
                                 
                                 <div className="gheaduser">{nickName}</div>
+                              
+                                <Gallerymodify show={modifymodalOn}
+                                                    onHide={() => setmodifymodalOn(false)} 
+                                                    boardNo={boardNo}
+                                                    userId={userId}/>
+                            {userId === user.no && (
+                                    <Button
+                                        className="Gallerymodify-Button"
+                                        onClick={() => setmodifymodalOn(true)}
+                                    >
+                                         수정
+                                    </Button>
+                                )}
                                 {userId === user.no && (
                                         <div className="gdelete">
                                         <button
