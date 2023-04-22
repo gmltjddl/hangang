@@ -9,6 +9,7 @@ import Reservation from './pages/Reservation';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Usercontext, { initialUser } from './Usercontext';
 import axios from "axios";
+import Header from './component/Header/Header';
 
 const HANGANG = () => {
   const [user, setUser] = useState(initialUser);
@@ -20,7 +21,13 @@ const HANGANG = () => {
       const result = response.data;
       // console.log(response.data.data);
       if (result.status === "success") {
-        
+        let login = document.getElementById("login");
+        login.style.display = "none";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        let logout = document.getElementById("logout");
+        logout.style.display = "";
+        let mypage = document.getElementById("mypage");
+        mypage.style.display = "";
+
         setUser({
           no:result.data.no,
           name:result.data.name,
@@ -33,7 +40,14 @@ const HANGANG = () => {
           createdDate:result.data.createdDate,
           loggedIn: true
         });
+
       } else {
+        let login = document.getElementById("login");
+        login.style.display = "";
+        let logout = document.getElementById("logout");
+        logout.style.display = "none";
+        let mypage = document.getElementById("mypage");
+        mypage.style.display = "none";
         setUser(initialUser);
       }
     } catch (error) {
@@ -47,6 +61,7 @@ const HANGANG = () => {
 
   return (
     <Usercontext.Provider value={user}>
+        <Header />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path="/Login" element={<Login />} />

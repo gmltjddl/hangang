@@ -96,10 +96,11 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
           formData.append("introduce", introduce);
           formData.append("hobby", hobby);
     
-          // 이미지 파일을 formData에 추가합니다.
-          files.forEach((file) => {
-            formData.append("files", file);
-          });
+          if (files.length >= 0) {
+            files.forEach((file) => {
+              formData.append("files", file);
+            });
+          }
     
           const response = await axios.put(
             `http://localhost:8080/web/members/${user.no}`, // PUT 요청을 위한 엔드포인트로 변경하십시오.
@@ -154,12 +155,7 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
       setSelectedImageIndex(index);
     };
     const handleReset = () => {
-      setName([]);
-      setNickName([]);
-      setIntroduce([]);
-      setInterest([]);
-      setHobby([]);
-      setImage([]);
+    onHide();
    
     };
 

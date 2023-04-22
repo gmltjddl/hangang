@@ -9,7 +9,6 @@ import Benefits from '../component/Benefits/Benefits';
 const Home = () => {
   return (
     <div>
-      <Header />
       <Banner />
       <Content />
       <Benefits />

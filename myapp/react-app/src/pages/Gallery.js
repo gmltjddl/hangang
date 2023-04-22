@@ -14,7 +14,6 @@ const Gallery = () => {
   return (
 
     <div>
-      <Header />
       <Gallerylist />
       <Gallerywriting/>
     </div>

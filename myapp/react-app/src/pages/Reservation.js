@@ -54,7 +54,6 @@ const Reservation = () => {
 
   return (
     <>
-      <Header />
       <div className='Reservation-body'>
         <div className="Reservation-group">
           {images.map((image, index) => (

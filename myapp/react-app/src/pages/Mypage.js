@@ -14,7 +14,6 @@ const Mypage = () => {
   return (
    
     <div>
-      <Header />
       <Myintro />
       <Mypagebox />
     </div>
