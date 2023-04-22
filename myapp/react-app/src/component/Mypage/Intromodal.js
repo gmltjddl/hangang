@@ -6,17 +6,34 @@ import Usercontext from '../../Usercontext';
 
 
 const Intromodal = ({ show, onHide,onUpdate }) => {
-    const [name, setName] = useState("");
-    const [nickName, setNickName] = useState("");
-    const [introduce, setIntroduce] = useState("");
-    const [interest, setInterest] = useState("");
-    const [hobby, setHobby] = useState("");
-    const [image,setImage] = useState("");
-    const [files, setFiles] = useState([]);
-    const [previewImages, setPreviewImages] = useState([]);
-    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-    const imageInput = useRef(null);
-    const user = useContext(Usercontext);
+  const saveToLocalStorage = (key, value) => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const loadFromLocalStorage = (key, defaultValue) => {
+    try {
+      const value = localStorage.getItem(key);
+      return value ? JSON.parse(value) : defaultValue;
+    } catch (error) {
+      console.error(error);
+      return defaultValue;
+    }
+  };
+
+  const [name, setName] = useState(loadFromLocalStorage("name", ""));
+  const [nickName, setNickName] = useState(loadFromLocalStorage("nickName", ""));
+  const [introduce, setIntroduce] = useState(loadFromLocalStorage("introduce", ""));
+  const [interest, setInterest] = useState(loadFromLocalStorage("interest", ""));
+  const [hobby, setHobby] = useState(loadFromLocalStorage("hobby", ""));
+  const [image, setImage] = useState(loadFromLocalStorage("image", ""));
+  const [files, setFiles] = useState([]);
+  const [previewImages, setPreviewImages] = useState([]);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const imageInput = useRef(null);
+  const user = useContext(Usercontext);
     // console.log(user.no);
 
     useEffect(() => {
@@ -43,6 +60,31 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
           // 에러 처리
         });
     }, []);
+
+    useEffect(() => {
+      saveToLocalStorage("name", name);
+    }, [name]);
+  
+    useEffect(() => {
+      saveToLocalStorage("nickName", nickName);
+    }, [nickName]);
+  
+    useEffect(() => {
+      saveToLocalStorage("introduce", introduce);
+    }, [introduce]);
+  
+    useEffect(() => {
+      saveToLocalStorage("interest", interest);
+    }, [interest]);
+  
+    useEffect(() => {
+      saveToLocalStorage("hobby", hobby);
+    }, [hobby]);
+
+    useEffect(() => {
+      saveToLocalStorage("image", image);
+    }, [image]);
+
   
     const handleUpdate = () => {
       const updateUserData = async () => {
@@ -73,6 +115,7 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
           console.log(result);
           if (result.status === "success") {
             alert("수정되었습니다");
+            window.location.href="./mypage"
             onUpdate(); 
             onHide();
           } else {

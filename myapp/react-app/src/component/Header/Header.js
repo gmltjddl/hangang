@@ -54,8 +54,11 @@ import './css/Header.css';
       });
   }
   
-
+  const updateNickname = (newNickname) => {
+    setNickName(newNickname);
+  };
   return (
+    
     <div>
     <header>
       <nav>
