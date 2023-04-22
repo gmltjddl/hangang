@@ -231,7 +231,11 @@ div.modal-body {
   cursor: pointer;
   font-weight: bold;
   text-align: center;
-  background-image: url(http://tbxctpxzerdz16840769.cdn.ntruss.com/defaultprofile.jpg?type=f&w=260&h=260&faceopt=true&ttype=jpg);
+  /* background-image: url(http://tbxctpxzerdz16840769.cdn.ntruss.com/defaultprofile.jpg?type=f&w=260&h=260&faceopt=true&ttype=jpg); */
+}
+.introprofile-preview-image-box img{
+  width:200px;
+  height:200px;
 }
 .introprofile-preview-image-box span{
   position: relative;

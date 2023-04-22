@@ -19,15 +19,15 @@ const Mypostlist = ({ show, onHide }) => {
   const fetchData = async () => {
 
     setLoading(true);
-    console.log(user.no);
+    // console.log(user.no);
     // 
 
     const response = await axios.get(`http://localhost:8080/web/boards/user/${user.no}`)
       .then((response) => {
         setData([...data, ...response.data.data.sort((a, b) => b.no - a.no)]); // 번호를 내림차순으로 정렬하여 데이터 업데이트
         setLoading(false);
-        console.log(response);
-        console.log(response.data.data);
+        // console.log(response);
+        // console.log(response.data.data);
 
       })
       .catch((error) => {

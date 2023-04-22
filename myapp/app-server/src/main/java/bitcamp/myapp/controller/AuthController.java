@@ -69,11 +69,6 @@ public class AuthController {
           .setStatus(RestStatus.FAILURE);
     }
   }
-  @GetMapping("hello")
-  public String hello() {
-    return  "HANGANG";
-  }
-
 }
 
 

@@ -22,18 +22,6 @@ public class DefaultMemberService implements MemberService {
   public void add(Member member) {
     memberDao.insert(member);
   }
-  @Override
-  public void upload(Member member) {
-    memberDao.upload(member);
-    if (member.getAttachedFiles().size() > 0) {
-      for (MemberFile memberFile : member.getAttachedFiles()) {
-        memberFile.setMemberNo(member.getNo());
-      }
-      memberFileDao.insertList(member.getAttachedFiles());
-    }
-  }
-
-
 
   @Override
   public List<Member> list(String keyword) {
@@ -54,12 +42,22 @@ public class DefaultMemberService implements MemberService {
     return memberDao.findByEmailAndPassword(paramMap);
   }
 
+  //  @Transactional
+  //  @Override
+  //  public void update(Member member) {
+  //    if (memberDao.update(member) == 1 ) {
+  //    } else {
+  //      throw new RuntimeException("회원이 존재하지 않습니다.");
+  //    }
+  //  }
   @Transactional
   @Override
   public void update(Member member) {
-    if (memberDao.update(member) == 1 ) {
-    } else {
-      throw new RuntimeException("회원이 존재하지 않습니다.");
+    if (memberDao.update(member) == 0) {
+      throw new RuntimeException("게시글이 존재하지 않습니다!");
+    }
+    if (member.getAttachedFiles().size() > 0) {
+      memberFileDao.insertList(member.getAttachedFiles());
     }
   }
 

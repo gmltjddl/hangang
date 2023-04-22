@@ -1,4 +1,4 @@
-import React, { useState ,useContext} from 'react';
+import React, { useEffect,useState ,useContext} from 'react';
 import Intromodal from './Intromodal';
 import { Button, Container } from "react-bootstrap";
 import { Link } from 'react-router-dom';
@@ -9,14 +9,38 @@ import Usercontext from '../../Usercontext';
 
 
 const Myintro = () => {
+  const [name, setName] = useState("");
+  const [nickName, setNickName] = useState("");
+  const [introduce, setIntroduce] = useState("");
+  const [interest, setInterest] = useState("");
+  const [hobby, setHobby] = useState("");
+  const [image,setImage] = useState("");
   const [IntromodalOn, setIntromodalOn] = useState(false);
-  const [introduce, setIntroduce] = useState([]);
-  const [interest, setInterest] = useState([]);
-  const [hobby, setHobby] = useState([]);
   const [createdDate, setCreatedDate] = useState([]);
   const user = useContext(Usercontext);
 
-
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/web/members/${user.no}`)
+      .then((response) => {
+        return response.data;
+      })
+      .then((result) => {
+        if (result.status === "success") {
+          setName(result.data.name);
+          setNickName(result.data.nickName);
+          setIntroduce(result.data.introduce);
+          setInterest(result.data.interest);
+          setHobby(result.data.hobby);
+          setCreatedDate(result.data.createdDate);
+          setImage(result.data.attachedFiles[0].filepath);
+        } else {
+        }
+      })
+      .catch((error) => {
+        // 에러 처리
+      });
+  }, []);
 
   return (
     <>
@@ -32,42 +56,43 @@ const Myintro = () => {
         </div>
         <div className="line"></div>
         <div className="intro-img">
+        <img src={image} alt="프로필 이미지" />
         </div>
         
         <div className="intro-write-wrap">
           <span>이름</span>
           <div className="intro-name">
-            {user.name}
+        {name}
           </div>
         </div>
         <div className="intro-write-wrap">
           <span>닉네임</span>
           <div className="intro-nick">
-            {user.nickName}
+            {nickName}
           </div>
         </div>
         <div className="intro-write-wrap">
           <span>소개글</span>
           <div className="intro-intro">
-            {user.introduce}
+            {introduce}
           </div>
         </div>
         <div className="intro-write-wrap">
           <span>관심분야</span>
           <div className="intro-inter">
-          {user.interest}
+          {interest}
           </div>
         </div>
         <div className="intro-write-wrap">
           <span>취미</span>
           <div className="intro-hobby">
-            {user.hobby}
+            {hobby}
           </div>
         </div>
         <div className="intro-write-wrap">
           <span>가입일</span>
           <div className="intro-date">
-            {user.createdDate}
+            {createdDate}
           </div>
         </div>
 

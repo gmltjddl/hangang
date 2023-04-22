@@ -11,16 +11,20 @@ const Intromodal = ({ show, onHide }) => {
     const [introduce, setIntroduce] = useState("");
     const [interest, setInterest] = useState("");
     const [hobby, setHobby] = useState("");
+    const [image,setImage] = useState("");
     const [files, setFiles] = useState([]);
     const [previewImages, setPreviewImages] = useState([]);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const imageInput = useRef(null);
-  
+    const user = useContext(Usercontext);
+    // console.log(user.no);
+
     useEffect(() => {
       axios
-        .get("http://localhost:8080/web/auth/user")
+        .get(`http://localhost:8080/web/members/${user.no}`)
         .then((response) => {
           return response.data;
+          
         })
         .then((result) => {
           if (result.status === "success") {
@@ -29,6 +33,8 @@ const Intromodal = ({ show, onHide }) => {
             setIntroduce(result.data.introduce);
             setInterest(result.data.interest);
             setHobby(result.data.hobby);
+            setImage(result.data.attachedFiles[0].filepath);
+            
 
           } else {
           }
@@ -47,14 +53,14 @@ const Intromodal = ({ show, onHide }) => {
           formData.append("interest", interest);
           formData.append("introduce", introduce);
           formData.append("hobby", hobby);
-  
+    
           // 이미지 파일을 formData에 추가합니다.
           files.forEach((file) => {
             formData.append("files", file);
           });
-  
-          const response = await axios.post(
-            "http://localhost:8080/web/members/upload",
+    
+          const response = await axios.put(
+            `http://localhost:8080/web/members/${user.no}`, // PUT 요청을 위한 엔드포인트로 변경하십시오.
             formData,
             {
               headers: {
@@ -62,12 +68,12 @@ const Intromodal = ({ show, onHide }) => {
               },
             }
           );
-  
+    
           const result = response.data;
           console.log(result);
           if (result.status === "success") {
-  
             alert("수정되었습니다");
+            window.location.href="./mypage"
           } else {
             alert("수정실패");
           }
@@ -75,7 +81,7 @@ const Intromodal = ({ show, onHide }) => {
           alert("연결실패");
         }
       };
-  
+    
       updateUserData();
     };
   
@@ -86,7 +92,7 @@ const Intromodal = ({ show, onHide }) => {
     const handleFileChange = (event) => {
       const selectedFiles = Array.from(event.target.files);
       setFiles(selectedFiles);
-  
+    
       // 미리보기 이미지 생성
       const imageFiles = selectedFiles.filter((file) =>
         file.type.startsWith("image/")
@@ -95,6 +101,9 @@ const Intromodal = ({ show, onHide }) => {
         URL.createObjectURL(imageFile)
       );
       setPreviewImages(previewImages);
+      if (imageFiles.length > 0) {
+        setImage(URL.createObjectURL(imageFiles[0]));
+      }
     };
   
     const handleImageClick = (index) => {
@@ -124,7 +133,8 @@ const Intromodal = ({ show, onHide }) => {
               ref={imageInput}
             />
             <div className="introprofile-preview-image-box" onClick={onCickImageUpload}>
-              <span className="">사진 추가하기</span>
+              <img src={image}></img>
+              <span className=""> 사진 추가하기</span>
             </div>
             {previewImages.length > 0 && (
               <img

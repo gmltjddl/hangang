@@ -60,10 +60,10 @@ const Gallerywriting = ({ show, onHide }) => {
         const result = response.data;
         if (result.status === "success") {
           window.location.href="./gallery"
-          console.log(result.data);
+          // console.log(result.data);
         } else {
           alert("입력 실패!");
-          console.log(result.data);
+          // console.log(result.data);
         }
       })
       .catch((exception) => {

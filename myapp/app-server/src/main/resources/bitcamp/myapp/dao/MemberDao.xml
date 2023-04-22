@@ -39,22 +39,6 @@
     values(#{email},sha2(#{password},256),#{name},#{tel},#{nickName},#{interest},#{introduce},#{hobby})
   </insert>
   
-   <insert id="upload" parameterType="member" 
-  useGeneratedKeys="true" keyProperty="no" keyColumn="member_id">
-     select 
-      m.member_id, 
-      mf.memberfile_id,
-      mf.filepath, 
-      mf.origin_filename,
-      mf.mime_type
-    from 
-      hms_mem m
-      left outer join hms_mem_file mf on m.member_id = mf.member_id
-    where
-    m.member_id=#{no}
-  </insert>
-  
-
   <select id="findAll" resultMap="memberMap">
     select 
       member_id, 
@@ -108,19 +92,26 @@
 
   <select id="findByNo" parameterType="int" resultMap="memberMap">
     select 
-      member_id,
-      email,
-      name,
-      nick,
-      tel,
-      intro,
-      inter,
-      hob 
-      created_date 
+      m.member_id,
+      m.email,
+      m.name,
+      m.nick,
+      m.tel,
+      m.intro,
+      m.inter,
+      m.hob,
+      mf.memberfile_id,
+      mf.filepath, 
+      mf.origin_filename,
+      mf.mime_type,
+      m.created_date
     from 
-      hms_mem
+      hms_mem m
+       left outer join hms_mem_file mf on m.member_id = mf.member_id
     where 
-      member_id=#{no}
+      m.member_id=#{no}
+      order by
+      mf.memberfile_id desc
   </select>
   
   <update id="update" parameterType="member">

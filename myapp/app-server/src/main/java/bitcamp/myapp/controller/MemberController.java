@@ -45,8 +45,17 @@ public class MemberController {
 
   private String bucketName = "hangang-bucket";
 
-  @PostMapping("/upload")
-  public Object upload(
+  @GetMapping("{no}")
+  public Object view(@PathVariable int no) {
+    return new RestResult()
+        .setStatus(RestStatus.SUCCESS)
+        .setData(memberService.get(no));
+  }
+
+
+  @PutMapping("{no}")
+  public Object update(
+      @PathVariable int no,
       Member member,
       List<MultipartFile> files,
       HttpSession session) throws Exception{
@@ -58,7 +67,7 @@ public class MemberController {
 
     List<MemberFile> memberFiles = new ArrayList<>();
     for (MultipartFile file : files) {
-      String filename = objectStorageService.uploadFile("hangang-bucket", "gallery/", file);
+      String filename = objectStorageService.uploadFile("hangang-bucket", "member/", file);
       if (filename == null) {
         continue;
       }
@@ -72,7 +81,7 @@ public class MemberController {
     }
     member.setAttachedFiles(memberFiles);
 
-    memberService.upload(member);
+    memberService.update(member);
 
     return new RestResult()
         .setStatus(RestStatus.SUCCESS);
@@ -86,27 +95,22 @@ public class MemberController {
         .setData(memberService.list(keyword));
   }
 
-  @GetMapping("{no}")
-  public Object view(@PathVariable int no) {
-    return new RestResult()
-        .setStatus(RestStatus.SUCCESS)
-        .setData(memberService.get(no));
-  }
 
-  @PutMapping("{no}")
-  public Object update(
-      @PathVariable int no,
-      @RequestBody Member member) {
 
-    log.debug(member);
-
-    // 보안을 위해 URL 번호를 게시글 번호로 설정한다.
-    member.setNo(no);
-
-    memberService.update(member);
-    return new RestResult()
-        .setStatus(RestStatus.SUCCESS);
-  }
+  //  @PutMapping("{no}")
+  //  public Object update(
+  //      @PathVariable int no,
+  //      @RequestBody Member member) {
+  //
+  //    log.debug(member);
+  //
+  //    // 보안을 위해 URL 번호를 게시글 번호로 설정한다.
+  //    member.setNo(no);
+  //
+  //    memberService.update(member);
+  //    return new RestResult()
+  //        .setStatus(RestStatus.SUCCESS);
+  //  }
 
   @DeleteMapping("{no}")
   public Object delete(@PathVariable int no) {
