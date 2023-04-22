@@ -15,10 +15,13 @@ public class Board {
 
   @JsonFormat(
       shape = Shape.STRING,
-      pattern = "yyyy-MM-dd")
+      pattern = "yyyy-MM-dd",
+      timezone = "Asia/Seoul")
+
   private Date createdDate;
 
   private int viewCount;
+  private int likes;
   private int writerNo;
   private int commentNo;
   private String writerName;

@@ -1,0 +1,50 @@
+.gall-img-warp{
+position: absolute;
+display: inline-block;
+left:5px;
+}
+
+.gall-img-warp img{
+  position: absolute;
+  display: inline-block;
+  left:5px;
+  }
+
+.gall-writer-wrap{
+position: absolute;
+display: inline-block;
+left :50px;
+}
+.gall-writer-wrap p{
+  position: absolute;
+  display: inline-block;
+  width: 120px;
+  border:1px solid;
+}
+
+.gall-like-wrap{
+  position: absolute;
+  display: inline-block;
+  left:300px;
+}
+.gall-like-wrap p{
+  position: absolute;
+  display: inline-block;
+  width:40px;
+  border:1px solid;
+  text-align: right
+}
+
+.gall-date-wrap{
+  position: absolute;
+  display: inline-block;
+  top:345px;
+  left:250px;
+}
+.gall-date-wrap p{
+  position: absolute;
+  display: inline-block;
+  border:1px solid;
+  width:80px;
+  text-align: right;
+}

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import GalleryItem from "./Galleryitem";
 import Usercontext from '../../Usercontext';
 
+
 const Gallerylist = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -16,17 +17,17 @@ const Gallerylist = () => {
   const [detailmodalOn, setdetailmodalOn] = useState(false);
   const [isCommentAddVisible, setIsCommentAddVisible] = useState(false);
   const user = useContext(Usercontext);
-
+  const [searchQuery, setSearchQuery] = useState("");
   const fetchData = () => {
     setLoading(true);
     // 데이터를 가져오는 비동기 API 호출 (예: 서버 API)
     axios
       .get("http://localhost:8080/web/boards")
       .then((response) => {
-        // console.log(response.data.data);
+        console.log(response.data);
         setData([...data, ...response.data.data.sort((a, b) => b.no - a.no)]); // 번호를 내림차순으로 정렬하여 데이터 업데이트
         setLoading(false);
-        // console.log(response.data.data);
+
 
       })
       .catch((error) => {
@@ -58,10 +59,32 @@ const Gallerylist = () => {
   const toggleCommentAddVisibility = () => {
     setIsCommentAddVisible(!isCommentAddVisible);
   };
+  const handleSearchInputChange = (event) => { // Step 2: Create an event handler to update the search query state
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredData = data.filter(item =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
 
   return (
     <div className="body-back">
       <div className="gall-list-wrap">
+        <div className="ginput-wrap">
+          <div className="ginput-data">
+  
+         <input
+          required
+          value={searchQuery}
+          className="gsearch-input"
+          onChange={handleSearchInputChange}/>
+          <div class= "underline"></div>
+          <label>#태그</label>
+        </div>
+        </div>
+
         <Gallerywriting
           show={writingmodalOn}
           onHide={() => setwritingmodalOn(false)}
@@ -84,8 +107,8 @@ const Gallerylist = () => {
 
       </div>
       <div className="gall-list-table-wrap">
-        {data.map((item) => (
-          <GalleryItem item={item}/>
+      {filteredData.map((item) => (
+          <GalleryItem item={item} />
         ))}
         {loading && <div>Loading...</div>}
       </div>

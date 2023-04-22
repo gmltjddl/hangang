@@ -36,6 +36,13 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
   const user = useContext(Usercontext);
     // console.log(user.no);
 
+  const [initialName, setInitialName] = useState(name);
+  const [initialNickName, setInitialNickName] = useState(nickName);
+  const [initialIntroduce, setInitialIntroduce] = useState(introduce);
+  const [initialInterest, setInitialInterest] = useState(interest);
+  const [initialHobby, setInitialHobby] = useState(hobby);
+  const [initialImage, setInitialImage] = useState(image);
+
     useEffect(() => {
       axios
         .get(`http://localhost:8080/web/members/${user.no}`)
@@ -85,6 +92,17 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
       saveToLocalStorage("image", image);
     }, [image]);
 
+    useEffect(() => {
+      if (show) {
+        setInitialName(name);
+        setInitialNickName(nickName);
+        setInitialIntroduce(introduce);
+        setInitialInterest(interest);
+        setInitialHobby(hobby);
+        setInitialImage(image);
+      }
+      }, [show]);
+
   
     const handleUpdate = () => {
       const updateUserData = async () => {
@@ -96,10 +114,13 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
           formData.append("introduce", introduce);
           formData.append("hobby", hobby);
     
-          if (files.length >= 0) {
+
+          if (files.length > 0) {
             files.forEach((file) => {
               formData.append("files", file);
             });
+          } else {
+            formData.append("files", new Blob([]), ''); // Send an empty file with a blank name
           }
     
           const response = await axios.put(
@@ -155,7 +176,13 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
       setSelectedImageIndex(index);
     };
     const handleReset = () => {
-    onHide();
+      setName(initialName);
+      setNickName(initialNickName);
+      setIntroduce(initialIntroduce);
+      setInterest(initialInterest);
+      setHobby(initialHobby);
+      setImage(initialImage);
+      onHide();
    
     };
 

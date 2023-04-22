@@ -13,10 +13,10 @@ public class Comment {
   private int boardNo;
   private int writerNo;
 
-
   @JsonFormat(
       shape = Shape.STRING,
-      pattern = "yyyy-MM-dd")
+      pattern = "yyyy-MM-dd",
+      timezone = "Asia/Seoul")
   private Date createdDate;
 
 }

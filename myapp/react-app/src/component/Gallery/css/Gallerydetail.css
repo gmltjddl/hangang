@@ -297,3 +297,13 @@ opacity:100%;
 .gdeletebnt:active{
   transform:scale(0.96);
 }
+.gview-cnt{
+position: absolute;
+display:inline-block;
+border:1px solid;
+width:50px;
+height:30px;
+left:280px;
+margin-top: 5px;
+text-align: right;
+}

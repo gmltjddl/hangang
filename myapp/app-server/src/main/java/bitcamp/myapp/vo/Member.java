@@ -19,7 +19,8 @@ public class Member {
   private String hobby;
   @JsonFormat(
       shape = Shape.STRING,
-      pattern = "yyyy-MM-dd")
+      pattern = "yyyy-MM-dd",
+      timezone = "Asia/Seoul")
   private Date createdDate;
   private List<MemberFile> attachedFiles;
 }

@@ -70,15 +70,15 @@ const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
       try {
       const response = axios.get(`http://localhost:8080/web/boards/${boardNo}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         return response.data;
     })
     .then((result) => {
       if (result.status === "success") {
-          console.log(result.data);
+          // console.log(result.data);
           // console.log(result.data.title)
           // console.log(result.data.content);
-          console.log(result.data.attachedFiles.map((file) => file.filepath));
+          // console.log(result.data.attachedFiles.map((file) => file.filepath));
           // setFilepath(result.data.data.attachedFiles[0].filepath);
           setTitle(result.data.title)
           setContent(result.data.content);

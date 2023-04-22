@@ -27,7 +27,7 @@ const HANGANG = () => {
         logout.style.display = "";
         let mypage = document.getElementById("mypage");
         mypage.style.display = "";
-
+        
         setUser({
           no:result.data.no,
           name:result.data.name,
@@ -48,6 +48,7 @@ const HANGANG = () => {
         logout.style.display = "none";
         let mypage = document.getElementById("mypage");
         mypage.style.display = "none";
+      
         setUser(initialUser);
       }
     } catch (error) {

@@ -9,11 +9,12 @@ import Usercontext from '../../Usercontext';
 import Gallerymodify from './Gallerymodify';
 
 
-const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId }) => {
+const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, viewCount}) => {
     const [isHeartActive, setIsHeartActive] = useState(false);
     const [nickName, setNickName] = useState("");
     const [filepath, setFilepath] = useState("");
     const [content, setContent] = useState("");
+    const [title, setTitle] = useState("");
     const [likes, setLikes] = useState(0);
     const [liked, setLiked] = useState(false);
     const [no, setNo] = useState(boardNo);
@@ -52,6 +53,8 @@ useEffect(() => {
         })
         .then((result) => {
             if (result.status === "success") {
+                console.log(result.data);
+                setTitle(result.data.title);
                 setNickName(result.data.writer.nickName);
                 setFilepath(result.data.attachedFiles[0].filepath);
                 setContent(result.data.content);
@@ -178,9 +181,15 @@ return (
                                     <LikeButton boardNo={boardNo}/>
                                 </button>
                             <button className="gcommentbnt" onClick={toggleCommentAddVisibility}></button>
+                            <div className="gview-cnt">
+                                {viewCount}
+                            </div>
                             </div>
                             <div className="gbecontent">
                                 {content}
+                            </div>
+                            <div className="gtag-list">
+                                {title}
                             </div>
                             <div className="gcomment-list">
                             {isCommentAddVisible && (
