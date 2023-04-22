@@ -5,6 +5,6 @@ export const initialUser = {
   loggedIn: false
 };
 
-const Usercontext = createContext();
+const Usercontext = createContext(initialUser);
 
 export default Usercontext;

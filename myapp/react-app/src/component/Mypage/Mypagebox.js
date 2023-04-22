@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import './css/Mypagebox.css';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import Introleftside from './Infomodal';
 import Mypostlist from './Mypostlist';
 
 import axios from "axios";
@@ -18,7 +17,7 @@ const Mypagebox = () => {
 
   return (
     <>
-      <Introleftside show={IntroleftsideOn} onHide={() => setIntroleftsideOn(false)} />
+
       <Mypostlist user={user} show={MypostlistOn} onHide={() => setMypostlistOn(false)} />
 
       <div className='box-wrap'>

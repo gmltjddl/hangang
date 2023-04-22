@@ -5,7 +5,7 @@ import axios from 'axios';
 import Usercontext from '../../Usercontext';
 
 
-const Intromodal = ({ show, onHide }) => {
+const Intromodal = ({ show, onHide,onUpdate }) => {
     const [name, setName] = useState("");
     const [nickName, setNickName] = useState("");
     const [introduce, setIntroduce] = useState("");
@@ -73,7 +73,8 @@ const Intromodal = ({ show, onHide }) => {
           console.log(result);
           if (result.status === "success") {
             alert("수정되었습니다");
-            window.location.href="./mypage"
+            onUpdate(); 
+            onHide();
           } else {
             alert("수정실패");
           }
@@ -109,6 +110,17 @@ const Intromodal = ({ show, onHide }) => {
     const handleImageClick = (index) => {
       setSelectedImageIndex(index);
     };
+    const handleReset = () => {
+      setName([]);
+      setNickName([]);
+      setIntroduce([]);
+      setInterest([]);
+      setHobby([]);
+      setImage([]);
+   
+    };
+
+
   return (
     <Modal
       show={show}
@@ -172,7 +184,7 @@ const Intromodal = ({ show, onHide }) => {
           </div>
           <div className="okno">
             <button className="modify" onClick={handleUpdate}>수정</button>
-            <button className="cancel">취소</button>
+            <button className="cancel"onClick={handleReset}>취소</button>
           </div>
         </div>
 

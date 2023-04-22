@@ -1,22 +1,23 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect,useContext} from 'react'
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import './css/Header.css';
+
  axios.defaults.withCredentials = true;
 
   function Header() {
    const [nickName, setNickName] = useState([]);
 
-
+   
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:8080/web/auth/user");
       const result = response.data;
       if (result.status === "success") {
-        setNickName(result.data.nickName);
+         setNickName(result.data.nickName);
     
         let login = document.getElementById("login");
-        login.style.display = "none";
+        login.style.display = "none";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
         let logout = document.getElementById("logout");
         logout.style.display = "";
         let mypage = document.getElementById("mypage");
@@ -39,7 +40,6 @@ import './css/Header.css';
     fetchData();
   }, []);
 
-  
   const logout = function handleLogout() {
     axios("http://localhost:8080/web/auth/logout")
       .then((response) => {
@@ -53,9 +53,8 @@ import './css/Header.css';
         // console.log(exception);
       });
   }
-  // console.log(data);
   
-  
+
   return (
     <div>
     <header>

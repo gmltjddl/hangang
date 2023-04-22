@@ -234,13 +234,17 @@ div.modal-body {
   /* background-image: url(http://tbxctpxzerdz16840769.cdn.ntruss.com/defaultprofile.jpg?type=f&w=260&h=260&faceopt=true&ttype=jpg); */
 }
 .introprofile-preview-image-box img{
-  width:200px;
-  height:200px;
+  width:260px;
+  height:260px;
+  border-radius: 125px;
 }
 .introprofile-preview-image-box span{
-  position: relative;
+  position: absolute;
   display: inline-block;
-  top:120px;
+  width:150px;
+  right:50px;
+  top:115px;
+
 }
 .introprofile-preview-image{
   position: absolute;
@@ -249,6 +253,13 @@ div.modal-body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 120px;
  
-
+}
+.intro-input-box{
+  position: relative;
+  display: inline-block;
+  bottom:70px;
+}
+.introprofile-preview-image{
+  position: relative;
 }
 

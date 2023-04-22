@@ -18,33 +18,40 @@ const Myintro = () => {
   const [IntromodalOn, setIntromodalOn] = useState(false);
   const [createdDate, setCreatedDate] = useState([]);
   const user = useContext(Usercontext);
+ 
+  const fetchUserData = () => {
+    if (user.loggedIn) {
+      axios
+        .get(`http://localhost:8080/web/members/${user.no}`)
+        .then((response) => {
+          return response.data;
+        })
+        .then((result) => {
+          if (result.status === "success") {
+            setName(result.data.name);
+            setNickName(result.data.nickName);
+            setIntroduce(result.data.introduce);
+            setInterest(result.data.interest);
+            setHobby(result.data.hobby);
+            setCreatedDate(result.data.createdDate);
+            setImage(result.data.attachedFiles[0].filepath);
+          } else {
+          }
+        })
+        .catch((error) => {
+          // 에러 처리
+        });
+    }
+  };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/web/members/${user.no}`)
-      .then((response) => {
-        return response.data;
-      })
-      .then((result) => {
-        if (result.status === "success") {
-          setName(result.data.name);
-          setNickName(result.data.nickName);
-          setIntroduce(result.data.introduce);
-          setInterest(result.data.interest);
-          setHobby(result.data.hobby);
-          setCreatedDate(result.data.createdDate);
-          setImage(result.data.attachedFiles[0].filepath);
-        } else {
-        }
-      })
-      .catch((error) => {
-        // 에러 처리
-      });
-  }, []);
+    fetchUserData();
+  }, [user]);
+
 
   return (
     <>
-      <Intromodal show={IntromodalOn} onHide={() => setIntromodalOn(false)} />
+      <Intromodal show={IntromodalOn} onHide={() => setIntromodalOn(false)} onUpdate={fetchUserData} />
 
       <div className="intro-wrap">
 
