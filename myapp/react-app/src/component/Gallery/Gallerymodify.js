@@ -17,6 +17,7 @@ const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
   const [images, setImages] = useState([]);
   const [newImages, setNewImages] = useState([]);
   const [imageFileNos, setImageFileNos] = useState([]);
+  const [selectedImageIndices, setSelectedImageIndices] = useState([]);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -51,17 +52,33 @@ const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
 
 
   const handleImageClick = (index) => {
-    if (window.confirm("이미지를 삭제하시겠습니까?")) {
-      removePreviewImage(index);
-  
-      if (index === selectedImageIndex) {
-        if (previewImages.length === 1) {
-          setSelectedImageIndex(-1);
-        } else if (index === previewImages.length - 1) {
-          setSelectedImageIndex((prevIndex) => prevIndex - 1);
+    if (selectedImageIndices.includes(index)) {
+      setSelectedImageIndices((prevSelectedImageIndices) =>
+        prevSelectedImageIndices.filter((i) => i !== index)
+      );
+    } else {
+      setSelectedImageIndices((prevSelectedImageIndices) => [...prevSelectedImageIndices, index]);
+    }
+  };
+
+  const removeSelectedImages = async (event) => {
+    event.preventDefault();
+    if (window.confirm("선택한 이미지를 삭제하시겠습니까?")) {
+      let removedImages = false;
+      // 선택된 인덱스의 이미지를 모두 삭제
+      for (const index of selectedImageIndices) {
+        const result = await removePreviewImage(index);
+        if (result) {
+          removedImages = true;
         }
-      } else if (selectedImageIndex > index) {
-        setSelectedImageIndex((prevIndex) => prevIndex - 1);
+      }
+      // 선택된 이미지 인덱스 초기화
+      setSelectedImageIndices([]);
+  
+      if (removedImages) {
+        alert("이미지가 삭제되었습니다.");
+      } else {
+        alert("이미지 삭제에 실패했습니다.");
       }
     }
   };
@@ -77,21 +94,22 @@ const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
         console.log(result.data);
   
         if (result.status === "success") {
-          alert("이미지가 삭제되었습니다.");
           setImages((prevImages) => prevImages.filter((_, i) => i !== index));
           setPreviewImages((prevPreviewImages) => prevPreviewImages.filter((_, i) => i !== index));
+          return true;
         } else {
-          alert("이미지 삭제에 실패했습니다.");
           console.log(result.data)
+          return false;
         }
       } catch (error) {
-        alert("이미지 삭제에 실패했습니다.");
+        return false;
       }
     } else { // 새로 추가된 이미지 삭제
       const newIndex = index - images.length;
       setNewImages((prevNewImages) => prevNewImages.filter((_, i) => i !== newIndex));
       setFiles((prevFiles) => prevFiles.filter((_, i) => i !== newIndex));
       setPreviewImages((prevPreviewImages) => prevPreviewImages.filter((_, i) => i !== index));
+      return true;
     }
   };
   
@@ -158,6 +176,7 @@ const handleUpdate = async (event) => {
     console.log(result.data);
     if (result.status === "success") {
       alert("수정되었습니다");
+      onHide();
     } else {
       alert("수정실패");
       console.log(result.data)
@@ -216,15 +235,19 @@ const handleUpdate = async (event) => {
                   {previewImages.length > 0 && (
                     <div className="Gallerywriting-preview-image-container" style={{ display: "flex", overflowX: "scroll", whiteSpace: "nowrap" }}>
                       {previewImages.map((url, index) => (
-                           <img
-                           key={`preview-${index}`} // 고유한 key 값 변경
-                           src={url}
-                           alt={`preview-${index}`}
-                           className="ImagePreview-preview-image"
-                           onClick={() => handleImageClick(index)}
-                           style={{ display: "inline-block", marginRight: "5px"}}
-                         />
-                       ))}
+                      <img
+                       key={`preview-${index}`} // 고유한 key 값 변경
+                       src={url}
+                       alt={`preview-${index}`}
+                       className="ImagePreview-preview-image"
+                       onClick={() => handleImageClick(index)}
+                      style={{
+                      display: "inline-block",
+                      marginRight: "5px",
+                      border: selectedImageIndices.includes(index) ? "3px solid #3a86ff" : "none",
+                      }}
+                     />
+                     ))}
                     </div>
                   )}
                   <div className="Gallerywriting-preview-image-box" onClick={onCickImageUpload}>
@@ -241,6 +264,9 @@ const handleUpdate = async (event) => {
                     onClick={onCickImageUpload}
                     />
                   )}
+                </div>
+                <div className="Gallerywriting-btn-delete-box">
+                    <button id="Gallerywriting-btn-delete" onClick={removeSelectedImages}>선택 이미지 삭제</button>
                 </div>
                 <div className="Gallerywriting-btn-regist-box">
                 <button id="Gallerywriting-btn-regist" onClick={handleUpdate}>등록</button>

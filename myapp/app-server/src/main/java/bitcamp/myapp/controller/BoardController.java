@@ -114,8 +114,8 @@ public class BoardController {
       @PathVariable int no,
       Board board,
       @RequestParam("files")List<MultipartFile> files,
-      @RequestParam(value = "deletedImageNos", required = false) List<Integer> deletedImageNos,
       HttpSession session) throws Exception {
+
     Member loginUser = (Member) session.getAttribute("loginUser");
 
     // URL 의 번호와 요청 파라미터의 번호가 다를 경우를 방지하기 위해

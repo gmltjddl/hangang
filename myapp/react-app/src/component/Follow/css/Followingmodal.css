@@ -1,0 +1,17 @@
+.FollowingModal-custom-modal .modal-dialog {
+  width: 500px;
+  border-radius: 5px;
+}
+
+.FollowingModal-custom-modal .modal-content {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.following-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 8px;
+}

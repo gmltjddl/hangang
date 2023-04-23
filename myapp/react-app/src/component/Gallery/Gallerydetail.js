@@ -9,12 +9,13 @@ import Usercontext from '../../Usercontext';
 import Gallerymodify from './Gallerymodify';
 
 
-const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, viewCount}) => {
+const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId}) => {
     const [isHeartActive, setIsHeartActive] = useState(false);
     const [nickName, setNickName] = useState("");
     const [filepath, setFilepath] = useState("");
     const [content, setContent] = useState("");
     const [title, setTitle] = useState("");
+    const [viewCount, setViewCount] = useState("");
     const [likes, setLikes] = useState(0);
     const [liked, setLiked] = useState(false);
     const [no, setNo] = useState(boardNo);
@@ -30,6 +31,7 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, viewCount}
 const fetchComments = () => {
     axios.get("http://localhost:8080/web/comments/board/" + boardNo)
         .then((response) => {
+            console.log(response);
             const receivedComments = response.data.data;
             if (Array.isArray(receivedComments)) {
                 setComments(receivedComments);
@@ -53,7 +55,7 @@ useEffect(() => {
         })
         .then((result) => {
             if (result.status === "success") {
-                console.log(result.data);
+                console.log(result);
                 setTitle(result.data.title);
                 setNickName(result.data.writer.nickName);
                 setFilepath(result.data.attachedFiles[0].filepath);
@@ -61,6 +63,7 @@ useEffect(() => {
                 setLikes(result.data.likes);
                 setComments(Array.isArray(result.data.comments) ? result.data.comments : []);
                 setImages(result.data.attachedFiles.map((file) => file.filepath));
+                setViewCount(result.data.viewCount);
             }
         })
         .catch((error) => {
@@ -96,7 +99,7 @@ const handledelete = async () => {
         const response = await axios.delete(`http://localhost:8080/web/boards/${boardNo}`);
         if (response.status === 200) {
             console.log(response.data, 'delete요청');
-        //   window.location.href="./Gallery";
+          //window.location.href="./Gallery";
         
       }
     } catch (error) {
@@ -182,7 +185,7 @@ return (
                                 </button>
                             <button className="gcommentbnt" onClick={toggleCommentAddVisibility}></button>
                             <div className="gview-cnt">
-                                {viewCount}
+                            {viewCount}
                             </div>
                             </div>
                             <div className="gbecontent">

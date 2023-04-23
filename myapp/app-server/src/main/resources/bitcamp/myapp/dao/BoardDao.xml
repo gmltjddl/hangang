@@ -116,8 +116,8 @@
   
   <update id="increaseViewCount" parameterType="int">
     update hms_gall set
-      view_cnt = view_cnt + 1
-    where board_id=#{maumdaerohaedodoi}
+      view_cnt = view_cnt +1
+    where board_id=#{no}
   </update>
   
   <update id="update" parameterType="board">

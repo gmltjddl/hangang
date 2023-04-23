@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../Gallery/css/Gallerylist.css';
 import { Modal, Button } from "react-bootstrap";
 import axios from 'axios';
 import Usercontext from "../../Usercontext";
 import GalleryItem from "../Gallery/Galleryitem";
 import 'bootstrap/dist/css/bootstrap.css';
-
+import './css/Mypostlist.css';
 const Mypostlist = ({ show, onHide }) => {
 
   const [data, setData] = useState([]);
@@ -13,22 +12,25 @@ const Mypostlist = ({ show, onHide }) => {
   const [writingmodalOn, setwritingmodalOn] = useState(false);
   const user = useContext(Usercontext);
 
+  const customModalStyle = {
+    position: 'fixed',
+    top: '48%',
+    left: '78%',
+    transform: 'translate(-50%, -50%)',
+  };
+
   useEffect(() => {
-    fetchData();
-  }, []); // 컴포넌트가 마운트될 때만 초기 데이터 로딩
+    if (user)
+      fetchData();
+  }, [user]); // 컴포넌트가 마운트될 때만 초기 데이터 로딩
   const fetchData = async () => {
 
     setLoading(true);
-    // console.log(user.no);
-    // 
 
     const response = await axios.get(`http://localhost:8080/web/boards/user/${user.no}`)
       .then((response) => {
         setData([...data, ...response.data.data.sort((a, b) => b.no - a.no)]); // 번호를 내림차순으로 정렬하여 데이터 업데이트
         setLoading(false);
-        // console.log(response);
-        // console.log(response.data.data);
-
       })
       .catch((error) => {
         setLoading(false);
@@ -60,24 +62,16 @@ const Mypostlist = ({ show, onHide }) => {
       size="xl"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      style={{
+      dialogClassName="Mypostlist-modal-box"
+      backdrop={true}
 
-      }}
     >
-      <Modal.Body>
+      <Modal.Body style={{ backgroundColor: "#ffffff47", borderRadius: '20px' }}>
         <div className="Mypostlist-box">
           <div className="Mypostlist-body-back">
-            <div className="Mypostlist-list-wrap">
-              <Button
-                className="Mypostlist-Button"
-                onClick={() => setwritingmodalOn(true)}
-              >
-                Writing
-              </Button>
-            </div>
             <div className="Mypostlist-list-table-wrap">
               {data.map((item) => (
-                <GalleryItem item={item} />
+                <GalleryItem item={item} customModalStyle={customModalStyle} style={{ borderRadius: '20px' }} />
               ))}
               {loading && <div>Loading...</div>}
             </div>

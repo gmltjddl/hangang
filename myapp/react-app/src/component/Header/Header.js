@@ -5,40 +5,9 @@ import './css/Header.css';
 
  axios.defaults.withCredentials = true;
 
-  function Header() {
-   const [nickName, setNickName] = useState([]);
-
-   
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/web/auth/user");
-      const result = response.data;
-      if (result.status === "success") {
-         setNickName(result.data.nickName);
-    
-        let login = document.getElementById("login");
-        login.style.display = "none";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-        let logout = document.getElementById("logout");
-        logout.style.display = "";
-        let mypage = document.getElementById("mypage");
-        mypage.style.display = "";
-      } else {
-        let login = document.getElementById("login");
-        login.style.display = "";
-        let logout = document.getElementById("logout");
-        logout.style.display = "none";
-        let mypage = document.getElementById("mypage");
-        mypage.style.display = "none";
-      }
-    } catch (error) {
-      // Handle error
-    }
-  };
-
-  useEffect(() => {
-    // Fetch initial data
-    fetchData();
-  }, []);
+  function Header({image, nickName}) {
+  
+    console.log(image);
 
   const logout = function handleLogout() {
     axios("http://localhost:8080/web/auth/logout")
@@ -53,10 +22,7 @@ import './css/Header.css';
         // console.log(exception);
       });
   }
-  
-  const updateNickname = (newNickname) => {
-    setNickName(newNickname);
-  };
+
   return (
     
     <div>
@@ -85,7 +51,10 @@ import './css/Header.css';
           <li><Link to="" className="qna">Q&amp;A</Link></li>
           <li><Link to="/Login" className="login" id="login">LOGIN</Link></li>
           <li><Link to="/Mypage" className="mypage" id="mypage">MYPAGE</Link></li>
-          <li className="logout" id="logout" onClick={() => { logout(); return false; }}><span className="logout-span">로그아웃({nickName})</span></li>
+          <li> <img src={image} id="main-profile-img" className="main-profile-img"></img></li>
+          <li className="logout" id="logout" onClick={() => { logout(); return false; }}>
+            <span className="logout-span">({nickName})로그아웃</span>
+          </li>
  
         </ul>
       </nav>

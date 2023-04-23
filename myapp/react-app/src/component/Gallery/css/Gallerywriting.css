@@ -53,6 +53,7 @@
   cursor: pointer;
 }
 
+#Gallerywriting-btn-delete,
 #Gallerywriting-btn-regist,
 #Gallerywriting-btn-cancel {
   width: 100%;
@@ -71,17 +72,26 @@
   background-color: #ccc;
 }
 
+#Gallerywriting-btn-delete:hover,
 #Gallerywriting-btn-regist:hover,
 #Gallerywriting-btn-cancel:hover {
   opacity: 0.8;
 }
 
-.Gallerywriting-btn-regist-box {
+.Gallerywriting-btn-delete-box{
   display: inline-block;
   border-radius: 10px;
   background-color: #acacac6b;
   position: absolute;
   left: 30px;
+  bottom: 430px;
+}
+.Gallerywriting-btn-regist-box {
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #acacac6b;
+  position: absolute;
+  left: 480px;
   bottom: 430px;
 }
 
@@ -90,9 +100,18 @@
   border-radius: 10px;
   background-color: #acacac6b;
   position: absolute;
-  left: 200px;
+  left: 650px;
   bottom: 430px;
 
+}
+
+#Gallerywriting-btn-delete{
+  display: inline-block;
+  position: relative;
+  margin: 15px 15px;
+  height: 35px;
+  width: 125px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2)
 }
 
 #Gallerywriting-btn-regist {
@@ -112,6 +131,7 @@
   width: 90px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2)
 }
+
 
 #gallwrite-content {
   display: inline-block;

@@ -13,6 +13,8 @@ import Header from './component/Header/Header';
 
 const HANGANG = () => {
   const [user, setUser] = useState(initialUser);
+  const [image, setImage]=useState("");
+  const [nickName, setNickname] = useState("");
 
   // fetchData 함수에서 전역 상태를 업데이트하세요
   const fetchData = async () => {
@@ -27,6 +29,8 @@ const HANGANG = () => {
         logout.style.display = "";
         let mypage = document.getElementById("mypage");
         mypage.style.display = "";
+        let profileimg = document.getElementById("main-profile-img");
+        profileimg.style.display = "";
         
         setUser({
           no:result.data.no,
@@ -48,6 +52,8 @@ const HANGANG = () => {
         logout.style.display = "none";
         let mypage = document.getElementById("mypage");
         mypage.style.display = "none";
+        let profileimg = document.getElementById("main-profile-img");
+        profileimg.style.display = "none";
       
         setUser(initialUser);
       }
@@ -60,9 +66,35 @@ const HANGANG = () => {
     fetchData();
   }, []);
 
+
+  const fetchUserData = () => {
+    if (user.loggedIn) {
+      axios
+        .get(`http://localhost:8080/web/members/${user.no}`)
+        .then((response) => {
+          console.log(response);
+          return response.data;
+        })
+        .then((result) => {
+          if (result.status === "success") {
+            setNickname(result.data.nickName);
+            setImage(result.data.attachedFiles[0].filepath);
+          } else {
+          }
+        })
+        .catch((error) => {
+          // 에러 처리
+        });
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, [user]);
+
   return (
     <Usercontext.Provider value={user}>
-        <Header />
+        <Header image={image} nickName={nickName}/>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path="/Login" element={<Login />} />
