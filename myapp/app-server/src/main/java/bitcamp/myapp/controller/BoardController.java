@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import bitcamp.myapp.service.BoardService;
@@ -112,9 +113,9 @@ public class BoardController {
   public Object update(
       @PathVariable int no,
       Board board,
-      List<MultipartFile> files,
+      @RequestParam("files")List<MultipartFile> files,
+      @RequestParam(value = "deletedImageNos", required = false) List<Integer> deletedImageNos,
       HttpSession session) throws Exception {
-
     Member loginUser = (Member) session.getAttribute("loginUser");
 
     // URL 의 번호와 요청 파라미터의 번호가 다를 경우를 방지하기 위해
@@ -190,11 +191,3 @@ public class BoardController {
   }
 
 }
-
-
-
-
-
-
-
-

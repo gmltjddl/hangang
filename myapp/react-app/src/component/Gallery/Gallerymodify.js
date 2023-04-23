@@ -16,8 +16,7 @@ const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
   const user = useContext(Usercontext);
   const [images, setImages] = useState([]);
   const [newImages, setNewImages] = useState([]);
-
-
+  const [imageFileNos, setImageFileNos] = useState([]);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -48,20 +47,52 @@ const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
     setNewImages(newPreviewImages);
     setPreviewImages([...images, ...newPreviewImages]);
   };
-  // console.log(userId, "게시판 멤버 번호");
-  // console.log(boardNo, "보드 넘버");
 
+
+
+  const handleImageClick = (index) => {
+    if (window.confirm("이미지를 삭제하시겠습니까?")) {
+      removePreviewImage(index);
+  
+      if (index === selectedImageIndex) {
+        if (previewImages.length === 1) {
+          setSelectedImageIndex(-1);
+        } else if (index === previewImages.length - 1) {
+          setSelectedImageIndex((prevIndex) => prevIndex - 1);
+        }
+      } else if (selectedImageIndex > index) {
+        setSelectedImageIndex((prevIndex) => prevIndex - 1);
+      }
+    }
+  };
 
   // 미리보기 이미지 삭제
-  const removePreviewImage = (index) => {
+  const removePreviewImage = async (index) => {
     if (index < images.length) { // 기존 이미지 삭제
-      setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+      const fileNo = imageFileNos[index]; // 삭제할 이미지의 URL
+      try {
+        const response = await axios.delete(`http://localhost:8080/web/boards/${boardNo}/files/${fileNo}`);
+        console.log(response.data);
+        const result = response.data;
+        console.log(result.data);
+  
+        if (result.status === "success") {
+          alert("이미지가 삭제되었습니다.");
+          setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+          setPreviewImages((prevPreviewImages) => prevPreviewImages.filter((_, i) => i !== index));
+        } else {
+          alert("이미지 삭제에 실패했습니다.");
+          console.log(result.data)
+        }
+      } catch (error) {
+        alert("이미지 삭제에 실패했습니다.");
+      }
     } else { // 새로 추가된 이미지 삭제
       const newIndex = index - images.length;
       setNewImages((prevNewImages) => prevNewImages.filter((_, i) => i !== newIndex));
       setFiles((prevFiles) => prevFiles.filter((_, i) => i !== newIndex));
+      setPreviewImages((prevPreviewImages) => prevPreviewImages.filter((_, i) => i !== index));
     }
-    setPreviewImages((prevPreviewImages) => prevPreviewImages.filter((_, i) => i !== index));
   };
   
 
@@ -70,19 +101,17 @@ const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
       try {
       const response = axios.get(`http://localhost:8080/web/boards/${boardNo}`)
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         return response.data;
     })
     .then((result) => {
       if (result.status === "success") {
-          // console.log(result.data);
-          // console.log(result.data.title)
-          // console.log(result.data.content);
-          // console.log(result.data.attachedFiles.map((file) => file.filepath));
-          // setFilepath(result.data.data.attachedFiles[0].filepath);
+
           setTitle(result.data.title)
           setContent(result.data.content);
           const imageUrls = result.data.attachedFiles.map((file) => file.filepath);
+          const imageFileNos = result.data.attachedFiles.map((file) => file.no);
+          setImageFileNos(imageFileNos);
           setImages(imageUrls);
           setPreviewImages((prevPreviewImages) => [...prevPreviewImages, ...imageUrls]);
       }
@@ -94,63 +123,49 @@ const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
   fetchBoardData();
 }, []);
 
-  const handleImageClick = (index) => {
-    if (window.confirm("이미지를 삭제하시겠습니까?")) {
-      removePreviewImage(index);
-    }
-  };
+const handleUpdate = async (event) => {
+  // event.preventDefault();
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("content", content);
+  formData.append("userId", userId);
 
+  const deletedImages = images.filter((_, i) => !previewImages.includes(images[i]));
+  deletedImages.forEach((_, index) => {
+    formData.append(`deleteImages[${index}]`, deletedImages[index]);
+  });
 
+  if (files.length > 0) {
+    files.forEach((file, index) => {
+      formData.append(`files`, file);
+    });
+  } else {
+    formData.append("files", new File([], ""));
+  }
 
-
-
-
-
-  const handleUpdate = (event) => {
-    event.preventDefault(); // 이벤트의 기본 동작을 막습니다.
-    const updateUserData = async () => {
-      try {
-        const formData = new FormData();
-        formData.append("title", title);
-        formData.append("content", content);
-        formData.append("userId", userId);
-  
-        // 기존 이미지 삭제
-        const deletedImages = images.filter((_, i) => !previewImages.includes(images[i]));
-        deletedImages.forEach((_, index) => {
-        formData.append(`deleteImages[${index}]`, deletedImages[index]);
-      });
-  
-        // 새로 추가된 파일 데이터를 formData에 추가
-        files.forEach((file, index) => { // newImages 대신 files를 사용합니다.
-          formData.append(`files[${index}]`, file);
-        });
-  
-        const response = await axios.put(
-          `http://localhost:8080/web/boards/${boardNo}`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-        console.log(response.data);
-        const result = response.data;
-        console.log(result.data);
-        if (result.status === "success") {
-          alert("수정되었습니다");
-        } else {
-          alert("수정실패");
-        }
-      } catch (error) {
-        alert("연결실패");
+  try {
+    const response = await axios.put(
+      `http://localhost:8080/web/boards/${boardNo}`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       }
-    };
-  
-    updateUserData();
-  };
-
+    );
+    console.log(response.data);
+    const result = response.data;
+    console.log(result.data);
+    if (result.status === "success") {
+      alert("수정되었습니다");
+    } else {
+      alert("수정실패");
+      console.log(result.data)
+    }
+  } catch (error) {
+    alert("연결실패");
+  }
+};
 
   return (
     <Modal
@@ -216,15 +231,15 @@ const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
                     <span className="">사진 추가하기</span>
                   </div>
                   {selectedImageUrl && (
-                      <img
-                      key={`selected-${selectedImageIndex}`} // 고유한 key 값 유지
-                      src={selectedImageUrl}
-                      alt={`preview-${selectedImageIndex}`}
-                      className="Gallerywriting-preview-image"
-                      width="260px"
-                      height="260px"
-                      onClick={onCickImageUpload}
-                      />
+                    <img
+                    key={`selected-${selectedImageIndex}`}
+                    src={selectedImageUrl}
+                    alt={`preview-${selectedImageIndex}`}
+                    className="Gallerywriting-preview-image"
+                    width="260px"
+                    height="260px"
+                    onClick={onCickImageUpload}
+                    />
                   )}
                 </div>
                 <div className="Gallerywriting-btn-regist-box">

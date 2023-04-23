@@ -108,7 +108,7 @@ const Gallerylist = () => {
       </div>
       <div className="gall-list-table-wrap">
       {filteredData.map((item) => (
-          <GalleryItem item={item} />
+            <GalleryItem key={item.no} item={item}/>
         ))}
         {loading && <div>Loading...</div>}
       </div>
