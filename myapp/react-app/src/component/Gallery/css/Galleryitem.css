@@ -1,50 +1,70 @@
-.gall-img-warp{
+.gall-img-wrap{
 position: absolute;
 display: inline-block;
 left:5px;
+top:7px;
+width: 34px;
+height: 30px;
+border-radius: 100%;
 }
 
-.gall-img-warp img{
+.gall-img-profile{
   position: absolute;
   display: inline-block;
-  left:5px;
+  width: 40px;
+  height: 30px;
+  border-radius: 100%;
   }
 
 .gall-writer-wrap{
 position: absolute;
 display: inline-block;
 left :50px;
+top:10px;
 }
 .gall-writer-wrap p{
   position: absolute;
   display: inline-block;
   width: 120px;
-  border:1px solid;
+  color:white;
 }
 
 .gall-like-wrap{
   position: absolute;
   display: inline-block;
-  left:300px;
+  left:320px;
+  top:6px;
 }
 .gall-like-wrap p{
   position: absolute;
   display: inline-block;
   width:40px;
-  border:1px solid;
-  text-align: right
+  color:white;
+  text-align: left;
 }
+.gall-like-img{
+  position: absolute;
+  display: inline-block;
+  top:9px;
+  width: 20px;
+  height: 20px;
+  left:295px;
+  background-image:url(../img/heart2.png);
+  background-size: cover;
+
+}
+
 
 .gall-date-wrap{
   position: absolute;
   display: inline-block;
-  top:345px;
-  left:250px;
+  top:320px;
+  left:285px;
 }
 .gall-date-wrap p{
   position: absolute;
   display: inline-block;
-  border:1px solid;
-  width:80px;
-  text-align: right;
+  color:white;
+  width:75px;
+  text-align: left;
 }

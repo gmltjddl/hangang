@@ -92,7 +92,7 @@ const Gallerywriting = ({ show, onHide }) => {
                 <input
                   name="title"
                   type="text"
-                  placeholder="title"
+                  placeholder="#tag"
                   className="Gallerywriting-input-box"
                   id="gallwrite-title" required
                   value={title}

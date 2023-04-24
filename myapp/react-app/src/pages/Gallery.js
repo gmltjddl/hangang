@@ -10,12 +10,11 @@ import Gallerywriting from '../component/Gallery/Gallerywriting';
 import Gallerylist from '../component/Gallery/Gallerylist';
 
 const Gallery = () => {
-
   return (
 
     <div>
       <Gallerylist />
-      <Gallerywriting/>
+      <Gallerywriting />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 create table hms_mem(
   member_id int not null,
   email varchar(50) not null,
-  pwd varchar(20) not null,
-  name varchar(50) not null,
-  tel varchar(20),
-  nick varchar(15),
+  pwd varchar(15) not null,
+  name varchar(4) not null,
+  tel varchar(14),
+  nick varchar(10),
   intro LONGTEXT,
   hob TEXT,
   created_date datetime default now()
@@ -27,7 +27,7 @@ alter table hms_mem
   
 create table hms_gall (
   board_id int not null,
-  title varchar(255) not null,
+  title varchar(15) not null,
   content text not null,
   pwd varchar(10),
   comment varchar(30),
@@ -108,7 +108,11 @@ alter table hms_mem_file
 
   alter table hms_mem_file
   add constraint hms_mem_fk_file foreign key (member_id) references hms_mem(member_id);
-
+alter table hms_mem_file
+  add column board_id int
+  
+alter table hms_mem_file
+  add constraint hms_mem_fk_file2 foreign key (board_id) references hms_gall(board_id);
 
   
 CREATE TABLE hms_follow (

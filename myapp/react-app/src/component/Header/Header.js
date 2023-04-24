@@ -7,7 +7,6 @@ import './css/Header.css';
 
   function Header({image, nickName}) {
   
-    console.log(image);
 
   const logout = function handleLogout() {
     axios("http://localhost:8080/web/auth/logout")

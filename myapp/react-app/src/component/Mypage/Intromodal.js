@@ -47,6 +47,7 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
       axios
         .get(`http://localhost:8080/web/members/${user.no}`)
         .then((response) => {
+          console.log(response);
           return response.data;
           
         })

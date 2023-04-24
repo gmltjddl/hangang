@@ -17,7 +17,8 @@
       <id column="writer" property="no"/>
       <result column="name" property="name"/>
       <result column="nickName" property="nickName"/>
-    </association>
+    
+  </association>
     
     
     <collection property="attachedFiles" ofType="boardfile">
@@ -27,6 +28,8 @@
       <result column="mime_type" property="mimeType"/>
       <result column="board_id" property="boardNo"/>
     </collection>
+  
+
   </resultMap>
 
   <insert id="insert" parameterType="board" 
@@ -44,9 +47,9 @@
     b.created_date, 
     b.view_cnt,
     m.name,
+    m.nick,
     gf.filepath,
     COUNT(lt.board_id) AS likes
-  
   from 
     hms_mem m
     inner join hms_gall b on m.member_id = b.writer
@@ -60,6 +63,7 @@
     b.created_date,
     b.view_cnt,
     m.name,
+    m.nick,
     gf.filepath
   order by
     b.board_id desc

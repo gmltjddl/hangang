@@ -14,6 +14,7 @@
     <result column="inter" property="interest"/>
     <result column="hob" property="hobby"/>
     <result column="created_date" property="createdDate"/>
+    
       
     <collection property="attachedFiles" ofType="memberfile">
       <id column="memberfile_id" property="no"/>
@@ -40,20 +41,27 @@
   </insert>
   
   <select id="findAll" resultMap="memberMap">
-    select 
-      member_id, 
-      email,
-      nick,
-      tel,
-      name,
-      intro,
-      inter,
-      hob
-      created_date 
+   select 
+      m.member_id,
+      m.email,
+      m.name,
+      m.nick,
+      m.tel,
+      m.intro,
+      m.inter,
+      m.hob,
+      mf.memberfile_id,
+      mf.filepath, 
+      mf.origin_filename,
+      mf.mime_type,
+      m.created_date,
+      b.writer
     from 
-      hms_mem
-    order by 
-      member_id desc
+      hms_mem m
+      join hms_mem_file mf on m.member_id = mf.member_id
+      join hms_gall b on mf.member_id = b.writer
+      order by
+      mf.memberfile_id desc
   </select>
   <select id="findByEmailAndPassword" parameterType="map" resultMap="memberMap">
     select

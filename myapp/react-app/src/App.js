@@ -43,7 +43,9 @@ const HANGANG = () => {
           interest:result.data.interest,
           createdDate:result.data.createdDate,
           loggedIn: true
+
         });
+
 
       } else {
         let login = document.getElementById("login");
@@ -66,13 +68,11 @@ const HANGANG = () => {
     fetchData();
   }, []);
 
-
   const fetchUserData = () => {
     if (user.loggedIn) {
       axios
         .get(`http://localhost:8080/web/members/${user.no}`)
         .then((response) => {
-          console.log(response);
           return response.data;
         })
         .then((result) => {
@@ -92,6 +92,31 @@ const HANGANG = () => {
     fetchUserData();
   }, [user]);
 
+
+  const fetchMemberData = () => {
+
+      axios
+        .get("http://localhost:8080/web/members")
+        .then((response) => {
+          return response.data;
+        })
+        .then((result) => {
+          if (result.status === "success") {
+            setNickname(result.data.nickName);
+            setImage(result.data.attachedFiles[0].filepath);
+          } else {
+          }
+        })
+        .catch((error) => {
+          // 에러 처리
+        });
+
+  };
+
+  useEffect(() => {
+    fetchMemberData();
+  }, [user]);
+
   return (
     <Usercontext.Provider value={user}>
         <Header image={image} nickName={nickName}/>
@@ -100,7 +125,7 @@ const HANGANG = () => {
         <Route path="/Login" element={<Login />} />
         <Route path="/Join" element={<Join />} />
         <Route path="/Mypage" element={<Mypage />} />
-        <Route path="/Gallery" element={<Gallery /> } />
+        <Route path="/Gallery" element={<Gallery />} />
         <Route path="/Reservation" element={<Reservation />} />
       </Routes>
     </Usercontext.Provider>
