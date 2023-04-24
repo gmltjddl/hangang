@@ -26,6 +26,7 @@
   select 
       cm.comment_id, 
       cm.writer, 
+      (select nick from hms_mem m where m.member_id = cm.writer) nickName,
       cm.content,
       cm.created_date,
       cm.board_id,

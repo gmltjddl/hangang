@@ -1,18 +1,38 @@
 .gallery-comment-modal {
-  top: 30px;
-  left: 1050px;
+  top: 75px;
+  left: 1055px;
   width: 450px;
   border-radius: 25px;
 }
 
 .gallery-comment-modal-body {
-  background-color: rgb(245, 245, 245);
+  background-color: rgb(245, 245, 245,0.3);
   max-height: 400px;
   width: 450px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   
+}
+
+.gcomment-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.gcomment-list::-webkit-scrollbar-track {
+  /* background-color: #f1f1f1; */
+}
+
+.gcomment-list::-webkit-scrollbar-thumb {
+  background-color:#ffffff31;
+  border-radius: 5px;
+}
+
+/* 스크롤바 위 아래 버튼 스타일 */
+.gcomment-list::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .gcomment-add {
@@ -45,6 +65,7 @@
   background-color: white;
   padding: 10px;
   border-radius: 5px;
+  width:400px;
 }
 
 .gprofile-img{
@@ -53,17 +74,26 @@
   /* background-image: url(https://images-ext-2.discordapp.net/external/k496ijrcjYv-XqebZOS9HnfW1-QjyF5m21FrsUKIL2s/%3Ftype%3Df%26w%3D260%26h%3D260%26faceopt%3Dtrue%26ttype%3Djpg/http/tbxctpxzerdz16840769.cdn.ntruss.com/defaultprofile.jpg?width=30&height=30); */
   width:30px;
   height:30px;
-  left:5px;
+ 
 }
 .gprofile-img img{
   width:30px;
   height:30px;
+  border-radius: 15px;
+}
+.gcomment-nickname{
+  position: relative;
+  left :10px;
+  width:100px;
+  height: 20px;
+  bottom:2px;
 
 }
 .gcooment-content{
   position: relative;
   display: inline-block;
-  left:8px;
+  left:10px;
+  width:50%;
 }
 .comment-update-btn{
   background-image: url(../img/edit.png);

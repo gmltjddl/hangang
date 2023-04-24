@@ -10,10 +10,12 @@ import 'bootstrap/dist/css/bootstrap.css';
     const [content, setContent] = useState("");
     const [editingCommentId, setEditingCommentId] = useState(null);
     const [editedContent, setEditedContent] = useState('');
+
     const user = useContext(Usercontext);
-    const [profile, setProfile] = useState([])
+    const [profile, setProfile] = useState([]);
     const [iscommentusers, setIscommentusers] = useState([]);
     const [commentUserIds, setCommentUserIds] = useState([]);
+    const [nickName, setNickName] = useState([]);
     const [profiles, setProfiles] = useState([]);
     const commentsEndRef = useRef(null);
     const fetchComments = () => {
@@ -21,12 +23,18 @@ import 'bootstrap/dist/css/bootstrap.css';
       .get(`http://localhost:8080/web/comments/boardNo/${boardNo}`, { withCredentials: true })
       .then((response) => {
           const receivedComments = response.data.data;
+          console.log(response.data.data);
           (response.data.data.some((item) => {
             }));
           const commentUserIds = receivedComments.map((item) => item.writer.no);
+          const nickName = receivedComments.map((item) => item.writer.nickName);
           setCommentUserIds(commentUserIds);
+
+          console.log(commentUserIds);
+          console.log(nickName);
           if (Array.isArray(receivedComments)) {
             setComments(receivedComments);
+            setNickName(nickName);
           } else {
             setComments([]);
           }
@@ -48,9 +56,10 @@ import 'bootstrap/dist/css/bootstrap.css';
         .then((responses) => {
           const profiles = responses.map((response) => {
             if (response.data.status === "success") {
-              return response.data.data.attachedFiles[0].filepath;
+       return response.data.data.attachedFiles[0].filepath;
             }
           });
+          setNickName(nickName);
           setProfiles(profiles); // <-- 이 부분을 수정하세요.
         })
         .catch((error) => {
@@ -84,7 +93,7 @@ import 'bootstrap/dist/css/bootstrap.css';
         axios
           .post("http://localhost:8080/web/comments", formData)
           .then((response) => {
-            // console.log(response.data);
+             console.log(response.data);
             e.target.reset();
             fetchComments(); // 새 댓글이 추가된 후 댓글 목록을 업데이트
             commentprofile();
@@ -134,6 +143,7 @@ import 'bootstrap/dist/css/bootstrap.css';
       }
     };
 
+
     return (
       <>
        <Modal show={show} onHide={onHide} className="gallery-comment-modal">
@@ -156,6 +166,7 @@ import 'bootstrap/dist/css/bootstrap.css';
                     <div className="gprofile-img">
                     <img src={profiles[index]}></img>
                     </div>
+                    <div className="gcomment-nickname">{nickName[index]}</div>
                     <div className='gcooment-content'>
                       {comment.content}
                     </div>

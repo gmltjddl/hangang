@@ -4,7 +4,7 @@ create table hms_mem(
   pwd varchar(15) not null,
   name varchar(4) not null,
   tel varchar(14),
-  nick varchar(10),
+  nick varchar(5),
   intro LONGTEXT,
   hob TEXT,
   created_date datetime default now()
