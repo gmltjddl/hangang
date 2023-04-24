@@ -39,7 +39,6 @@ public class BoardController {
   @Autowired private BoardService boardService;
   @Autowired private ObjectStorageService objectStorageService;
 
-
   private String bucketName = "hangang-bucket";
 
   @PostMapping
@@ -163,6 +162,8 @@ public class BoardController {
           .setErrorCode(ErrorCode.rest.UNAUTHORIZED)
           .setData("권한이 없습니다.");
     }
+    boardService.deleteComments(no);
+    boardService.deleteLikes(no);
     boardService.delete(no);
 
     return new RestResult()
@@ -189,5 +190,4 @@ public class BoardController {
           .setStatus(RestStatus.SUCCESS);
     }
   }
-
 }

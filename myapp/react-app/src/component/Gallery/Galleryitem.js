@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Gallerydetail from "./Gallerydetail";
 import "./css/Galleryitem.css";
-
 const GalleryItem = ({ item }) => {
   const [detailmodalOn, setdetailmodalOn] = useState(false);
   const [boarduserfilepath, setBoardUserFilepath] = useState(0)//.
@@ -23,7 +22,7 @@ const GalleryItem = ({ item }) => {
     setdetailmodalOn(false);
   };
 
-  console.log(boarduserfilepath.filepath,"아이템 보드유저패쓰");
+  // console.log(boarduserfilepath.filepath,"아이템 보드유저패쓰");
 
 // console.log(item.comment.commetNo);
 return (
@@ -37,9 +36,11 @@ return (
                 <img className="gall-img-profile" src={boarduserfilepath.filepath}></img>
                 <Gallerydetail boarduserfilepath={boarduserfilepath} getData={getData}></Gallerydetail>
               </div>
+    
               <div className="gall-writer-wrap">
                 <p>{item.writer.name}</p>
               </div>
+              <div className="gall-like-img"></div>
               <div className="gall-like-wrap">
                 <p>{item.likes}</p>
               </div>

@@ -10,4 +10,5 @@ public interface FollowDao {
   List<Follow> findFollowersByFollowedId(int followedId);
   List<Follow> findFollowingByFollowerId(int followerId);
   int deleteFollow(Follow follow);
+  int delete(int no);
 }

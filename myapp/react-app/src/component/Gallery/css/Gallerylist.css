@@ -16,8 +16,6 @@
   width: 85px;
   height: 40px;
   top: 165px;
-
-
 }
 
 .gall-list-table-wrap {
@@ -43,7 +41,6 @@
   width: 350px;
   height: 350px;
   border-radius: 25px;
-
 }
 .gall-div-detail:hover img {
   transform: scale(1.1);

@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './css/Followingmodal.css';
 import Usercontext from '../../Usercontext';
 import axios from 'axios';
+import FollowButton from '../Follow/Follow';
 
 const dummyProfileImage = 'https://via.placeholder.com/40';
 
@@ -13,52 +14,54 @@ const Followingmodal = ({ show, onHide, following }) => {
   const [profileImage, setProfileImage] = useState(dummyProfileImage);
   const [followingProfiles, setFollowingProfiles] = useState([]);
 
-
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/web/members/${user.no}`)
-      .then((response) => {
-        return response.data;
-      })
-      .then((result) => {
-        if (result.status === "success") {
-          setName(result.data.nickName);
-          setProfileImage(result.data.attachedFiles[0].filepath);
+    const fetchFollowingProfiles = async () => {
+      const profiles = [];
+
+      for (const followingId of following) {
+        try {
+          const response = await axios.get(`http://localhost:8080/web/members/${followingId}`);
+          const result = response.data;
+          if (result.status === "success") {
+            profiles.push({
+              id: followingId,
+              name: result.data.nickName,
+              profileImage: result.data.attachedFiles[0].filepath,
+            });
+          }
+        } catch (error) {
+          // 에러 처리
         }
-      })
-      .catch((error) => {
-        // 에러 처리
-      });
-  }, []);
+      }
+      setFollowingProfiles(profiles);
+    };
+
+    fetchFollowingProfiles();
+  }, [following]);
 
   return (
     <Modal show={show} onHide={onHide} dialogClassName="FollowingModal-custom-modal">
-      <Modal.Header closeButton className="border-0">
-        <Modal.Title>팔로잉 목록</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <div className="d-flex align-items-center mb-3">
-          <img
-            src={profileImage}
-            alt="Profile"
-            className="rounded-circle me-2"
-            width="40"
-            height="40"
-          />
-          <span>{name}</span>
+      <Modal.Header closeButton className="FollowingModal-border-0">
+        <div className="FollowingModal-modal-title-box">
+          <Modal.Title className="FollowingModal-modal-title">팔로잉 목록</Modal.Title>
         </div>
+      </Modal.Header>
+      <Modal.Body className="FollowingModal-modal-body">
         <ul className="list-unstyled">
-          {following.map((following, index) => (
+          {followingProfiles.map((profile, index) => (
             <li key={index} className="mb-2 following-item">
               <div className="d-flex align-items-center">
                 <img
-                  src={dummyProfileImage}
+                  src={profile.profileImage || dummyProfileImage}
                   alt="Profile"
                   className="rounded-circle me-2"
                   width="40"
                   height="40"
                 />
-                <span>{following}</span>
+                <div className="FollowingModal-ms-3">
+                  <FollowButton userId={profile.id} />
+                </div>
+                <span>{profile.name}</span>
               </div>
             </li>
           ))}

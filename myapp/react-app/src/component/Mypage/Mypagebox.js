@@ -38,8 +38,6 @@ const Mypagebox = () => {
         setFollowersResponse(followersResponse);
         setFollowingResponse(followingResponse);
 
-        // console.log(followingResponse.data.data[0].follower.nickName);
-
       } catch (error) {
         console.error('Error fetching followers and following counts:', error);
       }
@@ -50,14 +48,14 @@ const Mypagebox = () => {
     }
   }, [user]);
   const openFollowersModal = () => {
-    setFollowersList(followersResponse.data.data.map(followerData => followerData.follower.nickName));
+    setFollowersList(followersResponse.data.data.map(followerData => followerData.follower.no));
 
     setShowFollowersModal(true);
   };
 
 
   const openFollowingModal = () => {
-    setFollowingList(followingResponse.data.data.map(followingData => followingData.follower.nickName));
+    setFollowingList(followingResponse.data.data.map(followingData => followingData.followedId));
     setShowFollowingModal(true);
   };
 
@@ -89,7 +87,7 @@ const Mypagebox = () => {
         <div className="mywrite-box-wrap">
           <h1>내가 쓴 글 목록</h1>
           <span>내가 쓴 GALLERY 글, 댓글, 문의사항 등 목록</span>
-          <button className="mypostlist-modal" onClick={() => setMypostlistOn(true)}>수정</button>
+          <button className="mypostlist-modal" onClick={() => setMypostlistOn(true)}>목록</button>
         </div>
         <div className="reservation-box-wrap">
           <h1>내 예약 목록</h1>

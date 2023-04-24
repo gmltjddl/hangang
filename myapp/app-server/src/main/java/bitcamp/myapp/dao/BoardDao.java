@@ -13,6 +13,9 @@ public interface BoardDao {
   void increaseViewCount(int no);
   int update(Board b);
   int delete(int no);
+
+  void deleteLikes(int no);
+  void deleteComments(int no);
   List<Board> findByUserId(@Param("keyword") String keyword, @Param("userId") int userId);
 }
 

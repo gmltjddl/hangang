@@ -131,6 +131,16 @@
     where board_id=#{no}
   </update>
   
+  <delete id="deleteComments" parameterType="int">
+    delete from hms_comm
+    where board_id=#{no}
+</delete>
+  
+  <delete id="deleteLikes" parameterType="int">
+    delete from hms_like
+    where board_id=#{no}
+</delete>
+  
   <delete id="delete" parameterType="int">
     delete from hms_gall 
     where board_id=#{no}

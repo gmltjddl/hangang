@@ -76,6 +76,18 @@ public class DefaultBoardService implements BoardService {
   public void deleteFile(int fileNo) {
     boardFileDao.delete(fileNo);
   }
+
+  @Transactional
+  @Override
+  public void deleteLikes(int no) {
+    boardDao.deleteLikes(no);
+  }
+
+  @Transactional
+  @Override
+  public void deleteComments(int no) {
+    boardDao.deleteComments(no);
+  }
 }
 
 

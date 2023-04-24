@@ -1,17 +1,52 @@
+.gallery-comment-modal {
+  top: 30px;
+  left: 1050px;
+  width: 450px;
+  border-radius: 25px;
+}
+
+.gallery-comment-modal-body {
+  background-color: rgb(245, 245, 245);
+  max-height: 400px;
+  width: 450px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+}
+
 .gcomment-add {
-  /* background-color: rgb(250, 250, 200); */
-  border: 0.2px solid darkgray;
-  /* border-radius: 15px; */
+  margin-top: 20px;
+  display: flex;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.gcomment-add input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
   padding: 5px;
-  width: 400px;
-  height: 140px;
-  /* position: relative;
-  display: inline-block; */
+  width: 320px;
 }
-.gcomment-list{ 
+
+
+.gcomment-list {
   overflow-Y: auto;
-  max-Height: auto;
+  max-height: 280px;
+  margin-bottom: 20px;
 }
+
+.comment-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .gprofile-img{
   position: relative;
   display: inline-block;
@@ -31,12 +66,61 @@
   left:8px;
 }
 .comment-update-btn{
+  background-image: url(../img/edit.png);
+  background-size: cover;
   position: relative;
   display: inline-block;
-  left:8px;
+  width: 15px;
+  height: 15px;
+  border:0;
+  background-color: transparent;
+  left:15px;
 }
 .comment-delete-btn{
+  background-image: url(../img/delete.png);
+  background-size: cover;
+  border: 0;
+  background-color: transparent;
   position: relative;
   display: inline-block;
-  left:9px;
+  width: 15px;
+  height: 15px;
+  left:15px;
+  top:0.5px;
+}
+.comment-save{
+  background-image: url(../img/save.png);
+  background-size: cover;
+  border: 0;
+  background-color: transparent;
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height:18px;
+  left:5px;
+  top:0.5px;
+}
+.comment-cancel{
+  background-image: url(../img/cancel.png);
+  background-size: cover;
+  border: 0;
+  background-color: transparent;
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  left:10px;
+  top:0.5px;
+}
+.comment-push-btn{
+  background-image: url(../img/push.png);
+  background-size: cover;
+  border: 0;
+  background-color: transparent;
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  left:15px;
+  top:0.5px;
 }

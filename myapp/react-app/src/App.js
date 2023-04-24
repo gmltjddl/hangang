@@ -98,11 +98,12 @@ const HANGANG = () => {
       axios
         .get("http://localhost:8080/web/members")
         .then((response) => {
+          console.log(response);
           return response.data;
         })
         .then((result) => {
           if (result.status === "success") {
-            setNickname(result.data.nickName);
+            // setNickname(result.data.nickName);
             setImage(result.data.attachedFiles[0].filepath);
           } else {
           }

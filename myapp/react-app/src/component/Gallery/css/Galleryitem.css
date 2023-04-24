@@ -6,8 +6,8 @@ top:7px;
 width: 34px;
 height: 30px;
 border-radius: 100%;
-}
 
+}
 .gall-img-profile{
   position: absolute;
   display: inline-block;
@@ -21,13 +21,16 @@ position: absolute;
 display: inline-block;
 left :50px;
 top:10px;
+
+
 }
 .gall-writer-wrap p{
   position: absolute;
   display: inline-block;
-  width: 120px;
   color:white;
-}
+  background-color:rgba(0, 0, 0, 0.1);
+  width:100px;
+  }
 
 .gall-like-wrap{
   position: absolute;
@@ -53,8 +56,6 @@ top:10px;
   background-size: cover;
 
 }
-
-
 .gall-date-wrap{
   position: absolute;
   display: inline-block;

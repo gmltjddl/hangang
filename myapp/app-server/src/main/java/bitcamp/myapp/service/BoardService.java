@@ -13,6 +13,8 @@ public interface BoardService {
   public List<Board> listByUser(String keyword, int userId);
   BoardFile getFile(int fileNo);
   void deleteFile(int fileNo);
+  void deleteLikes(int no);
+  void deleteComments(int no);
 }
 
 

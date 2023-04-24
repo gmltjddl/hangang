@@ -86,8 +86,8 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
             })
             .then((result) => {
                 if(result.status === "success") {
-                    console.log(result,"디테일 유저아이디");
-                    console.log(result.data.attachedFiles[0]);
+                    // console.log(result,"디테일 유저아이디");
+                    // console.log(result.data.attachedFiles[0]);
                     setBoardUserFilepath(result.data.attachedFiles[0]);
         
                 }
@@ -124,8 +124,8 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
         try {
             const response = await axios.delete(`http://localhost:8080/web/boards/${boardNo}`);
             if (response.status === 200) {
-                console.log(response.data, 'delete요청');
-                //window.location.href="./Gallery";
+                // console.log(response.data, 'delete요청');
+                window.location.href="./Gallery";
 
             }
         } catch (error) {
@@ -145,7 +145,7 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
     };
 
     const modalStyle = customModalStyle ? customModalStyle : defaultModalStyle;
-console.log(nickName);
+// console.log(nickName);
     return (
 
         <div className="gdetail-modal-box">
@@ -164,7 +164,9 @@ console.log(nickName);
                         <div className="clickPage">
                             <div className="gclickbox">
                                 <div className="gheader">
-                                    <div className="gheadprofile"></div>
+                                <div>
+                                <img className="gheadprofile" src={boarduserfilepath.filepath} alt="" />
+                                </div>
 
                                     <div className="gheaduser">{nickName}</div>
 
@@ -173,12 +175,12 @@ console.log(nickName);
                                         boardNo={boardNo}
                                         userId={userId} />
                                     {userId === user.no && (
-                                        <Button
-                                            className="Gallerymodify-Button"
+                                        <button
+                                            className="Gallerymodify-button"
                                             onClick={() => setmodifymodalOn(true)}
                                         >
-                                            수정
-                                        </Button>
+                                            
+                                        </button>
                                     )}
                                     {userId === user.no && (
                                         <div className="gdelete">
@@ -187,7 +189,7 @@ console.log(nickName);
                                                 className="gdeletebnt"
                                                 onClick={handledelete}
                                             >
-                                                삭제
+                                                
                                             </button>
 
                                         </div>
@@ -221,7 +223,8 @@ console.log(nickName);
                                     <button className="glikebnt">
                                         <LikeButton boardNo={boardNo} />
                                     </button>
-                                    <button className="gcommentbnt" onClick={toggleCommentAddVisibility}></button>
+                                    <button className="gcommentbnt"
+                                     onClick={()=>setIsCommentAddVisible(!isCommentAddVisible)}></button>
                                     <div className="viewcnt-img"></div>
                                     <div className="gview-cnt">
                                         {viewCount}
@@ -236,11 +239,13 @@ console.log(nickName);
                                 <div className="gcomment-list">
                                     {isCommentAddVisible && (
                                         <Gallerycomment
+                                            show={isCommentAddVisible}
+                                            onHide={() => setIsCommentAddVisible(false)}
                                             boardNo={boardNo}
-                                            comments={comments}
-                                            loggedInUser={loggedInUser}
-                                            setComments={setComments}
-                                            fetchComments={fetchComments}
+                                            // comments={comments}
+                                            // loggedInUser={loggedInUser}
+                                            // setComments={setComments}
+                                            // fetchComments={fetchComments}
                                         />
                                     )}
                                 </div>

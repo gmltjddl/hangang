@@ -277,27 +277,21 @@ opacity:100%;
   position: absolute;
   display: inline-block;
   text-align: center;
-  margin-left:80px;
+  margin-left:120px;
   top:15px;
-  width: 70px;
+  width: 30px;
   height: 30px;
-  background-color: #3897F0;
-  color: #fff;
   border: none;
-  border-radius: 30px;
-  font-size: 14px;
-  font-weight: bold;
-  transition: all 0.2s ease;
-}
-.gdeletebnt:active{
-  transform:scale(0.96);
+  background-color: transparent;
+  background-image: url(../img/delete2.png);
+  background-size: cover;
 }
 .gview-cnt{
 position: absolute;
 display:inline-block;
 width:50px;
 height:30px;
-left:345px;
+left:350px;
 top:465px;
 text-align: left;
 }
@@ -315,5 +309,19 @@ left:10px;
   background-image: url(../img/view.png);
   background-size: cover;
   top:463px;
-  left:310px;
+  left:315px;
+}
+.Gallerymodify-button{
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  left:330px;
+  top:15px;
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/edit2.png);
+  background-size: cover;
+  border:none;
+  outline: none;
+  background-color: transparent;
 }

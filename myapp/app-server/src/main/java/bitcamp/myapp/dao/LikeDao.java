@@ -8,6 +8,7 @@ import bitcamp.myapp.vo.Like;
 public interface LikeDao {
   void insertLike(Like like);
   List<Like> findLikesByPostId(int boardId);
-  //  Like findLikeByPostIdAndUserId(Like like);
+  Like findLikeByPostIdAndUserId(Like like);
   int deleteLike(Like like);
+  int delete(int no);
 }
