@@ -67,14 +67,14 @@
     "night fff2"; */
 }
 
-.peak-img{
+.peak-img {
   background-image: url(../img/11.webp);
   background-repeat: no-repeat;
   background-size: 500px 500px;
   cursor: pointer;
   transition: all 0.3s ease;
   }
-.peak:hover{
+.peak-img:hover{
     opacity: 60%;
   }
 .peak-content {
@@ -104,7 +104,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.night:hover{
+.night-img:hover{
   opacity: 60%;
 }
 .night-content {
@@ -118,7 +118,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.fire:hover{
+.fire-img:hover{
   opacity: 60%;
 }
 

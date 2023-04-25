@@ -1,0 +1,19 @@
+.dron-wrap{
+  position: relative;
+  display: inline-block;
+  top:100px;
+  width:100%;
+  min-height: 500px;
+  height:auto;
+  /* border:1px solid blue; */
+  text-align: center;
+}
+.dron-main{
+  position: relative;
+  display: inline-block;
+  width:900px;
+  border:1px solid blue;
+  min-height: 3000px;
+  height:auto;
+  background-color: #0e1322;
+}

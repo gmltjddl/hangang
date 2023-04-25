@@ -71,7 +71,7 @@ const Peak = () => {
         <li><h6>티켓링크 <a href="www.ticketlink.,co.kr/product/43391">www.ticketlink.,co.kr/product/43391</a></h6></li>
         <li><h6>(네이버예매) <a href="booking.naver.com/booking/12/bizes/881654">booking.naver.com/booking/12/bizes/881654</a></h6></li>
         </ul>
-        <li><h6>티켓가격 : 일일권 99,000원, 양일권 139,000원 <a src="http://www.29cm.co.kr">booking.naver.com/booking/12/bizes/881654</a></h6></li>
+        <li><h6>티켓가격 : 일일권 99,000원, 양일권 139,000원 <a href="booking.naver.com/booking/12/bizes/881654">booking.naver.com/booking/12/bizes/881654</a></h6></li>
         <h6><span>*장애인, 국가유공자, 기초생활수급자 30%할인(증빙 제출)</span></h6>
       </ul>       
         </div>
@@ -88,7 +88,7 @@ const Peak = () => {
         </div>
       </div>
       <div className="Peak-map-box">
-        <div className="map" ref={mapRef} style={{ width: '400px', height: '400px' }}></div>
+        <div className="peak-map" ref={mapRef} ></div>
       </div>
     </div>
   </div>
