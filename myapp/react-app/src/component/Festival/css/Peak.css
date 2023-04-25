@@ -12,7 +12,7 @@
   position: relative;
   display: inline-block;
   width:900px;
-  min-height: 3000px;
+  min-height: 3550px;
   height:auto;
   background-color: #008739;
 }
@@ -289,12 +289,11 @@ color:black;
   background-size: cover;
 }
 .Peak-map-box{
-  position: absolute;
+  position: relative;
   display: inline-block;
   width:900px;
   height:600px;
-  top:3115px;
-  right:395px;
+  bottom:490px;
 }
 .peak-map{
   width:900px;
