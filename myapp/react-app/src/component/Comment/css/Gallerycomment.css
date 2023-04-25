@@ -6,13 +6,28 @@
 }
 
 .gallery-comment-modal-body {
-  background-color: rgb(245, 245, 245,0.3);
-  max-height: 400px;
+  background-color: rgb(245, 245, 245, 0.3);
+  max-height: 600px;
   width: 450px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
+
+}
+
+.gallery-dcontent {
+  display: block;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  height: 100px;
+}
+
+.gallery-dtitle {
+  margin-top: 20px;
+  font-weight: lighter;
+  font-size: smaller;
 }
 
 .gcomment-list::-webkit-scrollbar {
@@ -24,7 +39,7 @@
 }
 
 .gcomment-list::-webkit-scrollbar-thumb {
-  background-color:#ffffff31;
+  background-color: #ffffff31;
   border-radius: 5px;
 }
 
@@ -55,7 +70,7 @@
 .gcomment-list {
   overflow-Y: auto;
   max-height: 280px;
-  margin-bottom: 20px;
+  margin: 35px 0;
 }
 
 .comment-item {
@@ -65,48 +80,53 @@
   background-color: white;
   padding: 10px;
   border-radius: 5px;
-  width:400px;
+  width: 400px;
 }
 
-.gprofile-img{
+.gprofile-img {
   position: relative;
   display: inline-block;
   /* background-image: url(https://images-ext-2.discordapp.net/external/k496ijrcjYv-XqebZOS9HnfW1-QjyF5m21FrsUKIL2s/%3Ftype%3Df%26w%3D260%26h%3D260%26faceopt%3Dtrue%26ttype%3Djpg/http/tbxctpxzerdz16840769.cdn.ntruss.com/defaultprofile.jpg?width=30&height=30); */
-  width:30px;
-  height:30px;
- 
-}
-.gprofile-img img{
-  width:30px;
-  height:30px;
-  border-radius: 15px;
-}
-.gcomment-nickname{
-  position: relative;
-  left :10px;
-  width:100px;
-  height: 20px;
-  bottom:2px;
+  width: 30px;
+  height: 30px;
 
 }
-.gcooment-content{
+
+.gprofile-img img {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.gcomment-nickname {
+  position: relative;
+  left: 10px;
+  width: 100px;
+  height: 20px;
+  bottom: 2px;
+
+}
+
+.gcooment-content {
   position: relative;
   display: inline-block;
-  left:10px;
-  width:50%;
+  left: 10px;
+  width: 50%;
 }
-.comment-update-btn{
+
+.comment-update-btn {
   background-image: url(../img/edit.png);
   background-size: cover;
   position: relative;
   display: inline-block;
   width: 15px;
   height: 15px;
-  border:0;
+  border: 0;
   background-color: transparent;
-  left:15px;
+  left: 15px;
 }
-.comment-delete-btn{
+
+.comment-delete-btn {
   background-image: url(../img/delete.png);
   background-size: cover;
   border: 0;
@@ -115,10 +135,11 @@
   display: inline-block;
   width: 15px;
   height: 15px;
-  left:15px;
-  top:0.5px;
+  left: 15px;
+  top: 0.5px;
 }
-.comment-save{
+
+.comment-save {
   background-image: url(../img/save.png);
   background-size: cover;
   border: 0;
@@ -126,11 +147,12 @@
   position: relative;
   display: inline-block;
   width: 18px;
-  height:18px;
-  left:5px;
-  top:0.5px;
+  height: 18px;
+  left: 5px;
+  top: 0.5px;
 }
-.comment-cancel{
+
+.comment-cancel {
   background-image: url(../img/cancel.png);
   background-size: cover;
   border: 0;
@@ -139,10 +161,11 @@
   display: inline-block;
   width: 15px;
   height: 15px;
-  left:10px;
-  top:0.5px;
+  left: 10px;
+  top: 0.5px;
 }
-.comment-push-btn{
+
+.comment-push-btn {
   background-image: url(../img/push.png);
   background-size: cover;
   border: 0;
@@ -151,6 +174,6 @@
   display: inline-block;
   width: 15px;
   height: 15px;
-  left:15px;
-  top:0.5px;
+  left: 15px;
+  top: 0.5px;
 }

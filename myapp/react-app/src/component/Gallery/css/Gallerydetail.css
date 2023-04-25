@@ -1,15 +1,15 @@
-.clickPage {  
+.clickPage {
   background-color: #00000060;
   width: 400px;
   min-height: 680px;
-  margin-top:-320px;
-  margin-left:-200px;
+  margin-top: -320px;
+  margin-left: -200px;
 }
 
 .gclickbox {
   position: absolute;
   width: 400px;
-  height: 680px;
+  height: 600px;
   background-color: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: 400px;
@@ -58,8 +58,9 @@
   font-weight: bold;
   transition: all 0.2s ease;
 }
-.gheadfollow:active{
-  transform:scale(0.96);
+
+.gheadfollow:active {
+  transform: scale(0.96);
 }
 
 .gbody {
@@ -67,6 +68,7 @@
   background-repeat: no-repeat;
   background-size: 400px 400px;
 }
+
 .glike {
   /* background-color: red; */
   display: inline;
@@ -79,7 +81,7 @@
   font-weight: bold;
 }
 
-.gbecontent {
+/* .gbecontent {
   font-size: 16px;
   text-align: left;
   width: 370px;
@@ -87,21 +89,21 @@
   font-weight: bold;
   margin-left: 15px;
   margin-top: 15px;
-}
+} */
 
 .glikebnt {
   background-color: #fff;
   border: none;
   width: 50px;
   height: 50px;
-  left:10px;
+  left: 10px;
 }
 
 .gcommentbnt {
   position: absolute;
   display: inline-block;
-  top:462px;
-  left:130px;
+  top: 462px;
+  left: 130px;
   width: 44px;
   height: 44px;
   background-color: #fff;
@@ -121,25 +123,28 @@
 
 .gdetail-modal-box2 {
   position: absolute;
-  display:inline-block;
-  width:200px;
+  display: inline-block;
+  width: 200px;
   /* border: 1px solid darkblue; */
   /* width: 400px; */
 }
-.modal-header{
+
+.modal-header {
   display: inline-block;
   position: absolute;
-  border:0px solid;
+  border: 0px solid;
   width: 100px;
-  height:50px;
-  top:50px;
-  left:375px;
+  height: 50px;
+  top: 50px;
+  left: 375px;
 }
-.gmodal-close{
-  border:0px solid;
+
+.gmodal-close {
+  border: 0px solid;
   width: 25px;
-  height:25px;
+  height: 25px;
 }
+
 /* .modal-body{
   position: relative;
   display: inline-block;
@@ -163,18 +168,19 @@
   transition: 250ms ease;
   cursor: pointer;
   position: absolute;
-  top:-360px;
-  left:172px;
+  top: -360px;
+  left: 172px;
 }
+
 /*호버전 색 조정*/
-.x-container:hover{
+.x-container:hover {
   background: rgb(0, 0, 0);
   box-shadow: 0px 3px2px 2px rgb(190, 190, 190);
   border-radius: 30px;
 }
 
 .x-container div {
-  transition:  250ms ease;
+  transition: 250ms ease;
 }
 
 .x-container div:first-of-type {
@@ -188,6 +194,7 @@
   transform: translateX(-50%);
   transform: rotate(45deg);
 }
+
 .x-container div:last-of-type {
   width: 20px;
   height: 3px;
@@ -207,7 +214,7 @@
 }
 
 .x-container:hover div:last-of-type {
-  width:20px;
+  width: 20px;
   transform: translateX(calc(-50% + 9.5px)) rotate(-45deg) translateY(0px);
 }
 
@@ -240,7 +247,7 @@
 .gdetail-prev-button,
 .gdetail-next-button {
   position: relative;
-  width:25px;
+  width: 25px;
   height: 22px;
   pointer-events: auto;
   background-color: transparent;
@@ -252,13 +259,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom:190px;
+  bottom: 190px;
   opacity: 50%;
 
 }
+
 .gdetail-prev-button,
 .gdetail-next-button:hover {
-opacity:100%;
+  opacity: 100%;
 
 }
 
@@ -274,12 +282,13 @@ opacity:100%;
   padding: 2px 5px;
   pointer-events: none;
 }
-.gdeletebnt{
+
+.gdeletebnt {
   position: absolute;
   display: inline-block;
   text-align: center;
-  margin-left:120px;
-  top:15px;
+  margin-left: 120px;
+  top: 15px;
   width: 30px;
   height: 30px;
   border: none;
@@ -287,42 +296,44 @@ opacity:100%;
   background-image: url(../img/delete2.png);
   background-size: cover;
 }
-.gview-cnt{
-position: absolute;
-display:inline-block;
-width:50px;
-height:30px;
-left:350px;
-top:465px;
-text-align: left;
-}
-.gtag-list{
-position: absolute;
-display:inline-block;
-top:650px;
-left:10px;
-}
-.viewcnt-img{
+
+.gview-cnt {
   position: absolute;
   display: inline-block;
-  width:30px;
-  height:30px;
+  width: 50px;
+  height: 30px;
+  left: 350px;
+  top: 465px;
+  text-align: left;
+}
+
+.gtag-list {
+  margin-left: 10px;
+  margin-top:10px;
+}
+
+.viewcnt-img {
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
   background-image: url(../img/view.png);
   background-size: cover;
-  top:463px;
-  left:315px;
+  top: 463px;
+  left: 315px;
 }
-.Gallerymodify-button{
+
+.Gallerymodify-button {
   position: absolute;
   display: inline-block;
   text-align: center;
-  left:330px;
-  top:15px;
+  left: 330px;
+  top: 15px;
   width: 30px;
   height: 30px;
   background-image: url(../img/edit2.png);
   background-size: cover;
-  border:none;
+  border: none;
   outline: none;
   background-color: transparent;
 }

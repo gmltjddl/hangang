@@ -8,8 +8,7 @@ import FollowButton from "../Follow/Follow";
 import Usercontext from '../../Usercontext';
 import Gallerymodify from './Gallerymodify';
 
-
-const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModalStyle ,getData}) => {
+const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModalStyle, getData }) => {
     const [isHeartActive, setIsHeartActive] = useState(false);
     const [nickName, setNickName] = useState("");
     const [filepath, setFilepath] = useState("");
@@ -25,14 +24,14 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
     const [isCommentAddVisible, setIsCommentAddVisible] = useState(false);
     const user = useContext(Usercontext);
     const [modifymodalOn, setmodifymodalOn] = useState(false);
-    const [boarduserfilepath,setBoardUserFilepath] = useState("")
+    const [boarduserfilepath, setBoardUserFilepath] = useState("")
     getData(boarduserfilepath);
 
     useEffect(() => {
         if (boarduserfilepath) {
-          getData(boarduserfilepath);
+            getData(boarduserfilepath);
         }
-      }, [boarduserfilepath]);
+    }, [boarduserfilepath]);
 
     // 이미지 이동 함수
 
@@ -78,25 +77,25 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
                 console.error
                     (error);
             });
-  
 
-            axios.get(`http://localhost:8080/web/members/${userId}`)
+
+        axios.get(`http://localhost:8080/web/members/${userId}`)
             .then((response) => {
                 return response.data;
             })
             .then((result) => {
-                if(result.status === "success") {
+                if (result.status === "success") {
                     // console.log(result,"디테일 유저아이디");
                     // console.log(result.data.attachedFiles[0]);
                     setBoardUserFilepath(result.data.attachedFiles[0]);
-        
+
                 }
             })
             .catch((error) => {
                 console.error
                     (error);
             });
-        }, [no]);
+    }, [no]);
 
     const handleHeartClick = () => {
         setIsHeartActive(!isHeartActive);
@@ -125,7 +124,7 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
             const response = await axios.delete(`http://localhost:8080/web/boards/${boardNo}`);
             if (response.status === 200) {
                 // console.log(response.data, 'delete요청');
-                window.location.href="./Gallery";
+                window.location.href = "./Gallery";
 
             }
         } catch (error) {
@@ -133,8 +132,12 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
         }
     };
     const handleClose = () => {
-        onHide();
-    }
+        if (isCommentAddVisible) {
+            setIsCommentAddVisible(false);
+        } else {
+            onHide();
+        }
+    };
 
 
     const defaultModalStyle = {
@@ -145,13 +148,13 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
     };
 
     const modalStyle = customModalStyle ? customModalStyle : defaultModalStyle;
-// console.log(nickName);
+    // console.log(nickName);
     return (
 
         <div className="gdetail-modal-box">
             <Modal
                 show={show}
-                onHide={onHide}
+                onHide={handleClose}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
@@ -164,9 +167,9 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
                         <div className="clickPage">
                             <div className="gclickbox">
                                 <div className="gheader">
-                                <div>
-                                <img className="gheadprofile" src={boarduserfilepath.filepath} alt="" />
-                                </div>
+                                    <div>
+                                        <img className="gheadprofile" src={boarduserfilepath.filepath} alt="" />
+                                    </div>
 
                                     <div className="gheaduser">{nickName}</div>
 
@@ -179,7 +182,7 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
                                             className="Gallerymodify-button"
                                             onClick={() => setmodifymodalOn(true)}
                                         >
-                                            
+
                                         </button>
                                     )}
                                     {userId === user.no && (
@@ -189,7 +192,7 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
                                                 className="gdeletebnt"
                                                 onClick={handledelete}
                                             >
-                                                
+
                                             </button>
 
                                         </div>
@@ -219,20 +222,20 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
                                     </div>
                                 </div>
 
-            
-                                    <button className="glikebnt">
-                                        <LikeButton boardNo={boardNo} />
-                                    </button>
-                                    <button className="gcommentbnt"
-                                     onClick={()=>setIsCommentAddVisible(!isCommentAddVisible)}></button>
-                                    <div className="viewcnt-img"></div>
-                                    <div className="gview-cnt">
-                                        {viewCount}
-                                    </div>
-                               
-                                <div className="gbecontent">
-                                    {content}
+
+                                <button className="glikebnt">
+                                    <LikeButton boardNo={boardNo} />
+                                </button>
+                                <button className="gcommentbnt"
+                                    onClick={() => setIsCommentAddVisible(!isCommentAddVisible)}></button>
+                                <div className="viewcnt-img"></div>
+                                <div className="gview-cnt">
+                                    {viewCount}
                                 </div>
+
+                                {/* <div className="gbecontent">
+                                    {content}
+                                </div> */}
                                 <div className="gtag-list">
                                     {title}
                                 </div>
@@ -242,10 +245,12 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
                                             show={isCommentAddVisible}
                                             onHide={() => setIsCommentAddVisible(false)}
                                             boardNo={boardNo}
-                                            // comments={comments}
-                                            // loggedInUser={loggedInUser}
-                                            // setComments={setComments}
-                                            // fetchComments={fetchComments}
+                                            dcontent={content}
+                                            dtitle={title}
+                                        // comments={comments}
+                                        // loggedInUser={loggedInUser}
+                                        // setComments={setComments}
+                                        // fetchComments={fetchComments}
                                         />
                                     )}
                                 </div>

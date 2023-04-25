@@ -30,15 +30,7 @@ import './css/Header.css';
       <nav>
         <ul>
           <li><Link to="/" >HANGANG</Link></li>
-          <li>
-            <a href="#" id="festival-dropdown" className="fes">FESTIVAL</a>
-            <ul id="festival-menu">
-              <li><a href="#">벚꽃축제</a></li>
-              <li><a href="#">마라톤</a></li>
-              <li><a href="#">야시장</a></li>
-              <li><a href="#">불꽃축제</a></li>
-            </ul>
-          </li>
+          <li><Link to="/Festival" className="fes">FESTIVAL</Link></li>
           <li><Link to="/Gallery" className="gallerymain">GALLERY</Link></li>
           <li><a href="#" id="hotplace-dropdown" className="hot">HOTPLACE</a>
             <ul id="hotplace-menu">
@@ -53,7 +45,7 @@ import './css/Header.css';
           <li><Link to="/Mypage" className="mypage" id="mypage">MYPAGE</Link></li>
           <li> <img src={image} id="main-profile-img" className="main-profile-img"></img></li>
           <li className="logout" id="logout" onClick={() => { logout(); return false; }}>
-            <span className="logout-span">({nickName})로그아웃</span>
+            <span className="logout-span">{nickName}&nbsp;로그아웃</span>
           </li>
  
         </ul>

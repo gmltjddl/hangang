@@ -64,72 +64,70 @@
   /* grid-template-areas:
     "f1 f2"
     "ff1 ff2"
-    "fff1 fff2"; */
+    "night fff2"; */
 }
 
-.f1 {
+.peak-img{
   background-image: url(../img/11.webp);
   background-repeat: no-repeat;
   background-size: 500px 500px;
   cursor: pointer;
   transition: all 0.3s ease;
   }
-  .f1:hover{
+.peak:hover{
     opacity: 60%;
   }
+.peak-content {
+    margin-top: 205px;
+    text-align: center;
+  }
 
-.ff2 {
+.dron-img {
   background-image: url(../img/22.webp);
   background-repeat: no-repeat;
   background-size: 500px 500px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.ff2:hover{
+.dron-img:hover{
   opacity: 60%;
 }
+.dron-content {
+  margin-top: 205px;
+  text-align: center;
+}
 
-.fff1 {
-
+.night-img {
   background-image: url(../img/main_market.png);
   background-repeat: repeat;
   background-size: 500px 500px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.fff1:hover{
+.night:hover{
   opacity: 60%;
 }
-.ffff2 {
+.night-content {
+  margin-top: 205px;
+  text-align: center;
+}
+.fire-img {
   background-image: url(../img/mainrunning.png);
   background-repeat: repeat;
   background-size: 500px 500px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.ffff2:hover{
+.fire:hover{
   opacity: 60%;
 }
 
-.f2 {
+.fire-content {
   margin-top: 205px;
   text-align: center;
 }
 
-.ff1 {
-  margin-top: 205px;
-  text-align: center;
-}
 
-.fff2 {
-  margin-top: 205px;
-  text-align: center;
-}
-
-.ffff1 {
-  margin-top: 205px;
-  text-align: center;
-}
 
 /* .festival-list {
   display: flex;

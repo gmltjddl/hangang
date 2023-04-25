@@ -6,10 +6,16 @@ import Join from './pages/Join';
 import Mypage from './pages/Mypage';
 import Gallery from './pages/Gallery';
 import Reservation from './pages/Reservation';
+import Festival from './pages/Festival';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Usercontext, { initialUser } from './Usercontext';
 import axios from "axios";
 import Header from './component/Header/Header';
+import Peak from './component/Festival/Peak';
+import Dron from './component/Festival/Dron';
+import Firework from './component/Festival/Firework';
+import Nightmarket from './component/Festival/Nightmarket';
+
 
 const HANGANG = () => {
   const [user, setUser] = useState(initialUser);
@@ -127,6 +133,11 @@ const HANGANG = () => {
         <Route path="/Join" element={<Join />} />
         <Route path="/Mypage" element={<Mypage />} />
         <Route path="/Gallery" element={<Gallery />} />
+        <Route path="/Festival" element={<Festival />} />
+        <Route path="/Peak" element={<Peak />} />
+        <Route path="/Dron" element={<Dron />} />
+        <Route path="/Firework" element={<Firework />} />
+        <Route path="/Nightmarket" element={<Nightmarket />} />
         <Route path="/Reservation" element={<Reservation />} />
       </Routes>
     </Usercontext.Provider>

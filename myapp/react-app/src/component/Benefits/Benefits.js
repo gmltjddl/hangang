@@ -1,6 +1,15 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import './css/Benefits.css';
+import { Modal, Button, Overlay } from "react-bootstrap";
+import Peak from '../Festival/Peak';
+import Dron from '../Festival/Dron';
+import Nightmarket from '../Festival/Nightmarket';
+import Firework from '../Festival/Firework';
+import { Link } from 'react-router-dom';
+
 function Benefits() {
+
+
   return (
     <div>
       <section class="benefits">
@@ -13,30 +22,30 @@ function Benefits() {
           <section class="festival">
             <div class="festival-list">
               <div class="festival-item">
-                <button class="f1"></button>
-                <div class="f2">
+              <Link className="peak-img" to="/Peak" />
+                <div class="peak-content">
                   ABOUT <br />
                   cherry blossoms festival. <br />
                   show more
                 </div>
-                <div class="ff1">
+                <div class="dron-content">
                   ABOUT <br />
                   Fireworks festival. <br />
                   show more
                 </div>
-                <button class="ff2"></button>
-                <button class="fff1"></button>
-                <div class="fff2">
+                <Link className="dron-img" to="/Dron" />
+                <Link className="night-img" to="/Nightmarket" />
+                <div class="night-content">
                   ABOUT <br />
                   Bamdokkaebi Night Market. <br />
                   show more
                 </div>
-                <div class="ffff1">
+                <div class="fire-content">
                   ABOUT <br />
                   marathon. <br />
                   show more
                 </div>
-                <button class="ffff2"></button>
+                <Link className="fire-img" to="/Firework" />
               </div>
             </div>
           </section>
@@ -46,4 +55,4 @@ function Benefits() {
   )
 }
 
-export default Benefits
+export default Benefits;

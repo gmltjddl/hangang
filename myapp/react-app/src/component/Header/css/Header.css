@@ -120,5 +120,6 @@ nav a:hover {
 .logout-span{
   position:relative;
   display: inline-block;
+  right:5px;
 }
 
