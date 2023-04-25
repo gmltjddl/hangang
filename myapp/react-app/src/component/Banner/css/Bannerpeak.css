@@ -1,26 +1,26 @@
-.banner {
+.bannerpeak {
   background-color: #000;
   color: #fff;
   height: 560px;
   display: flex;
   align-items: center;
-  background-image: url(../img/main.jpg);
+  background-image: url();
   background-repeat: no-repeat;
   background-size: 100% 560px;
-  transition: 'background-image 1s ease-out'
+
 }
 
-.banner img {
+.bannerpeak img {
   width: 500px;
   margin-left: 32px;
 }
-.banner-text {
+.bannerpeak-text {
 
 margin-left: 100px;
 
 }
 
-.banner-text h1 {
+.bannerpeak-text h1 {
   position: relative;
   font-size: 48px;
   margin-bottom: 32px;
@@ -28,14 +28,14 @@ margin-left: 100px;
   animation: slide 1s ease-out;
 }
 
-.banner-text p {
+.bannerpeak-text p {
   position: relative;
   font-size: 24px;
   margin-bottom: 40px;
   animation: slide 1.2s ease-out;
 }
 
-.banner-text a {
+.bannerpeak-text a {
   background-color: #fff;
   color: #000;
   font-size: 16px;
