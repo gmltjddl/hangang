@@ -27,22 +27,18 @@ const Nightmarket = () => {
     <div className='nightmarket-back'>
       <Bannernightmarket/>
       <div className='nightmarket-wrap'>
-        <div className='nightmarket-top-wrap'>
+        <div className='nightmarket-main'>
           <div className='nightmarket-top-img'/>
           <div className='nightmarket-top-text'>
-            <h3>작년 야시장 못가 봤으면 가봐!</h3>
-            <h3>2023년 소중한 사람과 함께</h3>
-            <h3>밤에 열렸다 아침에 사라지는 신비한</h3>
-            <h3>한강 밤도깨비 야시장에 초대할께!</h3>
+            <h5>작년 야시장 못가 봤으면 가봐!</h5>
+            <h5>2023년 소중한 사람과 함께</h5>
+            <h5>밤에 열렸다 아침에 사라지는 신비한</h5>
+            <h5>한강 밤도깨비 야시장에 초대할께!</h5>
           </div>
-        </div>
-
         <div className='nightmarket-middle-wrap'>
-
           <div>
             <h4 className='nightmarket-middle-text'>날씨도 풀리는데 스트레스 풀어볼까?</h4>
           </div>
-
           <div className='nightmarket-middle-grid1'>
             <div className='nightmarket-middle-img1'/>
             <div></div>
@@ -57,7 +53,7 @@ const Nightmarket = () => {
             <div className='nightmarket-middle-img4'/>
           </div>
         </div>
-
+        </div>
         <div className='nightmarket-map-box'>
         <div className="nightmarket-map" ref={mapRef} ></div>
         </div>

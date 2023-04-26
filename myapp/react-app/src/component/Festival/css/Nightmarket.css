@@ -1,5 +1,7 @@
-.nightmarket-back{
-  background-color: black;
+@font-face {
+  font-family: "Sriracha-Regular";
+  font-weight: 35;
+  src: url("../font/Sriracha-Regular.ttf");
 }
 
 .nightmarket-wrap{
@@ -10,44 +12,50 @@
   min-height: 800px;
   height:auto;
   text-align: center;
-  background-color: black;
+  /* background-color: black; */
 }
-
-.nightmarket-top-wrap{
+.nightmarket-main{
   position: relative;
   display: inline-block;
-  width:70%;
-  height: 500px;
-  background-color: rgb(0, 0, 0);
-  /* border:1px solid red; */
+  width:900px;
+  border:1px solid red;
+  min-height: 1800px;
+  height:auto;
+  background : rgba(14,14,14,0.99);
+  text-align: left;
 }
 
 .nightmarket-top-img{
   position: relative;
   display: inline-block;
-  background-image: url(../img/nightmarket1.jpeg);
-  background-size: 500px 500px;
   width: 500px;
-  height: 500px;
-  left: -100px;
+  height: 650px;
+  left: 25px;
+  top:25px;
+  /* border :1px solid blue; */
+  background-image: url(../img/nightmarket1.jpeg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .nightmarket-top-text{
   position: relative;
   display: inline-block;
-  left: 20px;
-  top: -190px;
-  width: 400px;
-  height: 370px;
+  width: 350px;
+  height: 150px;
+  left:45px;
+  top:-250px;
   color: rgb(202, 198, 198);
+  /* border :1px solid blue; */
+  font-family: "Sriracha-Regular";
 }
 
 .nightmarket-middle-wrap{
   position: relative;
-  left: 208px;
   display: grid;
-  width: 70%;
+  width: 90%;
   height: 930px;
+  left:5px;
   grid-template-rows: 100px 400px 30px 400px;
   grid-template-columns: 100%;
 }
@@ -57,6 +65,7 @@
   top: 30px;
   text-align: center;
   color: rgb(202, 198, 198);
+  font-family: "Sriracha-Regular";
 }
 
 .nightmarket-middle-grid1{
@@ -102,18 +111,13 @@
   background-size: cover;
   padding: 20px;
 }
-
 .nightmarket-map-box{
-  margin-top: 100px;
-  width: 70%;
   position: relative;
   display: inline-block;
-  top: 30px;
-  right:5px;
+  width:900px;
   height:600px;
-  /* bottom:490px; */
 }
 .nightmarket-map{
-  width:100%;
+  width:900px;
   height:500px;
 }
