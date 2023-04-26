@@ -18,7 +18,7 @@
   position: relative;
   display: inline-block;
   width:900px;
-  border:1px solid red;
+  /* border:1px solid red; */
   min-height: 1800px;
   height:auto;
   background : rgba(14,14,14,0.99);

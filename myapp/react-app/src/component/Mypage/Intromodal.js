@@ -186,7 +186,7 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
       onHide();
    
     };
-
+    const defaultProfile = "/img/defaultprofile.jpg";
 
   return (
     <Modal
@@ -212,7 +212,7 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
               ref={imageInput}
             />
             <div className="introprofile-preview-image-box" onClick={onCickImageUpload}>
-              <img src={image}></img>
+              <img  src={image ? image : defaultProfile} ></img>
               <span className=""> 사진 추가하기</span>
             </div>
             {previewImages.length > 0 && (

@@ -25,6 +25,7 @@ const GalleryItem = ({ item }) => {
   // console.log(boarduserfilepath.filepath,"아이템 보드유저패쓰");
 
 // console.log(item.comment.commetNo);
+const defaultProfile = "/img/defaultprofile.jpg";
 return (
   <div key={item.no}>
     <table className="gall-list-table" id={`board-table-${item.no}`} border="1">
@@ -33,7 +34,7 @@ return (
           <td>
             <div className="gall-div-detail-box">
               <div className="gall-img-wrap">
-                <img className="gall-img-profile" src={boarduserfilepath.filepath}></img>
+                <img className="gall-img-profile" src={boarduserfilepath.filepath ? boarduserfilepath.filepath : defaultProfile}></img>
                 <Gallerydetail boarduserfilepath={boarduserfilepath} getData={getData}></Gallerydetail>
               </div>
     

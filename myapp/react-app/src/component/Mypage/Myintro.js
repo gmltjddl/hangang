@@ -48,7 +48,7 @@ const Myintro = () => {
     fetchUserData();
   }, [user]);
 
-
+  const defaultProfile = "/img/defaultprofile.jpg";
   return (
     <>
       <Intromodal show={IntromodalOn} onHide={() => setIntromodalOn(false)} onUpdate={fetchUserData} />
@@ -63,7 +63,7 @@ const Myintro = () => {
         </div>
         <div className="line"></div>
         <div className="intro-img">
-        <img src={image} alt="프로필 이미지" />
+        <img src={image ? image : defaultProfile} alt="프로필 이미지" />
         </div>
         
         <div className="intro-write-wrap">

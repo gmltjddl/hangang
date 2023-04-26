@@ -22,7 +22,7 @@ import './css/Header.css';
         // console.log(exception);
       });
   }
-
+  const defaultProfile = "/img/defaultprofile.jpg";
   return (
     
     <div>
@@ -43,7 +43,11 @@ import './css/Header.css';
           <li><Link to="" className="qna">Q&amp;A</Link></li>
           <li><Link to="/Login" className="login" id="login">LOGIN</Link></li>
           <li><Link to="/Mypage" className="mypage" id="mypage">MYPAGE</Link></li>
-          <li> <img src={image} id="main-profile-img" className="main-profile-img"></img></li>
+          <li>  <img
+                src={image ? image : defaultProfile}
+                id="main-profile-img"
+                className="main-profile-img"
+              ></img></li>
           <li className="logout" id="logout" onClick={() => { logout(); return false; }}>
             <span className="logout-span">{nickName}&nbsp;로그아웃</span>
           </li>

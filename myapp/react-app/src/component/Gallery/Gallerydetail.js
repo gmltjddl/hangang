@@ -139,7 +139,7 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
         }
     };
 
-
+    const defaultProfile = "/img/defaultprofile.jpg";
     const defaultModalStyle = {
         position: 'fixed',
         top: '50%',
@@ -168,7 +168,8 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
                             <div className="gclickbox">
                                 <div className="gheader">
                                     <div>
-                                        <img className="gheadprofile" src={boarduserfilepath.filepath} alt="" />
+                                        <img className="gheadprofile" 
+                                        src={boarduserfilepath.filepath ? boarduserfilepath.filepath : defaultProfile}/>
                                     </div>
 
                                     <div className="gheaduser">{nickName}</div>

@@ -29,6 +29,7 @@ const Mypostlist = ({ show, onHide }) => {
 
     const response = await axios.get(`http://localhost:8080/web/boards/user/${user.no}`)
       .then((response) => {
+        console.log(response.data.data);
         setData([...data, ...response.data.data.sort((a, b) => b.no - a.no)]); // 번호를 내림차순으로 정렬하여 데이터 업데이트
         setLoading(false);
       })
@@ -55,6 +56,7 @@ const Mypostlist = ({ show, onHide }) => {
     };
   }, []); // 컴포넌트가 마운트/언마운트될 때만 스크롤 이벤트 리스너 추가/제거
 
+  
   return (
     <Modal
       show={show}
