@@ -18,7 +18,21 @@ const Gallerywriting = ({ show, onHide }) => {
 
 
   const handleTitleChange = (event) => {
-    setTitle(event.target.value);
+    const input = event.target.value;
+    const tags = input.split(",").map(tag => tag.trim());
+    const validTags = tags.filter(tag => tag.startsWith("#"));
+
+    if (tags.length === validTags.length) {
+      setTitle(tags.join(", "));
+    } else {
+      const correctedTags = tags.map(tag => {
+        if (!tag.startsWith("#")) {
+          return `#${tag}`;
+        }
+        return tag;
+      });
+      setTitle(correctedTags.join(", "));
+    }
   };
 
   const handleContentChange = (event) => {
