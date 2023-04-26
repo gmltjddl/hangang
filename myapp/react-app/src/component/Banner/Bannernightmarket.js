@@ -1,9 +1,9 @@
-import './css/Bannerfirework.css';
+import './css/Bannernightmarket.css';
 import React, { useEffect, useState } from 'react';
 
-function Bannerfirework() {
+function Bannernightmarket() {
   const [bgImageIndex, setBgImageIndex] = useState(0); // State to keep track of current background image index
-  const bgImages = ['',
+  const bgImages = ['https://cdn.discordapp.com/attachments/1080021402117226547/1100609207876722688/fire-banner.png?width=729&height=709',
   ];
 
   useEffect(() => {
@@ -23,17 +23,17 @@ function Bannerfirework() {
     const handleScroll = () => {
       let value = window.scrollY;
 
-      const bannerfireworkText = document.querySelector("h1");
-      const bannerfireworkText2 = document.querySelector("p");
-      const bannerfireworkText3 = document.querySelector(".a");
+      const bannernightmarketText = document.querySelector("h1");
+      const bannernightmarketText2 = document.querySelector("p");
+      const bannernightmarketText3 = document.querySelector(".a");
       if (value > 150) {
-        bannerfireworkText.style.animation = "disappear 1s ease-out forwards";
-        bannerfireworkText2.style.animation = "disappear 1.2s ease-out forwards";
-        bannerfireworkText3.style.animation = "disappear 1.5s ease-out forwards";
+        bannernightmarketText.style.animation = "disappear 1s ease-out forwards";
+        bannernightmarketText2.style.animation = "disappear 1.2s ease-out forwards";
+        bannernightmarketText3.style.animation = "disappear 1.5s ease-out forwards";
       } else {
-        bannerfireworkText.style.animation = "slide 1s ease-out";
-        bannerfireworkText2.style.animation = "slide 1.2s ease-out";
-        bannerfireworkText3.style.animation = "slide 1.5s ease-out";
+        bannernightmarketText.style.animation = "slide 1s ease-out";
+        bannernightmarketText2.style.animation = "slide 1.2s ease-out";
+        bannernightmarketText3.style.animation = "slide 1.5s ease-out";
       }
     };
 
@@ -46,15 +46,15 @@ function Bannerfirework() {
   return (
     <div>
       <section
-        className="bannerfirework"
+        className="bannernightmarket"
         style={{
           backgroundImage: `url(${bgImages[bgImageIndex]})`,
-          backgroundSize: 'cover',
+          backgroundSize: '750px 630px',
           backgroundPosition: 'center',
           transition: 'background-image 1s ease-out',
          }}
       >
-        <div className="bannerfirework-text">
+        <div className="bannernightmarket-text">
           <h1>새로운 경험, 기억<br />HANGANG</h1>
           <p>HANGANG으로 간편하게 경험하세요.</p>
           <a href="#" className="a">자세히 알아보기</a>
@@ -64,4 +64,4 @@ function Bannerfirework() {
   );
 }
 
-export default Bannerfirework;
+export default Bannernightmarket;

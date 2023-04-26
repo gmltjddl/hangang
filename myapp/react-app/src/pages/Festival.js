@@ -19,7 +19,7 @@ function Festival() {
               <li>al</li>
             </ul>
           </Link>
-          <Link to="/Dron" className="image2" >
+          <Link to="/Firework" className="image2" >
 
             <div className="festival2"></div>
             <div className="festival2-effect"></div>
@@ -32,7 +32,7 @@ function Festival() {
               <li>al</li>
             </ul>
           </Link>
-          <Link to="/Firework" className="image3" >
+          <Link to="/Dron" className="image3" >
       
             <div className="festival3"></div>
             <div className="festival3-effect"></div>

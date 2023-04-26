@@ -68,7 +68,7 @@
 }
 
 .peak-img {
-  background-image: url(../img/11.webp);
+  background-image: url(../img/1.jpg);
   background-repeat: no-repeat;
   background-size: 500px 500px;
   cursor: pointer;
@@ -83,7 +83,7 @@
   }
 
 .dron-img {
-  background-image: url(../img/22.webp);
+  background-image: url(../img/2.png);
   background-repeat: no-repeat;
   background-size: 500px 500px;
   cursor: pointer;
@@ -98,7 +98,7 @@
 }
 
 .night-img {
-  background-image: url(../img/main_market.png);
+  background-image: url(../img/3.png);
   background-repeat: repeat;
   background-size: 500px 500px;
   cursor: pointer;
@@ -112,7 +112,7 @@
   text-align: center;
 }
 .fire-img {
-  background-image: url(../img/mainrunning.png);
+  background-image: url(../img/4.png);
   background-repeat: repeat;
   background-size: 500px 500px;
   cursor: pointer;
