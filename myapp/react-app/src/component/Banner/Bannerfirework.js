@@ -1,9 +1,9 @@
-import './css/Bannerdron.css';
+import './css/Bannerfirework.css';
 import React, { useEffect, useState } from 'react';
 
-function Bannerdron() {
+function Bannerfirework() {
   const [bgImageIndex, setBgImageIndex] = useState(0); // State to keep track of current background image index
-  const bgImages = ['https://media.discordapp.net/attachments/1080021402117226547/1100467637160517712/image.png?width=1014&height=729',
+  const bgImages = ['https://media.discordapp.net/attachments/1080021402117226547/1100358858058252390/peak-banner.jpg?width=729&height=729',
   ];
 
   useEffect(() => {
@@ -23,17 +23,17 @@ function Bannerdron() {
     const handleScroll = () => {
       let value = window.scrollY;
 
-      const bannerdronText = document.querySelector("h1");
-      const bannerdronText2 = document.querySelector("p");
-      const bannerdronText3 = document.querySelector(".a");
+      const BannerfireworkText = document.querySelector("h1");
+      const BannerfireworkText2 = document.querySelector("p");
+      const BannerfireworkText3 = document.querySelector(".a");
       if (value > 150) {
-        bannerdronText.style.animation = "disappear 1s ease-out forwards";
-        bannerdronText2.style.animation = "disappear 1.2s ease-out forwards";
-        bannerdronText3.style.animation = "disappear 1.5s ease-out forwards";
+        BannerfireworkText.style.animation = "disappear 1s ease-out forwards";
+        BannerfireworkText2.style.animation = "disappear 1.2s ease-out forwards";
+        BannerfireworkText3.style.animation = "disappear 1.5s ease-out forwards";
       } else {
-        bannerdronText.style.animation = "slide 1s ease-out";
-        bannerdronText2.style.animation = "slide 1.2s ease-out";
-        bannerdronText3.style.animation = "slide 1.5s ease-out";
+        BannerfireworkText.style.animation = "slide 1s ease-out";
+        BannerfireworkText2.style.animation = "slide 1.2s ease-out";
+        BannerfireworkText3.style.animation = "slide 1.5s ease-out";
       }
     };
 
@@ -46,7 +46,7 @@ function Bannerdron() {
   return (
     <div>
       <section
-        className="bannerdron"
+        className="Bannerfirework"
         style={{
           backgroundImage: `url(${bgImages[bgImageIndex]})`,
           backgroundSize: 'cover',
@@ -54,7 +54,7 @@ function Bannerdron() {
           transition: 'background-image 1s ease-out',
          }}
       >
-        <div className="bannerdron-text">
+        <div className="Bannerfirework-text">
           <h1>새로운 경험, 기억<br />HANGANG</h1>
           <p>HANGANG으로 간편하게 경험하세요.</p>
           <a href="#" className="a">자세히 알아보기</a>
@@ -64,4 +64,4 @@ function Bannerdron() {
   );
 }
 
-export default Bannerdron;
+export default Bannerfirework;
