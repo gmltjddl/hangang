@@ -36,6 +36,7 @@ public class DefaultQnaService implements QnaService {
     return qnaDao.findByNo(no);
   }
 
+
   @Override
   public Qna get(String email, String password) {
     Map<String,Object> paramMap = new HashMap<>();

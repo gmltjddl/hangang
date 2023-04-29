@@ -16,9 +16,6 @@
       <result column="name" property="name"/>
       <result column="nickName" property="nickName"/>
   </association>
-    
-
-    
   </resultMap>
 
   <insert id="insert" parameterType="qna" 
@@ -37,7 +34,6 @@
       q.content,
       q.created_date,
       q.writer,
-      q.view_cnt,
       (select nick from hms_mem m where m.member_id = q.writer) nickName
       
     from 
@@ -46,58 +42,8 @@
       q.qna_id desc
   </select>
   
-    <select id="allMember" resultMap="qnaMap">
-   select 
-      qna_id,
-      email,
-      pwd,
-      name,
-      nick,
-      tel,
-      intro,
-      inter,
-      hob,
-      created_date
-    from 
-      hms_qna
-      order by
-      qna_id desc
-  </select>
+
   
-  <select id="findByEmailAndPassword" parameterType="map" resultMap="qnaMap">
-    select
-      qna_id,
-      email,
-      name,
-      nick,
-      tel,
-      intro,
-      inter,
-      hob,
-      created_date
-    from 
-      hms_qna
-
-    where 
-      email = #{email} and pwd = sha2(#{password},256)
-  </select>
-
-  <select id="findByEmail" parameterType="string" resultMap="qnaMap">
-    select
-      qna_id,
-      email,
-      name,
-      nick,
-      tel,
-      intro,
-      inter,
-      hob,
-      created_date
-    from 
-      hms_qna 
-    where 
-      email = #{email}
-  </select>
 
   <select id="findByNo" parameterType="int" resultMap="qnaMap">
     select 
@@ -122,6 +68,11 @@
       order by
       mf.qnafile_id desc
   </select>
+    <update id="increaseViewCount" parameterType="int">
+    update hms_gall set
+      view_cnt = view_cnt +1
+    where qna_id=#{no}
+  </update>
   
   <update id="update" parameterType="qna">
     update hms_qna set

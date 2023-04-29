@@ -1,0 +1,156 @@
+.write-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  left:1120px;
+  width: 100px;
+  height: 40px;
+  top:150px;
+
+  border-radius: 25px;
+}
+.write-btn:hover {
+  background-color: #45a049;
+  }
+
+.qmodal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 530px;
+  top: 200px;
+  width: 650px;
+  height: 400px;
+  overflow:auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+  }
+  .qmodal::-webkit-scrollbar {
+    display: none;
+  }
+  .qmodal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  margin-left:50px;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 500px;
+  height: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  border-radius: 25px;
+  }
+  
+  @keyframes animatetop {
+  from {
+  top: -300px;
+  opacity: 0;
+  }
+  to {
+  top: 0;
+  opacity: 1;
+  }
+  }
+  
+  .close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  }
+  
+  .qna-form {
+  display: flex;
+  flex-direction: column;
+  }
+  
+  .qna-form label {
+  font-size: 18px;
+  margin-bottom: 5px;
+  }
+  
+  .qna-form input[type="text"],
+  .qna-form textarea {
+  font-size: 16px;
+  padding: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  }
+  
+  .qna-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  }
+  
+  .qna-form button:hover {
+  background-color: #45a049;
+  }
+.qtitle{
+  position: relative;
+  display: inline-block;
+  left:45px;
+}
+.qtitle-input{
+  position: relative;
+  display: inline-block;
+  width:300px;
+  left:55px;
+}
+.qcontent{
+  position: relative;
+  display: inline-block;
+  bottom:150px;
+  left:45px;
+}
+.qcontent-input{
+  position: relative;
+  display: inline-block;
+  left:55px;
+  width:300px;
+  height:150px;
+}
+.qadd-btn{
+  position: relative;
+  display: inline-block;
+  width:300px;
+  left:95px;
+}
+.qclose{
+  position: relative;
+  display: inline-block;
+  /* left:300px; */
+  bottom:180px;
+  /* border:1px solid red; */
+  left:530px;
+  font-size: 40px;
+}
+.qclose:hover{
+  color:white;
+ 
+}

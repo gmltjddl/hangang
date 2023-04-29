@@ -14,6 +14,7 @@ public interface QnaDao {
   Qna get(int no);
   Qna findByEmailAndPassword(Map<String,Object> params);
   Qna findByEmail(String email);
+  void increaseViewCount(int no);
   int update(Qna q);
   int delete(int no);
 

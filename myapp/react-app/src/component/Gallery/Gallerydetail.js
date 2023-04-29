@@ -58,6 +58,7 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
         axios
             .get(`http://localhost:8080/web/boards/${boardNo}`)
             .then((response) => {
+          
                 return response.data;
             })
             .then((result) => {

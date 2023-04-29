@@ -1,0 +1,95 @@
+.qna-h1{
+  position: relative;
+  display: inline-block;
+  left:600px;
+  top:100px;
+}
+.qna-list {
+  left:400px;
+  top:150px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 150px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.qna-list ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.qna-list li {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.qna-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.qna-content {
+  margin-top: 10px;
+}
+
+.open .qna-content {
+  display: block;
+}
+/* Qnalist.css */
+.qna-header-bar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f1f1f1;
+  padding: 8px 0;
+  font-weight: bold;
+}
+
+.qna-number-header {
+position: relative;
+display: inline-block;
+text-align: center;
+left:-100px;
+}
+
+.qna-title-header {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  left:-20px;
+}
+
+.qna-date-header {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  left:90px;
+}
+.page-numbers {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-left:-30px;
+}
+
+.page-numbers li {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.page-numbers li.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.page-numbers li:hover {
+  background-color: #f8f9fa;
+}

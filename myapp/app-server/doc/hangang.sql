@@ -143,6 +143,10 @@ alter table hms_qna
   
     alter table hms_qna
   add column title varchar(15);
+  
+    
+    alter table hms_qna
+  add column view_count int;
 
 
   
