@@ -1,9 +1,10 @@
 .clickPage {
   background-color: #00000060;
   width: 400px;
-  min-height: 680px;
+  min-height: 605px;
   margin-top: -320px;
   margin-left: -200px;
+  border-radius: 15px;
 }
 
 .gclickbox {
@@ -309,7 +310,7 @@
 
 .gtag-list {
   margin-left: 10px;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 .viewcnt-img {

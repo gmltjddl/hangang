@@ -126,4 +126,23 @@ CREATE TABLE hms_follow (
   UNIQUE (follower_id, followed_id)
 );
 
+create table hms_qna(
+  qna_id int not null,
+  nick varchar(5),
+  content varchar(100),
+  created_date datetime default now()
+);
+  
+alter table hms_qna
+  add constraint primary key (qna_id),
+  modify column qna_id int not null auto_increment;
+
+  alter table hms_qna
+  add column writer int,
+  add constraint hms_qna_fk foreign key (writer) references hms_mem(member_id);
+  
+    alter table hms_qna
+  add column title varchar(15);
+
+
   

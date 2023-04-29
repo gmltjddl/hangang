@@ -29,6 +29,12 @@ public class DefaultMemberService implements MemberService {
   }
 
   @Override
+  public List<Member> memberlist(String keyword) {
+    return memberDao.allMember();
+  }
+
+
+  @Override
   public Member get(int no) {
     return memberDao.findByNo(no);
   }
@@ -78,7 +84,14 @@ public class DefaultMemberService implements MemberService {
   public void deleteFile(int fileNo) {
     memberFileDao.delete(fileNo);
   }
+
+  @Override
+  public Member get(String email) {
+    return memberDao.findByEmail(email);
+  }
 }
+
+
 
 
 

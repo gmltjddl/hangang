@@ -114,9 +114,9 @@
   position: relative;
   display: inline-block;
   border: 1px solid gray;
-  top: 130px;
+  top: 120px;
   width: 1000px;
-  height: 300px;
+  height: 330px;
 }
 
 .reservation-box-wrap h1 {

@@ -5,6 +5,7 @@ import './css/Followersmodal.css';
 import Usercontext from '../../Usercontext';
 import axios from 'axios';
 import FollowButton from '../Follow/Follow';
+import Followerspostmodal from './Followerspostmodal';
 
 const dummyProfileImage = 'https://via.placeholder.com/40';
 
@@ -13,6 +14,10 @@ const Followersmodal = ({ show, onHide, followers }) => {
   const [name, setName] = useState("");
   const [profileImage, setProfileImage] = useState(dummyProfileImage);
   const [followersProfiles, setFollowersProfiles] = useState([]);
+  const [MypostlistOn, setMypostlistOn] = useState({ show: false, userId: null });
+  const [backgroundColor, setBackgroundColor] = useState("");
+
+
 
   useEffect(() => {
     const fetchFollowersProfiles = async () => {
@@ -61,12 +66,21 @@ const Followersmodal = ({ show, onHide, followers }) => {
                 <div className="FollowersModal-ms-3">
                   <FollowButton userId={profile.id} />
                 </div>
-                <span>{profile.name}</span>
+                <div className='Followersmodalcursor' onClick={() => setMypostlistOn({ show: true, userId: profile.id })}>
+                  <span>{profile.name}</span>
+                </div>
               </div>
             </li>
           ))}
         </ul>
       </Modal.Body>
+      {/* Followingpostmodal 컴포넌트를 팔로잉 목록의 반복문 바깥으로 이동 */}
+      <Followerspostmodal
+        userId={MypostlistOn.userId}
+        followers={followers}
+        show={MypostlistOn.show}
+        onHide={() => setMypostlistOn({ show: false, userId: null })}
+      />
     </Modal>
   );
 };

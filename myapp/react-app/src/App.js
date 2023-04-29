@@ -15,12 +15,16 @@ import Peak from './component/Festival/Peak';
 import Dron from './component/Festival/Dron';
 import Firework from './component/Festival/Firework';
 import Nightmarket from './component/Festival/Nightmarket';
+import Footer from './component/Footer/Footer';
+import Membermanagement from './pages/Membermanagement';
+import Qna from './pages/Qna';
 
 
 const HANGANG = () => {
   const [user, setUser] = useState(initialUser);
-  const [image, setImage]=useState("");
+  const [image, setImage] = useState("");
   const [nickName, setNickname] = useState("");
+  const [no, setNo] = useState("");
 
   // fetchData 함수에서 전역 상태를 업데이트하세요
   const fetchData = async () => {
@@ -30,24 +34,24 @@ const HANGANG = () => {
       // console.log(response.data.data);
       if (result.status === "success") {
         let login = document.getElementById("login");
-        login.style.display = "none";                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+        login.style.display = "none";
         let logout = document.getElementById("logout");
         logout.style.display = "";
         let mypage = document.getElementById("mypage");
         mypage.style.display = "";
         let profileimg = document.getElementById("main-profile-img");
         profileimg.style.display = "";
-        
+
         setUser({
-          no:result.data.no,
-          name:result.data.name,
-          email:result.data.email,
+          no: result.data.no,
+          name: result.data.name,
+          email: result.data.email,
           nickName: result.data.nickName,
-          tel:result.data.tel,
-          hobby:result.data.hobby,
-          introduce:result.data.introduce,
-          interest:result.data.interest,
-          createdDate:result.data.createdDate,
+          tel: result.data.tel,
+          hobby: result.data.hobby,
+          introduce: result.data.introduce,
+          interest: result.data.interest,
+          createdDate: result.data.createdDate,
           loggedIn: true
 
         });
@@ -62,7 +66,7 @@ const HANGANG = () => {
         mypage.style.display = "none";
         let profileimg = document.getElementById("main-profile-img");
         profileimg.style.display = "none";
-      
+
         setUser(initialUser);
       }
     } catch (error) {
@@ -83,8 +87,10 @@ const HANGANG = () => {
         })
         .then((result) => {
           if (result.status === "success") {
+            setNo(result.data.no);
             setNickname(result.data.nickName);
             setImage(result.data.attachedFiles[0].filepath);
+
           } else {
           }
         })
@@ -101,22 +107,22 @@ const HANGANG = () => {
 
   const fetchMemberData = () => {
 
-      axios
-        .get("http://localhost:8080/web/members")
-        .then((response) => {
-          console.log(response);
-          return response.data;
-        })
-        .then((result) => {
-          if (result.status === "success") {
-            // setNickname(result.data.nickName);
-            setImage(result.data.attachedFiles[0].filepath);
-          } else {
-          }
-        })
-        .catch((error) => {
-          // 에러 처리
-        });
+    axios
+      .get("http://localhost:8080/web/members")
+      .then((response) => {
+        console.log(response);
+        return response.data;
+      })
+      .then((result) => {
+        if (result.status === "success") {
+          // setNickname(result.data.nickName);
+          setImage(result.data.attachedFiles[0].filepath);
+        } else {
+        }
+      })
+      .catch((error) => {
+        // 에러 처리
+      });
 
   };
 
@@ -126,7 +132,7 @@ const HANGANG = () => {
 
   return (
     <Usercontext.Provider value={user}>
-        <Header image={image} nickName={nickName}/>
+      <Header image={image} nickName={nickName} no={no} />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path="/Login" element={<Login />} />
@@ -139,7 +145,12 @@ const HANGANG = () => {
         <Route path="/Firework" element={<Firework />} />
         <Route path="/Nightmarket" element={<Nightmarket />} />
         <Route path="/Reservation" element={<Reservation />} />
+        <Route path="/Membermanagement" element={<Membermanagement />} />
+        <Route path="/Qna" element={<Qna />} />
+
+
       </Routes>
+      <Footer />
     </Usercontext.Provider>
   );
 };

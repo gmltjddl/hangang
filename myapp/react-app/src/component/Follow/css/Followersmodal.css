@@ -1,12 +1,25 @@
 .FollowersModal-custom-modal .modal-dialog {
+  position: relative;
+  display: inline-block;
+  left: 100px;
   width: 500px;
   border-radius: 5px;
+
 }
 
 .FollowersModal-custom-modal .modal-content {
   background-color: white;
   border-radius: 5px;
+  top: 38px;
+
 }
+
+/* .FollowersModal-custom-modal .modal-content {
+  background-color: white;
+  border-radius: 5px;
+  left: -500px;
+  top: 38px;
+} */
 
 .FollowersModal-modal-title-box {
   position: relative;
@@ -71,4 +84,8 @@
   display: inline-block;
   position: relative;
 
+}
+
+.Followersmodalcursor {
+  cursor: pointer;
 }

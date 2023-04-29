@@ -9,11 +9,14 @@ import bitcamp.myapp.vo.Member;
 public interface MemberDao {
   void insert(Member m);
   List<Member> findAll();
+  List<Member> allMember();
   Member findByNo(int no);
+  Member get(int no);
   Member findByEmailAndPassword(Map<String,Object> params);
   Member findByEmail(String email);
   int update(Member m);
   int delete(int no);
+
 
 }
 

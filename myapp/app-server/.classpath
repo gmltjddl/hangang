@@ -67,6 +67,16 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-mail/2.7.1/6957d398ca7a83644014d658892bb94e15433f6d/spring-boot-starter-mail-2.7.1-sources.jar" kind="lib" path="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-mail/2.7.1/7387a86bf0e96c06222c946acedc5d4ff41c0398/spring-boot-starter-mail-2.7.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/com.sun.mail/jakarta.mail/1.6.7/34f916ab87daca93bf561cfa32ea710f92992474/jakarta.mail-1.6.7-sources.jar" kind="lib" path="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/com.sun.mail/jakarta.mail/1.6.7/319df0e9d536c1a01acdfe49b6e82b97d2393073/jakarta.mail-1.6.7.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-json/3.0.4/ccc570ef2bd134f3951663271e565962c41c6cb6/spring-boot-starter-json-3.0.4-sources.jar" kind="lib" path="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-json/3.0.4/5ddf427d011646fe787fdaa1b8edc4a4eebd48d5/spring-boot-starter-json-3.0.4.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
@@ -168,6 +178,16 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry sourcepath="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis-spring/3.0.0/e572fc0af4edc181a64fd055b19deb9fa205b29d/mybatis-spring-3.0.0-sources.jar" kind="lib" path="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis-spring/3.0.0/d42da8f1d35378d50cb4f298ce1f04523d5aa0f/mybatis-spring-3.0.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/6.0.6/4d487ea5c1be51ecd94ba5a3d2e320892a7199f6/spring-context-support-6.0.6-sources.jar" kind="lib" path="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/6.0.6/363228b8abc8b7ff569b10195f28652c7b65a41/spring-context-support-6.0.6.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/com.sun.activation/jakarta.activation/1.2.1/fa236a4c2936b9c0cf6e5712290d0cbf42ae553/jakarta.activation-1.2.1-sources.jar" kind="lib" path="C:/Users/PC/scoop/apps/gradle/current/.gradle/caches/modules-2/files-2.1/com.sun.activation/jakarta.activation/1.2.1/8013606426a73d8ba6b568370877251e91a38b89/jakarta.activation-1.2.1.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>

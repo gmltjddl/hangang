@@ -86,6 +86,44 @@ public class BoardController {
         .setData(boardService.list(keyword));
   }
 
+
+  @GetMapping("/peak")
+  public Object findPeak(String keyword) {
+    log.debug("BoardController.findPeak() 호출됨!");
+
+    return new RestResult()
+        .setStatus(RestStatus.SUCCESS)
+        .setData(boardService.findPeak(keyword));
+  }
+
+  @GetMapping("/nightMarket")
+  public Object findNightMarket(String keyword) {
+    log.debug("BoardController.findNightMarket() 호출됨!");
+
+    return new RestResult()
+        .setStatus(RestStatus.SUCCESS)
+        .setData(boardService.findNightMarket(keyword));
+  }
+
+  @GetMapping("/firework")
+  public Object findFirework(String keyword) {
+    log.debug("BoardController.findFirework() 호출됨!");
+
+    return new RestResult()
+        .setStatus(RestStatus.SUCCESS)
+        .setData(boardService.findFirework(keyword));
+  }
+
+  @GetMapping("/dron")
+  public Object findDron(String keyword) {
+    log.debug("BoardController.findDron() 호출됨!");
+
+    return new RestResult()
+        .setStatus(RestStatus.SUCCESS)
+        .setData(boardService.findDron(keyword));
+  }
+
+
   @GetMapping("{no}")
   public Object view(@PathVariable int no) {
     Board board = boardService.get(no);
@@ -107,6 +145,7 @@ public class BoardController {
         .setStatus(RestStatus.SUCCESS)
         .setData(boardService.listByUser(keyword, userId));
   }
+
 
   @PutMapping("{no}")
   public Object update(

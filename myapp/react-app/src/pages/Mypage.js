@@ -1,4 +1,4 @@
-import React , {useState}from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
 import './css/Mypage.css';
 import '../index.css';
@@ -12,12 +12,12 @@ const Mypage = () => {
 
 
   return (
-   
-    <div>
+
+    <div className='Mypage-background-box'>
       <Myintro />
       <Mypagebox />
     </div>
-  
+
   );
 }
 export default Mypage;

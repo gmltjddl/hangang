@@ -46,6 +46,28 @@ public class DefaultBoardService implements BoardService {
     return boardDao.findByUserId(keyword, userId);
   }
 
+  @Override
+  public List<Board> findPeak(String keyword) {
+    return boardDao.findPeak(keyword);
+  }
+
+  @Override
+  public List<Board> findNightMarket(String keyword) {
+    return boardDao.findNightMarket(keyword);
+  }
+
+  @Override
+  public List<Board> findFirework(String keyword) {
+    return boardDao.findFirework(keyword);
+  }
+
+  @Override
+  public List<Board> findDron(String keyword) {
+    return boardDao.findDron(keyword);
+  }
+
+
+
   @Transactional
   @Override
   public void update(Board board) {
@@ -88,6 +110,7 @@ public class DefaultBoardService implements BoardService {
   public void deleteComments(int no) {
     boardDao.deleteComments(no);
   }
+
 }
 
 

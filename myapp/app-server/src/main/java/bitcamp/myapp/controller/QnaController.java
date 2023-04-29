@@ -1,7 +1,5 @@
 package bitcamp.myapp.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,34 +8,39 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import bitcamp.myapp.service.MemberService;
 import bitcamp.myapp.service.ObjectStorageService;
+import bitcamp.myapp.service.QnaService;
 import bitcamp.myapp.vo.Member;
-import bitcamp.myapp.vo.MemberFile;
+import bitcamp.myapp.vo.Qna;
 import bitcamp.util.RestResult;
 import bitcamp.util.RestStatus;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping("/members")
-public class MemberController {
+@RequestMapping("/qnas")
+public class QnaController {
 
   Logger log = LogManager.getLogger(getClass());
 
   {
-    log.trace("MemberController 생성됨!");
+    log.trace("QnaController 생성됨!");
   }
 
-  @Autowired private MemberService memberService;
+  @Autowired private QnaService qnaService;
   @Autowired private ObjectStorageService objectStorageService;
 
   @PostMapping
-  public Object insert(@RequestBody Member member) {
-    memberService.add(member);
+  public Object insert(Qna qna, HttpSession session) {
+
+    Member loginUser = (Member) session.getAttribute("loginUser");
+
+    Member writer = new Member();
+    writer.setNo(loginUser.getNo());
+    qna.setWriter(writer);
+
+    qnaService.add(qna);
     return new RestResult()
         .setStatus(RestStatus.SUCCESS);
   }
@@ -49,39 +52,23 @@ public class MemberController {
   public Object view(@PathVariable int no) {
     return new RestResult()
         .setStatus(RestStatus.SUCCESS)
-        .setData(memberService.get(no));
+        .setData(qnaService.get(no));
   }
 
 
   @PutMapping("{no}")
   public Object update(
       @PathVariable int no,
-      Member member,
-      List<MultipartFile> files,
+      Qna qna,
       HttpSession session) throws Exception{
 
-    Member loginUser = (Member) session.getAttribute("loginUser");
+    Qna loginUser = (Qna) session.getAttribute("loginUser");
 
-    Member writer = new Member();
+    Qna writer = new Qna();
     writer.setNo(loginUser.getNo());
 
-    List<MemberFile> memberFiles = new ArrayList<>();
-    for (MultipartFile file : files) {
-      String filename = objectStorageService.uploadFile("hangang-bucket", "member/", file);
-      if (filename == null) {
-        continue;
-      }
 
-      MemberFile memberFile = new MemberFile();
-      memberFile.setOriginalFilename(file.getOriginalFilename());
-      memberFile.setFilepath(filename);
-      memberFile.setMimeType(file.getContentType());
-      memberFile.setMemberNo(member.getNo());
-      memberFiles.add(memberFile);
-    }
-    member.setAttachedFiles(memberFiles);
-
-    memberService.update(member);
+    qnaService.update(qna);
 
     return new RestResult()
         .setStatus(RestStatus.SUCCESS);
@@ -92,14 +79,14 @@ public class MemberController {
   public Object list(String keyword) {
     return new RestResult()
         .setStatus(RestStatus.SUCCESS)
-        .setData(memberService.list(keyword));
+        .setData(qnaService.list(keyword));
   }
 
-  @GetMapping("/allMember")
-  public Object memberlist(String keyword) {
+  @GetMapping("/allQna")
+  public Object qnalist(String keyword) {
     return new RestResult()
         .setStatus(RestStatus.SUCCESS)
-        .setData(memberService.memberlist(keyword));
+        .setData(qnaService.qnalist(keyword));
   }
 
 
@@ -107,21 +94,21 @@ public class MemberController {
   //  @PutMapping("{no}")
   //  public Object update(
   //      @PathVariable int no,
-  //      @RequestBody Member member) {
+  //      @RequestBody Qna qna) {
   //
-  //    log.debug(member);
+  //    log.debug(qna);
   //
   //    // 보안을 위해 URL 번호를 게시글 번호로 설정한다.
-  //    member.setNo(no);
+  //    qna.setNo(no);
   //
-  //    memberService.update(member);
+  //    qnaService.update(qna);
   //    return new RestResult()
   //        .setStatus(RestStatus.SUCCESS);
   //  }
 
   @DeleteMapping("{no}")
   public Object delete(@PathVariable int no) {
-    memberService.delete(no);
+    qnaService.delete(no);
     return new RestResult()
         .setStatus(RestStatus.SUCCESS);
   }

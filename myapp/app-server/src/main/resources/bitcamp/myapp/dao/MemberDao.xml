@@ -7,6 +7,7 @@
   <resultMap type="member" id="memberMap">
      <id column="member_id" property="no"/>
     <result column="email" property="email"/>
+     <result column="pwd" property="password"/>
     <result column="name" property="name"/>
     <result column="tel" property="tel"/>
     <result column="nick" property="nickName"/>
@@ -63,6 +64,25 @@
       order by
       mf.memberfile_id desc
   </select>
+  
+    <select id="allMember" resultMap="memberMap">
+   select 
+      member_id,
+      email,
+      pwd,
+      name,
+      nick,
+      tel,
+      intro,
+      inter,
+      hob,
+      created_date
+    from 
+      hms_mem
+      order by
+      member_id 
+  </select>
+  
   <select id="findByEmailAndPassword" parameterType="map" resultMap="memberMap">
     select
       member_id,
