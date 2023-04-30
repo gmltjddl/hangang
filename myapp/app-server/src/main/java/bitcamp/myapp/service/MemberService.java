@@ -17,6 +17,11 @@ public interface MemberService {
   void delete(int no);
   MemberFile getFile(int fileNo);
   void deleteFile(int fileNo);
+  void deleteLikes(int no);
+  void deleteComments(int no);
+  void deleteFollows(int no);
+  void deleteQnas(int no);
+
 
 }
 

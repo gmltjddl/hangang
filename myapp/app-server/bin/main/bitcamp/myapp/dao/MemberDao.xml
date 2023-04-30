@@ -174,6 +174,24 @@
     delete from hms_mem
     where member_id=#{no}
   </delete>
+   <delete id="deleteFollows" parameterType="int">
+    delete from hms_follow
+    where member_id=#{no}
+  </delete>
+   <delete id="deleteLikes" parameterType="int">
+     delete from hms_like
+    where member_id=#{no}
+  </delete>
+   <delete id="deleteComments" parameterType="int">
+    delete from hms_comm
+    where member_id=#{no}
+  </delete>
+   <delete id="deleteQnas" parameterType="int">
+    delete from hms_qna
+    where member_id=#{no}
+  </delete>
+
+  
 </mapper>
 
 

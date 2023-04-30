@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import bitcamp.myapp.dao.BoardFileDao;
+import bitcamp.myapp.service.BoardService;
 import bitcamp.myapp.service.MemberService;
 import bitcamp.myapp.service.ObjectStorageService;
 import bitcamp.myapp.vo.Member;
@@ -36,7 +38,10 @@ public class MemberController {
   }
 
   @Autowired private MemberService memberService;
+  @Autowired private BoardService boardService;
+  @Autowired private BoardFileDao boardFileDao;
   @Autowired private ObjectStorageService objectStorageService;
+
 
   @PostMapping
   public Object insert(@RequestBody Member member) {
@@ -141,6 +146,13 @@ public class MemberController {
   @DeleteMapping("{no}")
   public Object delete(@PathVariable int no) {
     memberService.delete(no);
+    //    boardService.delete(no);
+    //    memberService.deleteLikes(no);
+    //    memberService.deleteFollows(no);
+    //    memberService.deleteQnas(no);
+    //    memberService.deleteComments(no);
+
+
     return new RestResult()
         .setStatus(RestStatus.SUCCESS);
   }

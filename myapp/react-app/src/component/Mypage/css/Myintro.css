@@ -62,15 +62,17 @@
   height: 250px;
   position: relative;
   display: inline-block;
-  left: 105px;
+  left: 95px;
   top: 20px;
+
   /* background-image: url({image}); */
   background-size: cover;
 }
 
 .intro-img img {
-  width: 250px;
-  height: 250px;
+  width: 280px;
+  height: 280px;
+  border-radius: 25px;
 }
 
 .intro-write-wrap {

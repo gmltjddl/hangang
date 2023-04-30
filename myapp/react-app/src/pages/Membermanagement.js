@@ -102,7 +102,9 @@ function Membermanagement() {
               <td>{member.createdDate}</td>
 
               <td>
-                <button onClick={() => handleDelete(member.no)}>삭제</button>
+              {member.no !== 1 && (
+          <button onClick={() => handleDelete(member.no)}>삭제</button>
+             )}
               </td>
             </tr>
           ))}

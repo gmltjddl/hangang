@@ -46,7 +46,7 @@
 .qna-title{
   position: absolute;
   display: inline-block;
-  left:600px;
+  left:620px;
   max-width: 300px; 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -71,13 +71,13 @@
 position: relative;
 display: inline-block;
 text-align: center;
-left:-70px;
+left:-90px;
 }
 
 .qna-title-header{
   position: relative;
   display: inline-block;
-  left:0px;
+  left:-30px;
 
 }
 .qna-nick-header{

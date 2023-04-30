@@ -266,4 +266,14 @@ div.modal-body {
   position: relative;
   border:0px solid;
 }
+.introprofile-preview-image-box span{
+  opacity: 0;
+}
+.introprofile-preview-image-box span:hover{
+  opacity: 1;
+  color:white;
+  font-size: 100px;
+  margin-top: -75px;
+
+}
 

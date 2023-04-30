@@ -1,18 +1,23 @@
 .Membermanagement-box {
-  max-width: 800px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 .Membermanagement-box h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
 .Membermanagement-box input {
-  display: block;
-  width: 20%;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
+  width: 100%;
+  padding: 5px 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
 }
 
 .Membermanagement-box table {
@@ -22,7 +27,38 @@
 
 .Membermanagement-box th,
 .Membermanagement-box td {
+  padding: 10px;
   border: 1px solid #ccc;
-  padding: 0.5rem;
-  text-align: left;
+  text-align: center;
+}
+
+.Membermanagement-box th {
+  background-color: #f5f5f5;
+}
+
+.Membermanagement-box button {
+
+  padding: 5px 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Membermanagement-box .Membermanagement-pagination button {
+  background-color: #ddd;
+  color: #333;
+}
+
+.Membermanagement-box .Membermanagement-pagination button:hover,
+.Membermanagement-box .Membermanagement-pagination button.active {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.Membermanagement-box button:hover {
+  background-color: #3498db;
+  color: #fff;
 }

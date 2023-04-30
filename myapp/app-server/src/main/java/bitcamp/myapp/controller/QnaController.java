@@ -56,23 +56,24 @@ public class QnaController {
   }
 
 
+
   @PutMapping("{no}")
   public Object update(
       @PathVariable int no,
       Qna qna,
       HttpSession session) throws Exception{
 
-    Qna loginUser = (Qna) session.getAttribute("loginUser");
+    Member loginUser = (Member) session.getAttribute("loginUser");
 
     Qna writer = new Qna();
     writer.setNo(loginUser.getNo());
-
 
     qnaService.update(qna);
 
     return new RestResult()
         .setStatus(RestStatus.SUCCESS);
   }
+
 
 
   @GetMapping

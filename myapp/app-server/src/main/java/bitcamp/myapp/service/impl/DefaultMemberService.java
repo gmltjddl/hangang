@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.dao.MemberFileDao;
 import bitcamp.myapp.service.MemberService;
@@ -16,6 +17,7 @@ import bitcamp.myapp.vo.MemberFile;
 public class DefaultMemberService implements MemberService {
 
   @Autowired private MemberDao memberDao;
+  @Autowired private BoardDao boardDao;
   @Autowired private MemberFileDao memberFileDao;
   @Transactional
   @Override
@@ -84,6 +86,28 @@ public class DefaultMemberService implements MemberService {
       throw new RuntimeException("회원이 존재하지 않습니다.");
     }
   }
+
+  @Transactional
+  @Override
+  public void deleteLikes(int no) {
+    memberDao.deleteLikes(no);
+  }
+  @Transactional
+  @Override
+  public void deleteComments(int no) {
+    memberDao.deleteComments(no);
+  }
+  @Transactional
+  @Override
+  public void deleteFollows(int no) {
+    memberDao.deleteFollows(no);
+  }
+  @Transactional
+  @Override
+  public void deleteQnas(int no) {
+    memberDao.deleteQnas(no);
+  }
+
   @Override
   public MemberFile getFile(int fileNo) {
     return memberFileDao.findByNo(fileNo);
