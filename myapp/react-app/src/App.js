@@ -7,6 +7,7 @@ import Mypage from './pages/Mypage';
 import Gallery from './pages/Gallery';
 import Reservation from './pages/Reservation';
 import Festival from './pages/Festival';
+import Qna from './pages/Qna';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Usercontext, { initialUser } from './Usercontext';
 import axios from "axios";
@@ -17,8 +18,6 @@ import Firework from './component/Festival/Firework';
 import Nightmarket from './component/Festival/Nightmarket';
 import Footer from './component/Footer/Footer';
 import Membermanagement from './pages/Membermanagement';
-import Qna from './pages/Qna';
-
 
 const HANGANG = () => {
   const [user, setUser] = useState(initialUser);
@@ -147,8 +146,6 @@ const HANGANG = () => {
         <Route path="/Reservation" element={<Reservation />} />
         <Route path="/Membermanagement" element={<Membermanagement />} />
         <Route path="/Qna" element={<Qna />} />
-
-
       </Routes>
       <Footer />
     </Usercontext.Provider>

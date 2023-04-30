@@ -20,7 +20,7 @@ function Join() {
   const [emailStatusMessage, setEmailStatusMessage] = useState("");
   const [isNickNameDuplicated, setIsNickNameDuplicated] = useState(null);
   const [nickNameStatusMessage, setNickNameStatusMessage] = useState("");
-
+  const [passwordStatusMessage, setPasswordStatusMessage] = useState("");
   const checkEmailDuplicated = async (email) => {
     try {
       const response = await axios.get(`http://localhost:8080/web/members/checkEmail?email=${email}`);
@@ -75,6 +75,19 @@ function Join() {
       }
     }
   };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleRepasswordChange = (event) => {
+    setRepassword(event.target.value);
+
+    if (event.target.value !== password) {
+      setPasswordStatusMessage("비밀번호가 일치하지 않습니다.");
+    } else {
+      setPasswordStatusMessage("비밀번호가 일치합니다.");
+    }
+  };
 
   const handleTelChange = (event) => {
     const rawValue = event.target.value;
@@ -101,13 +114,7 @@ function Join() {
     return formattedArray.join("-");
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
 
-  const handleRepasswordChange = (event) => {
-    setRepassword(event.target.value);
-  };
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -264,24 +271,36 @@ function Join() {
             </div>
           )}
 
-          <input
-            name="password"
-            type="password"
-            placeholder="password"
-            className="join-input-box"
-            id="pwd" required
-            value={password}
-            onChange={handlePasswordChange} />
+<input
+          name="password"
+          type="password"
+          placeholder="password"
+          className="join-input-box"
+          id="pwd"
+          required
+          value={password}
+          onChange={handlePasswordChange}
+        />
 
+        <input
+          name="repassword"
+          type="password"
+          placeholder="repassword"
+          className="join-input-box"
+          id="repwd"
+          required
+          value={repassword}
+          onChange={handleRepasswordChange}
+        />
 
-          <input
-            name="repassword"
-            type="password"
-            placeholder="repassword"
-            className="join-input-box"
-            id="repwd" required
-            value={repassword}
-            onChange={handleRepasswordChange} />
+        <div
+          className="password-status-message"
+          style={{
+            color: password !== repassword ? "red" : "green",
+          }}
+        >
+          {passwordStatusMessage}
+        </div>
 
           <input
             name="name"

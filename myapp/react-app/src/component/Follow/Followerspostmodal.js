@@ -17,6 +17,44 @@ const Followerspostmodal = ({ show, onHide, followers, userId}) => {
     console.log(followers,"1234");
   // console.log(followingList, "followingList");
   // console.log(followersList, "followersList");
+  const setFollowersModalOpacity = (opacity) => {
+    document.querySelector('.FollowersModal-custom-modal .modal-content').style.opacity = opacity;
+  };
+
+  useEffect(() => {
+    const fetchFollowersProfiles = async () => {
+      const profiles = [];
+
+      for (const followerId of followers) {
+        try {
+          const response = await axios.get(`http://localhost:8080/web/members/${followerId}`);
+          const result = response.data;
+          if (result.status === "success") {
+            profiles.push({
+              id: followerId,
+              name: result.data.nickName,
+              profileImage: result.data.attachedFiles[0].filepath,
+            });
+          }
+        } catch (error) {
+          // 에러 처리
+        }
+      }
+      setFollowersProfiles(profiles);
+    };
+
+    fetchFollowersProfiles();
+  }, [followers]);
+
+  const handleOpenPostModal = (userId) => {
+    setFollowersModalOpacity(0.3);
+    setMypostlistOn({ show: true, userId });
+  };
+
+  const handleClosePostModal = () => {
+    setFollowersModalOpacity(1);
+    setMypostlistOn({ show: false, userId: null });
+  };
 
   const customModalStyle = {
     position: 'fixed',

@@ -35,13 +35,7 @@ function Header({ image, no, nickName }) {
             <li><Link to="/" >HANGANG</Link></li>
             <li><Link to="/Festival" className="fes">FESTIVAL</Link></li>
             <li><Link to="/Gallery" className="gallerymain">GALLERY</Link></li>
-            <li><a href="#" id="hotplace-dropdown" className="hot">HOTPLACE</a>
-              <ul id="hotplace-menu">
-                <li><a href="#">Restaurant</a></li>
-                <li><a href="#">Sights</a></li>
-                <li><a href="#">Parking</a></li>
-              </ul>
-            </li>
+            {/* <li><Link to="/Taste" className="hotplace">HOTPLACE</Link></li> */}
             <li><Link to="/Reservation" className="reservation">RESERVATION</Link></li>
             <li><Link to="/Qna" className="qna">Q&amp;A</Link></li>
             <li><Link to="/Login" className="login" id="login">LOGIN</Link></li>

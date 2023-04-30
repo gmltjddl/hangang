@@ -42,8 +42,20 @@ const Followingmodal = ({ show, onHide, following }) => {
 
     fetchFollowingProfiles();
   }, [following]);
+  const handleOpenPostModal = (userId) => {
+    document.getElementById("followings-modal-backdrop").style.display = "block"; // 불투명한 배경을 표시합니다.
+    setMypostlistOn({ show: true, userId });
+  };
+
+  const handleClosePostModal = () => {
+    document.getElementById("followings-modal-backdrop").style.display = "none"; // 불투명한 배경을 숨깁니다.
+    setMypostlistOn({ show: false, userId: null });
+  };
+
 
   return (
+    <>
+    <div id="followings-modal-backdrop" style={{ display: 'none', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)', zIndex: 1040 }}></div>
     <Modal show={show} onHide={onHide} dialogClassName="FollowingModal-custom-modal">
       <Modal.Header closeButton className="FollowingModal-border-0">
         <div className="FollowingModal-modal-title-box">
@@ -65,7 +77,7 @@ const Followingmodal = ({ show, onHide, following }) => {
                 <div className="FollowingModal-ms-3">
                   <FollowButton userId={profile.id} />
                 </div>
-                <div className="Followingmodalcursor" onClick={() => setMypostlistOn({ show: true, userId: profile.id })}>
+                <div className="Followingmodalcursor" onClick={() => handleOpenPostModal(profile.id)}>
                   <span>{profile.name}</span>
                 </div>
               </div>
@@ -78,9 +90,10 @@ const Followingmodal = ({ show, onHide, following }) => {
         userId={MypostlistOn.userId}
         following={following}
         show={MypostlistOn.show}
-        onHide={() => setMypostlistOn({ show: false, userId: null })}
+        onHide={handleClosePostModal}
       />
     </Modal>
+    </>
   );
 };
 

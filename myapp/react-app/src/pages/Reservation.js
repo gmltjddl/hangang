@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import gsap from 'gsap';
 import './css/Reservation.css';
-import Header from '../component/Header/Header';
 
 const images = [
   'http://tbxctpxzerdz16840769.cdn.ntruss.com/gallery/2d844576-6b23-4752-b283-5407409427eb?type=h&h=800&ttype=jpg',
