@@ -79,6 +79,12 @@ public class DefaultBoardService implements BoardService {
     }
   }
 
+
+
+  @Override
+  public BoardFile getFile(int fileNo) {
+    return boardFileDao.findByNo(fileNo);
+  }
   @Transactional
   @Override
   public void delete(int no) {
@@ -86,12 +92,6 @@ public class DefaultBoardService implements BoardService {
     if (boardDao.delete(no) == 0) {
       throw new RuntimeException("게시글이 존재하지 않습니다!");
     }
-  }
-
-
-  @Override
-  public BoardFile getFile(int fileNo) {
-    return boardFileDao.findByNo(fileNo);
   }
 
   @Override

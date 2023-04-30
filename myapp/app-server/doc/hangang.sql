@@ -147,6 +147,8 @@ alter table hms_qna
     
     alter table hms_qna
   add column view_count int;
+  
+
 
 
   

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Qnawrite from "../component/Qna/Qnawrite";
 import Qnalist from "../component/Qna/Qnalist";
+import Qnaedit from "../component/Qna/Qnaedit";
 const Qna = () => {
  
 
@@ -10,8 +11,8 @@ const Qna = () => {
     <div>
       <Qnawrite />
       <Qnalist />
-    </div>
 
+    </div>
   );
 }
 export default Qna;
