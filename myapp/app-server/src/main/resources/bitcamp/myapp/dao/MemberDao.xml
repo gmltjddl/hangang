@@ -100,8 +100,7 @@
     where 
       email = #{email} and pwd = sha2(#{password},256)
   </select>
-
-  <select id="findByEmail" parameterType="string" resultMap="memberMap">
+    <select id="findByEmail" parameterType="string" resultMap="memberMap">
     select
       member_id,
       email,
@@ -117,6 +116,25 @@
     where 
       email = #{email}
   </select>
+
+    <select id="findByNickName" parameterType="string" resultMap="memberMap">
+    select
+      member_id,
+      email,
+      name,
+      nick,
+      tel,
+      intro,
+      inter,
+      hob,
+      created_date
+    from 
+      hms_mem 
+    where 
+      nick = #{nickName}
+  </select>
+
+
 
   <select id="findByNo" parameterType="int" resultMap="memberMap">
     select 

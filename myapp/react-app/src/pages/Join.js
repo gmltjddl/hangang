@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './css/Join.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Swal from "sweetalert2";
+
 
 
 function Join() {
@@ -14,9 +16,89 @@ function Join() {
   const [introduce, setIntroduce] = useState("");
   const [interest, setInterest] = useState("");
   const [hobby, setHobby] = useState("");
+  const [isEmailDuplicated, setIsEmailDuplicated] = useState(null);
+  const [emailStatusMessage, setEmailStatusMessage] = useState("");
+  const [isNickNameDuplicated, setIsNickNameDuplicated] = useState(null);
+  const [nickNameStatusMessage, setNickNameStatusMessage] = useState("");
 
-  const handleEmailChange = (event) => {
+  const checkEmailDuplicated = async (email) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/web/members/checkEmail?email=${email}`);
+      const result = response.data;
+      // console.log(result);
+      return result.isDuplicated;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const checkNicknameDuplicated = async (nickName) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/web/members/checkNickname?nickName=${nickName}`);
+      const result = response.data;
+      // console.log(response);
+      return result.isDuplicated;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleNickNameChange = async (event) => {
+    setNickName(event.target.value);
+
+    const duplicated = await checkNicknameDuplicated(event.target.value);
+    setIsNickNameDuplicated(duplicated);
+
+    if (duplicated) {
+      setNickNameStatusMessage("중복된 이메일입니다.");
+    } else {
+      setNickNameStatusMessage("사용 가능한 닉네임입니다.");
+    }
+  };
+
+
+  const handleEmailChange = async (event) => {
     setEmail(event.target.value);
+
+    var email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!email_regex.test(event.target.value)) {
+      setEmailStatusMessage("올바른 이메일 주소를 입력해주세요.");
+      setIsEmailDuplicated(null);
+    } else {
+      const duplicated = await checkEmailDuplicated(event.target.value);
+      setIsEmailDuplicated(duplicated);
+
+      if (duplicated) {
+        setEmailStatusMessage("중복된 이메일입니다.");
+      } else {
+        setEmailStatusMessage("사용 가능한 이메일입니다.");
+      }
+    }
+  };
+
+  const handleTelChange = (event) => {
+    const rawValue = event.target.value;
+    const formattedValue = formatTel(rawValue);
+    setTel(formattedValue);
+  };
+
+  const formatTel = (value) => {
+    // 한국 휴대전화 형식이라고 가정
+    const rawNumbers = value.replace(/\D/g, "");
+    const maxLength = 11;
+
+    const formattedArray = [];
+    formattedArray.push(rawNumbers.slice(0, 3));
+
+    if (rawNumbers.length > 3 && rawNumbers.length <= maxLength) {
+      formattedArray.push(rawNumbers.slice(3, 7));
+    }
+
+    if (rawNumbers.length > 7 && rawNumbers.length <= maxLength) {
+      formattedArray.push(rawNumbers.slice(7));
+    }
+
+    return formattedArray.join("-");
   };
 
   const handlePasswordChange = (event) => {
@@ -30,12 +112,6 @@ function Join() {
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
-  const handleTelChange = (event) => {
-    setTel(event.target.value);
-  };
-  const handleNickNameChange = (event) => {
-    setNickName(event.target.value);
-  };
   const handleIntroduceChange = (event) => {
     setIntroduce(event.target.value);
   };
@@ -46,11 +122,11 @@ function Join() {
   const handleHobbyChange = (event) => {
     setHobby(event.target.value);
   };
-  
 
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (validateForm()) {
+    if (await validateForm()) {
       const formData = {
         email: email,
         password: password,
@@ -58,7 +134,7 @@ function Join() {
         tel: tel,
         nickName: nickName,
         introduce: introduce,
-        interest:interest,
+        interest: interest,
         hobby: hobby,
 
       };
@@ -81,39 +157,83 @@ function Join() {
     }
   };
 
-  const validateForm = () => {
+
+
+  const validateForm = async () => {
     // 이메일 유효성 검사
     var email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!email_regex.test(email)) {
-      alert("올바른 이메일 주소를 입력해주세요.");
+      Swal.fire(
+        '회원가입 실패!',
+        '올바른 이메일 주소를 입력해주세요.',
+        'warning'
+      );
       return false;
     }
 
+    // 이메일 중복 검사
+    const isDuplicated = await checkEmailDuplicated(email);
+    if (isDuplicated) {
+      Swal.fire(
+        '회원가입 실패!',
+        '이미 사용 중인 이메일입니다.',
+        'warning'
+      );
+      return false;
+    }
+
+
     // 비밀번호 유효성 검사
     if (password.length < 8) {
-      alert("비밀번호는 최소 8자 이상이어야 합니다.");
+      Swal.fire(
+        '회원가입 실패!',
+        '비밀번호는 최소 8자 이상이어야 합니다.',
+        'warning'
+      );
       return false;
     }
 
     const passwordPattern = /^(?=.*\d)(?=.*[!@#$%^&*()_+])[\d!@#$%^&*()_+]{8,20}$/;
     if (!passwordPattern.test(password)) {
-      alert(
-        "비밀번호는 8~20자의 영문  숫자, 특수문자 조합이어야 합니다."
+      Swal.fire(
+        '회원가입 실패!',
+        '비밀번호는 8~20자의 영문  숫자, 특수문자 조합이어야 합니다.',
+        'warning'
       );
       return false;
     }
 
     // 비밀번호와 재입력한 비밀번호가 일치하는지 검사
     if (password !== repassword) {
-      alert("비밀번호와 재입력한 비밀번호가 일치하지 않습니다.");
+      Swal.fire(
+        '회원가입 실패!',
+        '비밀번호와 재입력한 비밀번호가 일치하지 않습니다.',
+        'warning'
+      );
       return false;
     }
 
     // 이름이 입력되었는지 검사
     if (name === "") {
-      alert("이름을 입력해주세요.");
+      Swal.fire(
+        '회원가입 실패!',
+        '이름을 입력해주세요.',
+        'warning'
+      );
       return false;
     }
+
+    // 닉네임 중복 검사
+    const isNicknameDuplicated = await checkNicknameDuplicated(nickName);
+    if (isNicknameDuplicated) {
+      Swal.fire(
+        '회원가입 실패!',
+        '이미 사용 중인 닉네임입니다.',
+        'warning'
+      );
+      return false;
+    }
+
 
     // 모든 유효성 검사가 통과되면 true를 반환
     return true;
@@ -133,6 +253,16 @@ function Join() {
             id="email" required
             value={email}
             onChange={handleEmailChange} />
+          {isEmailDuplicated !== null && (
+            <div
+              className="email-status-message"
+              style={{
+                color: isEmailDuplicated ? "red" : "green",
+              }}
+            >
+              {emailStatusMessage}
+            </div>
+          )}
 
           <input
             name="password"
@@ -177,7 +307,19 @@ function Join() {
             className="join-input-box"
             id="nickName" required
             value={nickName}
-            onChange={handleNickNameChange} />
+            onChange={handleNickNameChange}
+          />
+          {isNickNameDuplicated !== null && (
+            <div
+              className="nickname-status-message"
+              style={{
+                color: isNickNameDuplicated ? "red" : "green",
+              }}
+            >
+              {nickNameStatusMessage}
+            </div>
+          )}
+
 
 
 
@@ -189,7 +331,7 @@ function Join() {
             value={introduce}
             onChange={handleIntroduceChange} />
 
-            <input name="interest"
+          <input name="interest"
             type="text"
             placeholder="Interest"
             className="join-input-box"

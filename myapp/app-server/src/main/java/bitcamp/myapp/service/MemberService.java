@@ -11,6 +11,8 @@ public interface MemberService {
   Member get(int no);
   Member get(String email);
   Member get(String email, String password);
+  boolean isEmailDuplicated(String email);
+  boolean isNickNameDuplicated(String nickName);
   void update(Member member);
   void delete(int no);
   MemberFile getFile(int fileNo);

@@ -32,6 +32,15 @@ public class DefaultMemberService implements MemberService {
   public List<Member> memberlist(String keyword) {
     return memberDao.allMember();
   }
+  @Override
+  public boolean isEmailDuplicated(String email) {
+    return memberDao.findByEmail(email) != null;
+  }
+
+  @Override
+  public boolean isNickNameDuplicated(String nickName) {
+    return memberDao.findByNickName(nickName) != null;
+  }
 
 
   @Override
