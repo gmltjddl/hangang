@@ -9,7 +9,7 @@
  .timemodal {
   position: relative;
   top: -116px;
-  left: 620px;
+  left: 0px;
   width: 300px;
   height: 100%;
   background-color: rgb(255, 255, 255);
@@ -87,7 +87,8 @@
 .pgpaymentbnt{
   position: relative;
   top: 26px;
-  left: 146px;
+  left:65px;
+  margin-bottom: 5px;
   font-weight:400;
   text-align: center;
   font-size: 18px;
@@ -97,6 +98,7 @@
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
+  border: 0;
 }
 
 .pgpaymentbnt:hover {
@@ -107,7 +109,8 @@
 .pgcancelbnt {
   position: relative;
   /* top: -26px; */
-  left: 240px;
+  left:165px;
+  bottom:5px;
   font-weight: 400;
   text-align: center;
   font-size: 18px;

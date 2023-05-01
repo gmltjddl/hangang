@@ -70,7 +70,7 @@ const Pg = ({ time, adult, teen, sumprice, sumticket, date }) => {
     
   
 
-  return <button onClick={onClickPayment}>결제하기</button>
+  return <button className= "pgpaymentbnt" onClick={onClickPayment}>결제하기</button>
       
 
   };
