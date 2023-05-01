@@ -100,6 +100,24 @@ CREATE TABLE hms_qna (
   FOREIGN KEY (writer) REFERENCES hms_mem(member_id) ON DELETE CASCADE
 );
 
+create table hms_payment(
+  payment_id int not null,
+  imp_uid varchar(50),
+  buyer_email varchar(50),
+  buyer_name varchar(50),
+  paid_amount varchar(20),
+  buyer_date varchar(15),
+  buyer_time varchar(15),
+  adult int,
+  teen int,
+  sumticket int,
+  created_date datetime default now()
+);
+
+alter table hms_payment
+  add constraint primary key (payment_id),
+  modify column payment_id int not null auto_increment;
+
 
 
 

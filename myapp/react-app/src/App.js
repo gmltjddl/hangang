@@ -18,6 +18,10 @@ import Firework from './component/Festival/Firework';
 import Nightmarket from './component/Festival/Nightmarket';
 import Footer from './component/Footer/Footer';
 import Membermanagement from './pages/Membermanagement';
+import Pg from './component/PG/Pg';
+import Calendar from './component/Reservationpayment/Calendar';
+import Cruisepg from './pages/Cruisepg';
+
 
 const HANGANG = () => {
   const [user, setUser] = useState(initialUser);
@@ -144,8 +148,11 @@ const HANGANG = () => {
         <Route path="/Firework" element={<Firework />} />
         <Route path="/Nightmarket" element={<Nightmarket />} />
         <Route path="/Reservation" element={<Reservation />} />
+        <Route path="/Pg" element={<Pg />} />
+        <Route path="/Calendar" element={<Calendar />} />
         <Route path="/Membermanagement" element={<Membermanagement />} />
         <Route path="/Qna" element={<Qna />} />
+        <Route path="/Cruisepg" element={<Cruisepg/>} />
       </Routes>
       <Footer />
     </Usercontext.Provider>

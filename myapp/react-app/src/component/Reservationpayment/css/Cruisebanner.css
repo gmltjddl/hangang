@@ -1,0 +1,25 @@
+.cruisepg {
+    position:relative;
+    background-color: #f5f2e3;
+    height: auto;
+}
+
+.cruisebanner {
+    position: relative;
+    background-size: 450px 450px;
+    top: 15px;
+    left: 270px;
+    background-position: center;
+    transition: background-image 1.3s ease-out;
+    background-color:  #d0cae2;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    background-image: url();
+    border-radius: 6px;
+    background-repeat: no-repeat;
+    /* background-size: 100% 560px; */
+  }

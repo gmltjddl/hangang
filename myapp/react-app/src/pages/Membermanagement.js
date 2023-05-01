@@ -103,7 +103,7 @@ function Membermanagement() {
 
               <td>
               {member.no !== 1 && (
-          <button onClick={() => handleDelete(member.no)}>삭제</button>
+          <button onClick={() => handleDelete(member.no)}>탈퇴</button>
              )}
               </td>
             </tr>

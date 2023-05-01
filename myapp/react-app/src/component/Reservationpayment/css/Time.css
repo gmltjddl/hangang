@@ -1,0 +1,125 @@
+ /* .timemodalclick{
+  background-color: #00000060;
+  width: 300px;
+  min-height: 380px;
+  margin-top: 10%;
+  margin-left: 100%;
+}*/
+
+ .timemodal {
+  position: relative;
+  top: -116px;
+  left: 620px;
+  width: 300px;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  padding: 5px 5px 5px;
+}
+
+
+
+
+.gdetail-modal-box {
+  /* 기존 스타일 유지 */
+
+  
+}
+
+.ticket-booking-title {
+  position: relative;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #282828;
+  margin-bottom: 2rem;
+}
+
+.timereservation-form {
+  
+  width: 250px;
+  height: 100%;
+}
+
+.timereservation-form .timeform-group {
+  margin-bottom: 1rem;
+}
+
+.timereservation-form .timeform-control {
+
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.timereservation-form .timeform-control:focus {
+  
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.timereservation-form select.timeform-control {
+  
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 8px 10px;
+  padding-right: 1.5rem;
+}
+
+.timeform-group{
+  position: relative;
+  left: 20px;
+}
+
+.pgpaymentbnt{
+  position: relative;
+  top: 26px;
+  left: 146px;
+  font-weight:400;
+  text-align: center;
+  font-size: 18px;
+  width: 90px;
+  height: 26px;
+  background-color:  #c3b8e7;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pgpaymentbnt:hover {
+  background-color: #7a5be2;
+  color: #fff;
+}
+
+.pgcancelbnt {
+  position: relative;
+  /* top: -26px; */
+  left: 240px;
+  font-weight: 400;
+  text-align: center;
+  font-size: 18px;
+  width: 50px;
+  height: 26px;
+  background-color: #c3b8e7;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pgcancelbnt:hover {
+  background-color: #7a5be2;
+  color: #fff;
+}

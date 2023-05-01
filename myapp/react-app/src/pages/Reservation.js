@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import gsap from 'gsap';
 import './css/Reservation.css';
+import Header from '../component/Header/Header';
+import { Link } from 'react-router-dom';
+import CustomCalendar from '../component/Reservationpayment/Calendar';
+import Cruisepg from './Cruisepg';
 
 const images = [
   'http://tbxctpxzerdz16840769.cdn.ntruss.com/gallery/2d844576-6b23-4752-b283-5407409427eb?type=h&h=800&ttype=jpg',
@@ -9,6 +13,8 @@ const images = [
 
 const Reservation = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+
 
   const handleMouseEnter = (index) => {
     setHoveredIndex(index);
@@ -53,33 +59,39 @@ const Reservation = () => {
 
   return (
     <>
-      <div className='Reservation-body'>
-        <div className="Reservation-group">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="Reservation-item"
-              style={{
-                backgroundImage: `url(${image})`,
-                backgroundPosition: 'center',
-                backgroundSize: '75vh',
-                margin: '1vw',
-                borderRadius: '3vw',
-                display: 'inline-block',
-                cursor: 'pointer',
-                width: hoveredIndex === index ? '42vw' : '25vw'
-              }}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-            >
-              {index === 0 && <div className="Reservation-item-text">CRUISE</div>}
-              {index === 1 && <div className="Reservation-item-text">WATER TAXI</div>}
-            </div>
-          ))}
-        </div>
+    <div className='Reservation-body'>
+      <div className="Reservation-group">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="Reservation-item"
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundPosition: 'center',
+              backgroundSize: '75vh',
+              margin: '1vw',
+              borderRadius: '3vw',
+              display: 'inline-block',
+              cursor: 'pointer',
+              width: hoveredIndex === index ? '42vw' : '25vw'
+            }}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+          >
+            {index === 0 && (
+              <Link to="/Cruisepg">
+                <div className="Reservation-item-text">
+                  CRUISE
+                </div>
+              </Link>
+            )}
+            {index === 1 && <div className="Reservation-item-text">WATER TAXI</div>}
+          </div>
+        ))}
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 };
 
 export default Reservation;
