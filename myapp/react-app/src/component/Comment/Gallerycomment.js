@@ -142,7 +142,7 @@ const Gallerycomment = ({ show, onHide, boardNo, dcontent, dtitle }) => {
       commentsEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-
+  const defaultProfile = "/img/defaultprofile.jpg";
 
   return (
     <>
@@ -170,7 +170,7 @@ const Gallerycomment = ({ show, onHide, boardNo, dcontent, dtitle }) => {
                 ) : (
                   <>
                     <div className="gprofile-img">
-                      <img src={profiles[index]}></img>
+                    <img src={profiles[index] || defaultProfile} />
                     </div>
                     <div className="gcomment-nickname">{nickName[index]}</div>
                     <div className='gcooment-content'>

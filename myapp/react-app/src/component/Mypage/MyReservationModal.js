@@ -1,43 +1,25 @@
 import React from 'react';
 import { Modal, Table } from 'react-bootstrap';
-
+import './css/MyReservationModal.css';
 const MyReservationModal = ({ show, onHide, reservations }) => {
-
   return (
-    <Modal
-      show={show}
-      onHide={onHide}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          내 예약 목록
-        </Modal.Title>
-      </Modal.Header>
+    <Modal show={show} onHide={onHide} className="my-reservation-modal">
+
       <Modal.Body>
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Payment ID</th>
-              <th>Buyer Email</th>
-              <th>Buyer Name</th>
-              {/* 다른 필요한 열들을 추가하세요 */}
-            </tr>
-          </thead>
-          <tbody>
-            {reservations.map((reservation, index) => (
-              <tr key={index}>
-                <td>{reservation.payment_id}</td>
-                <td>{reservation.buyer_email}</td>
-                <td>{reservation.buyer_name}</td>
-                {/* 다른 필요한 열들을 추가하세요 */}
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+        <ul className="reservation-list">
+        {reservations.map((reservation, index) => (
+  <li key={index} className={`reservation-item ${reservation.type}`}>
+    {/* 예약 정보를 출력할 때 reservation.type에 따라 다른 렌더링을 수행하세요 */}
+  </li>
+))}
+
+        </ul>
       </Modal.Body>
+      <Modal.Footer>
+        <button className="close-btn" onClick={onHide}>
+          닫기
+        </button>
+      </Modal.Footer>
     </Modal>
   );
 };

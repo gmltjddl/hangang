@@ -73,6 +73,7 @@
 
 }
 
-.Followingmodalcursor {
+.Followingmodalcursor:hover {
   cursor: pointer;
+  color:blue;
 }

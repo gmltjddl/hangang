@@ -87,6 +87,7 @@
 
 }
 
-.Followersmodalcursor {
+.Followersmodalcursor:hover {
   cursor: pointer;
+  color:blue;
 }

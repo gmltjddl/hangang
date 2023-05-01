@@ -6,6 +6,6 @@ import bitcamp.myapp.vo.TaxiPayment;
 
 public interface TaxiPaymentService {
   void add(TaxiPayment taxipayment);
-  List<Payment> list();
+  List<Payment> list(String email);
   Payment get(String buyer_email);
 }

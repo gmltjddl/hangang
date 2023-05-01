@@ -8,6 +8,6 @@ import bitcamp.myapp.vo.TaxiPayment;
 @Mapper
 public interface TaxiPaymentDao {
   void insert(TaxiPayment taxipayment);
-  List<Payment> findAll();
+  List<Payment> findAll(String keyword);
   Payment findByNo(String buyer_email);
 }

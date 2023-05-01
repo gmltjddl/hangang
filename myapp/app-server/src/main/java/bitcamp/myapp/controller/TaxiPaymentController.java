@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import bitcamp.myapp.service.TaxiPaymentService;
-import bitcamp.myapp.vo.Payment;
 import bitcamp.myapp.vo.TaxiPayment;
-import bitcamp.util.ErrorCode;
 import bitcamp.util.RestResult;
 import bitcamp.util.RestStatus;
 
@@ -33,26 +31,26 @@ public class TaxiPaymentController {
         .setStatus(RestStatus.SUCCESS);
   }
 
-  @GetMapping
-  public Object list() {
+  @GetMapping("{email}")
+  public Object list(@PathVariable("email") String keyword) {
     log.debug("TaxiPaymentController.list() 호출됨!");
 
     return new RestResult()
         .setStatus(RestStatus.SUCCESS)
-        .setData(taxipaymentService.list());
+        .setData(taxipaymentService.list(keyword));
   }
 
-  @GetMapping("{buyer_email}")
-  public Object view(@PathVariable String buyer_email) {
-    Payment payment = taxipaymentService.get(buyer_email);
-    if (payment != null) {
-      return new RestResult()
-          .setStatus(RestStatus.SUCCESS)
-          .setData(payment);
-    } else {
-      return new RestResult()
-          .setStatus(RestStatus.FAILURE)
-          .setErrorCode(ErrorCode.rest.NO_DATA);
-    }
-  }
+  //  @GetMapping("{buyer_email}")
+  //  public Object view(@PathVariable String buyer_email) {
+  //    Payment payment = taxipaymentService.get(buyer_email);
+  //    if (payment != null) {
+  //      return new RestResult()
+  //          .setStatus(RestStatus.SUCCESS)
+  //          .setData(payment);
+  //    } else {
+  //      return new RestResult()
+  //          .setStatus(RestStatus.FAILURE)
+  //          .setErrorCode(ErrorCode.rest.NO_DATA);
+  //    }
+  //  }
 }

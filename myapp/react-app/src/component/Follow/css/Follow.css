@@ -1,0 +1,67 @@
+.followers-btn{
+  display: inline-block;
+  position: absolute;
+  width: 100px;
+  height: 35px;
+  left:300px;
+  margin-top: 15px;
+  margin-right: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  background-color: #2c88d1;
+  border: none;
+  border-radius: 35px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.followers-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.followers-btn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top-color: #fff;
+  border-right-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.followers-btn:hover::before {
+  top: -15px;
+  left: -15px;
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+  border-color: #2c88d1;
+}
+
+.followers-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+.followers-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.followers-btn:active::before {
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  transition: all 0.2s ease-in-out;
+}

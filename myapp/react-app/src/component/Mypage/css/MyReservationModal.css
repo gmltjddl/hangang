@@ -1,0 +1,44 @@
+.my-reservation-modal .modal-content {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.reservation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reservation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.reservation-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.reservation-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.reservation-date {
+  font-size: 14px;
+  color: #999;
+}
+
+.close-btn {
+  background-color: #4b4b4b;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}

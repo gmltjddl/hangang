@@ -3,8 +3,8 @@ import { Modal } from "react-bootstrap";
 import "./css/Time.css";
 import Pg from "../PG/Pg";
 
-const ADULT_TICKET_PRICE = 200;
-const TEEN_TICKET_PRICE = 100;
+const ADULT_TICKET_PRICE = 9000;
+const TEEN_TICKET_PRICE = 7000;
 
 const calculateTotalTickets = (adult, teen) => {
   return adult + teen;

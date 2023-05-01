@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import Usercontext from '../../Usercontext';
-
+import './css/Follow.css';
 const FollowButton = ({ boardNo, userId }) => {
   const [followData, setFollowData] = useState([]);
   const [isFollowing, setIsFollowing] = useState(false);
@@ -73,7 +73,7 @@ const FollowButton = ({ boardNo, userId }) => {
 
   return (
     <>
-    <button className='gheadfollow' onClick={isFollowing ? handleUnfollow : handleFollow}>
+    <button className='followers-btn' onClick={isFollowing ? handleUnfollow : handleFollow}>
       {isFollowing ? 'Unfollow' : 'Follow'}
     </button>
     {/* <span>팔로잉{following}</span> */}

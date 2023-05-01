@@ -34,8 +34,9 @@
     from 
       hms_mem m
       inner join hms_taxipayment t on m.email = t.buyer_email
-    order by
-      payment_id desc
+    where    
+    t.buyer_email=#{email}
+
   </select>
 
   <select id="findByNo" parameterType="string" resultMap="taxipaymentMap">

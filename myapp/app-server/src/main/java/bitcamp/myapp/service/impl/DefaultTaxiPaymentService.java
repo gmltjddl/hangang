@@ -20,8 +20,8 @@ public class DefaultTaxiPaymentService implements TaxiPaymentService {
   }
 
   @Override
-  public List<Payment> list() {
-    return TaxipaymentDao.findAll();
+  public List<Payment> list(String email) {
+    return TaxipaymentDao.findAll(email);
   }
 
   @Override

@@ -66,16 +66,22 @@ const [reservations, setReservations] = useState([]);
   };
 
   const fetchMyReservations = async () => {
-  axios.get(`http://localhost:8080/web/payments/${user.email}`)
-    .then((response) => {
-      console.log(response.data.data);
-      setReservations(response.data.data);
+    try {
+      const cruiseReservations = axios.get(`http://localhost:8080/web/payments/${user.email}`);
+      const taxiReservations = axios.get(`http://localhost:8080/web/taxipayments/${user.email}`);
+  
+      const [cruiseResponse, taxiResponse] = await Promise.all([cruiseReservations, taxiReservations]);
+  
+      const combinedReservations = cruiseResponse.data.data.map(res => ({ ...res, type: 'cruise' }))
+      .concat(taxiResponse.data.data.map(res => ({ ...res, type: 'taxi' })));
+      console.log(combinedReservations);
+      setReservations(combinedReservations);
       setShowReservationModal(true);
-    })
-    .catch((error) => {
-
-    });
-};
+    } catch (error) {
+      console.error('Error fetching reservations:', error);
+    }
+  };
+  
 
   return (
     <>
@@ -103,8 +109,8 @@ const [reservations, setReservations] = useState([]);
         </div>
         <div className="mywrite-box-wrap">
           <h1>내가 쓴 글 목록</h1>
-          <span>내가 쓴 GALLERY 글, 댓글, 문의사항 등 목록</span>
-          <button className="mypostlist-modal" onClick={() => setMypostlistOn(true)}>목록</button>
+          <span>내가 쓴 GALLERY 글 목록</span>
+          <button className="mypostlist-modal" onClick={() => setMypostlistOn(true)}>VIEW</button>
         </div>
         <MyReservationModal
   show={showReservationModal}
@@ -114,7 +120,7 @@ const [reservations, setReservations] = useState([]);
         <div className="reservation-box-wrap">
           <h1>내 예약 목록</h1>
           <span>크루즈 예약, 수상 택시 예약 목록</span>
-          <button className='myreservation-btn' onClick={fetchMyReservations}>목록</button>
+          <button className='myreservation-btn' onClick={fetchMyReservations}>VIEW</button>
         </div>
       </div>
     </>

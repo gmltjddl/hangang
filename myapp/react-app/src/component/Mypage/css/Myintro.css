@@ -35,16 +35,45 @@
 .intro-edit-btn button {
   width: 70px;
   height: 40px;
-  background-color: #33A3F5;
-  border: 0px solid;
-  border-radius: 25%;
   font-size: 20px;
-  color: white;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0px 2px 2px rgba(0,0,0,0.8);
   cursor: pointer;
+  background-color: #6699CC;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 5px 15px -5px rgba(0,0,0,0.5);
+  outline: none;
+  top: 110px;
+  left: 340px;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.intro-edit-btn button:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  bottom: -10px;
+  right: -10px;
+  background: linear-gradient(to right, #6699CC, #66CCFF);
+  z-index: -1;
+  border-radius: 50px;
+  transform: scale(0.98);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
 }
 
 .intro-edit-btn button:hover {
-  color: black;
+  box-shadow: 0px 5px 20px -5px rgba(0,0,0,0.8);
+  transform: translateY(-2px);
+}
+
+.intro-edit-btn button:hover:before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 
