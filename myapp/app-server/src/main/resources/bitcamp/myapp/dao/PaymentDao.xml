@@ -26,25 +26,24 @@
   </insert>
 
   <select id="findAll" resultMap="paymentMap">
-    select 
-      payment_id,
-      imp_uid,
-      buyer_email,
-      buyer_name,
-      paid_amount,
-      buyer_date,
-      buyer_time,
-      adult,
-      teen,
-      sumticket,
-      p.created_date
-    from 
-      hms_mem m
-      inner join hms_payment p on m.email = p.buyer_email
-    where
-      p.buyer_email = #{user.email}
-    order by
-      payment_id desc
+     SELECT 
+            payment_id,
+            imp_uid,
+            buyer_email,
+            buyer_name,
+            paid_amount,
+            buyer_date,
+            buyer_time,
+            adult,
+            teen,
+            sumticket,
+            p.created_date
+        FROM 
+            hms_mem m
+            INNER JOIN hms_payment p ON m.email = p.buyer_email
+        WHERE
+            p.buyer_email=#{email}
+
   </select>
  <select id="seat" resultMap="paymentMap">
     select 

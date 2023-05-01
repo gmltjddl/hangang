@@ -8,6 +8,8 @@ import Followersmodal from '../Follow/Followersmodal';
 import Followingmodal from '../Follow/Followingmodal';
 import Usercontext from '../../Usercontext';
 import axios from "axios";
+import MyReservationModal from './MyReservationModal';
+
 
 const Mypagebox = () => {
 
@@ -25,6 +27,10 @@ const Mypagebox = () => {
 
   const [followersResponse, setFollowersResponse] = useState({});
   const [followingResponse, setFollowingResponse] = useState({});
+
+  const [showReservationModal, setShowReservationModal] = useState(false);
+const [reservations, setReservations] = useState([]);
+
 
   useEffect(() => {
     const fetchFollowersAndFollowingCount = async () => {
@@ -58,17 +64,18 @@ const Mypagebox = () => {
     setFollowingList(followingResponse.data.data.map(followingData => followingData.followedId));
     setShowFollowingModal(true);
   };
+
   const fetchMyReservations = async () => {
-  
-    axios.get(`http://localhost:8080/web/payments/${user.email}`)
-      .then((response) => {
-        console.log(response.data.data);
-      })
-      .catch((error) => {
+  axios.get(`http://localhost:8080/web/payments/${user.email}`)
+    .then((response) => {
+      console.log(response.data.data);
+      setReservations(response.data.data);
+      setShowReservationModal(true);
+    })
+    .catch((error) => {
 
-      });
-  };
-
+    });
+};
 
   return (
     <>
@@ -99,6 +106,11 @@ const Mypagebox = () => {
           <span>내가 쓴 GALLERY 글, 댓글, 문의사항 등 목록</span>
           <button className="mypostlist-modal" onClick={() => setMypostlistOn(true)}>목록</button>
         </div>
+        <MyReservationModal
+  show={showReservationModal}
+  onHide={() => setShowReservationModal(false)}
+  reservations={reservations}
+/>
         <div className="reservation-box-wrap">
           <h1>내 예약 목록</h1>
           <span>크루즈 예약, 수상 택시 예약 목록</span>

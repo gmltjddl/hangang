@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bitcamp.myapp.dao.TaxiPaymentDao">
+
+  <resultMap type="taxipayment" id="taxipaymentMap">
+    <id column="payment_id" property="payment_id"/>
+    <result column="imp_uid" property="imp_uid"/>
+    <result column="buyer_email" property="buyer_email"/>
+    <result column="buyer_name" property="buyer_name"/>
+    <result column="paid_amount" property="paid_amount"/>
+    <result column="startpoint" property="startpoint"/>
+    <result column="endpoint" property="endpoint"/>
+    <result column="created_date" property="createdDate"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="taxipayment" 
+          useGeneratedKeys="true" keyColumn="payment_id" keyProperty="paymentId">
+    insert into hms_taxipayment(imp_uid, buyer_email, buyer_name, paid_amount, startpoint, endpoint)
+    values(#{imp_uid}, #{buyer_email}, #{buyer_name}, #{paid_amount}, #{startpoint}, #{endpoint})
+  </insert>
+
+  <select id="findAll" resultMap="taxipaymentMap">
+    select 
+      payment_id,
+      imp_uid,
+      buyer_email,
+      buyer_name,
+      paid_amount,
+      startpoint,
+      endpoint,
+      t.created_date
+    from 
+      hms_mem m
+      inner join hms_taxipayment t on m.email = t.buyer_email
+    order by
+      payment_id desc
+  </select>
+
+  <select id="findByNo" parameterType="string" resultMap="taxipaymentMap">
+    select 
+      payment_id,
+      imp_uid,
+      buyer_email,
+      buyer_name,
+      paid_amount,
+      startpoint,
+      endpoint,
+      created_date
+    from 
+      hms_taxipayment
+    where
+      buyer_email=#{buyer_email}
+  </select>
+
+</mapper>

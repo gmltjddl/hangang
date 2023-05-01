@@ -1,0 +1,58 @@
+.taxi-stations-selector {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 410px;
+    height: 300px;
+    top: -485px;
+    left: 820px;
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+.taxiselect {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+.price-info {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+.taxilabel {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    
+}
+
+.taxipgpaymentbnt{
+    position: relative;
+    top: 30px;
+    margin-bottom: 5px;
+    font-weight:400;
+    text-align: center;
+    font-size: 18px;
+    width: 90px;
+    height: 26px;
+    background-color:  #c3b8e7;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 0;
+  }
+  
+.taxipgpaymentbnt:hover {
+    background-color: #7a5be2;
+    color: #fff;
+}

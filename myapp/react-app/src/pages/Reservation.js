@@ -57,41 +57,43 @@ const Reservation = () => {
     });
   };
 
-  return (
-    <>
-       <Link to="/Cruisepg">
-    <div className='Reservation-body'>
-      <div className="Reservation-group">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className="Reservation-item"
-            style={{
-              backgroundImage: `url(${image})`,
-              backgroundPosition: 'center',
-              backgroundSize: '75vh',
-              margin: '1vw',
-              borderRadius: '3vw',
-              display: 'inline-block',
-              cursor: 'pointer',
-              width: hoveredIndex === index ? '42vw' : '25vw'
-            }}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-          >
-            {index === 0 && (
-                <div className="Reservation-item-text">
-                  CRUISE
+    return (
+      <>
+        <div className='Reservation-body'>
+          <div className="Reservation-group">
+            {images.map((image, index) => (
+              <Link key={index} to={index === 0 ? "/Cruisepg" : "/Taxipg"}>
+                <div
+                  className="Reservation-item"
+                  style={{
+                    backgroundImage: `url(${image})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: '75vh',
+                    margin: '1vw',
+                    borderRadius: '3vw',
+                    display: 'inline-block',
+                    cursor: 'pointer',
+                    width: hoveredIndex === index ? '42vw' : '25vw'
+                  }}
+                  onMouseEnter={() => handleMouseEnter(index)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {index === 0 && (
+                    <div className="Reservation-item-text">
+                      CRUISE
+                    </div>
+                  )}
+                  {index === 1 && (
+                    <div className="Reservation-item-text">
+                      WATER TAXI
+                    </div>
+                  )}
                 </div>
-            )}
-            {index === 1 && <div className="Reservation-item-text">WATER TAXI</div>}
+              </Link>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
-    </Link>
-  </>
-);
-};
-
+        </div>
+      </>
+    );
+   }
 export default Reservation;

@@ -1,0 +1,111 @@
+.QnaComment-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.QnaComment-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 900px;
+}
+
+.QnaComment-modal-content h3 {
+  margin-bottom: 20px;
+}
+
+.QnaComment-modal-content ul {
+  overflow-y: auto;
+  padding-right: 10px;
+  max-height: 400px;
+}
+
+.QnaComment-modal-content li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.QnaComment-modal-actions {
+  display: inline-block;
+}
+
+.QnaComment-modal-content-box {
+  display: inline-block;
+  width: 720px;
+}
+
+.QnaComment-modal-content input {
+  width: 850px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.QnaComment-modal-button-box {
+  display: flex;
+  position: relative;
+  left: 697px;
+}
+
+.QnaComment-modal-add-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.QnaComment-modal-close-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.QnaComment-modal-edit {
+  position: relative;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  color: #495057;
+  margin-left: 10px;
+  margin-bottom: 7px;
+  left: 60px;
+}
+
+.QnaComment-modal-delete {
+  position: relative;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  color: #495057;
+  margin-left: 10px;
+  left: 60px;
+
+}
+
+.QnaComment-modal-edit:hover {
+  background-color: #e9ecef;
+}
+
+.QnaComment-modal-delete:hover {
+  background-color: #e9ecef;
+}
+
+.QnaComment-modal-content button:last-child {
+  margin-right: 0;
+}
