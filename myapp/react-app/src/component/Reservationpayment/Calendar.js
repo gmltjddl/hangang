@@ -10,7 +10,7 @@ const CustomCalendar = () => {
   const [value, onChange] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  console.log(selectedDate);
+  // console.log(selectedDate);
 
 
   const handleDateChange = (date) => {

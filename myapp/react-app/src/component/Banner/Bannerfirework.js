@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 function Bannerfirework() {
   const [bgImageIndex, setBgImageIndex] = useState(0); // State to keep track of current background image index
-  const bgImages = ['',
+  const bgImages = ['https://cdn.discordapp.com/attachments/1080021402117226547/1100869188421161010/image.png',
   ];
 
   useEffect(() => {

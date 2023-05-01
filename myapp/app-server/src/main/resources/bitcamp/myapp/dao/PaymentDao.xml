@@ -62,5 +62,10 @@
     where
       buyer_email=#{buyerEmail}
   </select>
-
+    <select id="slot" parameterType="string" resultMap="paymentMap">
+  SELECT 
+  t.time_slot,
+  (total_seats - t.booked_seats) AS seats_remaining
+  FROM time_slots t;
+</select>
 </mapper>

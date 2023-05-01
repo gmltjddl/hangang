@@ -37,7 +37,7 @@
 }
 
 .Membermanagement-box button {
-
+  position: relative;
   padding: 5px 10px;
   margin: 5px;
   border: none;
@@ -61,4 +61,8 @@
 .Membermanagement-box button:hover {
   background-color: #3498db;
   color: #fff;
+}
+.Membermanagement-pagination button{
+  position: relative;
+  left:550px;
 }

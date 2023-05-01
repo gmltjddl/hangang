@@ -77,7 +77,7 @@ const Followingpostmodal = ({ show, onHide, following, userId}) => {
       backdrop={true}
 
     >
-      <Modal.Body style={{ backgroundColor: "#ffffff47", borderRadius: '20px' }}>
+      <Modal.Body className='mypostbody' style={{ backgroundColor: "#ffffff47", borderRadius: '20px' }}>
         <div className="Mypostlist-box">
           <div className="Mypostlist-body-back">
             <div className="Mypostlist-list-table-wrap">

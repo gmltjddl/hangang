@@ -17,7 +17,7 @@ const Qnalist = () => {
 
   useEffect(() => {
     fetchqnas();
-  }, [qnas]);
+  }, []);
 
   const fetchqnas = async () => {
     try {

@@ -1,15 +1,14 @@
 import React, { useContext, useState } from "react";
 import Usercontext from "../../Usercontext";
 import axios from "axios"; // 추가
+import  './css/Pg.css';
 
-const Pg = ({ time, adult, teen, sumprice, sumticket, date }) => {
+const Pg = ({ time, adult, teen, sumprice, sumticket, date ,props}) => {
   const user = useContext(Usercontext);
   const [name, setName] = useState(user.name);
   const [tel, setTel] = useState(user.tel);
   const [email, setEmail] = useState(user.email);
   // const [imp_uid, setImp_uid] = useState([]);
-  console.log(user);
-  console.log(sumprice);
   
   function onClickPayment() {
     var IMP = window.IMP;
@@ -30,12 +29,11 @@ const Pg = ({ time, adult, teen, sumprice, sumticket, date }) => {
   }
 
   async function callback(response) {
-    const { success, merchant_uid, error_msg,  imp_uid, buyer_email, name, paid_amount } = response;
+    const { success, merchant_uid, error_msg, imp_uid, buyer_email, name, paid_amount } = response;
 
     if (success) {
       alert("결제 성공");
-     
-
+      
       const formData = {
         imp_uid,
         buyer_email,
@@ -58,8 +56,10 @@ const Pg = ({ time, adult, teen, sumprice, sumticket, date }) => {
         if (response.status === 200) {
           
           console.log(response.data);
+          props.onPaymentComplete(true);
         }
       } catch (error) {
+        props.onPaymentComplete(false);
         console.error(error);
       }
     } else {
@@ -70,7 +70,7 @@ const Pg = ({ time, adult, teen, sumprice, sumticket, date }) => {
     
   
 
-  return <button className= "pgpaymentbnt" onClick={onClickPayment}>결제하기</button>
+  return <button className="pgpaymentbnt" onClick={onClickPayment}>결제하기</button>
       
 
   };

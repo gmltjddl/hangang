@@ -1,14 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './css/Membermanagement.css';
-
+import Usercontext from '../Usercontext';
 function Membermanagement() {
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [membersPerPage] = useState(20);
+  const user = useContext(Usercontext);
+
+
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (user.no !== 1) {
+      alert('경고: 관리자만 이 페이지에 접근할 수 있습니다!');
+      navigate('/');
+    }
+  }, [user, navigate]);
+
+
+  useEffect(() => {
+
     axios
       .get('http://localhost:8080/web/members/allMember')
       .then((response) => response.data)
@@ -38,6 +52,7 @@ function Membermanagement() {
           console.log(result);
           setMembers((prevMembers) =>
             prevMembers.filter((member) => member.no !== no)
+    
           );
         } else {
           // handle error
@@ -115,6 +130,7 @@ function Membermanagement() {
           <button
             key={number}
             onClick={() => handleClick(number)}
+            id="memberpagebtn"
             className={currentPage === number ? 'active' : ''}
           >
             {number}

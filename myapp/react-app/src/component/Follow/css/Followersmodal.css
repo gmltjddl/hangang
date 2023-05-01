@@ -56,6 +56,7 @@
 }
 
 .FollowersModal-modal-body {
+  position: relative;
   min-height: 170px;
 }
 

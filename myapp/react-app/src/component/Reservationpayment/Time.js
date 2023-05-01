@@ -3,10 +3,17 @@ import { Modal } from "react-bootstrap";
 import "./css/Time.css";
 import Pg from "../PG/Pg";
 
+const ADULT_TICKET_PRICE = 200;
+const TEEN_TICKET_PRICE = 100;
 
-
-const ADULT_TICKET_PRICE = 9000;
-const TEEN_TICKET_PRICE = 7000;
+const initialSeatsRemaining = {
+  "12:00": 150,
+  "13:00": 150,
+  "14:00": 150,
+  "15:00": 150,
+  "16:00": 150,
+  "17:00": 150,
+};
 
 const calculateTotalTickets = (adult, teen) => {
   return adult + teen;
@@ -16,8 +23,11 @@ const calculateTotalPrice = (adult, teen) => {
   return adult * ADULT_TICKET_PRICE + teen * TEEN_TICKET_PRICE;
 };
 
-
-
+const onPaymentComplete = (success) => {
+  if (success) {
+    updateSeatsRemaining(time, sumticket);
+  }
+};
 
 const Time = ({ show, onHide, date, customModalStyle }) => {
   const [time, setTime] = useState("");
@@ -25,6 +35,8 @@ const Time = ({ show, onHide, date, customModalStyle }) => {
   const [teen, setTeen] = useState(0);
   const [sumticket, setSumticket] = useState(0);
   const [sumprice, setSumprice] = useState(0);
+  const [seatsRemaining, setSeatsRemaining] = useState(initialSeatsRemaining);
+
 
   const defaultModalStyle = {
     position: "fixed",
@@ -33,10 +45,14 @@ const Time = ({ show, onHide, date, customModalStyle }) => {
     transform: "translate(-50%, -50%)",
   };
 
-  
 
+  const updateSeatsRemaining = (time, ticketsBooked) => {
+    setSeatsRemaining((prevSeatsRemaining) => ({
+      ...prevSeatsRemaining,
+      [time]: prevSeatsRemaining[time] - ticketsBooked,
+    }));
+  };
 
-  console.log(time);
   const modalStyle = customModalStyle ? customModalStyle : defaultModalStyle;
 
   return (
@@ -52,9 +68,9 @@ const Time = ({ show, onHide, date, customModalStyle }) => {
         style={modalStyle}
       >
         <Modal.Body>
-      <div className="timemodalclick">
-        <div className="timemodal">
-          <h2 className="ticket-booking-title">티켓 예매</h2>
+          <div className="timemodalclick">
+            <div className="timemodal">
+              <h2 className="ticket-booking-title">티켓 예매</h2>
               <form className="timereservation-form">
                 <div className="timeform-group">
                   <label htmlFor="date">날짜:</label>
@@ -68,13 +84,12 @@ const Time = ({ show, onHide, date, customModalStyle }) => {
                     name="time"
                     onChange={(e) => setTime(e.target.value)}
                   >
-                  <option defaultChecked>시간을 선택하세요</option>
-                  <option value="12:00">오후 12시</option>
-                  <option value="13:00">오후 1시</option>
-                  <option value="14:00">오후 2시</option>
-                  <option value="15:00">오후 3시</option>
-                  <option value="16:00">오후 4시</option>
-                  <option value="17:00">오후 5시</option>
+                    <option defaultChecked>시간을 선택하세요</option>
+                    {Object.entries(seatsRemaining).map(([time, seats]) => (
+                      <option key={time} value={time}>
+                        {time} (잔여석: {seats})
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className="timeform-group">
@@ -119,25 +134,26 @@ const Time = ({ show, onHide, date, customModalStyle }) => {
               <div className="timeform-group">
                 <label htmlFor="total-price">총 가격: {sumprice}</label>
               </div>
-            </form>
-            <Pg
-              date={date}
-              time={time}
-              adult={adult}
-              teen={teen}
-              sumprice={sumprice}
-              sumticket={sumticket}
-            />
+              </form>
+              <Pg
+                date={date}
+                time={time}
+                adult={adult}
+                teen={teen}
+                sumprice={sumprice}
+                sumticket={sumticket}
+                onPaymentComplete={onPaymentComplete}
+              />
 
-            <div className="pgcancelbnt" onClick={onHide}>
-            취소
+              <div className="pgcancelbnt" onClick={onHide}>
+              취소
             </div>
-          </div>
-        </div>
-      </Modal.Body>
-    </Modal>
-  </div>
-);
-};
+            </div>
+            </div>
+            </Modal.Body>
+            </Modal>
+            </div>
+            );
+            };
 
-export default Time;
+            export default Time;

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 function Bannerdron() {
   const [bgImageIndex, setBgImageIndex] = useState(0); // State to keep track of current background image index
-  const bgImages = ['https://media.discordapp.net/attachments/1080021402117226547/1100467637160517712/image.png?width=1014&height=729',
+  const bgImages = ['https://media.discordapp.net/attachments/1080021402117226547/1100467637160517712/image.png?width=1393&height=560',
   ];
 
   useEffect(() => {

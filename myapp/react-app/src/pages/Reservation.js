@@ -59,6 +59,7 @@ const Reservation = () => {
 
   return (
     <>
+       <Link to="/Cruisepg">
     <div className='Reservation-body'>
       <div className="Reservation-group">
         {images.map((image, index) => (
@@ -79,17 +80,16 @@ const Reservation = () => {
             onMouseLeave={handleMouseLeave}
           >
             {index === 0 && (
-              <Link to="/Cruisepg">
                 <div className="Reservation-item-text">
                   CRUISE
                 </div>
-              </Link>
             )}
             {index === 1 && <div className="Reservation-item-text">WATER TAXI</div>}
           </div>
         ))}
       </div>
     </div>
+    </Link>
   </>
 );
 };
