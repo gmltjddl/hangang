@@ -19,8 +19,13 @@ public class DefaultPaymentService implements PaymentService {
   }
 
   @Override
-  public List<Payment> list() {
-    return paymentDao.findAll();
+  public List<Payment> list(String keyword) {
+    return paymentDao.findAll(keyword);
+  }
+
+  @Override
+  public List<Payment> seatlist() {
+    return paymentDao.seatlist();
   }
 
   @Override

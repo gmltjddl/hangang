@@ -99,22 +99,6 @@ CREATE TABLE hms_qna (
   PRIMARY KEY (qna_id),
   FOREIGN KEY (writer) REFERENCES hms_mem(member_id) ON DELETE CASCADE
 );
-
-CREATE TABLE hms_payment (
-  payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  imp_uid VARCHAR(50),
-  buyer_email VARCHAR(50),
-  buyer_name VARCHAR(50),
-  paid_amount VARCHAR(20),
-  buyer_date VARCHAR(15),
-  buyer_time VARCHAR(15),
-  adult INT,
-  teen INT,
-  sumticket INT,
-  created_date DATETIME DEFAULT NOW(),
-  time_slot_id INT,
-  FOREIGN KEY (time_slot_id) REFERENCES hms_time_slots(time_slot_id)
-);
   
 
   CREATE TABLE hms_qnacomm (
@@ -128,11 +112,26 @@ CREATE TABLE hms_payment (
   FOREIGN KEY (qna_id) REFERENCES hms_qna(qna_id)
 );
 
-CREATE TABLE hms_time_slots (
-  time_slot_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  time_slot VARCHAR(15) NOT NULL,
-  booked_seats INT DEFAULT 0
+CREATE TABLE hms_payment (
+  payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  imp_uid VARCHAR(50),
+  buyer_email VARCHAR(50),
+  buyer_name VARCHAR(50),
+  paid_amount VARCHAR(20),
+  buyer_date VARCHAR(15),
+  buyer_time VARCHAR(15),
+  adult INT,
+  teen INT,
+  sumticket INT,
+  created_date DATETIME DEFAULT NOW(),
+  seats INT
 );
+
+--CREATE TABLE hms_time_slots (
+--  time_slot_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--  time_slot VARCHAR(15) NOT NULL,
+--  booked_seats INT DEFAULT 0
+--);
 
 
 

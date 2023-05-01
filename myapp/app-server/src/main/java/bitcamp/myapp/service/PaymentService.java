@@ -5,6 +5,7 @@ import bitcamp.myapp.vo.Payment;
 
 public interface PaymentService {
   void add(Payment payment);
-  List<Payment> list();
+  List<Payment> list(String keyword);
+  List<Payment> seatlist();
   Payment get(String buyer_email);
 }

@@ -58,6 +58,16 @@ const Mypagebox = () => {
     setFollowingList(followingResponse.data.data.map(followingData => followingData.followedId));
     setShowFollowingModal(true);
   };
+  const fetchMyReservations = async () => {
+  
+    axios.get(`http://localhost:8080/web/payments/${user.email}`)
+      .then((response) => {
+        console.log(response.data.data);
+      })
+      .catch((error) => {
+
+      });
+  };
 
 
   return (
@@ -92,7 +102,7 @@ const Mypagebox = () => {
         <div className="reservation-box-wrap">
           <h1>내 예약 목록</h1>
           <span>크루즈 예약, 수상 택시 예약 목록</span>
-          <button>수정</button>
+          <button className='myreservation-btn' onClick={fetchMyReservations}>목록</button>
         </div>
       </div>
     </>

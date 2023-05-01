@@ -7,6 +7,7 @@ import bitcamp.myapp.vo.Payment;
 @Mapper
 public interface PaymentDao {
   void insert(Payment payment);
-  List<Payment> findAll();
+  List<Payment> findAll(String keyword);
+  List<Payment> seatlist();
   Payment findByNo(String buyer_email);
 }

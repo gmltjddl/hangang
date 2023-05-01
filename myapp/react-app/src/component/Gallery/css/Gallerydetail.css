@@ -63,6 +63,9 @@
 .gheadfollow:active {
   transform: scale(0.96);
 }
+.gheadfollow:hover{
+  background-color: #0d8ecf;
+}
 
 .gbody {
   align-items: center;

@@ -17,7 +17,7 @@ public class Payment {
   private int adult;
   private int teen;
   private int sumticket;
-  private int time_slot_id;
+  private int seats;
 
   @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
   private Timestamp createdDate;

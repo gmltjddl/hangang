@@ -16,12 +16,13 @@
     <result column="teen" property="teen"/>
     <result column="sumticket" property="sumticket"/>
     <result column="created_date" property="createdDate"/>
+    <result column="seats" property="seats"/>
   </resultMap>
 
   <insert id="insert" parameterType="payment" 
           useGeneratedKeys="true" keyColumn="payment_id" keyProperty="paymentId">
-    insert into hms_payment(imp_uid, buyer_email, buyer_name, paid_amount, buyer_date, buyer_time, adult, teen, sumticket)
-    values(#{imp_uid}, #{buyer_email}, #{buyer_name}, #{paid_amount}, #{buyer_date}, #{buyer_time}, #{adult}, #{teen}, #{sumticket})
+    insert into hms_payment(imp_uid, buyer_email, buyer_name, paid_amount, buyer_date, buyer_time, adult, teen, sumticket,seats)
+    values(#{imp_uid}, #{buyer_email}, #{buyer_name}, #{paid_amount}, #{buyer_date}, #{buyer_time}, #{adult}, #{teen}, #{sumticket},#{seats})
   </insert>
 
   <select id="findAll" resultMap="paymentMap">
@@ -40,10 +41,29 @@
     from 
       hms_mem m
       inner join hms_payment p on m.email = p.buyer_email
+    where
+      p.buyer_email = #{user.email}
     order by
       payment_id desc
   </select>
+ <select id="seat" resultMap="paymentMap">
+    select 
+      payment_id,
+      imp_uid,
+      buyer_email,
+      buyer_name,
+      paid_amount,
+      buyer_date,
+      buyer_time,
+      adult,
+      teen,
+      sumticket,
+      created_date,
+      seats
+    from 
+    hms_payment
 
+  </select>
   <select id="findByNo" parameterType="string" resultMap="paymentMap">
     select 
       payment_id,
