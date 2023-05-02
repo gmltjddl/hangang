@@ -45,12 +45,11 @@
   align-items: center;
 }
 
-.qna-content {
-  margin-top: 10px;
-  margin-left: 10px;
-}
+
 
 .qna-title {
+  position: absolute;
+  left:500px;
   width: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -90,6 +89,10 @@ left:-90px;
 .qna-nick-header {
   position: relative;
   left:130px;
+}
+.qna-nick{
+  position:absolute;
+  left:1050px;
 }
 
 .qna-date-header {

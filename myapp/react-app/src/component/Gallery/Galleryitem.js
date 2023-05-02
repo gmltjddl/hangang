@@ -23,7 +23,7 @@ const GalleryItem = ({ item }) => {
   };
 
   // console.log(boarduserfilepath.filepath,"아이템 보드유저패쓰");
-
+console.log(item);
 // console.log(item.comment.commetNo);
 const defaultProfile = "/img/defaultprofile.jpg";
 return (
@@ -39,7 +39,7 @@ return (
               </div>
     
               <div className="gall-writer-wrap">
-                <p>{item.writer.name}</p>
+                <p>{item.writer.nickName}</p>
               </div>
               <div className="gall-like-img"></div>
               <div className="gall-like-wrap">

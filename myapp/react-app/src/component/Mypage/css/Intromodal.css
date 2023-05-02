@@ -294,7 +294,7 @@ div.modal-body {
   bottom: 470px;
   display: inline-block;
   border:0px solid;
-
+  
   /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
   border-radius: 120px;
   cursor: pointer;
@@ -303,10 +303,12 @@ div.modal-body {
   /* background-image: url(http://tbxctpxzerdz16840769.cdn.ntruss.com/defaultprofile.jpg?type=f&w=260&h=260&faceopt=true&ttype=jpg); */
 }
 .introprofile-preview-image-box img{
-  width:260px;
-  height:260px;
+  width:270px;
+  height:270px;
   border-radius: 125px;
   border:0px solid;
+  position: relative;
+  bottom:5px;
 }
 .introprofile-preview-image-box span{
   position: absolute;

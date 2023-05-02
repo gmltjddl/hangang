@@ -45,14 +45,18 @@ function Join() {
 
   const handleNickNameChange = async (event) => {
     setNickName(event.target.value);
-
-    const duplicated = await checkNicknameDuplicated(event.target.value);
-    setIsNickNameDuplicated(duplicated);
-
-    if (duplicated) {
-      setNickNameStatusMessage("중복된 닉네임입니다.");
+  
+    if (event.target.value.length > 0) {
+      const duplicated = await checkNicknameDuplicated(event.target.value);
+      setIsNickNameDuplicated(duplicated);
+  
+      if (duplicated) {
+        setNickNameStatusMessage("중복된 닉네임입니다.");
+      } else {
+        setNickNameStatusMessage("사용 가능한 닉네임입니다.");
+      }
     } else {
-      setNickNameStatusMessage("사용 가능한 닉네임입니다.");
+      setNickNameStatusMessage("");
     }
   };
 

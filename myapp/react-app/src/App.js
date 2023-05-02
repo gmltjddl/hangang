@@ -22,6 +22,7 @@ import Pg from './component/PG/Pg';
 import Calendar from './component/Reservationpayment/Calendar';
 import Cruisepg from './pages/Cruisepg';
 import Taxipg from './pages/Taxipg';
+import Weather from './pages/Weather';
 
 
 const HANGANG = () => {
@@ -155,6 +156,7 @@ const HANGANG = () => {
         <Route path="/Qna" element={<Qna />} />
         <Route path="/Cruisepg" element={<Cruisepg/>} />
         <Route path="/Taxipg" element={<Taxipg/>} />
+        <Route path="/Weather" element={<Weather/>} />
       </Routes>
       <Footer />
     </Usercontext.Provider>

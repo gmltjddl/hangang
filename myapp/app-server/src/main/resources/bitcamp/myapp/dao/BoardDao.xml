@@ -47,7 +47,7 @@
     b.created_date, 
     b.view_cnt,
     m.name,
-    m.nick,
+    (select nick from hms_mem m where m.member_id = b.writer) nickName,
     gf.filepath,
     COUNT(lt.board_id) AS likes
   from 
