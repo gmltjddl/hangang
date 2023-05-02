@@ -193,3 +193,6 @@ border: 0;
 .qna-header:hover {
   background-color: #f1f1f1;
 }
+.qna-comment-container {
+  position: relative;
+}

@@ -14,9 +14,8 @@ const Qnalist = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedQna, setSelectedQna] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isReplying, setIsReplying] = useState(false); // 답글 작성 중인지 여부를 추적하는 상태
+  const [isReplying, setIsReplying] = useState(false);
   const [replyQnaNo, setReplyQnaNo] = useState(null);
-
 
   useEffect(() => {
     fetchqnas();
@@ -27,10 +26,17 @@ const Qnalist = () => {
       const response = await axios.get("http://localhost:8080/web/qnas");
       const result = response.data;
       console.log(result);
-
       if (result.status === "success" && Array.isArray(result.data)) {
         console.log(result.data);
-        setQnas(result.data);
+        // Fetch comments for each QnA
+        const qnaWithComments = await Promise.all(result.data.map(async (qna) => {
+          const commentResponse = await axios.get(`http://localhost:8080/web/api/qnacomment/${qna.no}`);
+          return {
+            ...qna,
+            comments: commentResponse.data,
+          };
+        }));
+        setQnas(qnaWithComments);
       } else {
         console.error("Error fetching qna: Invalid data format");
       }
@@ -59,7 +65,6 @@ const Qnalist = () => {
 
   const renderPageNumbers = () => {
     const pageNumbers = [];
-
     for (let i = 1; i <= Math.ceil(qnas.length / qnasPerPage); i++) {
       pageNumbers.push(
         <li
@@ -73,6 +78,7 @@ const Qnalist = () => {
     }
 
     return <ul className="page-numbers">{pageNumbers}</ul>;
+
   };
 
   const handleEditClick = (event, qna) => {
@@ -86,10 +92,16 @@ const Qnalist = () => {
     setSelectedQna(null);
   };
 
-  const handleReplyClick = (qnaNo) => {
+const handleReplyClick = (event, qnaNo) => {
+  event.stopPropagation();
+  if (isReplying && replyQnaNo === qnaNo) {
+    setIsReplying(false);
+    setReplyQnaNo(null);
+  } else {
     setIsReplying(true);
     setReplyQnaNo(qnaNo);
-  };
+  }
+};
 
   const handleReplyModalClose = () => {
     setIsReplying(false);
@@ -104,7 +116,6 @@ const Qnalist = () => {
       const result = response.data;
       console.log(result);
       console.log(qnaNo);
-
       if (result.status === "success") {
         const updatedQnas = qnas.filter(qna => qna.no !== qnaNo);
         setQnas(updatedQnas);
@@ -138,10 +149,10 @@ const Qnalist = () => {
           {currentQnas.map((qna, index) => (
             <li
               key={index}
-              onClick={() => handleToggleContent(index)}
               className={showContent === index ? "open" : ""}
             >
-              <div className="qna-header">
+              <div className="qna-header"
+                onClick={() => handleToggleContent(index)}>
                 <span className="qna-number">{qna.no}. </span>
                 <span className="qna-title">{qna.title}</span>
                 <span className="qna-nick">{qna.writer.nickName}</span>
@@ -160,18 +171,15 @@ const Qnalist = () => {
                   {isAdmin && (
                     <button
                       className="qreply-btn"
-                      onClick={() => handleReplyClick(qna.no)}
+                      onClick={(event) => handleReplyClick(event, qna.no)}
                     >답글</button>
                   )}
-                  {isReplying && replyQnaNo === qna.no && (
-                    <QnaComment
-                      className="QnaComment-modal"
-                      onModalClose={handleReplyModalClose}
-                      onSave={fetchqnas}
-                      qnaNo={replyQnaNo}
-                      writer={user}
-                    />
-                  )}
+                  {qna.comments && qna.comments.map((comment, commentIndex) => (
+                    <div key={commentIndex} className="qna-admin-comment">
+                      <h3>관리자 댓글</h3>
+                      <p>{comment.content}</p>
+                    </div>
+                  ))}
                 </div>
               )}
             </li>
@@ -186,7 +194,17 @@ const Qnalist = () => {
           onSave={fetchqnas}
         />
       )}
+        {isReplying && replyQnaNo !== null && (
+        <QnaComment
+          className="QnaComment-modal"
+          onModalClose={handleReplyModalClose}
+          onSave={fetchqnas}
+          qnaNo={replyQnaNo}
+          writer={user}
+        />
+      )}
     </>
   );
 };
+
 export default Qnalist;
