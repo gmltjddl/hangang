@@ -8,7 +8,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import GalleryItem from "./Galleryitem";
 import Usercontext from '../../Usercontext';
-
+import Swal from "sweetalert2";
 
 const Gallerylist = () => {
   const [data, setData] = useState([]);
@@ -99,7 +99,13 @@ const Gallerylist = () => {
         ) : (
           <Button
             className="Gallerylist-Button"
-            onClick={() => alert("로그인을 해주세요.")}
+            onClick={() => 
+              Swal.fire(
+                '로그인이 필요합니다!',
+                '',
+                'warning'
+              )
+            }
           >
             Writing
           </Button>

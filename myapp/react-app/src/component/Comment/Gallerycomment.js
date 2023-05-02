@@ -102,10 +102,19 @@ const Gallerycomment = ({ show, onHide, boardNo, dcontent, dtitle }) => {
             console.error(error);
           });
       } else {
-        alert("댓글은 30자 이하여야 합니다.");
+        Swal.fire(
+          '댓글은 30자 이하여야 합니다!',
+          '',
+          'warning'
+        )
+
       }
     } else {
-      alert("댓글 내용을 입력해주세요.");
+      Swal.fire(
+        '댓글 내용을 입력해주세요!',
+        '',
+        'warning'
+      )
     }
   };
 

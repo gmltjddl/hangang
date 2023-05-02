@@ -5,6 +5,7 @@ import Header from '../component/Header/Header';
 import { Link } from 'react-router-dom';
 import CustomCalendar from '../component/Reservationpayment/Calendar';
 import Cruisepg from './Cruisepg';
+import Swal from "sweetalert2";
 
 const images = [
   'http://tbxctpxzerdz16840769.cdn.ntruss.com/gallery/2d844576-6b23-4752-b283-5407409427eb?type=h&h=800&ttype=jpg',
@@ -27,7 +28,7 @@ const Reservation = () => {
 
     gsap.to(items, {
       width: (item) => {
-        return item.hovered ? '25vw' : '10vw';
+        return item.hovered ? '15vw' : '10vw';
       },
       duration: 2,
       ease: 'elastic(1, .6)'
@@ -36,7 +37,7 @@ const Reservation = () => {
     const item = items[index];
     item.hovered = true;
     gsap.to(item, {
-      width: '42vw',
+      width: '32vw',
       duration: 2.5,
       ease: 'elastic(1, .3)'
     });
@@ -80,12 +81,12 @@ const Reservation = () => {
                 >
                   {index === 0 && (
                     <div className="Reservation-item-text">
-                      CRUISE
+                      <span>CRUISE</span>
                     </div>
                   )}
                   {index === 1 && (
                     <div className="Reservation-item-text">
-                      WATER TAXI
+                     <span> WATER TAXI</span>
                     </div>
                   )}
                 </div>

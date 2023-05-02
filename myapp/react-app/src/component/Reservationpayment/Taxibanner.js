@@ -4,10 +4,10 @@ import './css/Taxibanner.css';
 const Cruisebanner = () => {
   const [bgImageIndex, setBgImageIndex] = useState(0);
   const bgImages = [
-    'https://cdn.discordapp.com/attachments/1080021402117226547/1102319144361283655/1.png?width=729&height=709',
-    'https://cdn.discordapp.com/attachments/1080021402117226547/1102319144835219607/2.png?width=729&height=709',
-    'https://cdn.discordapp.com/attachments/1080021402117226547/1102319145615380501/5.png?width=729&height=709',
-    'https://cdn.discordapp.com/attachments/1080021402117226547/1102319145183359198/4.png?width=729&height=709'
+    'https://cdn.discordapp.com/attachments/1080021402117226547/1102772694719672340/taxi5.png?width=729&height=709',
+    'https://cdn.discordapp.com/attachments/1080021402117226547/1102772693725610014/taxi2.png?width=729&height=709',
+    'https://cdn.discordapp.com/attachments/1080021402117226547/1102772694056976535/taxi3.png?width=729&height=709',
+    'https://cdn.discordapp.com/attachments/1080021402117226547/1102772694447030383/taxi4.png?width=729&height=709'
   ];
 
   useEffect(() => {

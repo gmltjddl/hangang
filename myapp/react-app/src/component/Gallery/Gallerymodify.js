@@ -3,6 +3,7 @@ import './css/Gallerywriting.css';
 import { Modal } from "react-bootstrap";
 import axios from 'axios';
 import Usercontext from '../../Usercontext';
+import Swal from "sweetalert2";
 
 const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
 
@@ -76,9 +77,17 @@ const Gallerymodify = ({ show, onHide, boardNo, userId }) => {
       setSelectedImageIndices([]);
   
       if (removedImages) {
-        alert("이미지가 삭제되었습니다.");
+        Swal.fire(
+          '이미지가 삭제되었습니다.',
+          '',
+          'success'
+        )
       } else {
-        alert("이미지 삭제에 실패했습니다.");
+        Swal.fire(
+          '이미지 삭제에 실패했습니다!',
+          '',
+          'warning'
+        )
       }
     }
   };
@@ -175,14 +184,26 @@ const handleUpdate = async (event) => {
     const result = response.data;
     console.log(result.data);
     if (result.status === "success") {
-      alert("수정되었습니다");
+      Swal.fire(
+        '수정 완료!',
+        '',
+        'success'
+      )
       onHide();
     } else {
-      alert("수정실패");
+      Swal.fire(
+        '수정 실패!',
+        '',
+        'warning'
+      )
       console.log(result.data)
     }
   } catch (error) {
-    alert("연결실패");
+    Swal.fire(
+      '연결 실패!',
+      '',
+      'warning'
+    )
   }
 };
 

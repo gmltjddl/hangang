@@ -17,12 +17,25 @@ const calculateTotalPrice = (adult, teen) => {
 
 
 
-const Time = ({ show, onHide, date, customModalStyle }) => {
+const Time = ({ show, onHide, date, customModalStyle, currentDateTime }) => {
   const [time, setTime] = useState("");
   const [adult, setAdult] = useState(0);
   const [teen, setTeen] = useState(0);
   const [sumticket, setSumticket] = useState(0);
   const [sumprice, setSumprice] = useState(0);
+
+  const isCurrentDate = date === currentDateTime.substring(0, 8);
+  const currentTime = parseInt(currentDateTime.substring(9));
+
+  const timeOptions = [
+    { value: "12:00", label: "오후 12시" },
+    { value: "13:00", label: "오후 1시" },
+    { value: "14:00", label: "오후 2시" },
+    { value: "15:00", label: "오후 3시" },
+    { value: "16:00", label: "오후 4시" },
+    { value: "17:00", label: "오후 5시" },
+  ];
+
 
   const defaultModalStyle = {
     position: "fixed",
@@ -61,18 +74,20 @@ const Time = ({ show, onHide, date, customModalStyle }) => {
                 <div className="timeform-group">
                   <label htmlFor="time">시간:</label>
                   <select
-                    className="timeform-control"
-                    id="time"
-                    name="time"
-                    onChange={(e) => setTime(e.target.value)}
+                  className="timeform-control"
+                  id="time"
+                  name="time"
+                  onChange={(e) => setTime(e.target.value)}
                   >
                   <option defaultChecked>시간을 선택하세요</option>
-                  <option value="12:00">오후 12시</option>
-                  <option value="13:00">오후 1시</option>
-                  <option value="14:00">오후 2시</option>
-                  <option value="15:00">오후 3시</option>
-                  <option value="16:00">오후 4시</option>
-                  <option value="17:00">오후 5시</option>
+                  {timeOptions.map(
+                    (option, index) =>
+                      (!isCurrentDate || parseInt(option.value.substring(0, 2)) > currentTime) && (
+                       <option key={index} value={option.value}>
+                        {option.label}
+                      </option>
+                    )
+                  )}
                   </select>
                 </div>
                 <div className="timeform-group">

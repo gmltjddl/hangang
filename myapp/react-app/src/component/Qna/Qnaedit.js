@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./css/Qnawrite.css";
-
+import Swal from "sweetalert2";
 const Qnaedit = ({ selectedQna, onModalClose, onSave }) => {
   const [title, setTitle] = useState(selectedQna.title);
   const [content, setContent] = useState(selectedQna.content);
@@ -41,10 +41,18 @@ const Qnaedit = ({ selectedQna, onModalClose, onSave }) => {
         onModalClose();
         onSave(); // Qnalist의 fetchqnas 함수를 호출하여 목록을 업데이트
       } else {
-        alert("입력 실패!");
+        Swal.fire(
+          '입력 실패!',
+          '입력 중 오류가 발생했습니다.',
+          'warning'
+        )
       }
     } catch (exception) {
-      alert("입력 중 오류가 발생했습니다.");
+      Swal.fire(
+        '입력 실패!',
+        '입력 중 오류가 발생했습니다.',
+        'warning'
+      )
     }
   };
 

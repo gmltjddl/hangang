@@ -363,8 +363,14 @@
   display: inline-block;
   width: 950px;
   top: -590px;
-  height: 500px;
+  height: 560px;
   left: 5px;
+}
+.peak-image-grid{
+  min-height: 560px;
+}
+.peak-image-container {
+  min-height: 560px;
 }
 
 .peak-image-container {}

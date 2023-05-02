@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Usercontext from "../../Usercontext";
 import axios from "axios"; // 추가
 import  './css/Pg.css';
-
+import Swal from "sweetalert2";
 const Pg = ({ time, adult, teen, sumprice, sumticket, date ,props}) => {
   const user = useContext(Usercontext);
   const [name, setName] = useState(user.name);
@@ -32,8 +32,11 @@ const Pg = ({ time, adult, teen, sumprice, sumticket, date ,props}) => {
     const { success, merchant_uid, error_msg, imp_uid, buyer_email, name, paid_amount } = response;
 
     if (success) {
-      alert("결제 성공");
-      
+      Swal.fire(
+        '결제 성공!',
+        '',
+        'success'
+      )
       const formData = {
         imp_uid,
         buyer_email,
@@ -63,7 +66,11 @@ const Pg = ({ time, adult, teen, sumprice, sumticket, date ,props}) => {
         console.error(error);
       }
     } else {
-      alert(`결제 실패: ${error_msg}`);
+      Swal.fire(
+        '결제 실패!',
+        `결제 실패: ${error_msg}`,
+        'warning'
+      )
     }
     
   }

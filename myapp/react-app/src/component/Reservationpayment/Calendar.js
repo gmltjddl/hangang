@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
 import './css/Calendar.css';
 import Time from './Time';
-
+import Swal from "sweetalert2";
 
 const CustomCalendar = () => {
   const [value, onChange] = useState(new Date());
@@ -15,7 +15,11 @@ const CustomCalendar = () => {
 
   const handleDateChange = (date) => {
     if (moment(date).isBefore(moment().startOf('day'))) {
-      alert('예약할 수 없는 날입니다.');
+      Swal.fire(
+        '실패!',
+        '예약할 수 없는 날입니다.',
+        'warning'
+      )
     } else {
       onChange(date);
       setSelectedDate(moment(date).format("YY-MM-DD"));
@@ -58,6 +62,7 @@ const CustomCalendar = () => {
       <Time 
       show={showModal} onHide={closeModal} 
       date={selectedDate}
+      currentDateTime={moment().format("YY-MM-DD HH")} // 현재 날짜와 시간을 추가합니다.
       />
 
     </div>

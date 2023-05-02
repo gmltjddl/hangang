@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import axios from "axios";
 import "./css/Qnawrite.css";
-
+import Swal from "sweetalert2";
 const Qnawrite = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -26,11 +26,19 @@ const Qnawrite = () => {
           setContent("");
           setShowModal(false);
         } else {
-          alert("입력 실패!");
+          Swal.fire(
+            '입력 실패!',
+            '입력 중 오류가 발생했습니다.',
+            'warning'
+          )
         }
       })
       .catch((exception) => {
-        alert("입력 중 오류가 발생했습니다.");
+        Swal.fire(
+          '입력 실패!',
+          '입력 중 오류가 발생했습니다.',
+          'warning'
+        )
       });
   };
 

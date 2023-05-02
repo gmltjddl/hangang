@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Usercontext from "../../Usercontext";
 import axios from "axios"; // 추가
 import '../Reservationpayment/css/Taxichoose.css';
+import Swal from "sweetalert2";
 
 const taxiPg = ({ startpoint, endpoint, amount }) => {
   const user = useContext(Usercontext);
@@ -14,12 +15,20 @@ const taxiPg = ({ startpoint, endpoint, amount }) => {
   
   function onClickPayment() {
     if (!startpoint || !endpoint) {
-      alert("출발지와 목적지를 모두 선택해주세요.");
+      Swal.fire(
+        '출발지와 목적지를 모두 선택해주세요!',
+        '',
+        'warning'
+      )
       return;
     }
 
     if (!isLoggedIn) {
-      alert("로그인이 필요합니다. 먼저 로그인해주세요.");
+      Swal.fire(
+        '로그인이 필요합니다!',
+        '',
+        'warning'
+      )
       return;
     }
     var IMP = window.IMP;
@@ -43,7 +52,11 @@ const taxiPg = ({ startpoint, endpoint, amount }) => {
     const { success, merchant_uid, error_msg,  imp_uid, buyer_email, name, paid_amount } = response;
     console.log(response);
     if (success) {
-      alert("결제 성공");
+      Swal.fire(
+        '결제 성공!',
+        '',
+        'success'
+      )
      
 
       const formData = {
@@ -70,7 +83,11 @@ const taxiPg = ({ startpoint, endpoint, amount }) => {
         console.error(error);
       }
     } else {
-      alert(`결제 실패: ${error_msg}`);
+      Swal.fire(
+        `결제 실패: ${error_msg}`,
+        '',
+        'warning'
+      )
     }
     
   }

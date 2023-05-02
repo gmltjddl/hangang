@@ -310,8 +310,14 @@
   display: inline-block;
   width: 950px;
   top: -336px;
-  height: 500px;
+  height: 560px;
   left: 5px;
+}
+.dron-image-grid{
+  min-height: 560px;
+}
+.dron-image-container {
+  min-height: 560px;
 }
 
 .dron-image-container {}

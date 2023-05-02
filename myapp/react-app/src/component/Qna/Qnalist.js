@@ -92,16 +92,16 @@ const Qnalist = () => {
     setSelectedQna(null);
   };
 
-const handleReplyClick = (event, qnaNo) => {
-  event.stopPropagation();
-  if (isReplying && replyQnaNo === qnaNo) {
-    setIsReplying(false);
-    setReplyQnaNo(null);
-  } else {
-    setIsReplying(true);
-    setReplyQnaNo(qnaNo);
-  }
-};
+  const handleReplyClick = (event, qnaNo) => {
+    event.stopPropagation();
+    if (isReplying && replyQnaNo === qnaNo) {
+      setIsReplying(false);
+      setReplyQnaNo(null);
+    } else {
+      setIsReplying(true);
+      setReplyQnaNo(qnaNo);
+    }
+  };
 
   const handleReplyModalClose = () => {
     setIsReplying(false);
@@ -174,12 +174,17 @@ const handleReplyClick = (event, qnaNo) => {
                       onClick={(event) => handleReplyClick(event, qna.no)}
                     >답글</button>
                   )}
-                  {qna.comments && qna.comments.map((comment, commentIndex) => (
-                    <div key={commentIndex} className="qna-admin-comment">
-                      <h3>관리자 댓글</h3>
-                      <p>{comment.content}</p>
-                    </div>
-                  ))}
+               {qna.comments && qna.comments.length > 0 && (
+  <>
+    <div className="qna-admin-reply-divider"></div>
+    {qna.comments.map((comment, commentIndex) => (
+      <div key={commentIndex} className="qna-admin-comment">
+        <h3>관리자 댓글</h3>
+        <p>{comment.content}</p>
+      </div>
+    ))}
+  </>
+)}
                 </div>
               )}
             </li>
@@ -194,15 +199,15 @@ const handleReplyClick = (event, qnaNo) => {
           onSave={fetchqnas}
         />
       )}
-        {isReplying && replyQnaNo !== null && (
-        <QnaComment
-          className="QnaComment-modal"
-          onModalClose={handleReplyModalClose}
-          onSave={fetchqnas}
-          qnaNo={replyQnaNo}
-          writer={user}
-        />
-      )}
+     {isReplying && (
+  <QnaComment
+    className="QnaComment-modal"
+    onModalClose={handleReplyModalClose}
+    onSave={fetchqnas}
+    qnaNo={replyQnaNo}
+    writer={user}
+  />
+)}
     </>
   );
 };

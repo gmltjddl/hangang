@@ -1,19 +1,21 @@
-
-.qna-h1{
-  position: relative;
-  display: inline-block;
-  left:620px;
-  top:100px;
+.qna-h1 {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  font-weight: bold;
 }
+
 .qna-list {
-  left:400px;
-  top:150px;
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 50px;
   padding: 20px;
   box-sizing: border-box;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .qna-list ul {
@@ -27,77 +29,80 @@
   padding: 10px;
   margin-bottom: 10px;
   cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transition: background-color 0.2s;
+}
+
+.qna-list li:hover {
+  background-color: #f1f1f1;
 }
 
 .qna-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.qna-nick{
-  position: relative;
-  display: inline-block;
-  left:280px;
 
-}
 .qna-content {
   margin-top: 10px;
   margin-left: 10px;
 }
-.qna-title{
-  position: absolute;
-  display: inline-block;
-  left:620px;
-  max-width: 300px; 
+
+.qna-title {
+  width: 300px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 1.2rem;
+  color: #34495e;
+  margin-left: 100px;
+
 }
-
-
 
 .open .qna-content {
   display: block;
 }
-/* Qnalist.css */
+
 .qna-header-bar {
   display: flex;
   justify-content: space-around;
-  background-color: #f1f1f1;
+  background-color: #2c3e50;
   padding: 8px 0;
   font-weight: bold;
+  color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .qna-number-header {
+  text-align: center;
 position: relative;
-display: inline-block;
-text-align: center;
 left:-90px;
 }
 
-.qna-title-header{
+.qna-title-header {
   position: relative;
-  display: inline-block;
-  left:-30px;
-
+  left:-60px;
 }
-.qna-nick-header{
+
+.qna-nick-header {
   position: relative;
-  display: inline-block;
-  left:145px;
+  left:130px;
 }
 
 .qna-date-header {
   position: relative;
-  display: inline-block;
-  text-align: center;
-  left:60px;
+  left:80px;
 }
+
 .page-numbers {
   display: flex;
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin-left:-30px;
+  margin-top: 20px;
 }
 
 .page-numbers li {
@@ -105,94 +110,130 @@ left:-90px;
   padding: 5px 10px;
   border: 1px solid #ccc;
   cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s;
 }
 
 .page-numbers li.active {
-  background-color: #007bff;
+  background-color: #2c3e50;
   color: white;
-  border-color: #007bff;
+  border-color: #2c3e50;
 }
 
 .page-numbers li:hover {
-  background-color: #f8f9fa;
-  color:black;
+  background-color: #f1f1f1;
+  color: black;
 }
-.qedit-btn{
-background-image: url(../img/edit.png);
-background-size: cover;
-border: 0;
-  background-color: transparent;
-  width:20px;
-  height: 20px;
-}
-.qdelete-btn{
-  background-image: url(../img/delete.png);
+
+.qedit-btn,
+.qdelete-btn {
   background-size: cover;
   border: 0;
   background-color: transparent;
-  width:20px;
+  width: 20px;
   height: 20px;
-}.qna-actions{
-  position: relative;
-  display:inline-block;
-  left:840px;
 }
+
+.qna-actions {
+position: absolute;
+right: 20px;
+top: 50%;
+transform: translateY(-50%);
+}
+
 .qreply-btn {
-  position: relative;
-  display:inline-block;
-  bottom:3px;
-  left:840px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0px 2px 2px rgba(0,0,0,0.8);
-  cursor: pointer;
-  background-color: #3897F0;
-  border: none;
-  box-shadow: 0px 5px 15px -5px rgba(0,0,0,0.5);
-  outline: none;
-  overflow: hidden;
-  transition: all 0.2s ease-in-out;
+position: relative;
+left: 850px;
+padding: 5px 10px;
+border-radius: 5px;
+font-size: 14px;
+cursor: pointer;
+font-weight: bold;
+color: #fff;
+text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.8);
+cursor: pointer;
+background-color: #3498db;
+border: none;
+box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.5);
+outline: none;
+overflow: hidden;
+transition: all 0.2s ease-in-out;
 }
 
 .qreply-btn:before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  bottom: -10px;
-  right: -10px;
-  background-color:#0d8ecf;
-  z-index: -1;
-  transform: scale(0.98);
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
+content: "";
+position: absolute;
+top: -10px;
+left: -10px;
+bottom: -10px;
+right: -10px;
+background-color: #2980b9;
+z-index: -1;
+transform: scale(0.98);
+opacity: 0;
+transition: all 0.3s ease-in-out;
 }
 
 .qreply-btn:hover {
-  box-shadow: 0px 5px 20px -5px rgba(0,0,0,0.8);
-  transform: translateY(-2px);
+box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.8);
+transform: translateY(-2px);
 }
 
 .qreply-btn:hover:before {
-  opacity: 1;
-  transform: scale(1);
+opacity: 1;
+transform: scale(1);
 }
 
 .qna-header {
-  background-color: #f8f9fa;
-  color: #333;
-  display: flex;
-  padding: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+background-color: #f8f9fa;
+color: #333;
+display: flex;
+padding: 5px;
+cursor: pointer;
+transition: background-color 0.2s;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
 }
+
 .qna-header:hover {
-  background-color: #f1f1f1;
+background-color: #f1f1f1;
 }
+
 .qna-comment-container {
-  position: relative;
+position: relative;
+}
+
+.QnaComment-modal {
+position: fixed;
+background-color: white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+border: 1px solid red;
+width: 900px;
+min-height: 300px;
+overflow-y: auto;
+height: auto;
+overflow-x: hidden;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+}
+
+.qna-admin-reply-divider {
+border-top: 1px solid #ddd;
+margin: 20px 0;
+}
+
+.qna-admin-reply-divider {
+height: 2px;
+background-image: linear-gradient(to right, rgba(52, 152, 219, 0), #3498db, rgba(52, 152, 219, 0));
+margin: 20px 0;
+}
+
+.qna-admin-comment h3 {
+font-size: 1.1rem;
+font-weight: bold;
+color: #3498db;
+margin-bottom: 5px;
 }

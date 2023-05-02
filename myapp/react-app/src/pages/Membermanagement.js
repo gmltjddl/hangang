@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './css/Membermanagement.css';
 import Usercontext from '../Usercontext';
+import Swal from "sweetalert2";
 function Membermanagement() {
   const [members, setMembers] = useState([]);
   const [search, setSearch] = useState('');
@@ -15,7 +16,11 @@ function Membermanagement() {
 
   useEffect(() => {
     if (user.no !== 1) {
-      alert('경고: 관리자만 이 페이지에 접근할 수 있습니다!');
+      Swal.fire(
+        '경고!',
+        '관리자만 이 페이지에 접근할 수 있습니다!',
+        'warning'
+      )
       navigate('/');
     }
   }, [user, navigate]);

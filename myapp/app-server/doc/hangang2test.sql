@@ -2,12 +2,12 @@
 CREATE TABLE hms_mem (
   member_id INT NOT NULL AUTO_INCREMENT,
   email VARCHAR(50) NOT NULL,
-  pwd VARCHAR(100) NOT NULL,
-  name VARCHAR(4) NOT NULL,
-  tel VARCHAR(14),
+  pwd VARCHAR(20) NOT NULL,
+  name VARCHAR(5) NOT NULL,
+  tel VARCHAR(11),
   nick VARCHAR(5),
-  intro LONGTEXT,
-  hob TEXT,
+  intro VARCHAR(50),
+  hob VARCHAR(50),
   created_date DATETIME DEFAULT NOW(),
   inter VARCHAR(50),
   PRIMARY KEY (member_id),
@@ -18,7 +18,7 @@ CREATE TABLE hms_mem (
 CREATE TABLE hms_gall (
   board_id INT NOT NULL AUTO_INCREMENT,
   writer INT,
-  title VARCHAR(15) NOT NULL,
+  title VARCHAR(50) NOT NULL,
   content TEXT NOT NULL,
   pwd VARCHAR(10),
   comment INT,
@@ -127,11 +127,22 @@ CREATE TABLE hms_payment (
   seats INT
 );
 
---CREATE TABLE hms_time_slots (
---  time_slot_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
---  time_slot VARCHAR(15) NOT NULL,
---  booked_seats INT DEFAULT 0
---);
+create table hms_taxipayment(
+payment_id int not null,
+imp_uid varchar(50),
+buyer_email varchar(50),
+buyer_name varchar(50),
+paid_amount varchar(20),
+startpoint varchar(40),
+endpoint varchar(40),
+created_date datetime default now()
+);
+alter table hms_taxipayment
+add constraint primary key (payment_id),
+modify column payment_id int not null auto_increment;
+
+
+
 
 
 

@@ -2,6 +2,9 @@ import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import Usercontext from '../../Usercontext';
 import './css/Follow.css';
+import Swal from "sweetalert2";
+
+
 const FollowButton = ({ boardNo, userId }) => {
   const [followData, setFollowData] = useState([]);
   const [isFollowing, setIsFollowing] = useState(false);
@@ -35,10 +38,18 @@ const FollowButton = ({ boardNo, userId }) => {
 
   const handleFollow = async () => {
     if (user.loggedIn === false) {
-      alert("로그인을 해주세요");
+      Swal.fire(
+        '로그인이 필요합니다!',
+        '',
+        'warning'
+      )
      return;
      } else if(userId == user.no) {
-      alert("내 게시글 입니다");
+      Swal.fire(
+        '내 게시글 입니다!',
+        '',
+        'warning'
+      )
       return;
      }
 
@@ -57,7 +68,11 @@ const FollowButton = ({ boardNo, userId }) => {
 
   const handleUnfollow = async () => {
     if (user.loggedIn === false) {
-      alert("로그인을 해주세요");
+      Swal.fire(
+        '로그인이 필요합니다!',
+        '',
+        'warning'
+      )
      return;
     }
     try {

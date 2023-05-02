@@ -7,6 +7,7 @@ import LikeButton from "../Like/Like";
 import FollowButton from "../Follow/Follow";
 import Usercontext from '../../Usercontext';
 import Gallerymodify from './Gallerymodify';
+import Swal from "sweetalert2";
 
 const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModalStyle, getData }) => {
     const [isHeartActive, setIsHeartActive] = useState(false);
@@ -33,7 +34,7 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
         }
     }, [boarduserfilepath]);
 
-    // 이미지 이동 함수
+
 
     const fetchComments = () => {
         axios.get("http://localhost:8080/web/comments/board/" + boardNo)
@@ -113,11 +114,19 @@ const Gallerydetail = ({ show, onHide, boardNo, loggedInUser, userId, customModa
 
     const handledelete = async () => {
         if (user.loggedIn === false) {
-            alert("로그인을 해주세요");
+            Swal.fire(
+                '로그인이 필요합니다!',
+                '',
+                'warning'
+              )
 
             return;
         } else if (userId != user.no) {
-            alert("내 게시글이 아니에요")
+            Swal.fire(
+                '내 게시글이 아니에요!',
+                '',
+                'warning'
+              )
             return;
         }
 

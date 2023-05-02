@@ -130,12 +130,15 @@
   display: inline-block;
   width: 950px;
   top: -100px;
-  height: 500px;
+  height: 560px;
   left: 5px;
 }
-
-.nightmarket-image-container {}
-
+.nightmarket-image-grid{
+  min-height: 560px;
+}
+.nightmarket-image-container {
+  min-height: 560px;
+}
 .nightmarket-image {
   width: 287px;
   height: 250px;

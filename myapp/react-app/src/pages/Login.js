@@ -3,6 +3,7 @@ import './css/Login.css';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,13 +22,21 @@ const Login = () => {
         if (result.status === 'success') {
           window.location.href = '../';
         } else {
-          alert('로그인 실패!');
+          Swal.fire(
+            '로그인 실패!',
+            'ID와 패스워드를 잊어버렸나요?',
+            'question'
+          )
           setEmail('');
           setPassword('');
         }
       })
       .catch((error) => {
-        alert('로그인 오류!');
+        Swal.fire(
+          '로그인 실패!',
+          '서버오류',
+          'warning'
+        )
         console.error(error);
       });
   };

@@ -3,7 +3,7 @@ import './css/Intromodal.css';
 import { Modal, Button } from "react-bootstrap";
 import axios from 'axios';
 import Usercontext from '../../Usercontext';
-
+import Swal from "sweetalert2";
 
 const Intromodal = ({ show, onHide,onUpdate }) => {
   const saveToLocalStorage = (key, value) => {
@@ -137,15 +137,28 @@ const Intromodal = ({ show, onHide,onUpdate }) => {
           const result = response.data;
           console.log(result);
           if (result.status === "success") {
-            alert("수정되었습니다");
+            Swal.fire(
+              '수정 완료!',
+              '',
+              'success'
+            )
+            
             window.location.href="./mypage"
             onUpdate(); 
             onHide();
           } else {
-            alert("수정실패");
+            Swal.fire(
+              '수정 실패!',
+              '',
+              'warning'
+            )
           }
         } catch (error) {
-          alert("연결실패");
+          Swal.fire(
+            '연결 실패!',
+            '',
+            'warning'
+          )
         }
       };
     

@@ -168,17 +168,21 @@
   height: 500px;
   /* border:1px solid blue; */
 }
-
 .firework-image-container-wrap {
   position: relative;
   display: inline-block;
   width: 950px;
   top: -200px;
-  height: 500px;
+  height: 560px;
   left: 5px;
 }
 
-.firework-image-container {}
+.firework-image-grid{
+  min-height: 560px;
+}
+.firework-image-container {
+  min-height: 560px;
+}
 
 .firework-image {
   width: 287px;
@@ -210,3 +214,4 @@
   height: 0;
   display: none;
 }
+

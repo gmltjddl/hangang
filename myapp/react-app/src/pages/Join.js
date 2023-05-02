@@ -50,7 +50,7 @@ function Join() {
     setIsNickNameDuplicated(duplicated);
 
     if (duplicated) {
-      setNickNameStatusMessage("중복된 이메일입니다.");
+      setNickNameStatusMessage("중복된 닉네임입니다.");
     } else {
       setNickNameStatusMessage("사용 가능한 닉네임입니다.");
     }
@@ -150,8 +150,19 @@ function Join() {
         .then((response) => {
           const result = response.data;
           if (result.status === "success") {
-            window.location.reload();
-            window.location.href = "Login";
+            if (result.status === "success") {
+              Swal.fire({
+                title: `${name}님`,
+                text: '환영합니다!',
+                imageUrl: 'https://mblogthumb-phinf.pstatic.net/20140223_123/ideag_13931495603994NTPg_JPEG/%BA%EA%B6%F3%BF%EE_%BD%BA%C6%BC%C4%BF_%B0%F5_%B6%F3%C0%CE_%BD%BA%C6%BC%C4%BF_04.jpg?type=w2',
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
+              }).then(() => {
+                // window.location.reload();
+                window.location.href = "Login";
+              });
+            }
           } else {
             alert("입력 실패!");
             // console.log(result.data);
@@ -367,7 +378,11 @@ function Join() {
             onChange={handleHobbyChange} />
 
           <button id="btn-regist" type="submit">가입하기</button>
-          <button id="btn-cancel" type="reset">가입취소</button>
+          <Link to="/">
+          <button id="btn-cancel" type="button">
+            가입취소
+          </button>
+        </Link>
 
           <div className="join-signup-box"></div>
         </form>

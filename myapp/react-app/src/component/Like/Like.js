@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import Usercontext from '../../Usercontext';
 import "./css/Heart.css"
+import Swal from "sweetalert2";
 
 const Like = ({ boardNo, loggedInUser }) => {
   const [likes, setLikes] = useState([]);
@@ -16,9 +17,9 @@ const Like = ({ boardNo, loggedInUser }) => {
   const fetchLikes = async () => {
     try {
       const response = await axios.get(`http://localhost:8080/web/likes/${boardNo}`);
-      console.log(response.data);
+      console.log(response.data);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
       console.log(user);
-    //   console.log(response.data.data.some((item) => {
+    //   console.log(response.data.data.some                                                                                                                                                                                                                                                                                                                                                                              ((item) => {
     //     console.log(item.member.no);
     //   }));
       setLikes(response.data.data.length);
@@ -32,7 +33,11 @@ const Like = ({ boardNo, loggedInUser }) => {
 
     const handleHeartClick = async () => {
         if (user.loggedIn === false) {
-         alert("로그인을 해주세요");
+         Swal.fire(
+          '로그인이 필요합니다!',
+          '',
+          'warning'
+        )
         return;
         }
     try {

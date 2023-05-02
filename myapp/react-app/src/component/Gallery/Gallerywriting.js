@@ -3,6 +3,7 @@ import './css/Gallerywriting.css';
 import { Modal } from "react-bootstrap";
 import axios from 'axios';
 import Usercontext from '../../Usercontext';
+import Swal from "sweetalert2";
 
 const Gallerywriting = ({ show, onHide }) => {
  
@@ -73,15 +74,29 @@ const Gallerywriting = ({ show, onHide }) => {
       .then((response) => {
         const result = response.data;
         if (result.status === "success") {
+          Swal.fire(
+            '입력 성공!',
+            '',
+            'success'
+          )
           window.location.href="./gallery"
           // console.log(result.data);
+          
         } else {
-          alert("입력 실패!");
+          Swal.fire(
+            '입력 실패!',
+            '',
+            'warning'
+          )
           // console.log(result.data);
         }
       })
       .catch((exception) => {
-        alert("입력 중 오류가 발생했습니다.");
+        Swal.fire(
+          '입력 중 오류가 발생했습니다!',
+          '',
+          'warning'
+        )
       });
   };
 
@@ -151,7 +166,7 @@ const Gallerywriting = ({ show, onHide }) => {
                     </div>
                   )}
                   <div className="Gallerywriting-preview-image-box" onClick={onCickImageUpload}>
-                    <span className="">사진 추가하기</span>
+                    <span className="gadd-btn-span">사진 추가하기</span>
                   </div>
                   {previewImages.map((previewImage, index) => (
                     <img
