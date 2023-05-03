@@ -3,7 +3,7 @@ import Usercontext from "../../Usercontext";
 import axios from "axios"; // 추가
 import  './css/Pg.css';
 import Swal from "sweetalert2";
-const Pg = ({ time, adult, teen, sumprice, sumticket, date ,props}) => {
+const Pg = ({ time, adult, teen, sumprice, sumticket, date ,props, onHide }) => {
   const user = useContext(Usercontext);
   const [name, setName] = useState(user.name);
   const [tel, setTel] = useState(user.tel);
@@ -36,7 +36,9 @@ const Pg = ({ time, adult, teen, sumprice, sumticket, date ,props}) => {
         '결제 성공!',
         '',
         'success'
-      )
+        ).then(() => {
+          onHide(); // 확인 버튼을 누른 후 모달을 닫습니다.
+        });
       const formData = {
         imp_uid,
         buyer_email,

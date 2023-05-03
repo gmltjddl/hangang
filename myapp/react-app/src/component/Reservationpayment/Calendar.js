@@ -16,8 +16,8 @@ const CustomCalendar = () => {
   const handleDateChange = (date) => {
     if (moment(date).isBefore(moment().startOf('day'))) {
       Swal.fire(
-        '실패!',
-        '예약할 수 없는 날입니다.',
+        '예약할수 없는 날입니다!',
+        '',
         'warning'
       )
     } else {

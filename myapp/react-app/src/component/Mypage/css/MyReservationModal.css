@@ -1,6 +1,5 @@
-.my-reservation-modal .modal-content {
-  background-color: #f5f5f5;
-  border-radius: 10px;
+.reservation-modal {
+  max-width: auto;
 }
 
 .reservation-list {
@@ -10,35 +9,205 @@
 }
 
 .reservation-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  background-color: #f9f9f9;
+  width: 620px;
+  height: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.reservation-cruise-box {}
+
+.reservation-header {
+  background-color: #3481d3;
+  border: 2px solid #3481d3;
+  height: 30px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
-  border-bottom: 1px solid #e5e5e5;
+  padding-left: 10px;
+  position: relative;
 }
 
-.reservation-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.reservation-createdDate {
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
 }
 
-.reservation-title {
+.reservation-item.cruise {
+  border-color: #3481d3;
+}
+
+.reservation-item.taxi {
+  border-color: #28a745;
+}
+
+.reservation-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.reservation-details::after {
+  content: "";
+  position: absolute;
+  height: 60%;
+  width: 1px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 50%, rgba(255, 255, 255, 0) 50%);
+  background-size: 100% 4px;
+  background-repeat: repeat-y;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.reservation-details span {
+  padding: 5px;
+  display: block;
+  margin-top: 10px;
+  margin-left: 5px;
+  font-family: Arial, sans-serif;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
+  color: #303030;
+
 }
 
-.reservation-date {
-  font-size: 14px;
-  color: #999;
+.reservation-details span p {
+  display: inline;
+  font-weight: bold;
+  font-size: 17px;
+  margin-right: 5px;
+  color: #303030;
 }
 
-.close-btn {
-  background-color: #4b4b4b;
+
+.reservation-footer,
+.reservation-footer2 {
+  background-color: #3481d3;
+  height: 30px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin-top: 5px;
+}
+
+.reservation-footer2 {
+  top: 11px;
+  position: relative;
+}
+
+.reservation-close-btn {
+  position: relative;
+  background-color: #333;
   color: #fff;
   border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 8px 15px;
   font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.reservation-close-btn:hover {
+  background-color: #555;
+}
+
+.reservation-modal-footer {
+  position: relative;
+  top: -50px;
+  left: 65px;
+}
+
+/* New styles */
+.reservation-item::before,
+.reservation-item::after {
+  content: '';
+  display: block;
+  background-color: #f9f9f9;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  z-index: 1;
+}
+
+.reservation-item::before {
+  transform: rotate(45deg);
+  top: -10px;
+  left: calc(50% - 10px);
+}
+
+.reservation-item::after {
+  transform: rotate(45deg);
+  bottom: -10px;
+  left: calc(50% - 10px);
+}
+
+.reservation-header::before {
+  content: '';
+  display: block;
+  background-color: #3481d3;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  z-index: 1;
+  transform: rotate(45deg);
+  top: -10px;
+  left: calc(50% - 10px);
+}
+
+.reservation-footer::before,
+.reservation-footer2::before {
+  content: '';
+  display: block;
+  background-color: #3481d3;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  z-index: 1;
+  transform: rotate(45deg);
+  bottom: -10px;
+  left: calc(50% - 10px);
+}
+
+.reservation-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  font-size: 16px;
+  margin-top: 5px;
+  padding: 0 10px;
+}
+
+.reservation-item:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-item:hover::before,
+.reservation-item:hover::after {
+  background-color: #3481d3;
+  transition: background-color 0.3s ease;
+}
+
+.reservation-item:hover .reservation-header,
+.reservation-item:hover .reservation-footer,
+.reservation-item:hover .reservation-footer2 {
+  background-color: #1d62a9;
+  transition: background-color 0.3s ease;
+}
+
+.reservation-item:hover .reservation-header::before,
+.reservation-item:hover .reservation-footer::before,
+.reservation-item:hover .reservation-footer2::before {
+  background-color: #1d62a9;
+  transition: background-color 0.3s ease;
 }

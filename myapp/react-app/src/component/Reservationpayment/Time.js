@@ -140,6 +140,7 @@ const Time = ({ show, onHide, date, customModalStyle, currentDateTime }) => {
               teen={teen}
               sumprice={sumprice}
               sumticket={sumticket}
+              onHide={onHide} 
             />
 
               <div className="pgcancelbnt" onClick={onHide}>
