@@ -1,4 +1,9 @@
+.benefits-wrap{
+  height: 2450px;
+}
 .benefits {
+  position: relative;
+  top:100px;
   padding: 80px 32px;
   background-color: #f7f7f7;
   max-width: 1065px;

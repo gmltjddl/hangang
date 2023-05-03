@@ -1,13 +1,99 @@
-
-.weather-wrap{
+.weather-wrap {
   position: absolute;
-  border:1px solid #1977d0;
-  width:350px;
-  height: 270px;
-  left:1340px;
-  top:700px;
+  top:725px;
+  width: 700px;
+  height: 150px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
+
+.weather-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+  z-index: -1;
+}
+
+.weather-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background-color: rgba(25, 119, 208, 0.1);
+  z-index: -2;
+}
+
+.weather-wrap .icon {
+  font-size: 60px;
+  color: #1977d0;
+  margin-right: 20px;
+}
+
+.weather-wrap .temperature {
+  font-size: 80px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.weather-wrap .description {
+  font-size: 24px;
+  font-weight: 500;
+  color: #666666;
+  text-transform: capitalize;
+  margin-left: 10px;
+}
+
+.weather-wrap:hover {
+  background-color: #f6f9fc;
+}
+
+.weather-wrap:hover::before {
+  background-image: linear-gradient(to bottom, rgba(246, 249, 252, 0.8), rgba(246, 249, 252, 0));
+}
+
+.weather-wrap:hover .icon {
+  color: #25a1e0;
+}
+
+.weather-wrap:hover .temperature {
+  color: #25a1e0;
+}
+
+.weather-wrap:hover .description {
+  color: #25a1e0;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.weather-wrap .droplet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #1c6fd7, #4a98dd);
+  z-index: 1;
+  box-shadow: 0 0 30px 20px #4a98dd;
+}
+
+
+
 .wimg{
   position: absolute;
   display: inline-block;
@@ -93,14 +179,14 @@
   border:0px solid blue;
   width:310px;
   height:100px;
-  top:170px;
-  left:20px;
+  left:350px;
+  top:30px;
   text-align: center;
 }
 .dust-box{
   position: absolute;
   display: inline-block;
-  border:1px solid #1977d0;
+  border:0px solid #1977d0;
   width:70px;
   height:100px;
   left:0px;
@@ -147,7 +233,7 @@
 .wind-box{
   position: absolute;
   display: inline-block;
-  border:1px solid #1977d0;
+  border:0px solid #1977d0;
   width:70px;
   height:100px;
   left:80px;
@@ -192,7 +278,7 @@
 .sup-box{
   position: absolute;
   display: inline-block;
-  border:1px solid #1977d0;
+  border:0px solid #1977d0;
   width:70px;
   height:100px;
   left:160px;
@@ -237,7 +323,7 @@
 .rain-box{
   position: absolute;
   display: inline-block;
-  border:1px solid #1977d0;
+  border:0px solid #1977d0;
   width:70px;
   height:100px;
   left:240px;

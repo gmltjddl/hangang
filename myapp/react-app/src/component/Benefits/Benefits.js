@@ -11,7 +11,7 @@ function Benefits() {
 
 
   return (
-    <div>
+    <div className='benefits-wrap'>
       <section class="benefits">
         <h2>이달의 축제</h2>
         <p>

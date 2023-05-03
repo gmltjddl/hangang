@@ -1,4 +1,6 @@
 .content{
+  position: relative;
+  top:150px;
   padding: 80px 32px;
   max-width: 1000px;
   margin: 0 auto;
